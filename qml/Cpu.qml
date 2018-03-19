@@ -380,8 +380,8 @@ Item {
                 Layout.leftMargin:5
                 readOnly: true;
                 wrapMode:TextEdit.WordWrap
-                textMargin: 5
-                text:""
+                //textMargin: 5
+                text:"     "
             }
         }
     }
@@ -547,6 +547,7 @@ Item {
                 Layout.leftMargin:5
                 wrapMode:TextEdit.WordWrap
                 textMargin: 5
+                readOnly: true
             }
 
             Text{
@@ -560,6 +561,7 @@ Item {
                 Layout.leftMargin:5
                 wrapMode:TextEdit.WordWrap
                 textMargin: 5
+                readOnly: true
             }
         }
     }

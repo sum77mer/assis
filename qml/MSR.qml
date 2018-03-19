@@ -1,12 +1,14 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Layouts 1.3
 Item {
     anchors{top:parent.top;topMargin:20}
-    Column{
+    RowLayout{
         id:checkcpu
+        spacing:10
 
-        anchors{top:parent.top;left:parent.left;leftMargin:20}//anchors.topMargin:50
+        anchors{top:parent.top;horizontalCenter: parent.horizontalCenter}
         CheckBox{
             text:qsTr("CPU 1")
             checked:false
@@ -28,177 +30,112 @@ Item {
             checked:false
         }
     }
-    Text{
-        id:msr_ecx_title
-        //anchors.top:groupbox.bottom
-        anchors{topMargin:20;left:checkcpu.right;leftMargin:10}
-        text:"ECX:"
-        color:"black"
-    }
-    Text{
-        id:msr_ecx_hex
+    GridLayout{
+        id:msr_gridlayout
+        rows:3; rowSpacing: 10
+        flow:GridLayout.TopToBottom
+        anchors{top:checkcpu.bottom; topMargin:20; horizontalCenter:parent.horizontalCenter}
+        Text{
+            id:msr_ecx_title
+            //anchors.top:groupbox.bottom
+            //anchors{topMargin:20;left:checkcpu.right;leftMargin:10}
+            text:"ECX:"
+            color:"black"
+        }
+        Text{
+            id:msr_eax_title
 
-        //anchors.top:groupbox.bottom
-        anchors{topMargin:20;left:msr_ecx_title.right;leftMargin:10}
-        text:"0x"
-        color:"black"
-    }
-    TextField{
-        id:msr_ecx
+            //anchors{top:msr_ecx_title.bottom;topMargin:20;left:checkcpu.right;leftMargin:10}
+            text:"EAX:"
+            color:"black"
+        }
+        Text{
+            id:msr_edx_title
 
-        width:100; height:15
-        text:""
-        anchors{verticalCenter:msr_ecx_hex.verticalCenter;left:msr_ecx_hex.right;leftMargin:5}
-        style:TextFieldStyle{
-            textColor:"black"
-            background:Rectangle{
-                //width:100
-                //height:10
-                color:"#f0f0f0"
-                Rectangle{
-                    id:topline
+            //anchors{top:msr_eax_title.bottom;topMargin:20;left:checkcpu.right;leftMargin:10}
+            text:"EDX:"
+            color:"black"
+        }
+//col2
 
-                    width:parent.width-1; height:1; color:"#a0a0a0"
-                    anchors{top:parent.top;left:parent.left}
-                }
-                Rectangle{
-                    id:bottomline
+        Text{
+            id:msr_ecx_hex
 
-                    width:parent.width-1; height:1; color:"#ffffff"
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left}
-                }
-                Rectangle{
-                    id:leftline
+            //anchors{topMargin:20;left:msr_ecx_title.right;leftMargin:10}
+            text:"0x"
+            Layout.leftMargin:5
+            color:"black"
+        }
+        Text{
+            id:msr_eax_hex
 
-                    width:1;height:parent.height-1;color:"#a0a0a0"
-                    anchors{top:parent.top;topMargin:1;left:parent.left}
-                }
-                Rectangle{
-                    id:rightline
+            //anchors{top:msr_ecx_title.bottom;topMargin:20;left:msr_eax_title.right;leftMargin:10}
+            text:"0x"
+            Layout.leftMargin:5
+            color:"black"
+        }
+        Text{
+            id:msr_edx_hex
 
-                    width:1;height:parent.height;color:"#ffffff"
-                    anchors{top:parent.top;right:parent.right}
-                }
-            }
+            //anchors{top:msr_eax_title.bottom;topMargin:20;left:msr_edx_title.right;leftMargin:10}
+            text:"0x"
+            Layout.leftMargin:5
+            color:"black"
+        }
+//col3
+        BasicEditControl{
+            id:msr_ecx
+            width:80; height:24
+            text:"        "
+        }
+        BasicEditControl{
+            id:msr_eax
+            width:80; height:24
+            text:"        "
+        }
+        BasicEditControl{
+            id:msr_edx
+            width:80; height:24
+            text:"        "
         }
     }
-    Text{
-        id:msr_eax_title
+    RowLayout{
+        id:btn_row
+        spacing:10
+        anchors{top:msr_gridlayout.bottom;topMargin:10;horizontalCenter:parent.horizontalCenter}
+        Button{
+            id:msr_read
 
-        anchors{top:msr_ecx_title.bottom;topMargin:20;left:checkcpu.right;leftMargin:10}
-        text:"EAX:"
-        color:"black"
-    }
-    Text{
-        id:msr_eax_hex
+            text:"读"
+            width:50; height:20
+            //anchors{topMargin:20;left:msr_ecx_hex.right;leftMargin:200}
+        }
+        Button{
+            id:msr_write;
 
-        anchors{top:msr_ecx_title.bottom;topMargin:20;left:msr_eax_title.right;leftMargin:10}
-        text:"0x"
-        color:"black"
-    }
-    TextField{
-        id:msr_eax
+            text:"写";
+            width:50; height:20;
+            //anchors{top:msr_read.bottom;topMargin:10;left:msr_ecx_hex.right;leftMargin:200;}
+        }
+        Button{
+            id:msr_fix
 
-        width:100; height:15
-        text:""
-        anchors{verticalCenter:msr_eax_hex.verticalCenter;left:msr_eax_hex.right;leftMargin:5}
-        style:TextFieldStyle{
-            textColor:"black"
-            background:Rectangle{
-                color:"#f0f0f0"
-                Rectangle{
-                    width:parent.width-1;height:1;color:"#a0a0a0"
-                    anchors{top:parent.top;left:parent.left}
-                }
-                Rectangle{
-                    width:parent.width-1;height:1;color:"#ffffff"
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left}
-                }
-                Rectangle{
-                    width:1; height:parent.height-1; color:"#a0a0a0"
-                    anchors{top:parent.top;topMargin:1;left:parent.left}
-                }
-                Rectangle{
-                    width:1; height:parent.height; color:"#ffffff"
-                    anchors{top:parent.top;right:parent.right}
-                }
-            }
+            text:"固定"
+            width:50; height:20
+            //anchors{top:msr_write.bottom;topMargin:10;left:msr_ecx_hex.right;leftMargin:200}
+            onClicked: libraryModel.append({"addr":"a","cpu1":"b","cpu2":"1","cpu3":"1","cpu4":"1"})
+        }
+        Button{
+            id:msr_delete
+
+            text:"删除"
+            width:50; height:20
+            //anchors{top:msr_fix.bottom;topMargin:10;left:msr_ecx_hex.right;leftMargin:200}
+            onClicked: libraryModel.remove(0)
         }
     }
-    Text{
-        id:msr_edx_title
 
-        anchors{top:msr_eax_title.bottom;topMargin:20;left:checkcpu.right;leftMargin:10}
-        text:"EDX:"
-        color:"black"
-    }
-    Text{
-        id:msr_edx_hex
 
-        anchors{top:msr_eax_title.bottom;topMargin:20;left:msr_edx_title.right;leftMargin:10}
-        text:"0x"
-        color:"black"
-    }
-    TextField{
-        id:msr_edx
-
-        width:100; height:15
-        anchors{verticalCenter:msr_edx_hex.verticalCenter;left:msr_edx_hex.right;leftMargin:5}
-        text:""
-        style:TextFieldStyle{
-            textColor:"black"
-            background:Rectangle{
-                color:"#f0f0f0"
-                Rectangle{
-                    width:parent.width-1; height:1; color:"#a0a0a0"
-                    anchors{top:parent.top;left:parent.left}
-                }
-                Rectangle{
-                    width:parent.width-1; height:1; color:"#ffffff"
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left}
-                }
-                Rectangle{
-                    width:1; height:parent.height-1; color:"#a0a0a0"
-                    anchors{top:parent.top;topMargin:1;left:parent.left}
-                }
-                Rectangle{
-                    width:1; height:parent.height; color:"#ffffff"
-                    anchors{top:parent.top;right:parent.right}
-                }
-            }
-        }
-    }
-    Button{
-        id:msr_read
-
-        text:"读"
-        width:50; height:20
-        //anchors.top:groupbox.bottom
-        anchors{topMargin:20;left:msr_ecx_hex.right;leftMargin:200}
-    }
-    Button{
-        id:msr_write;
-
-        text:"写";
-        width:50; height:20;
-        anchors{top:msr_read.bottom;topMargin:10;left:msr_ecx_hex.right;leftMargin:200;}
-    }
-    Button{
-        id:msr_fix
-
-        text:"固定"
-        width:50; height:20
-        anchors{top:msr_write.bottom;topMargin:10;left:msr_ecx_hex.right;leftMargin:200}
-        onClicked: libraryModel.append({"addr":"a","cpu1":"b","cpu2":"1","cpu3":"1","cpu4":"1"})
-    }
-    Button{
-        id:msr_delete
-
-        text:"删除"
-        width:50; height:20
-        anchors{top:msr_fix.bottom;topMargin:10;left:msr_ecx_hex.right;leftMargin:200}
-        onClicked: libraryModel.remove(0)
-    }
     ListModel {
         id: libraryModel
 
@@ -227,7 +164,7 @@ Item {
     }
 
     TableView {
-        anchors{top:msr_edx_title.bottom;topMargin:40;left:parent.left;leftMargin:50}
+        anchors{top:btn_row.bottom;topMargin:40;horizontalCenter:parent.horizontalCenter}
         width:500
        // MouseArea{
        //     anchors.fill:parent

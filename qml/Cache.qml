@@ -16,14 +16,14 @@ Item {
             BasicEditControl{
                 text:"6 MBytes";
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
+                readOnly: true
             }
             BasicEditControl{
                 text:" "
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
+                readOnly: true
             }
         }
         RowLayout{
@@ -34,9 +34,9 @@ Item {
             }
             BasicEditControl{
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
                 text:"12-way set associative, 64-byte line size"
+                readOnly: true
             }
         }
 
@@ -57,14 +57,14 @@ Item {
             BasicEditControl{
                 text:"6 MBytes";
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
+                readOnly: true
             }
             BasicEditControl{
                 text:" "
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
+                readOnly: true
             }
         }
         RowLayout{
@@ -75,9 +75,9 @@ Item {
             }
             BasicEditControl{
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
                 text:"12-way set associative, 64-byte line size"
+                readOnly: true
             }
         }
 
@@ -96,14 +96,14 @@ Item {
             BasicEditControl{
                 text:"6 MBytes";
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
+                readOnly: true
             }
             BasicEditControl{
                 text:" "
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
+                readOnly: true
             }
         }
         RowLayout{
@@ -114,9 +114,9 @@ Item {
             }
             BasicEditControl{
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
                 text:"12-way set associative, 64-byte line size"
+                readOnly: true
             }
         }
     }
@@ -134,14 +134,14 @@ Item {
             BasicEditControl{
                 text:"6 MBytes";
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
+                readOnly: true
             }
             BasicEditControl{
                 text:" "
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
+                readOnly: true
             }
         }
         RowLayout{
@@ -152,9 +152,9 @@ Item {
             }
             BasicEditControl{
                 width:50; height:Text.contentHeight
-                textMargin:5
                 Layout.leftMargin:5
                 text:"12-way set associative, 64-byte line size"
+                readOnly: true
             }
         }
     }

@@ -1,13 +1,15 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
-
+import QtQuick.Layouts 1.3
 Item {
     anchors{top:parent.top;topMargin:20;}
-    Column{
-        id:checkcpu;
 
-        anchors{top:parent.top;left:parent.left;leftMargin:20;}        //anchors.topMargin:50;
+    RowLayout{
+        id:checkcpu;
+        spacing:10
+
+        anchors{top:parent.top;horizontalCenter: parent.horizontalCenter}        //anchors.topMargin:50;
         CheckBox{
             text:qsTr("CPU 1");
             checked:false;
@@ -29,317 +31,184 @@ Item {
             checked:false;
         }
     }
-    Text{
-        id:cpuid_eax_title;
+    GridLayout{
+        id:cpuid_layout
+        rows:3; rowSpacing: 10
+        flow:GridLayout.TopToBottom
+        anchors{left:checkcpu.left; top:checkcpu.bottom; topMargin:20}
+        Text{
+            id:cpuid_eax_title;
 
-        color:"black";
-        anchors{top:parent.top;topMargin:20;left:checkcpu.right;leftMargin:10;}
-        text:"EAX:";
-    }
-    Text{
-        id:cpuid_eax_hex;
-
-        color:"black";
-        anchors{top:parent.top;topMargin:20;left:cpuid_eax_title.right;leftMargin:10;}
-        text:"0x";
-    }
-    TextField{
-        id:cpuid_eax;
-
-        width:100; height:15;
-        anchors{verticalCenter:cpuid_eax_hex.verticalCenter;left:cpuid_eax_hex.right;leftMargin:5;}
-        text:"";
-        style:TextFieldStyle{
-            textColor:"black";
-            background:Rectangle{
-                //width:100;
-                //height:10;
-                color:"#f0f0f0";
-                Rectangle{
-                    id:topline;
-
-                    width:parent.width-1; height:1; color:"#a0a0a0";
-                    anchors{top:parent.top;left:parent.left;}
-                }
-                Rectangle{
-                    id:bottomline;
-
-                    width:parent.width-1; height:1; color:"#ffffff";
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left;}
-                }
-                Rectangle{
-                    id:leftline;
-
-                    width:1; height:parent.height-1; color:"#a0a0a0";
-                    anchors{top:parent.top;topMargin:1;left:parent.left;}
-                }
-                Rectangle{
-                    id:rightline;
-
-                    width:1; height:parent.height; color:"#ffffff";
-                    anchors{top:parent.top;right:parent.right;}
-                }
-            }
+            color:"black";
+            //anchors{top:parent.top;topMargin:20;left:checkcpu.right;leftMargin:10;}
+            text:"EAX:";
         }
-    }
-    Text{
-        id:cpuid_ecx_title;
+        Text{
+            id:cpuid_output_eax_title;
 
-        color:"black";
-        anchors{top:parent.top;topMargin:20;left:cpuid_eax.right;leftMargin:10;}
-        text:"ECX:";
-    }
-    Text{
-        id:cpuid_ecx_hex;
-
-        color:"black";
-        anchors{top:parent.top;topMargin:20;left:cpuid_ecx_title.right;leftMargin:10;}
-        text:"0x";
-    }
-    TextField{
-        id:cpuid_ecx;
-
-        width:100; height:15;
-        anchors{verticalCenter:cpuid_ecx_hex.verticalCenter;left:cpuid_ecx_hex.right;leftMargin:5;}
-        text:"";
-        style:TextFieldStyle{
-            textColor:"black";
-            background:Rectangle{
-                //width:100;
-                //height:10;
-                color:"#f0f0f0";
-                Rectangle{
-                    //id:topline;
-                    width:parent.width-1; height:1; color:"#a0a0a0";
-                    anchors{top:parent.top;left:parent.left;}
-                }
-                Rectangle{
-                    //id:bottomline;
-                    width:parent.width-1; height:1; color:"#ffffff";
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:leftline;
-                    width:1; height:parent.height-1; color:"#a0a0a0";
-                    anchors{top:parent.top;topMargin:1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:rightline;
-                    width:1; height:parent.height; color:"#ffffff";
-                    anchors{top:parent.top;right:parent.right;}
-                }
-            }
+            color:"black";
+            Layout.topMargin:20
+            //anchors{top:cpuid_eax_title.bottom;topMargin:20;left:checkcpu.right;leftMargin:10;}
+            text:"EAX:";
         }
-    }
-    Text{
-        id:cpuid_output_eax_title;
+        Text{
+            id:cpuid_output_ecx_title;
 
-        color:"black";
-        anchors{top:cpuid_eax_title.bottom;topMargin:20;left:checkcpu.right;leftMargin:10;}
-        text:"EAX:";
-    }
-    Text{
-        id:cpuid_output_eax_hex;
-
-        color:"black";
-        anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_eax_title.right;leftMargin:10;}
-        text:"0x";
-    }
-    TextField{
-        id:cpuid_output_eax;
-
-        width:100; height:15;
-        anchors{verticalCenter:cpuid_output_eax_hex.verticalCenter;left:cpuid_output_eax_hex.right;leftMargin:5;}
-        text:"";
-        style:TextFieldStyle{
-            textColor:"black";
-            background:Rectangle{
-                //width:100;height:10;
-                color:"#f0f0f0";
-                Rectangle{
-                    //id:topline;
-                    width:parent.width-1; height:1; color:"#a0a0a0";
-                    anchors{top:parent.top;left:parent.left;}
-                }
-                Rectangle{
-                    //id:bottomline;
-                    width:parent.width-1; height:1; color:"#ffffff";
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:leftline;
-                    width:1; height:parent.height-1; color:"#a0a0a0";
-                    anchors{top:parent.top;topMargin:1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:rightline;
-                    width:1; height:parent.height; color:"#ffffff";
-                    anchors{top:parent.top;right:parent.right;}
-                }
-            }
+            color:"black";
+            //anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_ebx.right;leftMargin:10;}
+            text:"ECX:";
         }
-    }
-    Text{
-        id:cpuid_output_ebx_title;
+//col2
+        Text{
+            id:cpuid_eax_hex;
 
-        color:"black";
-        anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_eax.right;leftMargin:10;}
-        text:"EBX:";
-    }
-    Text{
-        id:cpuid_output_ebx_hex;
-
-        color:"black";
-        anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_ebx_title.right;leftMargin:10;}
-        text:"0x";
-    }
-    TextField{
-        id:cpuid_output_ebx;
-
-        width:100; height:15;
-        anchors{verticalCenter:cpuid_output_ebx_hex.verticalCenter;left:cpuid_output_ebx_hex.right;leftMargin:5;}
-        text:"";
-        style:TextFieldStyle{
-            textColor:"black";
-            background:Rectangle{
-                //width:100; height:10;
-                color:"#f0f0f0";
-                Rectangle{
-                    //id:topline;
-                    width:parent.width-1; height:1; color:"#a0a0a0";
-                    anchors{top:parent.top;left:parent.left;}
-                }
-                Rectangle{
-                    //id:bottomline;
-                    width:parent.width-1; height:1; color:"#ffffff";
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:leftline;
-                    width:1; height:parent.height-1; color:"#a0a0a0";
-                    anchors{top:parent.top;topMargin:1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:rightline;
-                    width:1; height:parent.height; color:"#ffffff";
-                    anchors{top:parent.top;right:parent.right;}
-                }
-            }
+            color:"black";
+            Layout.leftMargin:5
+            //anchors{top:parent.top;topMargin:20;left:cpuid_eax_title.right;leftMargin:10;}
+            text:"0x";
         }
-    }
-    Text{
-        id:cpuid_output_ecx_title;
+        Text{
+            id:cpuid_output_eax_hex;
 
-        color:"black";
-        anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_ebx.right;leftMargin:10;}
-        text:"ECX:";
-    }
-    Text{
-        id:cpuid_output_ecx_hex;
+            color:"black";
+            Layout.leftMargin:5
+            Layout.topMargin:20
+            //anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_eax_title.right;leftMargin:10;}
+            text:"0x";
+        }
+        Text{
+            id:cpuid_output_ecx_hex;
 
-        color:"black";
-        anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_ecx_title.right;leftMargin:10;}
-        text:"0x";
-    }
-    TextField{
-        id:cpuid_output_ecx;
+            color:"black";
+            Layout.leftMargin:5
+            //anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_ecx_title.right;leftMargin:10;}
+            text:"0x";
+        }
+//col3
 
-        width:100; height:15;
-        anchors{verticalCenter:cpuid_output_ecx_hex.verticalCenter;left:cpuid_output_ecx_hex.right;leftMargin:5;}
-        text:"";
-        style:TextFieldStyle{
-            textColor:"black";
-            background:Rectangle{
-                //width:100; height:10;
-                color:"#f0f0f0";
-                Rectangle{
-                    //id:topline;
-                    width:parent.width-1; height:1; color:"#a0a0a0";
-                    anchors{top:parent.top;left:parent.left;}
-                }
-                Rectangle{
-                    //id:bottomline;
-                    width:parent.width-1; height:1; color:"#ffffff";
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:leftline;
-                    width:1; height:parent.height-1; color:"#a0a0a0";
-                    anchors{top:parent.top;topMargin:1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:rightline;
-                    width:1; height:parent.height; color:"#ffffff";
-                    anchors{top:parent.top;right:parent.right;}
-                }
-            }
+        BasicEditControl{
+            id:cpuid_eax
+
+            width:80;height:24
+            //anchors{verticalCenter:cpuid_eax_hex.verticalCenter;left:cpuid_eax_hex.right;leftMargin:5;}
+            text:"        "
+        }
+        BasicEditControl{
+            id:cpuid_output_eax
+
+            width:80;height:24//Text.contentHeight
+            Layout.topMargin:20
+            //anchors{verticalCenter:cpuid_output_eax_hex.verticalCenter;left:cpuid_output_eax_hex.right;leftMargin:5;}
+            text:"        "
+            readOnly: true
+        }
+        BasicEditControl{
+            id:cpuid_output_ecx
+            //anchors{verticalCenter:cpuid_output_ecx_hex.verticalCenter;left:cpuid_output_ecx_hex.right;leftMargin:5;}
+            width:80;height:24//Text.contentHeight
+
+            text:"        "
+            readOnly: true
+        }
+//col4
+        Text{
+            id:cpuid_ecx_title;
+
+            color:"black";
+            Layout.leftMargin:10
+            //anchors{top:parent.top;topMargin:20;left:cpuid_eax.right;leftMargin:10;}
+            text:"ECX:";
+        }
+        Text{
+            id:cpuid_output_ebx_title;
+
+            color:"black";
+            Layout.leftMargin:10
+            Layout.topMargin:20
+            //anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_eax.right;leftMargin:10;}
+            text:"EBX:";
+        }
+        Text{
+            id:cpuid_output_edx_title;
+
+            color:"black";
+            Layout.leftMargin:10
+            //anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_ecx.right;leftMargin:10;}
+            text:"EDX:";
+        }
+
+//col5
+        Text{
+            id:cpuid_ecx_hex;
+
+            color:"black";
+            Layout.leftMargin:5
+            //anchors{top:parent.top;topMargin:20;left:cpuid_ecx_title.right;leftMargin:10;}
+            text:"0x";
+        }
+        Text{
+            id:cpuid_output_ebx_hex;
+
+            color:"black";
+            Layout.leftMargin:5
+            Layout.topMargin:20
+            //anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_ebx_title.right;leftMargin:10;}
+            text:"0x";
+        }
+        Text{
+            id:cpuid_output_edx_hex;
+
+            color:"black";
+            Layout.leftMargin:5
+            //anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_edx_title.right;leftMargin:10;}
+            text:"0x";
+        }
+//col6
+        BasicEditControl{
+            id:cpuid_ecx
+
+            width:80;height:24//Text.contentHeight
+            //anchors{verticalCenter:cpuid_ecx_hex.verticalCenter;left:cpuid_ecx_hex.right;leftMargin:5;}
+            text:"        "
+        }
+        BasicEditControl{
+            id:cpuid_output_ebx
+
+            width:80;height:24//Text.contentHeight
+            Layout.topMargin:20
+            //anchors{verticalCenter:cpuid_output_ebx_hex.verticalCenter;left:cpuid_output_ebx_hex.right;leftMargin:5;}
+            text:"        "
+            readOnly: true
+        }
+        BasicEditControl{
+            id:cpuid_output_edx
+            //anchors{verticalCenter:cpuid_output_edx_hex.verticalCenter;left:cpuid_output_edx_hex.right;leftMargin:5;}
+            width:80;height:24//Text.contentHeight
+            text:"        "
+            readOnly: true
+        }
+
+    }
+    ColumnLayout{
+        id:btn_row
+        spacing:20
+        anchors{verticalCenter:cpuid_layout.verticalCenter;left:cpuid_layout.right;leftMargin:20}
+        Button{
+            id:cpuid_read;
+
+            width:50; height:20;
+            text:"读";
+        }
+        Button{
+            id:cpuid_fix;
+
+            width:50; height:20;
+            text:"固定";
         }
     }
 
-    Text{
-        id:cpuid_output_edx_title;
 
-        color:"black";
-        anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_ecx.right;leftMargin:10;}
-        text:"EDX:";
-    }
-    Text{
-        id:cpuid_output_edx_hex;
 
-        color:"black";
-        anchors{top:cpuid_eax_title.bottom;topMargin:20;left:cpuid_output_edx_title.right;leftMargin:10;}
-        text:"0x";
-    }
-    TextField{
-        id:cpuid_output_edx;
-
-        width:100; height:15;
-        anchors{verticalCenter:cpuid_output_edx_hex.verticalCenter;left:cpuid_output_edx_hex.right;leftMargin:5;}
-        text:"";
-        style:TextFieldStyle{
-            textColor:"black";
-            background:Rectangle{
-                //width:100;
-                //height:10;
-                color:"#f0f0f0";
-                Rectangle{
-                    //id:topline;
-                    width:parent.width-1; height:1; color:"#a0a0a0";
-                    anchors{top:parent.top;left:parent.left;}
-                }
-                Rectangle{
-                    //id:bottomline;
-                    width:parent.width-1; height:1; color:"#ffffff";
-                    anchors{top:parent.bottom;topMargin:-1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:leftline;
-                    width:1; height:parent.height-1; color:"#a0a0a0";
-                    anchors{top:parent.top;topMargin:1;left:parent.left;}
-                }
-                Rectangle{
-                    //id:rightline;
-                    width:1; height:parent.height; color:"#ffffff";
-                    anchors{top:parent.top;right:parent.right;}
-                }
-            }
-        }
-    }
-    Button{
-        id:cpuid_read;
-
-        width:50; height:20;
-        anchors{top:parent.top;topMargin:20;left:cpuid_output_edx.right;leftMargin:10;}
-        text:"读";
-    }
-
-    Button{
-        id:cpuid_fix;
-
-        width:50; height:20;
-        anchors{top:cpuid_read.bottom;topMargin:10;left:cpuid_output_edx.right;leftMargin:10;}
-        text:"固定";
-    }
     ListModel {
         id: libraryModel;
 
@@ -368,7 +237,7 @@ Item {
 
     }
     TableView {
-        anchors{top:cpuid_output_edx_title.bottom;topMargin:40;left:parent.left;leftMargin:50;}
+        anchors{top:cpuid_layout.bottom;topMargin:40;horizontalCenter: parent.horizontalCenter}//left:parent.left;leftMargin:50;
         width:500;
        // MouseArea{
        //     anchors.fill:parent;
