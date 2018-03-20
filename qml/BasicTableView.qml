@@ -276,16 +276,17 @@ TableView{
 
     function createTableViewColumn(arrayData){
         var arrayTitle=arrayData[1];
-        //var arrayWidth=arrayData[2];
+        var arrayWidth=arrayData[2];
         var arrayRole=arrayData[0];
         var prefix='import QtQuick 2.7;
                 import QtQuick.Controls 1.4;
-                TableViewColumn {';//width: ';
+                TableViewColumn {width: ';
         for(var i=0;i<arrayRole.length;i++)
         {
-            //var str=prefix+arrayWidth[i]+";resizable:false;movable:false;role:\""+
-            var str=prefix+"resizable:false;movable:false;role:\""+
+            var str=prefix+arrayWidth[i]+";resizable:false;movable:false;role:\""+
                     arrayRole[i]+"\";title:\""+arrayTitle[i]+"\"}";
+            //var str=prefix+"resizable:false;movable:false;role:\""+
+
             //if(i=)
             var ob=mytableview.addColumn(Qt.createQmlObject(str,mytableview,"dynamicSnippet1"));
             //console.log("**************")
