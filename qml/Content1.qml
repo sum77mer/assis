@@ -78,6 +78,12 @@ Rectangle {
             btnText:"网络设备"
             onClicked:vtab.current=btnIndex
         }
+        BasicVTabBtn{
+            //color:"red"
+            index:8
+            btnText:"其他设备"
+            onClicked:vtab.current=btnIndex
+        }
     }
     Rectangle{
         id:frameline
@@ -113,5 +119,6 @@ Rectangle {
         HardStorage{}
         HardGFX{}
         HardNet{}
+        HardOtherDev{}
     }
 }

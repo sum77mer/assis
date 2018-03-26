@@ -5,9 +5,7 @@ ComboBox{
     id:combo_choosed
     property ListModel choosedItem
     //default property alias choosedItem:list_choosed.
-
-    width:100
-    anchors{verticalCenter:choosed.verticalCenter;left:choosed.right;leftMargin:5}
+    //width:Text.contentWidth
     currentIndex:1
     model:choosedItem
     style:ComboBoxStyle{

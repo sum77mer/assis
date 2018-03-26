@@ -52,6 +52,13 @@ Rectangle
             btnText:"性能测试"
             onClicked:toolbar.current=btnIndex
         }
+        BasicTabBtn
+        {
+            index:3
+            picSrc: "qrc:/image/test.png"
+            btnText:"自动化"
+            onClicked:toolbar.current=btnIndex
+        }
     }
 
     Rectangle
@@ -99,6 +106,15 @@ Rectangle
 
             anchors{top:parent.top;left:parent.left}
             Content3
+            {
+            }
+        }
+        BasicMainWidget
+        {
+            id:widget4
+
+            anchors{top:parent.top;left:parent.left}
+            Content4
             {
             }
         }

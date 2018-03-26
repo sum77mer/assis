@@ -530,6 +530,8 @@ Item {
             BasicComboBox{
                 id:choosed_combo
                 Layout.leftMargin:5
+                width:80
+                anchors{verticalCenter:choosed.verticalCenter;left:choosed.right;leftMargin:5}
                 choosedItem:ListModel{
                     ListElement{text:"处理器1"}
                     ListElement{text:"处理器2"}

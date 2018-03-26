@@ -184,156 +184,18 @@ Rectangle{
                 anchors{top:title_externalsize.bottom;topMargin:20;left:parent.left;leftMargin:40;}
                 text:"选择";
             }
-            ComboBox{
+            BasicComboBox{
                 id:combo_chosed_identify;
 
                 currentIndex:1;
-                model:ListModel{
+                choosedItem:ListModel{
                     //id:list_chosed;
                     ListElement{text:"disk 1";}
                     ListElement{text:"disk 2";}
                     ListElement{text:"disk 3";}
                 }
-                width:100;
+                width:80
                 anchors{verticalCenter:title_chosed.verticalCenter;left:title_chosed.right;leftMargin:5;}
-
-                style:ComboBoxStyle{
-                    id:combo_style;
-
-                    background: Rectangle{
-                        id:combo_backgnd;
-
-                        width:100; height:50; color:"white";
-
-                        Rectangle{
-                            id:outside_topline;
-
-                            width:parent.width+2; height:1; color:"#a0a0a0";
-                            anchors{top:parent.top;topMargin:-8;left:parent.left;}
-                        }
-                        Rectangle{
-                            id:inside_topline;
-
-                            width:parent.width; height:1; color:"#696969";
-                            anchors{top:parent.top;topMargin:-7;left:parent.left;leftMargin:1;}
-                        }
-                        Rectangle{
-                            id:outside_bottomline;
-
-                            width:parent.width+2; height:1; color:"#ffffff";
-                            anchors{top:parent.bottom;topMargin:7;left:parent.left;}
-                        }
-                        Rectangle{
-                            id:inside_bottomline;
-
-                            width:parent.width+1; height:1; color:"#e3e3e3";
-                            anchors{top:parent.bottom;topMargin:6;left:parent.left;leftMargin:1;}
-                        }
-                        Rectangle{
-                            id:outside_leftline;
-
-                            width:1; height:parent.height+15; color:"#a0a0a0";
-                            anchors{top:parent.top;topMargin:-7;left:parent.left;}
-                        }
-                        Rectangle{
-                            id:inside_leftline;
-
-                            width:1; height:parent.height+13; color:"#696969";
-                            anchors{top:parent.top;topMargin:-6;left:parent.left;leftMargin:1;}
-                        }
-                        Rectangle{
-                            id:outside_rightline;
-
-                            width:1; height:parent.height+16; color:"#ffffff";
-                            anchors{top:parent.top;topMargin:-8;left:parent.right;leftMargin:2;}
-                        }
-                        Rectangle{
-                            id:inside_rightline;
-
-                            width:1; height:parent.height+14; color:"#e3e3e3";
-                            anchors{top:parent.top;topMargin:-7;left:parent.right;leftMargin:1;}
-                        }
-                        Rectangle{
-                            id:btn
-
-                            width:15; height:15; color:"#f0f0f0";
-                            anchors{verticalCenter:parent.verticalCenter;right:parent.right;rightMargin:1;}
-                            Rectangle{
-                                id:btn_outside_topline;
-
-                                width:parent.width+3; height:1; color:"#e3e3e3";
-                                anchors{top:parent.top;topMargin:-2;left:parent.left;leftMargin:-2;}
-                            }
-                            Rectangle{
-                                id:btn_inside_topline;
-
-                                width:parent.width+1; height:1; color:"#ffffff";
-                                anchors{top:parent.top;topMargin:-1;left:parent.left;leftMargin:-1;}
-                            }
-                            Rectangle{
-                                id:btn_outside_bottomline;
-
-                                width:parent.width+4; height:1; color:"#696969";
-                                anchors{top:parent.bottom;topMargin:1;left:parent.left;leftMargin:-2;}
-                            }
-                            Rectangle{
-                                id:btn_inside_bottomline;
-
-                                width:parent.width+2; height:1; color:"#a0a0a0";
-                                anchors{top:parent.bottom;left:parent.left;leftMargin:-1;}//anchors.topMargin:1;
-                            }
-                            Rectangle{
-                                id:btn_outside_leftline;
-
-                                width:1; height:parent.height+3; color:"#e3e3e3";
-                                anchors{top:parent.top;topMargin:-2;left:parent.left;leftMargin:-2;}
-                            }
-                            Rectangle{
-                                id:btn_inside_leftline;
-
-                                width:1; height:parent.height+1; color:"#ffffff";
-                                anchors{top:parent.top;topMargin:-1;left:parent.left;leftMargin:-1;}
-                            }
-                            Rectangle{
-                                id:btn_outside_rightline;
-
-                                width:1; height:parent.height+3; color:"#696969";
-                                anchors{top:parent.top;topMargin:-2;left:parent.right;leftMargin:1;}
-                            }
-                            Rectangle{
-                                id:btn_inside_rightline;
-
-                                width:1; height:parent.height+1; color:"#a0a0a0";
-                                anchors{top:parent.top;topMargin:-1;left:parent.right;}
-                            }
-                            //***************
-                            Rectangle{
-                                id:triangle7;
-
-                                width:7; height:1; color:"#000000";
-                                anchors{top:parent.top;topMargin:5;left:parent.left;leftMargin:3;}
-                            }
-                            Rectangle{
-                                id:triangle5;
-
-                                width:5; height:1; color:"#000000";
-                                anchors{top:parent.top;topMargin:6;left:parent.left;leftMargin:4;}
-                            }
-                            Rectangle{
-                                id:triangle3;
-
-                                width:3; height:1; color:"#000000";
-                                anchors{top:parent.top;topMargin:7;left:parent.left;leftMargin:5;}
-                            }
-                            Rectangle{
-                                id:triangle1;
-
-                                width:1; height:1; color:"#000000";
-                                anchors{top:parent.top;topMargin:8;left:parent.left;leftMargin:6;}
-                            }
-                        }
-                    }
-                }
             }
             BasicTableView{
                 id:identify_table;
@@ -670,132 +532,17 @@ Rectangle{
                                                                              ["Col1","Col2","Col3","Col4","Col5","Col6","Col7","Col8","Col9","Col10","Col11","Col12","Col13","Col14","Col15","Col16","Col17"],//
                                                                              [40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40]]);
             }
-            ComboBox{
+            BasicComboBox{
                 id:combo_chosed_RW;
 
                 currentIndex:1;
-                model:ListModel{
-                    //id:list_chosed;
+                choosedItem:ListModel{
                     ListElement{text:"disk 1";}
                     ListElement{text:"disk 2";}
                     ListElement{text:"disk 3";}
                 }
-                width:100;
+                width:80;
                 anchors{top:identify_table.bottom;topMargin:20;left:title_chosed.right;leftMargin:5;}
-                style:ComboBoxStyle{
-                    //id:combo_style;
-                    background: Rectangle{
-                        //id:combo_backgnd;
-                        width:100; height:50; color:"white";
-
-                        Rectangle{
-                            //id:outside_topline;
-                            width:parent.width+2; height:1; color:"#a0a0a0";
-                            anchors{top:parent.top;topMargin:-8;left:parent.left;}
-                        }
-                        Rectangle{
-                            //id:inside_topline;
-                            width:parent.width; height:1; color:"#696969";
-                            anchors{top:parent.top;topMargin:-7;left:parent.left;leftMargin:1;}
-                        }
-                        Rectangle{
-                            //id:outside_bottomline;
-                            width:parent.width+2; height:1; color:"#ffffff";
-                            anchors{top:parent.bottom;topMargin:7;left:parent.left;}
-                        }
-                        Rectangle{
-                            //id:inside_bottomline;
-                            width:parent.width+1; height:1; color:"#e3e3e3";
-                            anchors{top:parent.bottom;topMargin:6;left:parent.left;leftMargin:1;}
-                        }
-                        Rectangle{
-                            //id:outside_leftline;
-                            width:1; height:parent.height+15; color:"#a0a0a0";
-                            anchors{top:parent.top;topMargin:-7;left:parent.left;}
-                        }
-                        Rectangle{
-                            //id:inside_leftline;
-                            width:1; height:parent.height+13; color:"#696969";
-                            anchors{top:parent.top;topMargin:-6;left:parent.left;leftMargin:1;}
-                        }
-                        Rectangle{
-                            //id:outside_rightline;
-                            width:1; height:parent.height+16; color:"#ffffff";
-                            anchors{top:parent.top;topMargin:-8;left:parent.right;leftMargin:2;}
-                        }
-                        Rectangle{
-                            //id:inside_rightline;
-                            width:1; height:parent.height+14; color:"#e3e3e3";
-                            anchors{top:parent.top;topMargin:-7;left:parent.right;leftMargin:1;}
-                        }
-                        Rectangle{
-                            //id:btn;
-                            width:15; height:15; color:"#f0f0f0";
-                            anchors{verticalCenter:parent.verticalCenter;right:parent.right;rightMargin:1;}
-                            Rectangle{
-                                //id:btn_outside_topline;
-                                width:parent.width+3; height:1; color:"#e3e3e3";
-                                anchors{top:parent.top;topMargin:-2;left:parent.left;leftMargin:-2;}
-                            }
-                            Rectangle{
-                                //id:btn_inside_topline;
-                                width:parent.width+1; height:1; color:"#ffffff";
-                                anchors{top:parent.top;topMargin:-1;left:parent.left;leftMargin:-1;}
-                            }
-                            Rectangle{
-                                //id:btn_outside_bottomline;
-                                width:parent.width+4; height:1; color:"#696969";
-                                anchors{top:parent.bottom;topMargin:1;left:parent.left;leftMargin:-2;}
-                            }
-                            Rectangle{
-                                //id:btn_inside_bottomline;
-                                width:parent.width+2; height:1; color:"#a0a0a0";
-                                anchors{top:parent.bottom;left:parent.left;leftMargin:-1;}//anchors.topMargin:1;
-                            }
-                            Rectangle{
-                               // id:btn_outside_leftline;
-                                width:1; height:parent.height+3; color:"#e3e3e3";
-                                anchors{top:parent.top;topMargin:-2;left:parent.left;leftMargin:-2;}
-                            }
-                            Rectangle{
-                                //id:btn_inside_leftline;
-                                width:1; height:parent.height+1; color:"#ffffff";
-                                anchors{top:parent.top;topMargin:-1;left:parent.left;leftMargin:-1;}
-                            }
-                            Rectangle{
-                                //id:btn_outside_rightline;
-                                width:1; height:parent.height+3; color:"#696969";
-                                anchors{top:parent.top;topMargin:-2;left:parent.right;leftMargin:1;}
-                            }
-                            Rectangle{
-                                //id:btn_inside_rightline;
-                                width:1; height:parent.height+1; color:"#a0a0a0";
-                                anchors{top:parent.top;topMargin:-1;left:parent.right;}
-                            }
-                            //***************
-                            Rectangle{
-                                //id:triangle7;
-                                width:7; height:1; color:"#000000";
-                                anchors{top:parent.top;topMargin:5;left:parent.left;leftMargin:3;}
-                            }
-                            Rectangle{
-                                //id:triangle5;
-                                width:5; height:1; color:"#000000";
-                                anchors{top:parent.top;topMargin:6;left:parent.left;leftMargin:4;}
-                            }
-                            Rectangle{
-                                //id:triangle3;
-                                width:3; height:1; color:"#000000";
-                                anchors{top:parent.top;topMargin:7;left:parent.left;leftMargin:5;}
-                            }
-                            Rectangle{
-                                //id:triangle1;
-                                width:1; height:1; color:"#000000";
-                                anchors{top:parent.top;topMargin:8;left:parent.left;leftMargin:6;}
-                            }
-                        }
-                    }
-                }
             }
             Text{
                 id:title_LBA;
@@ -1148,7 +895,7 @@ Rectangle{
             Rectangle{
                 id:tree_usb;
 
-                width:700; height:600;
+                width:700; height:600;color:"transparent"
                 anchors{top:table_RW.bottom;topMargin:20;left:parent.left;leftMargin:50;}
 
                 BasicTreeView{

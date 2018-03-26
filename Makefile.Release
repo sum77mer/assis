@@ -12,8 +12,8 @@ MAKEFILE      = Makefile.Release
 CC            = cl
 CXX           = cl
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DQT_NO_WARNING_OUTPUT -DQT_NO_DEBUG_OUTPUT -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_QML_DEBUG -DNDEBUG
-CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -O2 -MD -W3 -w44456 -w44457 -w44458 $(DEFINES)
-CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
+CFLAGS        = -nologo -Zc:wchar_t -FS  -O2 -MD -W3 -w44456 -w44457 -w44458 $(DEFINES)
+CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:throwingNew -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
 INCPATH       = -I. -IE:\app\visualstudio\VC\atlmfc\include -IE:\app\qt5\5.10.1\msvc2015\include -IE:\app\qt5\5.10.1\msvc2015\include\QtQuick -IE:\app\qt5\5.10.1\msvc2015\include\QtGui -IE:\app\qt5\5.10.1\msvc2015\include\QtANGLE -IE:\app\qt5\5.10.1\msvc2015\include\QtQml -IE:\app\qt5\5.10.1\msvc2015\include\QtNetwork -IE:\app\qt5\5.10.1\msvc2015\include\QtCore -Irelease -I\include -IE:\app\qt5\5.10.1\msvc2015\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
@@ -227,7 +227,7 @@ compiler_moc_predefs_make_all: release\moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) release\moc_predefs.h
 release\moc_predefs.h: E:\app\qt5\5.10.1\msvc2015\mkspecs\features\data\dummy.cpp
-	cl -BxE:\app\qt5\5.10.1\msvc2015\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -O2 -MD -E E:\app\qt5\5.10.1\msvc2015\mkspecs\features\data\dummy.cpp 2>NUL >release\moc_predefs.h
+        cl -BxE:\app\qt5\5.10.1\msvc2015\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline  -Zc:throwingNew -O2 -MD -E E:\app\qt5\5.10.1\msvc2015\mkspecs\features\data\dummy.cpp 2>NUL >release\moc_predefs.h
 
 compiler_moc_header_make_all: release\moc_backend.cpp
 compiler_moc_header_clean:

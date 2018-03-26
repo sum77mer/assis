@@ -55,5 +55,7 @@
         <file>image/treeview.png</file>
         <file>qml/BasicGroupBox2.qml</file>
         <file>qml/BasicPopUp.qml</file>
+        <file>qml/HardOtherDev.qml</file>
+        <file>qml/Content4.qml</file>
     </qresource>
 </RCC>

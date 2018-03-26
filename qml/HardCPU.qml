@@ -14,6 +14,8 @@ Rectangle{
     TabView{
         id:tabview
 
+        //tabsVisible: true
+        frameVisible: true
         anchors{fill:parent;margins: 5}
         style:TabViewStyle{
             frame:Rectangle{
@@ -24,11 +26,12 @@ Rectangle{
                 anchors.centerIn: parent;
                 implicitWidth:90;
                 implicitHeight:20;
-                color:"#f0f0f0";
+                color:styleData.selected ? "#f0f0f0":"#c0c0c0";
                 border{color:"#a0a0a0";width:1}
                 //radius:2
                 Text{
-                    text:styleData.selected? styleData.title : "";
+                    text:styleData.title
+                    color: styleData.selected ? "black" : "gray"
                     anchors{horizontalCenter: parent.horizontalCenter;verticalCenter: parent.verticalCenter;}
                 }
             }

@@ -1,9 +1,11 @@
 import QtQuick 2.0
-Flickable {
+Rectangle {
     property var model
 
     anchors.fill: parent
-    contentHeight: content.height; contentWidth: content.width
+    //contentHeight: content.height; contentWidth: content.width
+    height:content.height; width:content.width
+    color:"transparent"
 
     Loader {
         id: content
@@ -35,7 +37,7 @@ Flickable {
                             spacing: 2
 
                             Rectangle {
-                                width: 18; height: 18
+                                width: 18; height: 18; color:"transparent"
                                 opacity: !!model.elements ? 1 : 0
 
                                 Image {

@@ -1,11 +1,13 @@
-QT += qml quick
-QT += core
+#QT += qml quick
+#QT += core
 QT += quick
-QT +=gui
+#QT += gui
+QT += widgets
+#greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET=v2.0
 CONFIG += c++11
 CONFIG +=qml_debug
-CONFIG +=qt
+#CONFIG +=qt
 INCLUDEPATH += E:\app\visualstudio\VC\atlmfc\include
 SOURCES += main.cpp \
     BIOS.cpp \
@@ -49,5 +51,6 @@ HEADERS += \
     WMI.h \
     WMIExtern.h \
     backend.h
-DEFINES += QT_NO_WARNING_OUTPUT\
-                        QT_NO_DEBUG_OUTPUT
+DEFINES += QT_DEPRECATED_WARNINGS
+#DEFINES += QT_NO_WARNING_OUTPUT\
+#                        QT_NO_DEBUG_OUTPUT

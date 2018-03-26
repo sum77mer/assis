@@ -20,7 +20,7 @@ Rectangle{
             Rectangle{
                 id:tree_PCI
 
-                width:700; height:200
+                width:700; height:200; color:"transparent"
                 anchors{top:parent.top;topMargin:20;left:parent.left;leftMargin:50}
 
                 BasicTreeView{
@@ -48,13 +48,13 @@ Rectangle{
 
                 }
             }
-            ComboBox{
+            BasicComboBox{
                 id:chosed_PCI
 
                 anchors{top:tree_PCI.bottom;topMargin:20;left:parent.left;leftMargin:100}
-                width:400
                 currentIndex:1
-                model:ListModel{
+                width:500
+                choosedItem:ListModel{
                     ListElement{text:"Bus 0 Dev 0 Fun 0 Intel Corporation Host Bridge"}
                     ListElement{text:"Bus 0 Dev 1 Fun 0 Intel Corporation Host Bridge"}
                     ListElement{text:"Bus 0 Dev 2 Fun 0 Intel Corporation Host Bridge"}
@@ -65,147 +65,6 @@ Rectangle{
                     ListElement{text:"Bus 6 Dev 0 Fun 0 Intel Corporation Host Bridge"}
                     ListElement{text:"Bus A Dev 0 Fun 0 Intel Corporation Host Bridge"}
                 }
-                style:ComboBoxStyle{
-                    id:combo_style
-
-                    background: Rectangle{
-                        id:combo_backgnd
-
-                        color:"white"
-                        width:100
-                        height:50
-                        Rectangle{
-                            id:outside_topline
-
-                            width:parent.width+2; height:1; color:"#a0a0a0"
-                            anchors{top:parent.top;topMargin:-8;left:parent.left}
-                        }
-                        Rectangle{
-                            id:inside_topline
-
-                            width:parent.width; height:1; color:"#696969"
-                            anchors{top:parent.top;topMargin:-7;left:parent.left;leftMargin:1}
-                        }
-                        Rectangle{
-                            id:outside_bottomline
-
-                            width:parent.width+2; height:1; color:"#ffffff"
-                            anchors{top:parent.bottom;topMargin:7;left:parent.left}
-                        }
-                        Rectangle{
-                            id:inside_bottomline
-
-                            width:parent.width+1; height:1; color:"#e3e3e3"
-                            anchors{top:parent.bottom;topMargin:6;left:parent.left;leftMargin:1}
-                        }
-                        Rectangle{
-                            id:outside_leftline
-
-                            width:1; height:parent.height+15; color:"#a0a0a0"
-                            anchors{top:parent.top;topMargin:-7;left:parent.left}
-                        }
-                        Rectangle{
-                            id:inside_leftline
-
-                            width:1; height:parent.height+13; color:"#696969"
-                            anchors{top:parent.top;topMargin:-6;left:parent.left;leftMargin:1}
-                        }
-                        Rectangle{
-                            id:outside_rightline
-
-                            width:1; height:parent.height+16; color:"#ffffff"
-                            anchors{top:parent.top;topMargin:-8;left:parent.right;leftMargin:2}
-                        }
-                        Rectangle{
-                            id:inside_rightline
-
-                            width:1; height:parent.height+14; color:"#e3e3e3"
-                            anchors{top:parent.top;topMargin:-7;left:parent.right;leftMargin:1}
-                        }
-
-                        Rectangle{
-                            id:btn
-
-                            width:15; height:15; color:"#f0f0f0"
-                            anchors{verticalCenter:parent.verticalCenter;right:parent.right;rightMargin:1}
-                            Rectangle{
-                                id:btn_outside_topline
-
-                                width:parent.width+3; height:1; color:"#e3e3e3"
-                                anchors{top:parent.top;topMargin:-2;left:parent.left;leftMargin:-2}
-                            }
-                            Rectangle{
-                                id:btn_inside_topline
-
-                                width:parent.width+1; height:1; color:"#ffffff"
-                                anchors{top:parent.top;topMargin:-1;left:parent.left;leftMargin:-1}
-                            }
-                            Rectangle{
-                                id:btn_outside_bottomline
-
-                                width:parent.width+4; height:1; color:"#696969"
-                                anchors{top:parent.bottom;topMargin:1;left:parent.left;leftMargin:-2}
-                            }
-                            Rectangle{
-                                id:btn_inside_bottomline
-
-                                width:parent.width+2; height:1; color:"#a0a0a0"
-                                anchors{top:parent.bottom;left:parent.left;leftMargin:-1} //anchors.topMargin:1
-                            }
-                            Rectangle{
-                                id:btn_outside_leftline
-
-                                width:1; height:parent.height+3; color:"#e3e3e3"
-                                anchors{top:parent.top;topMargin:-2;left:parent.left;leftMargin:-2}
-                            }
-                            Rectangle{
-                                id:btn_inside_leftline
-
-                                width:1; height:parent.height+1; color:"#ffffff"
-                                anchors{top:parent.top;topMargin:-1;left:parent.left;leftMargin:-1}
-                            }
-                            Rectangle{
-                                id:btn_outside_rightline
-
-                                width:1; height:parent.height+3; color:"#696969"
-                                anchors{top:parent.top;topMargin:-2;left:parent.right;leftMargin:1}
-                            }
-                            Rectangle{
-                                id:btn_inside_rightline
-
-                                width:1; height:parent.height+1; color:"#a0a0a0"
-                                anchors{top:parent.top;topMargin:-1;left:parent.right}
-                            }
-                            //***************
-                            Rectangle{
-                                id:triangle7
-
-                                width:7; height:1; color:"#000000"
-                                anchors{top:parent.top;topMargin:5;left:parent.left;leftMargin:3}
-                            }
-                            Rectangle{
-                                id:triangle5
-
-                                width:5; height:1; color:"#000000"
-                                anchors{top:parent.top;topMargin:6;left:parent.left;leftMargin:4}
-                            }
-                            Rectangle{
-                                id:triangle3
-
-                                width:3; height:1; color:"#000000"
-                                anchors{top:parent.top;topMargin:7;left:parent.left;leftMargin:5}
-                            }
-                            Rectangle{
-                                id:triangle1
-
-                                width:1; height:1; color:"#000000"
-                                anchors{top:parent.top;topMargin:8;left:parent.left;leftMargin:6}
-                            }
-                        }
-
-                    }
-                }
-
             }
             BasicTableView{
                 id:table_PCI
