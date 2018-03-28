@@ -242,13 +242,14 @@ Makefile: v2.0.pro E:\app\qt5\5.10.1\msvc2015\mkspecs\win32-msvc\qmake.conf E:\a
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\resolve_config.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\exclusive_builds_post.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\default_post.prf \
+		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\qml_debug.prf \
+		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\precompile_header.prf \
+		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\warn_on.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\qt.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\resources.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\moc.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\win32\opengl.prf \
-		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\qml_debug.prf \
-		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\precompile_header.prf \
-		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\warn_on.prf \
+		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\uic.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\qmake_use.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\file_copies.prf \
 		E:\app\qt5\5.10.1\msvc2015\mkspecs\features\win32\windows.prf \
@@ -259,6 +260,7 @@ Makefile: v2.0.pro E:\app\qt5\5.10.1\msvc2015\mkspecs\win32-msvc\qmake.conf E:\a
 		v2.0.pro \
 		E:\app\qt5\5.10.1\msvc2015\lib\qtmaind.prl \
 		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Quick.prl \
+		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Widgets.prl \
 		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Gui.prl \
 		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Qml.prl \
 		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Network.prl \
@@ -431,13 +433,14 @@ E:\app\qt5\5.10.1\msvc2015\mkspecs\features\win32\default_pre.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\resolve_config.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\exclusive_builds_post.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\default_post.prf:
+E:\app\qt5\5.10.1\msvc2015\mkspecs\features\qml_debug.prf:
+E:\app\qt5\5.10.1\msvc2015\mkspecs\features\precompile_header.prf:
+E:\app\qt5\5.10.1\msvc2015\mkspecs\features\warn_on.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\qt.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\resources.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\moc.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\win32\opengl.prf:
-E:\app\qt5\5.10.1\msvc2015\mkspecs\features\qml_debug.prf:
-E:\app\qt5\5.10.1\msvc2015\mkspecs\features\precompile_header.prf:
-E:\app\qt5\5.10.1\msvc2015\mkspecs\features\warn_on.prf:
+E:\app\qt5\5.10.1\msvc2015\mkspecs\features\uic.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\qmake_use.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\file_copies.prf:
 E:\app\qt5\5.10.1\msvc2015\mkspecs\features\win32\windows.prf:
@@ -448,6 +451,7 @@ E:\app\qt5\5.10.1\msvc2015\mkspecs\features\lex.prf:
 v2.0.pro:
 E:\app\qt5\5.10.1\msvc2015\lib\qtmaind.prl:
 E:\app\qt5\5.10.1\msvc2015\lib\Qt5Quick.prl:
+E:\app\qt5\5.10.1\msvc2015\lib\Qt5Widgets.prl:
 E:\app\qt5\5.10.1\msvc2015\lib\Qt5Gui.prl:
 E:\app\qt5\5.10.1\msvc2015\lib\Qt5Qml.prl:
 E:\app\qt5\5.10.1\msvc2015\lib\Qt5Network.prl:

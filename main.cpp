@@ -1,8 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml/QQmlApplicationEngine>
-//#include <QApplication>
-//#include <QtWidgets/QApplication>
+#include <QApplication>
 //*************************
 #include <QDir>
 #include <QGuiApplication>
@@ -18,8 +17,8 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication app(argc, argv);
-    //QApplication app(argc,argv);
+    //QGuiApplication app(argc, argv);
+    QApplication app(argc,argv);
 
     Info_out CPUID_info;
     CPUID_Data Save_CPU_Data;
