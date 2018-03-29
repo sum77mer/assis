@@ -1,12 +1,10 @@
 #QT += qml quick
 #QT += core
-QT += quick
 #QT += gui
-QT += widgets
+QT += quick widgets charts
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET=v2.0
-CONFIG += c++11
-CONFIG +=qml_debug
+CONFIG += c++11 qml_debug
 #CONFIG +=qt
 INCLUDEPATH += E:\app\visualstudio\VC\atlmfc\include
 SOURCES += main.cpp \

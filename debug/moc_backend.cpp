@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'backend.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.10.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'backend.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.10.1. It"
+#error "This file was generated using the moc from 5.9.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -263,170 +263,171 @@ void Back_End::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::userNameChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::userNameChanged)) {
                 *result = 0;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::familyChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::familyChanged)) {
                 *result = 1;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::ModelChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::ModelChanged)) {
                 *result = 2;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::SteppingChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::SteppingChanged)) {
                 *result = 3;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::Ext_FamilyChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::Ext_FamilyChanged)) {
                 *result = 4;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::NameChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::NameChanged)) {
                 *result = 5;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::CurrentClockSpeedChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::CurrentClockSpeedChanged)) {
                 *result = 6;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::ExtClockChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::ExtClockChanged)) {
                 *result = 7;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::ManufacturerChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::ManufacturerChanged)) {
                 *result = 8;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::CoreChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::CoreChanged)) {
                 *result = 9;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::ThreadChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::ThreadChanged)) {
                 *result = 10;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::ProcessorIDChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::ProcessorIDChanged)) {
                 *result = 11;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::RevisionChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::RevisionChanged)) {
                 *result = 12;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::MaxClockSpeedChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::MaxClockSpeedChanged)) {
                 *result = 13;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::sockedDesignationChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::sockedDesignationChanged)) {
                 *result = 14;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::UpgradeMethodChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::UpgradeMethodChanged)) {
                 *result = 15;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::Feature_infoChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::Feature_infoChanged)) {
                 *result = 16;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::CPU_TypeChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::CPU_TypeChanged)) {
                 *result = 17;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::ArchitectureChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::ArchitectureChanged)) {
                 *result = 18;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::Code_NameChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::Code_NameChanged)) {
                 *result = 19;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::socket_PackeageChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::socket_PackeageChanged)) {
                 *result = 20;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::Cache_TLBChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::Cache_TLBChanged)) {
                 *result = 21;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::cacheChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::cacheChanged)) {
                 *result = 22;
                 return;
             }
         }
         {
             typedef void (Back_End::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Back_End::C_STATE_infoChanged)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Back_End::C_STATE_infoChanged)) {
                 *result = 23;
                 return;
             }
@@ -503,7 +504,7 @@ void Back_End::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject Back_End::staticMetaObject = {
+const QMetaObject Back_End::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_Back_End.data,
       qt_meta_data_Back_End,  qt_static_metacall, nullptr, nullptr}
 };

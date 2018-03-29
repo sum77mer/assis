@@ -57,5 +57,6 @@
         <file>qml/BasicPopUp.qml</file>
         <file>qml/HardOtherDev.qml</file>
         <file>qml/Content4.qml</file>
+        <file>qml/BasicChart.qml</file>
     </qresource>
 </RCC>

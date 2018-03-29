@@ -260,6 +260,7 @@ Makefile: v2.0.pro E:\app\qt5\5.10.1\msvc2015\mkspecs\win32-msvc\qmake.conf E:\a
 		v2.0.pro \
 		E:\app\qt5\5.10.1\msvc2015\lib\qtmaind.prl \
 		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Quick.prl \
+		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Charts.prl \
 		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Widgets.prl \
 		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Gui.prl \
 		E:\app\qt5\5.10.1\msvc2015\lib\Qt5Qml.prl \
@@ -451,6 +452,7 @@ E:\app\qt5\5.10.1\msvc2015\mkspecs\features\lex.prf:
 v2.0.pro:
 E:\app\qt5\5.10.1\msvc2015\lib\qtmaind.prl:
 E:\app\qt5\5.10.1\msvc2015\lib\Qt5Quick.prl:
+E:\app\qt5\5.10.1\msvc2015\lib\Qt5Charts.prl:
 E:\app\qt5\5.10.1\msvc2015\lib\Qt5Widgets.prl:
 E:\app\qt5\5.10.1\msvc2015\lib\Qt5Gui.prl:
 E:\app\qt5\5.10.1\msvc2015\lib\Qt5Qml.prl:
