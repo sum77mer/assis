@@ -58,5 +58,7 @@
         <file>qml/HardOtherDev.qml</file>
         <file>qml/Content4.qml</file>
         <file>qml/BasicChart.qml</file>
+        <file>qml/BasicGauge.qml</file>
+        <file>qml/BasicTopology.qml</file>
     </qresource>
 </RCC>

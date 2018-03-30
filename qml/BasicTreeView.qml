@@ -54,7 +54,9 @@ Rectangle {
 
                                     anchors.fill: parent
                                     hoverEnabled: true
-                                    onClicked: loader.expanded = !loader.expanded
+                                    onClicked: {
+                                        loader.expanded = !loader.expanded
+                                    }
                                 }
                             }
                             Text { text: model.text }
@@ -74,5 +76,4 @@ Rectangle {
             }
         }
     }
-
 }

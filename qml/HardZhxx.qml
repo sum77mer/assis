@@ -24,7 +24,7 @@ Rectangle{
         Rectangle{
             id:emptylayer;
 
-            width:parent.width; height:1000; color:"transparent";
+            width:parent.width; height:800; color:"transparent";
 
             Rectangle{
                 id:cpulogo;
@@ -152,16 +152,24 @@ Rectangle{
                 text:"瑞昱 RTL8168/8111/8112 Gigabit Ethernet Controller/戴尔";
                 anchors{top:title_netcard.top;left:emptylayer.left;leftMargin:70;}
             }
+            /*
+            BasicGauge{
+                id:cpu_gauge
+                value:70
+                anchors{top:title_netcard.bottom;topMargin:10;left:parent.left;leftMargin:30;}
+            }
             BasicChart{
                 id:cpu_chart
                 width:400;height:300
-                anchors{top:title_netcard.bottom;topMargin:10;left:parent.left;leftMargin:10;}
+                anchors{top:title_netcard.bottom;topMargin:10;left:cpu_gauge.right;leftMargin:50;}
             }
             BasicChart{
                 id:memory_chart
                 width:400;height:300
                 anchors{top:cpu_chart.bottom;topMargin:10;left:parent.left;leftMargin:10;}
             }
+*/
+
         }
     }
     states:
