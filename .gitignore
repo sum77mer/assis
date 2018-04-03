@@ -1,0 +1,12 @@
+/debug
+/release
+/image
+*.qmlproject.user
+*.qmlproject.user.*
+*.qmake.stash
+*.Debug
+*.Release
+*.qrc
+*.conf
+*.pro
+*.pro.user

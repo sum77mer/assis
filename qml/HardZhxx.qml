@@ -152,6 +152,11 @@ Rectangle{
                 text:"瑞昱 RTL8168/8111/8112 Gigabit Ethernet Controller/戴尔";
                 anchors{top:title_netcard.top;left:emptylayer.left;leftMargin:70;}
             }
+            Button{
+                id:usagerate_btn
+                text:"CPU & Memory Usage Rate"
+                anchors{top:title_netcard.bottom;topMargin:10;left:parent.left;leftMargin:70;}
+            }
             /*
             BasicGauge{
                 id:cpu_gauge

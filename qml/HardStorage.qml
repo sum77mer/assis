@@ -31,157 +31,127 @@ Rectangle{
             Text{
                 id:title_rongliang;
 
-                text:"容量";
+                text:"固件";
                 anchors{top:title_chanpin.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"120 GB";
+                text:"CC45";
                 anchors{top:title_rongliang.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_xingzhuangtezheng;
 
-                text:"形状特征";
+                text:"序列号";
                 anchors{top:title_rongliang.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"2.5 寸";
+                text:"Z4Y19VCY";
                 anchors{top:title_xingzhuangtezheng.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_cache;
 
-                text:"缓存";
+                text:"接口";
                 anchors{top:title_xingzhuangtezheng.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"256 MB";
+                text:"Serial ATA";
                 anchors{top:title_cache.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_diskused;
 
-                text:"硬盘已使用";
+                text:"传输模式";
                 anchors{top:title_cache.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"共9434次，累计8010小时";
+                text:"SATA/600";
                 anchors{top:title_diskused.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_firm;
 
-                text:"固件";
+                text:"卷标";
                 anchors{top:title_diskused.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"EMT01B6Q";
+                text:"E: J:";
                 anchors{top:title_firm.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_jiekou;
 
-                text:"接口";
+                text:"标准";
                 anchors{top:title_firm.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"SATA Ⅲ";
+                text:"| ---[001Fh]";
                 anchors{top:title_jiekou.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_transferrate;
 
-                text:"数据传输率";
+                text:"支持的特征";
                 anchors{top:title_jiekou.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"600.00MB/秒";
+                text:"S.M.A.R.T., 48bit LBA, APM, AAM, NCQ, TRIM";
                 anchors{top:title_transferrate.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_charactor;
 
-                text:"特征";
+                text:"缓存大小";
                 anchors{top:title_transferrate.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"S.M.A.R.T 48-bit LBA NCQ";
+                text:"未知";
                 anchors{top:title_charactor.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_maincontroller;
 
-                text:"主控制器";
+                text:"NV缓存大小";
                 anchors{top:title_charactor.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"Samsung MGXS4LN062X01";
+                text:"---";
                 anchors{top:title_maincontroller.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_flashtype;
 
-                text:"闪存类型";
+                text:"转动率";
                 anchors{top:title_maincontroller.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"Samsung 40nm TLC V-N";
+                text:"7200 RPM";
                 anchors{top:title_flashtype.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_sequentialread;
 
-                text:"顺序读取速率";
+                text:"使用周期";
                 anchors{top:title_flashtype.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"540 MB/秒";
+                text:"1021周期";
                 anchors{top:title_sequentialread.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_sequentialwrite;
 
-                text:"顺序写入速率";
+                text:"使用时间";
                 anchors{top:title_sequentialread.bottom;topMargin:20;left:parent.left;leftMargin:15;}
             }
             Text{
-                text:"520 MB/秒";
+                text:"1617小时";
                 anchors{top:title_sequentialwrite.top;left:parent.right;leftMargin:100;}
-            }
-            Text{
-                id:title_4kread;
-
-                text:"4K随机读取";
-                anchors{top:title_sequentialwrite.bottom;topMargin:20;left:parent.left;leftMargin:15;}
-            }
-            Text{
-                text:"94 KIOPS";
-                anchors{top:title_4kread.top;left:parent.right;leftMargin:100;}
-            }
-            Text{
-                id:title_4kwrite;
-
-                text:"4K随机写入";
-                anchors{top:title_4kread.bottom;topMargin:20;left:parent.left;leftMargin:15;}
-            }
-            Text{
-                text:"88 KIOPS";
-                anchors{top:title_4kwrite.top;left:parent.right;leftMargin:100;}
-            }
-            Text{
-                id:title_externalsize;
-
-                text:"外形尺寸";
-                anchors{top:title_4kwrite.bottom;topMargin:20;left:parent.left;leftMargin:15;}
-            }
-            Text{
-                text:"69.85 x 100.00 x 6.80 毫米";
-                anchors{top:title_externalsize.top;left:parent.right;leftMargin:100;}
             }
             Text{
                 id:title_chosed;
 
-                anchors{top:title_externalsize.bottom;topMargin:20;left:parent.left;leftMargin:40;}
+                anchors{top:title_sequentialwrite.bottom;topMargin:20;left:parent.left;leftMargin:40;}
                 text:"选择";
             }
             BasicComboBox{
@@ -892,6 +862,7 @@ Rectangle{
                                                                              [40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40]]);
 
             }
+            /*
             Rectangle{
                 id:tree_usb;
 
@@ -917,6 +888,54 @@ Rectangle{
                         }
                         ListElement { text: "Level 1, Node 3"; }
                     }
+                }
+            }
+*/
+            ListView{
+                id:usb_list
+                width:contentWidth;height:contentHeight
+                anchors{top:table_RW.bottom;topMargin:20;left:parent.left;leftMargin:20}
+                spacing:10
+                model:ListModel{
+                    ListElement{
+                        title:"USB";
+                        content:"";
+                    }
+                    ListElement{
+                        title:"Version";
+                        content:"A08";
+                    }
+                    ListElement{
+                        title:"Date";
+                        content:"04/16/2014";
+                    }
+                }
+                delegate:Text{
+                    text:title+"   "+content;
+                }
+            }
+            BasicTopology{
+                id:usb_topo
+                anchors{top:usb_list.bottom;topMargin:20;left:parent.left;leftMargin:50}
+                model:ListModel{
+                    ListElement{name:"Standard Enhanced PCI to USB Host Controller"}
+                    ListElement{name:"RootHub"}
+                    ListElement{name:"[Port1]NodeviceConnected"}
+                    ListElement{name:"[Port2]NodeviceConnected"}
+                    ListElement{name:"[Port3]NodeviceConnected"}
+                    ListElement{name:"[Port4]NodeviceConnected"}
+                    ListElement{name:"[Port5]NodeviceConnected"}
+                    ListElement{name:"[Port6]NodeviceConnected"}
+                    ListElement{name:"[Port7]NodeviceConnected"}
+                    ListElement{name:"[Port8]NodeviceConnected"}
+                    ListElement{name:"Standard Enhanced PCI to USB Host Controller"}
+                    ListElement{name:"RootHub"}
+                    ListElement{name:"[Port1]NodeviceConnected"}
+                    ListElement{name:"[Port2]NodeviceConnected"}
+                    ListElement{name:"[Port3]NodeviceConnected"}
+                    ListElement{name:"[Port4]NodeviceConnected"}
+                    ListElement{name:"[Port5]NodeviceConnected"}
+                    ListElement{name:"[Port6]NodeviceConnected"}
                 }
             }
         }

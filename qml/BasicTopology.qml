@@ -1,10 +1,18 @@
 import QtQuick 2.0
-//import QtQuick.Layouts 1.3
-//import QtQuick.Controls 1.4
 Item{
-    Component {
-        id: highlight
-        Rectangle {
+    id:basictopo
+    property ListModel model
+    ListView{
+        id:list
+        function currentItemChanged(index){
+            content.refresh(index);
+        }
+        anchors{top:parent.top;topMargin:10}
+        width: 180; height: 500
+        spacing:3
+        highlightFollowsCurrentItem :true
+        model: basictopo.model
+        highlight: Rectangle {
             width: 100; height: 20
             color: "lightsteelblue"; radius: 5
             y: list.currentItem.y
@@ -15,38 +23,10 @@ Item{
                 }
             }
         }
-    }
-    ListView{
-        id:list
-        anchors{top:parent.top;topMargin:10}
-        width: 180; height: 500
-        highlightFollowsCurrentItem :true
-        highlight: highlight
-        spacing:3
-        function currentItemChanged(index){
-            content.refresh(index);
-        }
-            model: ListModel {
-                id:listmodel
-                ListElement{
-                    name:"cpu1"
-                }
-                ListElement{
-                    name:"cpu2"
-                }
-                ListElement{
-                    name:"cpu3"
-                }
-                ListElement{
-                    name:"cpu4"
-                }
-                ListElement{
-                    name:"cpu5"
-                }
-            }
-            delegate: Rectangle{
+        delegate: Rectangle{
                 color:"transparent"
                 width:150;height:20
+                border{width:1;color:"black"}
                 Text {
                     id:text
                     text: name
@@ -64,12 +44,14 @@ Item{
     }
     TextEdit{
         id:content
-        anchors{left:list.right;leftMargin:10;top:parent.top;topMargin:10}
+        property string txt
         function refresh(index){
             //content.clear();
             content.text="refreshed";
         }
-        text:"empty"
+        anchors{left:list.right;leftMargin:10;top:parent.top;topMargin:10}
+        readOnly:true
+        text:txt
     }
 
 }

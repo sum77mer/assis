@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 Rectangle {
-    id:vtabwidget
+    id:page1_content
 
     function currentChangedv(curIndex)
     {
@@ -10,9 +10,8 @@ Rectangle {
     }
 
     width:80; height:parent.height
-    //border{width:1;color:"red"}
 
-    Column{
+    ColumnLayout{
         id:vtab
 
         property int current: 0
@@ -23,7 +22,7 @@ Rectangle {
             {
                 vtab.children[i].state = (vtab.current == i ? 'checked' : 'leave')
             }
-            vtabwidget.currentChangedv(vtab.current)
+            page1_content.currentChangedv(vtab.current)
         }
 
         spacing:0
@@ -83,6 +82,76 @@ Rectangle {
             index:8
             btnText:"其他设备"
             onClicked:vtab.current=btnIndex
+        }
+    }
+    ColumnLayout{
+        id:btn_group
+        anchors{top:vtab.top;topMargin:500;horizontalCenter: vtab.horizontalCenter}
+        //anchors{top:parent.top;left:parent.left}
+        spacing:3
+        Rectangle{
+            id:autofresh_btn
+            //Layout.topMargin:450
+            width:60;height:20;color:"#f0f0f0"
+            border{width:1;color:"#a0a0a0"}
+            //anchors.horizontalCenter: parent.horizontalCenter
+            Text{
+                id:autofresh_btntxt
+                text:"自动刷新"
+                font.pointSize: 8
+                anchors.centerIn: parent
+            }
+            MouseArea{
+                id:autofresh_btnarea
+                anchors.fill:parent
+                onClicked: {
+                    //manualfresh_btn.color="#f0f0f0"
+                    //console.log("")
+                    autofresh_btntxt.text="停止刷新"
+                }
+            }
+        }
+        Rectangle{
+            id:manualfresh_btn
+            width:60;height:20;color:"#f0f0f0"
+            border{width:1;color:"#a0a0a0"}
+            Layout.topMargin:5
+            //anchors.horizontalCenter: parent.horizontalCenter
+            Text{
+                id:manualfresh_btntxt
+                text:"手动刷新"
+                font.pointSize: 8
+                anchors.centerIn: parent
+            }
+            MouseArea{
+                id:manualfresh_btnarea
+                anchors.fill:parent
+                onClicked: {
+                    //manualfresh_btn.color="#f0f0f0"
+                    //console.log("")
+                }
+            }
+        }
+        Rectangle{
+            id:reportoutput_btn
+            width:60;height:20;color:"#f0f0f0"
+            border{width:1;color:"#a0a0a0"}
+            Layout.topMargin:5
+            anchors.horizontalCenter: parent.horizontalCenter
+            radius:2
+            Text{
+                text:"输出报告"
+                font.pointSize: 8
+                anchors.centerIn: parent
+            }
+            MouseArea{
+                id:reportoutput_btnarea
+                anchors.fill:parent
+                onClicked: {
+                    //manualfresh_btn.color="#f0f0f0"
+                    //console.log("")
+                }
+            }
         }
     }
     Rectangle{
