@@ -10,3 +10,4 @@
 *.conf
 *.pro
 *.pro.user
+*.gitignore
