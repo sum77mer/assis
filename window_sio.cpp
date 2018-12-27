@@ -53,7 +53,7 @@ void Window_SIO::done()
     else
     {
         QMessageBox *messagebox = new QMessageBox(this);
-        messagebox->setText("invalid input");
+        messagebox->setText("invalid input"); 
         messagebox->exec();
     }
     this->close();

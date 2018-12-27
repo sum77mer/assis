@@ -1,268 +1,964 @@
 #include "test_memory.h"
-#include<windows.h>
+#include "UIdata.h"
 Test_Memory::Test_Memory(QWidget *parent)
 {
-    setFixedSize(800,594);
     setWindowFlags(Qt::FramelessWindowHint);
-
-    QLabel *label_bwtest_title = new QLabel(this);
-    label_bwtest_title->setFrameStyle(QFrame::NoFrame);
-    label_bwtest_title->setText(QString("BrandWidth Test"));
-    QFont title_font("Arial",12,QFont::Bold);
-    label_bwtest_title->setFont(title_font);
-
-    QLabel *label_function_title = new QLabel(this);
-    label_function_title->setFrameStyle(QFrame::NoFrame);
-    label_function_title->setText(QString("Test Function:"));
-
-    checkbox_fun_ReaderSSE2 = new QCheckBox(this);
-    checkbox_fun_WriterSSE2  = new QCheckBox(this);
-    checkbox_fun_CopySSE = new QCheckBox(this);
-    checkbox_fun_WriterSSE2_bypass = new QCheckBox(this);
-    checkbox_fun_CopySSE_bypass = new QCheckBox(this);
-    checkbox_fun_ReaderAVX = new QCheckBox(this);
-    checkbox_fun_WriterAVX = new QCheckBox(this);
-    checkbox_fun_CopyAVX = new QCheckBox(this);
-
-    checkbox_fun_ReaderSSE2->setText(QString("ReaderSSE2"));
-    checkbox_fun_WriterSSE2->setText(QString("WriterSSE2"));
-    checkbox_fun_CopySSE->setText(QString("CopySSE"));
-    checkbox_fun_WriterSSE2_bypass->setText(QString("WriterSSE2 bypass"));
-    checkbox_fun_CopySSE_bypass->setText(QString("CopySSE bypass"));
-    checkbox_fun_ReaderAVX->setText(QString("ReaderAVX"));
-    checkbox_fun_WriterAVX->setText(QString("WriterAVX"));
-    checkbox_fun_CopyAVX->setText(QString("CopyAVX"));
-
-    QLabel *label_hyperthread_title = new QLabel(this);
-    label_hyperthread_title->setFrameStyle(QFrame::NoFrame);
-    label_hyperthread_title->setText(QString("Hyperthread:"));
-
-    checkbox_hyperthread = new QCheckBox(this);
-    checkbox_hyperthread->setText(QString("HyperThread"));
-
-    btn_bw_begin = new QPushButton(this);
-    btn_bw_begin->setText(QString("Begin"));
-
-    connect(btn_bw_begin,SIGNAL(clicked(bool)),this,SLOT(begin_bw()));
-
-    /*
-    series_bw->append(1,3.0124);
-    series_bw->append(2,5.0124);
-    series_bw->append(3,13.0124);
-    series_bw->append(4,30.0124);
-    series_bw->append(5,3.0124);
-    series_bw->append(6,13.0124);
-    series_bw->append(7,15.0124);
-    series_bw->append(8,17.0124);
-    series_bw->append(9,4.0124);
-    series_bw->append(10,3.0124);
-    series_bw->append(11,3.0124);
-    series_bw->append(12,3.0124);
-    series_bw->append(13,23.0124);
-    series_bw->append(14,3.0124);
-    series_bw->append(15,3.0124);
-    series_bw->append(16,13.0124);
-    series_bw->append(17,3.0124);
-    series_bw->append(18,10.0124);
-    series_bw->append(19,3.0124);
-*/
-
-
-    axisX_bw = new QValueAxis;
-    const unsigned int min = 512;
-    const unsigned int max = 256*qPow(2,20);
-    const unsigned int base = 2;
-    axisX_bw->setRange(0,qLn(max/min)/qLn(base));
-    axisX_bw->setTickCount(20);
-    axisX_bw->setLabelFormat("2^%u");
-
-    axisY_bw = new QValueAxis;
-    axisY_bw->setRange(0,300);
-
-    chart_bw = new QChart();
-    //chart_bw->addSeries(series_bw);
-    chart_bw->setAxisX(axisX_bw);
-    chart_bw->setAxisY(axisY_bw);
-
-    QLabel *label_bwchart = new QLabel(this);
-    label_bwchart->setText(QString("512B*"));
-    label_bwchart->setFrameStyle(QFrame::NoFrame);
-
-    chartview_bw = new QChartView(this);
-    chartview_bw->setFixedSize(1300,400);
-    chartview_bw->setChart(chart_bw);
-
-    //latency test
-
-
-    QLabel *label_lattest_title = new QLabel(this);
-    label_lattest_title->setFrameStyle(QFrame::NoFrame);
-    label_lattest_title->setText(QStringLiteral("Latency Test"));
-    label_lattest_title->setFont(title_font);
-
-    QLabel *label_stride_title = new QLabel(this);
-    label_stride_title->setFrameStyle(QFrame::NoFrame);
-    label_stride_title->setText(QStringLiteral("stride"));
-
-    lineedit_stride = new QLineEdit(this);
-    lineedit_stride->setText(QStringLiteral(""));
-    lineedit_stride->setMinimumWidth(50);
-    lineedit_stride->setMaximumHeight(20);
-
-    btn_lat_begin = new QPushButton(this);
-    btn_lat_begin->setText(QString("Begin"));
-
-    connect(btn_lat_begin,SIGNAL(clicked(bool)),this,SLOT(begin_lat()));
-
-    axisX_lat = new QValueAxis;
-    const unsigned int min_lat = 512;
-    const unsigned int max_lat = 256*qPow(2,20);
-    const unsigned int base_lat = 2;
-    axisX_lat->setRange(0,qLn(max_lat/min_lat)/qLn(base_lat));
-    axisX_lat->setTickCount(20);
-    axisX_lat->setLabelFormat("2^%u");
-
-    axisY_lat = new QValueAxis;
-    axisY_lat->setRange(0.0,1000.0);
-    axisY_lat->setLabelFormat("%lfe-10");
-
-    chart_lat = new QChart();
-    chart_lat->setAxisX(axisX_lat);
-    chart_lat->setAxisY(axisY_lat);
-
-    QLabel *label_latchart = new QLabel(this);
-    label_latchart->setText(QString("512B*"));
-    label_latchart->setFrameStyle(QFrame::NoFrame);
-
-    QChartView *chartview_lat = new QChartView(this);
-    chartview_lat->setFixedSize(1300,800);
-    chartview_lat->setChart(chart_lat);
-
-    QWidget *widget = new QWidget(this);
-    widget->setWindowFlags(Qt::FramelessWindowHint);
-    widget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    QGridLayout *sublayout = new QGridLayout;
-    sublayout->setContentsMargins(0,0,0,0);
-    sublayout->setSpacing(0);
-
-    sublayout->setContentsMargins(10,20,20,10);//row: col:
-    //row1
-    sublayout->addWidget(label_bwtest_title,0,1,1,1,Qt::AlignLeft);
-    //row2
-    //row3
-    sublayout->addWidget(label_function_title,2,1,1,1,Qt::AlignLeft);
-    sublayout->addWidget(checkbox_fun_ReaderSSE2,2,2,1,1,Qt::AlignLeft);
-    sublayout->addWidget(checkbox_fun_WriterSSE2,2,3,1,1,Qt::AlignLeft);
-    sublayout->addWidget(checkbox_fun_CopySSE,2,4,1,1,Qt::AlignLeft);
-    sublayout->addWidget(checkbox_fun_WriterSSE2_bypass,2,5,1,1,Qt::AlignLeft);
-    //row4
-    sublayout->addWidget(checkbox_fun_CopySSE_bypass,3,2,1,1,Qt::AlignLeft);
-    sublayout->addWidget(checkbox_fun_ReaderAVX,3,3,1,1,Qt::AlignLeft);
-    sublayout->addWidget(checkbox_fun_WriterAVX,3,4,1,1,Qt::AlignLeft);
-    sublayout->addWidget(checkbox_fun_CopyAVX,3,5,1,1,Qt::AlignLeft);
-    //row5
-    sublayout->addWidget(label_hyperthread_title,4,1,1,1,Qt::AlignLeft);
-    sublayout->addWidget(checkbox_hyperthread,4,2,1,1,Qt::AlignLeft);
-    //row6
-    sublayout->addWidget(btn_bw_begin,5,1,1,1,Qt::AlignLeft);
-    //row7
-    sublayout->addWidget(label_bwchart,6,1,1,1,Qt::AlignRight|Qt::AlignBottom);
-    sublayout->addWidget(chartview_bw,6,2,1,7,Qt::AlignLeft|Qt::AlignBottom);
-    //row8
-    //row9
-    sublayout->addWidget(label_lattest_title,8,1,1,1,Qt::AlignLeft);
-    //row10
-    //row11
-    sublayout->addWidget(label_stride_title,10,1,1,1,Qt::AlignLeft);
-    sublayout->addWidget(lineedit_stride,10,2,1,2,Qt::AlignLeft);
-    sublayout->addWidget(btn_lat_begin,10,4,1,1,Qt::AlignLeft);
-    //row12
-    sublayout->addWidget(label_latchart,11,1,1,1,Qt::AlignRight|Qt::AlignBottom);
-    sublayout->addWidget(chartview_lat,11,2,1,6,Qt::AlignLeft|Qt::AlignBottom);
-
-    sublayout->setColumnStretch(0,0);
-    sublayout->setColumnStretch(1,0);
-    sublayout->setColumnStretch(2,0);
-    sublayout->setColumnStretch(3,0);
-    sublayout->setColumnStretch(4,0);
-    sublayout->setColumnStretch(5,0);
-    sublayout->setColumnStretch(6,0);
-    sublayout->setColumnStretch(7,0);
-    widget->setLayout(sublayout);
-
-
-    QScrollArea *scrollarea = new QScrollArea;
-    scrollarea->setAlignment(Qt::AlignCenter);
-    scrollarea->setBackgroundRole(QPalette::Window);
-    scrollarea->setFrameStyle(QFrame::NoFrame);
-    scrollarea->setWidget(widget);
-    scrollarea->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-
-    QGridLayout *layout = new QGridLayout;
-    layout->addWidget(scrollarea);
-    setLayout(layout);
+	initializeUI();
+	setupLayout();
+	setConnection();
+	initializeData();  
 }
 void Test_Memory::paintEvent(QPaintEvent *event)
 {}
+void Test_Memory::initializeUI()
+{
+	QLabel *bwResult_512B_value = NULL;
+	QLabel *bwResult_1KB_value = NULL;
+	QLabel *bwResult_2KB_value = NULL;
+	QLabel *bwResult_4KB_value = NULL;
+	QLabel *bwResult_8KB_value = NULL;
+	QLabel *bwResult_16KB_value = NULL;
+	QLabel *bwResult_32KB_value = NULL;
+	QLabel *bwResult_64KB_value = NULL;
+	QLabel *bwResult_128KB_value = NULL;
+	QLabel *bwResult_256KB_value = NULL;
+	QLabel *bwResult_512KB_value = NULL;
+	QLabel *bwResult_1MB_value = NULL;
+	QLabel *bwResult_2MB_value = NULL;
+	QLabel *bwResult_4MB_value = NULL;
+	QLabel *bwResult_8MB_value = NULL;
+	QLabel *bwResult_16MB_value = NULL;
+	QLabel *bwResult_32MB_value = NULL;
+	QLabel *bwResult_64MB_value = NULL;
+	QLabel *bwResult_128MB_value = NULL;
+	QLabel *bwResult_256MB_value = NULL;
+
+
+	QLabel *latResult_512B_value = NULL;
+	QLabel *latResult_1KB_value = NULL;
+	QLabel *latResult_2KB_value = NULL;
+	QLabel *latResult_4KB_value = NULL;
+	QLabel *latResult_8KB_value = NULL;
+	QLabel *latResult_16KB_value = NULL;
+	QLabel *latResult_32KB_value = NULL;
+	QLabel *latResult_64KB_value = NULL;
+	QLabel *latResult_128KB_value = NULL;
+	QLabel *latResult_256KB_value = NULL;
+	QLabel *latResult_512KB_value = NULL;
+	QLabel *latResult_1MB_value = NULL;
+	QLabel *latResult_2MB_value = NULL;
+	QLabel *latResult_4MB_value = NULL;
+	QLabel *latResult_8MB_value = NULL;
+	QLabel *latResult_16MB_value = NULL;
+	QLabel *latResult_32MB_value = NULL;
+	QLabel *latResult_64MB_value = NULL;
+	QLabel *latResult_128MB_value = NULL;
+	QLabel *latResult_256MB_value = NULL;
+
+	label_bwtest_title = new QLabel(this);
+	label_bwtest_title->setFrameStyle(QFrame::NoFrame);
+	label_bwtest_title->setFont(*title_font);
+	label_bwtest_title->setAlignment(Qt::AlignLeft);
+	label_bwtest_title->setText(QString("BrandWidth Test"));
+
+	label_function_title = new QLabel(this);
+	label_function_title->setFrameStyle(QFrame::NoFrame);
+	label_function_title->setFont(*normalFont);
+	label_function_title->setText(QString("Test Function:"));
+
+	checkbox_fun_ReaderSSE2 = new QCheckBox(this);
+	checkbox_fun_ReaderSSE2->setFont(*normalFont);
+
+	checkbox_fun_WriterSSE2 = new QCheckBox(this);
+	checkbox_fun_WriterSSE2->setFont(*normalFont);
+	checkbox_fun_CopySSE = new QCheckBox(this);
+	checkbox_fun_CopySSE->setFont(*normalFont);
+	checkbox_fun_WriterSSE2_bypass = new QCheckBox(this);
+	checkbox_fun_WriterSSE2_bypass->setFont(*normalFont);
+	checkbox_fun_CopySSE_bypass = new QCheckBox(this);
+	checkbox_fun_CopySSE_bypass->setFont(*normalFont);
+	checkbox_fun_ReaderAVX = new QCheckBox(this);
+	checkbox_fun_ReaderAVX->setFont(*normalFont);
+	checkbox_fun_WriterAVX = new QCheckBox(this);
+	checkbox_fun_WriterAVX->setFont(*normalFont);
+	checkbox_fun_CopyAVX = new QCheckBox(this);
+	checkbox_fun_CopyAVX->setFont(*normalFont);
+
+	checkbox_fun_ReaderSSE2->setText(QString("ReaderSSE2"));
+	checkbox_fun_WriterSSE2->setText(QString("WriterSSE2"));
+	checkbox_fun_CopySSE->setText(QString("CopySSE"));
+	checkbox_fun_WriterSSE2_bypass->setText(QString("WriterSSE2 bypass"));
+	checkbox_fun_CopySSE_bypass->setText(QString("CopySSE bypass"));
+	checkbox_fun_ReaderAVX->setText(QString("ReaderAVX"));
+	checkbox_fun_WriterAVX->setText(QString("WriterAVX"));
+	checkbox_fun_CopyAVX->setText(QString("CopyAVX"));
+
+	label_hyperthread_title = new QLabel(this);
+	label_hyperthread_title->setFrameStyle(QFrame::NoFrame);
+	label_hyperthread_title->setFont(*normalFont);
+	label_hyperthread_title->setText(QString("Hyperthread:"));
+
+	checkbox_hyperthread = new QCheckBox(this);
+	checkbox_hyperthread->setFont(*normalFont);
+	checkbox_hyperthread->setText(QString("HyperThread"));
+
+	btn_bw_begin = new QPushButton(this);
+	btn_bw_begin->setFont(*normalFont);
+	btn_bw_begin->setText(QString("Run"));
+
+	bwResult_512B_title = new QLabel(this);
+	bwResult_512B_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_512B_title->setAlignment(Qt::AlignLeft);
+	bwResult_512B_title->setStyleSheet(resultStyleSheet1);
+	bwResult_512B_title->setFont(*normalFont);
+	bwResult_512B_title->setText(QString("512B"));
+
+	bwResult_1KB_title = new QLabel(this);
+	bwResult_1KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_1KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_1KB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_1KB_title->setFont(*normalFont);
+	bwResult_1KB_title->setText(QString("1KB"));
+
+	bwResult_2KB_title = new QLabel(this);
+	bwResult_2KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_2KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_2KB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_2KB_title->setFont(*normalFont);
+	bwResult_2KB_title->setText(QString("2KB"));
+
+	bwResult_4KB_title = new QLabel(this);
+	bwResult_4KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_4KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_4KB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_4KB_title->setFont(*normalFont);
+	bwResult_4KB_title->setText(QString("4KB"));
+
+	bwResult_8KB_title = new QLabel(this);
+	bwResult_8KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_8KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_8KB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_8KB_title->setFont(*normalFont);
+	bwResult_8KB_title->setText(QString("8KB"));
+
+	bwResult_16KB_title = new QLabel(this);
+	bwResult_16KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_16KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_16KB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_16KB_title->setFont(*normalFont);
+	bwResult_16KB_title->setText(QString("16KB"));
+
+	bwResult_32KB_title = new QLabel(this);
+	bwResult_32KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_32KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_32KB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_32KB_title->setFont(*normalFont);
+	bwResult_32KB_title->setText(QString("32KB"));
+
+	bwResult_64KB_title = new QLabel(this);
+	bwResult_64KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_64KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_64KB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_64KB_title->setFont(*normalFont);
+	bwResult_64KB_title->setText(QString("64KB"));
+
+	bwResult_128KB_title = new QLabel(this);
+	bwResult_128KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_128KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_128KB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_128KB_title->setFont(*normalFont);
+	bwResult_128KB_title->setText(QString("128KB"));
+
+	bwResult_256KB_title = new QLabel(this);
+	bwResult_256KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_256KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_256KB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_256KB_title->setFont(*normalFont);
+	bwResult_256KB_title->setText(QString("256KB"));
+
+	bwResult_512KB_title = new QLabel(this);
+	bwResult_512KB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_512KB_title->setAlignment(Qt::AlignLeft);
+	bwResult_512KB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_512KB_title->setFont(*normalFont);
+	bwResult_512KB_title->setText(QString("512KB"));
+
+	bwResult_1MB_title = new QLabel(this);
+	bwResult_1MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_1MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_1MB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_1MB_title->setFont(*normalFont);
+	bwResult_1MB_title->setText(QString("1MB"));
+
+	bwResult_2MB_title = new QLabel(this);
+	bwResult_2MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_2MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_2MB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_2MB_title->setFont(*normalFont);
+	bwResult_2MB_title->setText(QString("2MB"));
+
+	bwResult_4MB_title = new QLabel(this);
+	bwResult_4MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_4MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_4MB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_4MB_title->setFont(*normalFont);
+	bwResult_4MB_title->setText(QString("4MB"));
+
+	bwResult_8MB_title = new QLabel(this);
+	bwResult_8MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_8MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_8MB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_8MB_title->setFont(*normalFont);
+	bwResult_8MB_title->setText(QString("8MB"));
+
+	bwResult_16MB_title = new QLabel(this);
+	bwResult_16MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_16MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_16MB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_16MB_title->setFont(*normalFont);
+	bwResult_16MB_title->setText(QString("16MB"));
+
+	bwResult_32MB_title = new QLabel(this);
+	bwResult_32MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_32MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_32MB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_32MB_title->setFont(*normalFont);
+	bwResult_32MB_title->setText(QString("32MB"));
+
+	bwResult_64MB_title = new QLabel(this);
+	bwResult_64MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_64MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_64MB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_64MB_title->setFont(*normalFont);
+	bwResult_64MB_title->setText(QString("64MB"));
+
+	bwResult_128MB_title = new QLabel(this);
+	bwResult_128MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_128MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_128MB_title->setStyleSheet(resultStyleSheet1);
+	bwResult_128MB_title->setFont(*normalFont);
+	bwResult_128MB_title->setText(QString("128MB"));
+
+	bwResult_256MB_title = new QLabel(this);
+	bwResult_256MB_title->setFrameStyle(QFrame::NoFrame);
+	bwResult_256MB_title->setAlignment(Qt::AlignLeft);
+	bwResult_256MB_title->setStyleSheet(resultStyleSheet2);
+	bwResult_256MB_title->setFont(*normalFont);
+	bwResult_256MB_title->setText(QString("256MB"));
+
+	bwResult_512B_value = new QLabel(this);
+	bwResult_512B_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_512B_value->setAlignment(Qt::AlignRight);
+	bwResult_512B_value->setStyleSheet(resultStyleSheet1);
+	bwResult_512B_value->setFont(*normalFont);
+	bwResult_512B_value->setText(QString("default"));
+
+	bwResult_1KB_value = new QLabel(this);
+	bwResult_1KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_1KB_value->setAlignment(Qt::AlignRight);
+	bwResult_1KB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_1KB_value->setFont(*normalFont);
+	bwResult_1KB_value->setText(QString("default"));
+
+	bwResult_2KB_value = new QLabel(this);
+	bwResult_2KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_2KB_value->setAlignment(Qt::AlignRight);
+	bwResult_2KB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_2KB_value->setFont(*normalFont);
+	bwResult_2KB_value->setText(QString("default"));
+
+	bwResult_4KB_value = new QLabel(this);
+	bwResult_4KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_4KB_value->setAlignment(Qt::AlignRight);
+	bwResult_4KB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_4KB_value->setFont(*normalFont);
+	bwResult_4KB_value->setText(QString("default"));
+
+	bwResult_8KB_value = new QLabel(this);
+	bwResult_8KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_8KB_value->setAlignment(Qt::AlignRight);
+	bwResult_8KB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_8KB_value->setFont(*normalFont);
+	bwResult_8KB_value->setText(QString("default"));
+
+	bwResult_16KB_value = new QLabel(this);
+	bwResult_16KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_16KB_value->setAlignment(Qt::AlignRight);
+	bwResult_16KB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_16KB_value->setFont(*normalFont);
+	bwResult_16KB_value->setText(QString("default"));
+
+	bwResult_32KB_value = new QLabel(this);
+	bwResult_32KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_32KB_value->setAlignment(Qt::AlignRight);
+	bwResult_32KB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_32KB_value->setFont(*normalFont);
+	bwResult_32KB_value->setText(QString("default"));
+
+	bwResult_64KB_value = new QLabel(this);
+	bwResult_64KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_64KB_value->setAlignment(Qt::AlignRight);
+	bwResult_64KB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_64KB_value->setFont(*normalFont);
+	bwResult_64KB_value->setText(QString("default"));
+
+	bwResult_128KB_value = new QLabel(this);
+	bwResult_128KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_128KB_value->setAlignment(Qt::AlignRight);
+	bwResult_128KB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_128KB_value->setFont(*normalFont);
+	bwResult_128KB_value->setText(QString("default"));
+
+	bwResult_256KB_value = new QLabel(this);
+	bwResult_256KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_256KB_value->setAlignment(Qt::AlignRight);
+	bwResult_256KB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_256KB_value->setFont(*normalFont);
+	bwResult_256KB_value->setText(QString("default"));
+
+	bwResult_512KB_value = new QLabel(this);
+	bwResult_512KB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_512KB_value->setAlignment(Qt::AlignRight);
+	bwResult_512KB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_512KB_value->setFont(*normalFont);
+	bwResult_512KB_value->setText(QString("default"));
+
+	bwResult_1MB_value = new QLabel(this);
+	bwResult_1MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_1MB_value->setAlignment(Qt::AlignRight);
+	bwResult_1MB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_1MB_value->setFont(*normalFont);
+	bwResult_1MB_value->setText(QString("default"));
+
+	bwResult_2MB_value = new QLabel(this);
+	bwResult_2MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_2MB_value->setAlignment(Qt::AlignRight);
+	bwResult_2MB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_2MB_value->setFont(*normalFont);
+	bwResult_2MB_value->setText(QString("default"));
+
+	bwResult_4MB_value = new QLabel(this);
+	bwResult_4MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_4MB_value->setAlignment(Qt::AlignRight);
+	bwResult_4MB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_4MB_value->setFont(*normalFont);
+	bwResult_4MB_value->setText(QString("default"));
+
+	bwResult_8MB_value = new QLabel(this);
+	bwResult_8MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_8MB_value->setAlignment(Qt::AlignRight);
+	bwResult_8MB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_8MB_value->setFont(*normalFont);
+	bwResult_8MB_value->setText(QString("default"));
+
+	bwResult_16MB_value = new QLabel(this);
+	bwResult_16MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_16MB_value->setAlignment(Qt::AlignRight);
+	bwResult_16MB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_16MB_value->setFont(*normalFont);
+	bwResult_16MB_value->setText(QString("default"));
+
+	bwResult_32MB_value = new QLabel(this);
+	bwResult_32MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_32MB_value->setAlignment(Qt::AlignRight);
+	bwResult_32MB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_32MB_value->setFont(*normalFont);
+	bwResult_32MB_value->setText(QString("default"));
+
+	bwResult_64MB_value = new QLabel(this);
+	bwResult_64MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_64MB_value->setAlignment(Qt::AlignRight);
+	bwResult_64MB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_64MB_value->setFont(*normalFont);
+	bwResult_64MB_value->setText(QString("default"));
+
+	bwResult_128MB_value = new QLabel(this);
+	bwResult_128MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_128MB_value->setAlignment(Qt::AlignRight);
+	bwResult_128MB_value->setStyleSheet(resultStyleSheet1);
+	bwResult_128MB_value->setFont(*normalFont);
+	bwResult_128MB_value->setText(QString("default"));
+
+	bwResult_256MB_value = new QLabel(this);
+	bwResult_256MB_value->setFrameStyle(QFrame::NoFrame);
+	bwResult_256MB_value->setAlignment(Qt::AlignRight);
+	bwResult_256MB_value->setStyleSheet(resultStyleSheet2);
+	bwResult_256MB_value->setFont(*normalFont);
+	bwResult_256MB_value->setText(QString("default"));
+	//****************************************************************
+
+	latResult_512B_title = new QLabel(this);
+	latResult_512B_title->setFrameStyle(QFrame::NoFrame);
+	latResult_512B_title->setAlignment(Qt::AlignLeft);
+	latResult_512B_title->setStyleSheet(resultStyleSheet2);
+	latResult_512B_title->setFont(*normalFont);
+	latResult_512B_title->setText(QString("512B"));
+
+	latResult_1KB_title = new QLabel(this);
+	latResult_1KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_1KB_title->setAlignment(Qt::AlignLeft);
+	latResult_1KB_title->setStyleSheet(resultStyleSheet1);
+	latResult_1KB_title->setFont(*normalFont);
+	latResult_1KB_title->setText(QString("1KB"));
+
+	latResult_2KB_title = new QLabel(this);
+	latResult_2KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_2KB_title->setAlignment(Qt::AlignLeft);
+	latResult_2KB_title->setStyleSheet(resultStyleSheet2);
+	latResult_2KB_title->setFont(*normalFont);
+	latResult_2KB_title->setText(QString("2KB"));
+
+	latResult_4KB_title = new QLabel(this);
+	latResult_4KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_4KB_title->setAlignment(Qt::AlignLeft);
+	latResult_4KB_title->setStyleSheet(resultStyleSheet1);
+	latResult_4KB_title->setFont(*normalFont);
+	latResult_4KB_title->setText(QString("4KB"));
+
+	latResult_8KB_title = new QLabel(this);
+	latResult_8KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_8KB_title->setAlignment(Qt::AlignLeft);
+	latResult_8KB_title->setStyleSheet(resultStyleSheet2);
+	latResult_8KB_title->setFont(*normalFont);
+	latResult_8KB_title->setText(QString("8KB"));
+
+	latResult_16KB_title = new QLabel(this);
+	latResult_16KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_16KB_title->setAlignment(Qt::AlignLeft);
+	latResult_16KB_title->setStyleSheet(resultStyleSheet1);
+	latResult_16KB_title->setFont(*normalFont);
+	latResult_16KB_title->setText(QString("16KB"));
+
+	latResult_32KB_title = new QLabel(this);
+	latResult_32KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_32KB_title->setAlignment(Qt::AlignLeft);
+	latResult_32KB_title->setStyleSheet(resultStyleSheet2);
+	latResult_32KB_title->setFont(*normalFont);
+	latResult_32KB_title->setText(QString("32KB"));
+
+	latResult_64KB_title = new QLabel(this);
+	latResult_64KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_64KB_title->setAlignment(Qt::AlignLeft);
+	latResult_64KB_title->setStyleSheet(resultStyleSheet1);
+	latResult_64KB_title->setFont(*normalFont);
+	latResult_64KB_title->setText(QString("64KB"));
+
+	latResult_128KB_title = new QLabel(this);
+	latResult_128KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_128KB_title->setAlignment(Qt::AlignLeft);
+	latResult_128KB_title->setStyleSheet(resultStyleSheet2);
+	latResult_128KB_title->setFont(*normalFont);
+	latResult_128KB_title->setText(QString("128KB"));
+
+	latResult_256KB_title = new QLabel(this);
+	latResult_256KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_256KB_title->setAlignment(Qt::AlignLeft);
+	latResult_256KB_title->setStyleSheet(resultStyleSheet1);
+	latResult_256KB_title->setFont(*normalFont);
+	latResult_256KB_title->setText(QString("256KB"));
+
+	latResult_512KB_title = new QLabel(this);
+	latResult_512KB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_512KB_title->setAlignment(Qt::AlignLeft);
+	latResult_512KB_title->setStyleSheet(resultStyleSheet2);
+	latResult_512KB_title->setFont(*normalFont);
+	latResult_512KB_title->setText(QString("512KB"));
+
+	latResult_1MB_title = new QLabel(this);
+	latResult_1MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_1MB_title->setAlignment(Qt::AlignLeft);
+	latResult_1MB_title->setStyleSheet(resultStyleSheet1);
+	latResult_1MB_title->setFont(*normalFont);
+	latResult_1MB_title->setText(QString("1MB"));
+
+	latResult_2MB_title = new QLabel(this);
+	latResult_2MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_2MB_title->setAlignment(Qt::AlignLeft);
+	latResult_2MB_title->setStyleSheet(resultStyleSheet2);
+	latResult_2MB_title->setFont(*normalFont);
+	latResult_2MB_title->setText(QString("2MB"));
+
+	latResult_4MB_title = new QLabel(this);
+	latResult_4MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_4MB_title->setAlignment(Qt::AlignLeft);
+	latResult_4MB_title->setStyleSheet(resultStyleSheet1);
+	latResult_4MB_title->setFont(*normalFont);
+	latResult_4MB_title->setText(QString("4MB"));
+
+	latResult_8MB_title = new QLabel(this);
+	latResult_8MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_8MB_title->setAlignment(Qt::AlignLeft);
+	latResult_8MB_title->setStyleSheet(resultStyleSheet2);
+	latResult_8MB_title->setFont(*normalFont);
+	latResult_8MB_title->setText(QString("8MB"));
+
+	latResult_16MB_title = new QLabel(this);
+	latResult_16MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_16MB_title->setAlignment(Qt::AlignLeft);
+	latResult_16MB_title->setStyleSheet(resultStyleSheet1);
+	latResult_16MB_title->setFont(*normalFont);
+	latResult_16MB_title->setText(QString("16MB"));
+
+	latResult_32MB_title = new QLabel(this);
+	latResult_32MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_32MB_title->setAlignment(Qt::AlignLeft);
+	latResult_32MB_title->setStyleSheet(resultStyleSheet2);
+	latResult_32MB_title->setFont(*normalFont);
+	latResult_32MB_title->setText(QString("32MB"));
+
+	latResult_64MB_title = new QLabel(this);
+	latResult_64MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_64MB_title->setAlignment(Qt::AlignLeft);
+	latResult_64MB_title->setStyleSheet(resultStyleSheet1);
+	latResult_64MB_title->setFont(*normalFont);
+	latResult_64MB_title->setText(QString("64MB"));
+
+	latResult_128MB_title = new QLabel(this);
+	latResult_128MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_128MB_title->setAlignment(Qt::AlignLeft);
+	latResult_128MB_title->setStyleSheet(resultStyleSheet2);
+	latResult_128MB_title->setFont(*normalFont);
+	latResult_128MB_title->setText(QString("128MB"));
+
+	latResult_256MB_title = new QLabel(this);
+	latResult_256MB_title->setFrameStyle(QFrame::NoFrame);
+	latResult_256MB_title->setAlignment(Qt::AlignLeft);
+	latResult_256MB_title->setStyleSheet(resultStyleSheet1);
+	latResult_256MB_title->setFont(*normalFont);
+	latResult_256MB_title->setText(QString("256MB"));
+
+	latResult_512B_value = new QLabel(this);
+	latResult_512B_value->setFrameStyle(QFrame::NoFrame);
+	latResult_512B_value->setAlignment(Qt::AlignRight);
+	latResult_512B_value->setStyleSheet(resultStyleSheet2);
+	latResult_512B_value->setFont(*normalFont);
+	latResult_512B_value->setText(QString("default"));
+
+	latResult_1KB_value = new QLabel(this);
+	latResult_1KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_1KB_value->setAlignment(Qt::AlignRight);
+	latResult_1KB_value->setStyleSheet(resultStyleSheet1);
+	latResult_1KB_value->setFont(*normalFont);
+	latResult_1KB_value->setText(QString("default"));
+
+	latResult_2KB_value = new QLabel(this);
+	latResult_2KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_2KB_value->setAlignment(Qt::AlignRight);
+	latResult_2KB_value->setStyleSheet(resultStyleSheet2);
+	latResult_2KB_value->setFont(*normalFont);
+	latResult_2KB_value->setText(QString("default"));
+
+	latResult_4KB_value = new QLabel(this);
+	latResult_4KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_4KB_value->setAlignment(Qt::AlignRight);
+	latResult_4KB_value->setStyleSheet(resultStyleSheet1);
+	latResult_4KB_value->setFont(*normalFont);
+	latResult_4KB_value->setText(QString("default"));
+
+	latResult_8KB_value = new QLabel(this);
+	latResult_8KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_8KB_value->setAlignment(Qt::AlignRight);
+	latResult_8KB_value->setStyleSheet(resultStyleSheet2);
+	latResult_8KB_value->setFont(*normalFont);
+	latResult_8KB_value->setText(QString("default"));
+
+	latResult_16KB_value = new QLabel(this);
+	latResult_16KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_16KB_value->setAlignment(Qt::AlignRight);
+	latResult_16KB_value->setStyleSheet(resultStyleSheet1);
+	latResult_16KB_value->setFont(*normalFont);
+	latResult_16KB_value->setText(QString("default"));
+
+	latResult_32KB_value = new QLabel(this);
+	latResult_32KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_32KB_value->setAlignment(Qt::AlignRight);
+	latResult_32KB_value->setStyleSheet(resultStyleSheet2);
+	latResult_32KB_value->setFont(*normalFont);
+	latResult_32KB_value->setText(QString("default"));
+
+	latResult_64KB_value = new QLabel(this);
+	latResult_64KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_64KB_value->setAlignment(Qt::AlignRight);
+	latResult_64KB_value->setStyleSheet(resultStyleSheet1);
+	latResult_64KB_value->setFont(*normalFont);
+	latResult_64KB_value->setText(QString("default"));
+
+	latResult_128KB_value = new QLabel(this);
+	latResult_128KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_128KB_value->setAlignment(Qt::AlignRight);
+	latResult_128KB_value->setStyleSheet(resultStyleSheet2);
+	latResult_128KB_value->setFont(*normalFont);
+	latResult_128KB_value->setText(QString("default"));
+
+	latResult_256KB_value = new QLabel(this);
+	latResult_256KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_256KB_value->setAlignment(Qt::AlignRight);
+	latResult_256KB_value->setStyleSheet(resultStyleSheet1);
+	latResult_256KB_value->setFont(*normalFont);
+	latResult_256KB_value->setText(QString("default"));
+
+	latResult_512KB_value = new QLabel(this);
+	latResult_512KB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_512KB_value->setAlignment(Qt::AlignRight);
+	latResult_512KB_value->setStyleSheet(resultStyleSheet2);
+	latResult_512KB_value->setFont(*normalFont);
+	latResult_512KB_value->setText(QString("default"));
+
+	latResult_1MB_value = new QLabel(this);
+	latResult_1MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_1MB_value->setAlignment(Qt::AlignRight);
+	latResult_1MB_value->setStyleSheet(resultStyleSheet1);
+	latResult_1MB_value->setFont(*normalFont);
+	latResult_1MB_value->setText(QString("default"));
+
+	latResult_2MB_value = new QLabel(this);
+	latResult_2MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_2MB_value->setAlignment(Qt::AlignRight);
+	latResult_2MB_value->setStyleSheet(resultStyleSheet2);
+	latResult_2MB_value->setFont(*normalFont);
+	latResult_2MB_value->setText(QString("default"));
+
+	latResult_4MB_value = new QLabel(this);
+	latResult_4MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_4MB_value->setAlignment(Qt::AlignRight);
+	latResult_4MB_value->setStyleSheet(resultStyleSheet1);
+	latResult_4MB_value->setFont(*normalFont);
+	latResult_4MB_value->setText(QString("default"));
+
+	latResult_8MB_value = new QLabel(this);
+	latResult_8MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_8MB_value->setAlignment(Qt::AlignRight);
+	latResult_8MB_value->setStyleSheet(resultStyleSheet2);
+	latResult_8MB_value->setFont(*normalFont);
+	latResult_8MB_value->setText(QString("default"));
+
+	latResult_16MB_value = new QLabel(this);
+	latResult_16MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_16MB_value->setAlignment(Qt::AlignRight);
+	latResult_16MB_value->setStyleSheet(resultStyleSheet1);
+	latResult_16MB_value->setFont(*normalFont);
+	latResult_16MB_value->setText(QString("default"));
+
+	latResult_32MB_value = new QLabel(this);
+	latResult_32MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_32MB_value->setAlignment(Qt::AlignRight);
+	latResult_32MB_value->setStyleSheet(resultStyleSheet2);
+	latResult_32MB_value->setFont(*normalFont);
+	latResult_32MB_value->setText(QString("default"));
+
+	latResult_64MB_value = new QLabel(this);
+	latResult_64MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_64MB_value->setAlignment(Qt::AlignRight);
+	latResult_64MB_value->setStyleSheet(resultStyleSheet1);
+	latResult_64MB_value->setFont(*normalFont);
+	latResult_64MB_value->setText(QString("default"));
+
+	latResult_128MB_value = new QLabel(this);
+	latResult_128MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_128MB_value->setAlignment(Qt::AlignRight);
+	latResult_128MB_value->setStyleSheet(resultStyleSheet2);
+	latResult_128MB_value->setFont(*normalFont);
+	latResult_128MB_value->setText(QString("default"));
+
+	latResult_256MB_value = new QLabel(this);
+	latResult_256MB_value->setFrameStyle(QFrame::NoFrame);
+	latResult_256MB_value->setAlignment(Qt::AlignRight);
+	latResult_256MB_value->setStyleSheet(resultStyleSheet1);
+	latResult_256MB_value->setFont(*normalFont);
+	latResult_256MB_value->setText(QString("default"));
+
+	label_lattest_title = new QLabel(this);
+	label_lattest_title->setFrameStyle(QFrame::NoFrame);
+	label_lattest_title->setFont(*title_font);
+	label_lattest_title->setAlignment(Qt::AlignLeft);
+	label_lattest_title->setText(QStringLiteral("Latency Test"));
+
+	label_stride_title = new QLabel(this);
+	label_stride_title->setFrameStyle(QFrame::NoFrame);
+	label_stride_title->setFont(*normalFont);
+	label_stride_title->setText(QStringLiteral("stride"));
+
+	lineedit_stride = new QLineEdit(this);
+	lineedit_stride->setFont(*normalFont);
+	lineedit_stride->setText(QStringLiteral(""));
+	lineedit_stride->setMinimumWidth(50);
+	lineedit_stride->setMaximumHeight(20);
+
+	btn_lat_begin = new QPushButton(this);
+	btn_lat_begin->setFont(*normalFont);
+	btn_lat_begin->setText(QString("Run"));
+
+	btn_openBWChartWindow = new QPushButton(this);
+	btn_openBWChartWindow->setFont(*normalFont);
+	btn_openBWChartWindow->setText(QString("Chart View"));
+
+	btn_openLATChartWindow = new QPushButton(this);
+	btn_openLATChartWindow->setFont(*normalFont);
+	btn_openLATChartWindow->setText(QString("Chart View"));
+
+	bwResult.append(bwResult_512B_value);
+	bwResult.append(bwResult_1KB_value);
+	bwResult.append(bwResult_2KB_value);
+	bwResult.append(bwResult_4KB_value);
+	bwResult.append(bwResult_8KB_value);
+	bwResult.append(bwResult_16KB_value);
+	bwResult.append(bwResult_32KB_value);
+	bwResult.append(bwResult_64KB_value);
+	bwResult.append(bwResult_128KB_value);
+	bwResult.append(bwResult_256KB_value);
+	bwResult.append(bwResult_512KB_value);
+	bwResult.append(bwResult_1MB_value);
+	bwResult.append(bwResult_2MB_value);
+	bwResult.append(bwResult_4MB_value);
+	bwResult.append(bwResult_8MB_value);
+	bwResult.append(bwResult_16MB_value);
+	bwResult.append(bwResult_32MB_value);
+	bwResult.append(bwResult_64MB_value);
+	bwResult.append(bwResult_128MB_value);
+	bwResult.append(bwResult_256MB_value);
+
+	latResult.append(latResult_512B_value);
+	latResult.append(latResult_1KB_value);
+	latResult.append(latResult_2KB_value);
+	latResult.append(latResult_4KB_value);
+	latResult.append(latResult_8KB_value);
+	latResult.append(latResult_16KB_value);
+	latResult.append(latResult_32KB_value);
+	latResult.append(latResult_64KB_value);
+	latResult.append(latResult_128KB_value);
+	latResult.append(latResult_256KB_value);
+	latResult.append(latResult_512KB_value);
+	latResult.append(latResult_1MB_value);
+	latResult.append(latResult_2MB_value);
+	latResult.append(latResult_4MB_value);
+	latResult.append(latResult_8MB_value);
+	latResult.append(latResult_16MB_value);
+	latResult.append(latResult_32MB_value);
+	latResult.append(latResult_64MB_value);
+	latResult.append(latResult_128MB_value);
+	latResult.append(latResult_256MB_value);
+}
+void Test_Memory::setupLayout()
+{
+	QWidget *widget = new QWidget(this);
+	widget->setWindowFlags(Qt::FramelessWindowHint);
+	widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	QGridLayout *sublayout = new QGridLayout;
+	sublayout->setVerticalSpacing(10);
+	sublayout->setHorizontalSpacing(5);
+	sublayout->setContentsMargins(30, 20, 30, 20);//row: col:
+												  //row1
+	sublayout->addWidget(label_bwtest_title, 0, 0, 1, 4);
+	//row2
+	//row3
+	sublayout->addWidget(label_function_title, 2, 0, 1, 1);
+	sublayout->addWidget(checkbox_fun_WriterAVX, 2, 1, 1, 1);
+	sublayout->addWidget(checkbox_fun_WriterSSE2, 2, 2, 1, 1);
+	//row4
+	sublayout->addWidget(checkbox_fun_WriterSSE2_bypass, 3, 1, 1, 1);
+	sublayout->addWidget(checkbox_fun_CopySSE_bypass, 3, 2, 1, 1);
+	//row5
+	sublayout->addWidget(checkbox_fun_CopySSE, 4, 1, 1, 1);
+	sublayout->addWidget(checkbox_fun_CopyAVX, 4, 2, 1, 1);
+	//row6
+	sublayout->addWidget(checkbox_fun_ReaderSSE2, 5, 1, 1, 1);
+	sublayout->addWidget(checkbox_fun_ReaderAVX, 5, 2, 1, 1);
+	//row7
+	sublayout->addWidget(label_hyperthread_title, 6, 0, 1, 1);
+	sublayout->addWidget(checkbox_hyperthread, 6, 1, 1, 1);
+	//row8
+	sublayout->addWidget(btn_bw_begin, 7, 0, 1, 1);
+	sublayout->addWidget(btn_openBWChartWindow, 7, 1, 1, 1);
+	//row9
+	//sublayout->addWidget(bwResult,7,2,1,7,Qt::AlignLeft|Qt::AlignBottom);
+	sublayout->addWidget(bwResult_512B_title, 8, 0);
+	sublayout->addWidget(bwResult_1KB_title, 9, 0);
+	sublayout->addWidget(bwResult_2KB_title, 10, 0);
+	sublayout->addWidget(bwResult_4KB_title, 11, 0);
+	sublayout->addWidget(bwResult_8KB_title, 12, 0);
+	sublayout->addWidget(bwResult_16KB_title, 13, 0);
+	sublayout->addWidget(bwResult_32KB_title, 14, 0);
+	sublayout->addWidget(bwResult_64KB_title, 15, 0);
+	sublayout->addWidget(bwResult_128KB_title, 16, 0);
+	sublayout->addWidget(bwResult_256KB_title, 17, 0);
+	sublayout->addWidget(bwResult_512KB_title, 18, 0);
+	sublayout->addWidget(bwResult_1MB_title, 19, 0);
+	sublayout->addWidget(bwResult_2MB_title, 20, 0);
+	sublayout->addWidget(bwResult_4MB_title, 21, 0);
+	sublayout->addWidget(bwResult_8MB_title, 22, 0);
+	sublayout->addWidget(bwResult_16MB_title, 23, 0);
+	sublayout->addWidget(bwResult_32MB_title, 24, 0);
+	sublayout->addWidget(bwResult_64MB_title, 25, 0);
+	sublayout->addWidget(bwResult_128MB_title, 26, 0);
+	sublayout->addWidget(bwResult_256MB_title, 27, 0);
+	auto it = bwResult.begin();
+	unsigned int rowNum = 8;
+	for (unsigned int i = 0; i < 20; i++)
+	{
+		sublayout->addWidget(*it, rowNum, 1, 1, 3);
+		rowNum++;
+		it++;
+	}
+	//row29
+	//row30
+	sublayout->addWidget(label_lattest_title, 29, 0, 1, 4);
+	//row31
+	//row32
+	sublayout->addWidget(label_stride_title, 31, 0, 1, 1);
+	sublayout->addWidget(lineedit_stride, 31, 1, 1, 1);
+	sublayout->addWidget(btn_lat_begin, 31, 2, 1, 1);
+	sublayout->addWidget(btn_openLATChartWindow, 31, 3, 1, 1);
+	//row13
+	it = latResult.begin();
+	rowNum = 32;
+	for (unsigned int i = 0; i < 20; i++)
+	{
+		sublayout->addWidget(*it, rowNum, 1, 1, 3);
+		rowNum++;
+		it++;
+	}
+	sublayout->addWidget(latResult_512B_title, 32, 0);
+	sublayout->addWidget(latResult_1KB_title, 33, 0);
+	sublayout->addWidget(latResult_2KB_title, 34, 0);
+	sublayout->addWidget(latResult_4KB_title, 35, 0);
+	sublayout->addWidget(latResult_8KB_title, 36, 0);
+	sublayout->addWidget(latResult_16KB_title, 37, 0);
+	sublayout->addWidget(latResult_32KB_title, 38, 0);
+	sublayout->addWidget(latResult_64KB_title, 39, 0);
+	sublayout->addWidget(latResult_128KB_title, 40, 0);
+	sublayout->addWidget(latResult_256KB_title, 41, 0);
+	sublayout->addWidget(latResult_512KB_title, 42, 0);
+	sublayout->addWidget(latResult_1MB_title, 43, 0);
+	sublayout->addWidget(latResult_2MB_title, 44, 0);
+	sublayout->addWidget(latResult_4MB_title, 45, 0);
+	sublayout->addWidget(latResult_8MB_title, 46, 0);
+	sublayout->addWidget(latResult_16MB_title, 47, 0);
+	sublayout->addWidget(latResult_32MB_title, 48, 0);
+	sublayout->addWidget(latResult_64MB_title, 49, 0);
+	sublayout->addWidget(latResult_128MB_title, 50, 0);
+	sublayout->addWidget(latResult_256MB_title, 51, 0);
+
+	widget->setLayout(sublayout);
+
+	scrollarea = new QScrollArea;
+	scrollarea->setAlignment(Qt::AlignCenter);
+	scrollarea->setBackgroundRole(QPalette::Window);
+	scrollarea->setFrameStyle(QFrame::NoFrame);
+	scrollarea->setWidget(widget);
+	scrollarea->setWidgetResizable(true);
+	scrollarea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+	QGridLayout *layout = new QGridLayout;
+	layout->addWidget(scrollarea);
+	setLayout(layout);
+}
+void Test_Memory::setConnection()
+{
+	connect(btn_bw_begin, SIGNAL(clicked(bool)), this, SLOT(begin_bw()));
+	connect(btn_lat_begin, SIGNAL(clicked(bool)), this, SLOT(begin_lat()));
+	connect(btn_openBWChartWindow, SIGNAL(clicked(bool)), this, SLOT(openBWchartWindow()));
+	connect(btn_openLATChartWindow, SIGNAL(clicked(bool)), this, SLOT(openLATchartWindow()));
+}
+void Test_Memory::initializeData()
+{}
+void Test_Memory::openBWchartWindow()
+{
+	if(memoryBWTestWindow == NULL)
+		memoryBWTestWindow = new Window_memoryTest(this, QString("Bandwidth(GB/s)"),1300,800);
+	memoryBWTestWindow->initializeChart();
+	bw_chartWindow = true;
+	/*
+	for (unsigned int i = 0; i < bwtestResults.length(); i++)
+	{
+		memoryBWTestWindow->drawSeries(bwtestResults.at(i),false);
+	}
+	*/
+	memoryBWTestWindow->show();
+}
+void Test_Memory::openLATchartWindow()
+{
+	if(memoryLATTestWindow == NULL)
+		memoryLATTestWindow = new Window_memoryTest(this, QString("Latency(GB/s)"),2000,800);
+	memoryLATTestWindow->initializeChart();
+	lat_chartWindow = true;
+	/*
+	for (unsigned int i = 0; i < bwtestResults.length(); i++)
+	{
+		memoryBWTestWindow->drawSeries(bwtestResults.at(i),false);
+	}
+	*/
+	memoryLATTestWindow->show();
+}
 void Test_Memory::begin_bw()
 {
-    chart_bw->removeAllSeries();
-    testFunctionList.clear();
-    testedFunNum = 0;
-    if(checkbox_fun_ReaderSSE2->isChecked())
-    {
-        testFunctionList<<"10";
-        testFunNum++;
-    }
-    if(checkbox_fun_WriterSSE2->isChecked())
-    {
-        testFunctionList<<"11";
-        testFunNum++;
-    }
-    if(checkbox_fun_CopySSE->isChecked())
-    {
-        testFunctionList<<"12";
-        testFunNum++;
-    }
-    if(checkbox_fun_WriterSSE2_bypass->isChecked())
-    {
-        testFunctionList<<"13";
-        testFunNum++;
-    }
-    if(checkbox_fun_CopySSE_bypass->isChecked())
-    {
-        testFunctionList<<"14";
-        testFunNum++;
-    }
-    if(checkbox_fun_ReaderAVX->isChecked())
-    {
-        testFunctionList<<"20";
-        testFunNum++;
-    }
-    if(checkbox_fun_WriterAVX->isChecked())
-    {
-        testFunctionList<<"21";
-        testFunNum++;
-    }
-    if(checkbox_fun_CopyAVX->isChecked())
-    {
-        testFunctionList<<"22";
-        testFunNum++;
-    }
-    if(checkbox_hyperthread->isChecked())
-    {
-        hyperthread_flag = true;
-    }
-    if(!testFunctionList.isEmpty())
-    {
-        testFunction(testFunctionList.at(0));
-    }
-    else
-    {
-        QMessageBox *messagebox = new QMessageBox(this);
-        messagebox->setText(QString("please choose at least one function"));
-        messagebox->exec();
-    }
+	if (beginflag1)
+	{
+		btn_bw_begin->setText(QString("Run"));
+		process_bw->kill();
+		beginflag1 = false;
+		testedFunNum = testFunctionList.length();
+	}
+	else
+	{
+		btn_bw_begin->setText(QString("Stop"));
+		beginflag1 = true;
+		testFunctionList.clear();
+		testedFunNum = 0;
+		if (checkbox_fun_ReaderSSE2->isChecked())
+		{
+			testFunctionList << "10";
+			testFunNum++;
+		}
+		if (checkbox_fun_WriterSSE2->isChecked())
+		{
+			testFunctionList << "11";
+			testFunNum++;
+		}
+		if (checkbox_fun_CopySSE->isChecked())
+		{
+			testFunctionList << "12";
+			testFunNum++;
+		}
+		if (checkbox_fun_WriterSSE2_bypass->isChecked())
+		{
+			testFunctionList << "13";
+			testFunNum++;
+		}
+		if (checkbox_fun_CopySSE_bypass->isChecked())
+		{
+			testFunctionList << "14";
+			testFunNum++;
+		}
+		if (checkbox_fun_ReaderAVX->isChecked())
+		{
+			testFunctionList << "20";
+			testFunNum++;
+		}
+		if (checkbox_fun_WriterAVX->isChecked())
+		{
+			testFunctionList << "21";
+			testFunNum++;
+		}
+		if (checkbox_fun_CopyAVX->isChecked())
+		{
+			testFunctionList << "22";
+			testFunNum++;
+		}
+		if (checkbox_hyperthread->isChecked())
+		{
+			hyperthread_flag = true;
+		}
+		if (!testFunctionList.isEmpty())
+		{
+			testFunction(testFunctionList.at(0));
+		}
+		else
+		{
+			QMessageBox *messagebox = new QMessageBox(this);
+			messagebox->setText(QString("please choose at least one function"));
+			messagebox->exec();
+		}
+	}
 }
 void Test_Memory::testFunction(QString para_fun)
 {
@@ -302,9 +998,10 @@ void Test_Memory::testFunction(QString para_fun)
     Sleep(500);
 */
 
-    btn_bw_begin->setText(QString("running"));
-    btn_bw_begin->setEnabled(false);
-    QString program = "J:/00_qt_code/project/2_sv_assistant/version2_0/2-0withC/SV-ASSIST/debug/mem_benchmark.exe";
+    btn_bw_begin->setText(QString("Stop"));
+	beginflag1 = true;
+    QString program = "./mem_benchmark.exe";
+	//QString program = "./debug/mem_benchmark.exe";
     QStringList parameter;
     parameter<<"bw"<<testParameter.at(testedSizeNum)<<para_fun<<QString("%0").arg(hyperthread_flag);
     process_bw = new QProcess(this);
@@ -317,7 +1014,7 @@ void Test_Memory::ifNext(int exitCode,QProcess::ExitStatus exitStatus)
     if(exitStatus == QProcess::NormalExit)
     {
         //QByteArray x = process->readAllStandardOutput();
-        QFile *file = new QFile("J:/00_qt_code/project/2_sv_assistant/version2_0/2-0withC/SV-ASSIST/mem_benchmark.txt");
+        QFile *file = new QFile("./mem_benchmark.txt");
         file->open(QIODevice::ReadOnly);
         QByteArray b= file->readAll();
         QJsonParseError *error=new QJsonParseError;
@@ -326,70 +1023,41 @@ void Test_Memory::ifNext(int exitCode,QProcess::ExitStatus exitStatus)
         {
             if(jsonfile.isObject())
             {
-                if(testedSizeNum!=0)
-                    chart_bw->removeSeries(series_remove);
                 QJsonObject jsonobject = jsonfile.object();
                 QJsonValue value;
                 value = jsonobject.value("bandwidth");
-                if(max_y_bw<value.toDouble())
-                {
-                    max_y_bw = value.toDouble();
-                    axisY_bw->setRange(0,max_y_bw+20);
-                }
-                testResult<<QString("%0").arg(value.toDouble());
-                testedSizeNum++;
-                QLineSeries *series = new QLineSeries();
-                series->setPointsVisible(true);
-                series->setPointLabelsVisible(true);
-                series->setPointLabelsClipping(false);
-                series->setPointLabelsFormat("[@yPoint G/s]");
-                for(unsigned int i=0;i<testedSizeNum;i++)
-                {
-                    series->append(i,QString(testResult.at(i)).toDouble());
-                }
-
-                chart_bw->addSeries(series);
-                series->attachAxis(axisX_bw);
-                series->attachAxis(axisY_bw);
-                series_remove = series;
+				double dvalue = value.toDouble()*100;
+				unsigned int intvalue = dvalue;
+				dvalue = intvalue;
+				dvalue = dvalue / 100;
+                testResult<<QString("%0").arg(dvalue);
+				auto it = bwResult.begin();
+				it += testedSizeNum;
+				(*it)->setText(QString("%0GB/S").arg(dvalue));
+				testedSizeNum++;
+				bwtestResults.append(dvalue);
+				if(bw_chartWindow)
+					memoryBWTestWindow->drawSeries(bwtestResults,false);
+				
                 update();
                 if(testedSizeNum==20)
                 {
                     testedFunNum++;
                     testedSizeNum=0;
                     testResult.clear();
-                    /*
-                    if(testedFunNum==0)
-                    {
-
-                    }
-                    else
-                    {
-                        QLineSeries *series = new QLineSeries();
-                        series->setPointsVisible(true);
-                        series->setPointLabelsVisible(true);
-                        series->setPointLabelsClipping(false);
-                        for(unsigned int i=0;i<20;i++)
-                        {
-                            series->append(i,200);
-                        }
-                        testedFunNum++;
-                        testedSizeNum=0;
-                        chart_bw->addSeries(series);
-                        testResult.clear();
-                        update();
-                    }
-*/
-
-                }
+					bwtestResults.clear();
+                }         
             }
         }
     }
     else
     {
-        QMessageBox *messagebox = new QMessageBox(this);
-        messagebox->setText(QString("test fail"));
+		/*
+		QMessageBox *messagebox = new QMessageBox(this);
+		messagebox->setText(QString("test fail:%0  %1").arg(exitStatus).arg(exitCode));
         messagebox->exec();
+		*/
+        
     }
     if(testFunctionList.length()>testedFunNum)
     {
@@ -397,37 +1065,46 @@ void Test_Memory::ifNext(int exitCode,QProcess::ExitStatus exitStatus)
     }
     else
     {
-        btn_bw_begin->setEnabled(true);
-        btn_bw_begin->setText(QString("Begin"));
+        beginflag1 = false;
+        btn_bw_begin->setText(QString("Run"));
     }
 }
 void Test_Memory::begin_lat()
 {
-    axisY_lat->setRange(min_y_lat,max_y_lat);
-    testedSizeNum_lat = 0;
-    chart_lat->removeAllSeries();
-    str_stride = lineedit_stride->text();
-    unsigned int i = str_stride.toInt();
-    QRegExp regexp("[0-9]+");
-    if(regexp.exactMatch(str_stride)&&(i>=8)&&(i<=64))
-    {
-        btn_lat_begin->setEnabled(false);
-        btn_lat_begin->setText(QString("running"));
-        test_lat(str_stride);
-    }
-    else
-    {
-        QMessageBox *messagebox = new QMessageBox(this);
-        messagebox->setText(QString("invalid input(8-64)"));
-        messagebox->exec();
-    }
+	if (beginflag2)
+	{
+		btn_lat_begin->setText(QString("Run"));
+		process_lat->kill();
+		beginflag2 = false;
+		testedSizeNum_lat = testLength_lat.length();
+	}
+	else
+	{
+		testedSizeNum_lat = 0;
+		str_stride = lineedit_stride->text();
+		unsigned int i = str_stride.toInt();
+		QRegExp regexp("[0-9]+");
+		if (regexp.exactMatch(str_stride) && (i >= 8) && (i <= 64))
+		{
+			btn_lat_begin->setText(QString("Stop"));
+			beginflag2 = true;
+			test_lat(str_stride);
+		}
+		else
+		{
+			QMessageBox *messagebox = new QMessageBox(this);
+			messagebox->setText(QString("invalid input(8-64)"));
+			messagebox->exec();
+		}
+	}
 }
 void Test_Memory::test_lat(QString para_stride)
 {
-    QString program = "J:/00_qt_code/project/2_sv_assistant/version2_0/2-0withC/SV-ASSIST/debug/mem_benchmark.exe";
+	beginflag2 = true;
+    QString program = "./mem_benchmark.exe";
+	//QString program = "./debug/mem_benchmark.exe";
     QStringList parameter;
     parameter<<"lat"<<testLength_lat.at(testedSizeNum_lat)<<para_stride;
-    QProcess *process_lat;
     process_lat = new QProcess(this);
     process_lat->start(program,parameter);
     connect(process_lat,SIGNAL(finished(int,QProcess::ExitStatus)),this,SLOT(ifNext_lat(int,QProcess::ExitStatus)));
@@ -436,7 +1113,7 @@ void Test_Memory::ifNext_lat(int exitCode, QProcess::ExitStatus exitStatus)
 {
     if(exitStatus == QProcess::NormalExit)
     {
-        QFile *file = new QFile("J:/00_qt_code/project/2_sv_assistant/version2_0/2-0withC/SV-ASSIST/mem_benchmark.txt");
+        QFile *file = new QFile("./mem_benchmark.txt");
         file->open(QIODevice::ReadOnly);
         QByteArray b= file->readAll();
         QJsonParseError *error=new QJsonParseError;
@@ -445,7 +1122,32 @@ void Test_Memory::ifNext_lat(int exitCode, QProcess::ExitStatus exitStatus)
         {
             if(jsonfile.isObject())
             {
-                if(testedSizeNum_lat!=0)
+				QJsonObject jsonobject = jsonfile.object();
+				QJsonValue value;
+				value = jsonobject.value("latency");
+				double dvalue = value.toDouble();
+				unsigned int i = 0;
+				while (!qFloor(dvalue))
+				{
+					dvalue = dvalue * 10;
+					i++;
+				}
+				if (i<10)
+					dvalue = dvalue*qPow(10, 10 - i);
+				dvalue = dvalue*100;
+				unsigned int intvalue = dvalue;
+				dvalue = intvalue;
+				dvalue = dvalue / 100;
+				testResult << QString("%0").arg(dvalue);
+				auto it = latResult.begin();
+				it += testedSizeNum_lat;
+				(*it)->setText(QString("%0GB/S").arg(dvalue));
+				testedSizeNum_lat++;
+				lattestResults.append(dvalue);
+				if(lat_chartWindow)
+					memoryLATTestWindow->drawSeries(lattestResults, false);
+                /*
+				if(testedSizeNum_lat!=0)
                     chart_lat->removeSeries(series_remove_lat);
                 QJsonObject jsonobject = jsonfile.object();
                 QJsonValue value;
@@ -486,11 +1188,12 @@ void Test_Memory::ifNext_lat(int exitCode, QProcess::ExitStatus exitStatus)
                 series->attachAxis(axisX_lat);
                 series->attachAxis(axisY_lat);
                 series_remove_lat = series;
+				*/
                 update();
                 if(testedSizeNum_lat==20)
                 {
                     testedSizeNum=0;
-
+					lattestResults.clear();
                     testResult_lat.clear();
                 }
             }
@@ -498,9 +1201,12 @@ void Test_Memory::ifNext_lat(int exitCode, QProcess::ExitStatus exitStatus)
     }
     else
     {
-        QMessageBox *messagebox = new QMessageBox(this);
-        messagebox->setText(QString("test fail"));
+		/*
+		QMessageBox *messagebox = new QMessageBox(this);
+        messagebox->setText(QString("test fail:%0  %1").arg(exitStatus).arg(exitCode));
         messagebox->exec();
+		*/
+ 
     }
     if(testedSizeNum_lat<testLength_lat.length())
     {
@@ -508,7 +1214,11 @@ void Test_Memory::ifNext_lat(int exitCode, QProcess::ExitStatus exitStatus)
     }
     else
     {
-        btn_lat_begin->setEnabled(true);
-        btn_lat_begin->setText(QString("Begin"));
+		beginflag2 = false;
+        btn_lat_begin->setText(QString("Run"));
     }
+}
+void Test_Memory::reset()
+{
+	scrollarea->verticalScrollBar()->setValue(0);
 }

@@ -1,14 +1,116 @@
 #include "widget_sidetab.h"
 
-Widget_sideTab::Widget_sideTab(QWidget *parent,unsigned int width,unsigned int height,QString title)
+Widget_sideTab::Widget_sideTab(QWidget *parent,QString title)
 {
+	setFont(*font);
     btnStatus=NORMAL;
     mousePress=false;
     choosedflag=false;
-    btnWidth=width;
-    btnHeight=height;
+	setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
+	setText(title);
+	
+	switch (this->logicalDpiY())
+	{
+	case 96:
+	{
+		scaleV = 1;
+		break;
+	}
+	case 120:
+	{
+		scaleV = 1.25;
+		break;
+	}
+	case 144:
+	{
+		scaleV = 1.5;
+		break;
+	}
+	case 168:
+	{
+		scaleV = 1.75;
+		break;
+	}
+	case 192:
+	{
+		scaleV = 2.0;
+		break;
+	}
+	case 216:
+	{
+		scaleV = 2.25;
+		break;
+	}
+	case 240:
+	{
+		scaleV = 2.5;
+		break;
+	}
+	case 288:
+	{
+		scaleV = 3.0;
+		break;
+	}
+	default:
+	{
+		scaleV = 1.0;
+		break;
+	}
+	}
+	switch (this->logicalDpiX())
+	{
+	case 96:
+	{
+		scaleH = 1;
+		break;
+	}
+	case 120:
+	{
+		scaleH = 1.25;
+		break;
+	}
+	case 144:
+	{
+		scaleH = 1.5;
+		break;
+	}
+	case 168:
+	{
+		scaleH = 1.75;
+		break;
+	}
+	case 192:
+	{
+		scaleH = 2.0;
+		break;
+	}
+	case 216:
+	{
+		scaleH = 2.25;
+		break;
+	}
+	case 240:
+	{
+		scaleH = 2.5;
+		break;
+	}
+	case 288:
+	{
+		scaleH = 3.0;
+		break;
+	}
+	default:
+	{
+		scaleH = 1.0;
+		break;
+	}
+	}
+	btnHeight *= scaleV;
+	leftMargin *= scaleH;
+	dotR *= scaleV;
+	setMinimumHeight(btnHeight);
+	//setContentsMargins(2, 2, 2, 2);
     btnTitle=title;
-    setFixedSize(width,height);
 }
 Widget_sideTab::~Widget_sideTab()
 {}
@@ -17,53 +119,82 @@ void Widget_sideTab::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);
-    painter.setPen(Qt::NoPen);
-    QFont font("微软雅黑",10,QFont::Bold);
-    painter.setFont(font);
+    painter.setFont(*font);
+	QRect circleRect = this->rect();
+	circleRect.setX(this->rect().x() + leftMargin);
+	int y = this->rect().y();
+	y = y + this->rect().height() / 2 - dotR;
+	circleRect.setY(y);
+	circleRect.setHeight(dotR*2);
+	circleRect.setWidth(dotR*2);
     switch(btnStatus)
     {
     case NORMAL:
     {
-        brush.setColor(QColor(255,255,255));//background:white
+		painter.setPen(Qt::NoPen);
+        brush.setColor(backgroundColor_normal);//background:white
         painter.setBrush(brush);
         painter.drawRect(this->rect());
-        painter.setPen(QColor(0,0,0));
+		brush.setColor(titleColor_normal);//dot:black
+		painter.setPen(titleColor_normal);//
+		painter.setBrush(brush);
+		painter.drawEllipse(circleRect);
         break;
     }
     case ENTER:
     {
-        brush.setColor(QColor(0,0,0));//background:white
+		painter.setPen(Qt::NoPen);
+        brush.setColor(backgroundColor_enter);//background:black
         painter.setBrush(brush);
         painter.drawRect(this->rect());
-        painter.setPen(QColor(255,255,255));
+		brush.setColor(titleColor_enter);
+		painter.setPen(titleColor_enter);
+		painter.setBrush(brush);
+		painter.drawEllipse(circleRect);
         break;
     }
     case PRESS:
     {
-        brush.setColor(QColor(0,0,0));//background:white
+		painter.setPen(Qt::NoPen);
+        brush.setColor(backgroundColor_choosed);//background:black
         painter.setBrush(brush);
         painter.drawRect(this->rect());
-        painter.setPen(QColor(255,255,255));
+		brush.setColor(titleColor_enter);
+		painter.setPen(titleColor_enter);
+		painter.setBrush(brush);
+		painter.drawEllipse(circleRect);
         break;
     }
     case NOSTATUS:
     {
-        brush.setColor(QColor(255,255,255));//background:white
+		painter.setPen(Qt::NoPen);
+        brush.setColor(backgroundColor_normal);//background:white
         painter.setBrush(brush);
         painter.drawRect(this->rect());
-        painter.setPen(QColor(0,0,0));
+		brush.setColor(titleColor_normal);
+		painter.setPen(titleColor_normal);
+		painter.setBrush(brush);
+		painter.drawEllipse(circleRect);
         break;
     }
     default:
     {
-        brush.setColor(QColor(255,255,255));//background:white
+		painter.setPen(Qt::NoPen);
+        brush.setColor(backgroundColor_normal);//background:white
         painter.setBrush(brush);
         painter.drawRect(this->rect());
-        painter.setPen(QColor(0,0,0));
+		brush.setColor(titleColor_normal);
+		painter.setPen(titleColor_normal);
+		painter.setBrush(brush);
+		painter.drawEllipse(circleRect);
         break;
     }
     }
-    painter.drawText(this->rect(),Qt::AlignCenter,btnTitle);
+	QRect titleRect = this->rect();
+	int x = titleRect.x();
+	x += leftMargin+dotR*2+10;
+	titleRect.setX(x);
+	painter.drawText(titleRect, Qt::AlignVCenter|Qt::AlignLeft, btnTitle,&titleRect);
 }
 void Widget_sideTab::enterEvent(QEvent *event)
 {

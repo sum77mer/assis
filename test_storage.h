@@ -14,11 +14,18 @@
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QPainter>
+#include <QPalette>
 class Test_Storage : public QWidget
 {
     Q_OBJECT
 public:
     Test_Storage(QWidget *parent=0);
+	void initializeUI();
+	void initializeData();
+	void setupLayout();
+	void setConnection();
+	void reset();
 protected:
     void paintEvent(QPaintEvent *event);
 private slots:
@@ -26,24 +33,38 @@ private slots:
     void updateStatus();
     void testFinished(int,QProcess::ExitStatus);
     void updateResult(QString str_test_item,bool rw_flag);
+	void testRandom4k();
+	void test4K64();
+	void testContinuous();
 private:
+	QLabel *title_item = NULL;
+	QLabel *title_read = NULL;
+	QLabel *title_write = NULL;
     QComboBox *combobox_volumn_choose = new QComboBox(this);
 
     QPushButton *btn = new QPushButton(this);
 
-    QCheckBox *checkbox_randomRW = new QCheckBox(this);
-    QCheckBox *checkbox_4K = new QCheckBox(this);
-    QCheckBox *checkbox_continuous = new QCheckBox(this);
+    QPushButton *checkbox_randomRW = new QPushButton(this);
+	QPushButton *checkbox_4K = new QPushButton(this);
+	QPushButton *checkbox_continuous = new QPushButton(this);
 
-    QLabel *label_random_result = new QLabel(this);
-    QLabel *label_4K_result = new QLabel(this);
-    QLabel *label_continuous_result = new QLabel(this);
+    QLabel *label_random_read = new QLabel(this);
+	QLabel *label_random_write = new QLabel(this);
+    QLabel *label_4K_read = new QLabel(this);
+	QLabel *label_4K_write = new QLabel(this);
+    QLabel *label_continuous_read = new QLabel(this);
+	QLabel *label_continuous_write = new QLabel(this);
 
-    QLabel *label_random_live = new QLabel(this);
-    QLabel *label_4K_live = new QLabel(this);
-    QLabel *label_continuous_live = new QLabel(this);
 
     QTimer *timer = new QTimer(this);
+	bool testrandomFlag = false;
+	bool testedrandomFlag = false;
+	bool testthreadFlag = false;
+	bool testedthreadFlag = false;
+	bool testcontinuousFlag = false;
+	bool testedcontinuousFlag = false;
+	unsigned int testItemNum = 0;
+	unsigned int testedItemNum = 0;
 
     bool beginflag = false;
     QProcess *process;

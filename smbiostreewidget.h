@@ -9,8 +9,8 @@
 #include <QString>
 #include <QChar>
 #include <QStringList>
-#include "libheaders/smbioslib.h"
-using namespace SV_ASSIST::DMI_SMBIOS;
+
+
 class smbiostreewidget : public QTreeWidget
 {
     Q_OBJECT

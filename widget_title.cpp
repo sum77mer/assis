@@ -5,10 +5,13 @@
 #include <QSignalMapper>
 #include <QMenu>
 #include <QAction>
-Widget_Title::Widget_Title(QWidget *parent)
+Widget_Title::Widget_Title(double scaleX,double scaleY, QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
-    setFixedSize(900,106);
+	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+	watermarkMarginL *= scaleX;
+	watermarkMarginT *= scaleY;
     //sys button
     close_btn=new Widget_PushButton();
     min_btn=new Widget_PushButton();
@@ -19,6 +22,8 @@ Widget_Title::Widget_Title(QWidget *parent)
     min_btn->setIcon(QString(":/min"));
     config_btn->setIcon(QString(":/feedback"));
     more_btn->setIcon(QString(":/menu"));
+
+	
 
     QMenu *menu = new QMenu();
     helpaction = menu->addAction(QString("Help"));
@@ -31,15 +36,16 @@ Widget_Title::Widget_Title(QWidget *parent)
     connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(helpWindow(QAction *)));
     connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(aboutWindow(QAction *)));
 
-    QHBoxLayout *btnlayout=new QHBoxLayout;
-    btnlayout->addWidget(min_btn);
-    btnlayout->addWidget(config_btn);
-    btnlayout->addWidget(more_btn);
-    btnlayout->addWidget(close_btn);
+	QHBoxLayout *btnlayout=new QHBoxLayout;
+    btnlayout->addWidget(min_btn,0, Qt::AlignRight | Qt::AlignTop);
+    btnlayout->addWidget(config_btn,0, Qt::AlignRight | Qt::AlignTop);
+    btnlayout->addWidget(more_btn, 0, Qt::AlignRight | Qt::AlignTop);
+    btnlayout->addWidget(close_btn, 0, Qt::AlignRight | Qt::AlignTop);
 
     btnlayout->setSpacing(0);
-    btnlayout->setAlignment(Qt::AlignRight|Qt::AlignTop);
+    //btnlayout->setAlignment(Qt::AlignRight|Qt::AlignTop);
     btnlayout->setContentsMargins(0,0,0,0);
+    
 
 
     QHBoxLayout *tablayout = new QHBoxLayout();
@@ -48,11 +54,12 @@ Widget_Title::Widget_Title(QWidget *parent)
     QStringList icon_list;
     title_list<<"硬件助手"<<"软件助手"<<"性能测试";
     icon_list<<":/hard"<<":/soft"<<":/test";
+	Widget_mainTab *tab;
     for(int i=0;i<title_list.size();i++)
     {
-        Widget_mainTab *tab=new Widget_mainTab();
-        tab->setIcon(icon_list.at(i));
-        tab->setText(title_list.at(i));
+        tab=new Widget_mainTab(this,title_list.at(i), icon_list.at(i));
+        //tab->setIcon();
+        //tab->setText(title_list.at(i));
         btnList.append(tab);
         connect(tab,SIGNAL(clicked()),signal_mapper,SLOT(map()));
         signal_mapper->setMapping(tab,QString::number(i,10));
@@ -62,26 +69,47 @@ Widget_Title::Widget_Title(QWidget *parent)
     }
     connect(signal_mapper,SIGNAL(mapped(QString)),this,SLOT(pageChange(QString)));
     tablayout->addStretch();
-    tablayout->setSpacing(10);
-    tablayout->setContentsMargins(100,0,0,0);
+    tablayout->setSpacing(13);
+    tablayout->setContentsMargins(13,0,0,0);
+
+	close_btn->setMinimumSize(QSize(tab->rect().height() / 3.5, tab->rect().height() / 3.5));
+	min_btn->setMinimumSize(QSize(tab->rect().height() / 3.5, tab->rect().height() / 3.5));
+	config_btn->setMinimumSize(tab->rect().height() / 3.5, tab->rect().height() / 3.5);
+	more_btn->setMinimumSize(tab->rect().height() / 3.5, tab->rect().height() / 3.5);
+
+	minimumHeight = min_btn->rect().height() + tab->rect().height()+10;
+	ratio = QPixmap(":/panel").width();
+	ratio = ratio / QPixmap(":/panel").height();
+	setMinimumHeight(minimumHeight);
 
     QGridLayout *layout = new QGridLayout();
-    layout->addLayout(tablayout,1,1,Qt::AlignLeft|Qt::AlignBottom);
-    layout->addLayout(btnlayout,1,1,Qt::AlignRight|Qt::AlignTop);
+    layout->addLayout(tablayout,2,0,Qt::AlignLeft|Qt::AlignBottom);
+    layout->addLayout(btnlayout,0,0,Qt::AlignRight|Qt::AlignTop);
+	layout->setRowMinimumHeight(1, 0);
+	layout->setRowStretch(0, 1);
+	layout->setRowStretch(1, 1);
+	layout->setRowStretch(2, 2);
     layout->setContentsMargins(0,0,0,0);
 
     setLayout(layout);
 }
 void Widget_Title::paintEvent(QPaintEvent *event)
 {
-    QPainter titlepainter(this);
-    titlepainter.drawText(QRect(0,0,100,50),Qt::AlignCenter,tr("SV-ASSIST"));
-    QRectF target(0.0,0.0,900.0,106.0);
-    QRectF source(0.0,0.0,900.0,106.0);
+	QRectF target = this->rect();
+	//target.setHeight(minimumHeight);
     QPixmap pixmap;
     pixmap.load(":/panel");
+	QRectF source = pixmap.rect();
     QPainter painter(this);
     painter.drawPixmap(target,pixmap,source);
+
+	QPainter titlepainter(this);
+	titlepainter.setPen(QColor(Qt::GlobalColor::white));
+	titlepainter.setFont(*watermarkFont);
+	QRect watermarkRect = this->rect();
+	watermarkRect.setX(watermarkMarginL);
+	watermarkRect.setY(watermarkMarginT);
+	titlepainter.drawText(watermarkRect, Qt::AlignLeft| Qt::AlignTop, tr("SV-测试助手"));
 }
 void Widget_Title::pageChange(QString index)
 {

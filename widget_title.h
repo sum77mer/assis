@@ -12,7 +12,7 @@ class Widget_Title : public QWidget
 {
     Q_OBJECT
 public:
-    Widget_Title(QWidget *parent=0);
+    Widget_Title(double scaleH,double scaleV, QWidget *parent=0);
 signals:
     void closeWindow();
     void minimizeWindow();
@@ -35,6 +35,19 @@ private:
     Window_about *windowAbout;
     Window_help *windowHelp;
     Window_config *windowConfig;
+
+	double scaleX = 1;
+	double scaleY = 1;
+	unsigned int minimumHeight;
+	unsigned int minimumWidth;
+	unsigned int titleWidth;
+	unsigned int titleHeight;
+	unsigned int watermarkMarginL=8;
+	unsigned int watermarkMarginT=8;
+
+	double ratio;
+
+	QFont *watermarkFont = new QFont("Arial", 10, QFont::Normal);
 };
 
 #endif // WIDGET_TITLE_H

@@ -28,13 +28,25 @@ protected:
 private:
     void init();
 private:
+	QFrame *frame = NULL;
     Widget_Title *title;
     Page_hard *pageHard;
     Page_soft *pageSoft;
     Page_test *pageTest;
     QStackedWidget *stackWidget;
+	
     bool mousemove;
     QPoint oldPos;
+	QPoint m_windowPoint;
+	int width = 910;
+	int height = 610;
+	
+	int dpiX;
+	int dpiY;
+	double scaleX;
+	double scaleY;
+
+	QFont *normalFont = new QFont("Î¢ÈíÑÅºÚ", 10, QFont::Normal);
 };
 
 #endif // DIALOG_H

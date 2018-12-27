@@ -2,7 +2,14 @@ debug
 img
 oldfile
 release
-
+*.txt
+*.pdb
+*.exp
+*.ilk
+*.db
+*.Debug
+*.opendb
+*.png
 
 # Prerequisites
 *.d

@@ -49,7 +49,8 @@ void Window_IOIndex::done()
     QRegExp regexp("[0-9a-fA-F]+");
     if(regexp.exactMatch(str_index)&&regexp.exactMatch(str_data))
     {
-        emit send_input(str_index.toInt(),str_data.toInt());
+		bool ok;
+        emit send_input(str_index.toInt(&ok,16),str_data.toInt(&ok,16));
     }
     else
     {

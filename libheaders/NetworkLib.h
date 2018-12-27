@@ -1,12 +1,22 @@
 #pragma once
-
-#include <vector>
-#include <string>
+/*************************************************
+Copyright: 2017 Zhaoxin BJ-SV
+Author:王硕
+Date:2017-12-13
+Description: 获取Net Card的信息
+**************************************************/
 
 namespace SV_ASSIST
 {
 	namespace Net
 	{
+		struct NetStruct
+		{
+			std::wstring DeviceName;
+			std::wstring state;
+			std::wstring MediaType;
+			std::wstring Name;
+		};
 		/**************************************************************
 		*@Function				Exec
 		*@brief					获取网卡信息
@@ -36,6 +46,6 @@ namespace SV_ASSIST
 		*@return
 			*@std::vector<std::wstring>	网卡名		
 		****************************************************************/
-		const std::vector<std::wstring>& GetData();
+		const std::vector<NetStruct>& GetData();
 	}
 }

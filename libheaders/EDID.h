@@ -1,45 +1,60 @@
 #include "EDIDdefination.h"
 
+/*************************************************
+Copyright: 2017 Zhaoxin BJ-SV
+Author:王硕
+Date:2017-12-13
+Description: 获取EDID的信息
+**************************************************/
+
+
 namespace SV_ASSIST
 {
 	namespace Display
 	{
 		/**************************************************************
-		*@Function				GetEDID
-		*@brief					获取EDID原始信息
+		*@Function				GetMonitorName
+		*@brief					获得Mointor名称
 		*@author				王硕
 		*@param
-			*@Num				第几个显示器的EDID
 		*@return
-			*@EDID				EDID原始信息	
+			*@string			Mointor的名称(制造商+型号)
 		****************************************************************/
-		const EDID& GetEDID(const UINT Num);
+		const std::string GetMonitorName();
 
 		/**************************************************************
-		*@Function				Exec
-		*@brief					获取EDID信息
+		*@Function				GetEDID
+		*@brief					获得EDID的值
+		*@author				王硕
+		*@param
+		*@return
+			*@EDID				EDID未解析的值
+		****************************************************************/
+		const std::vector<EDID>& GetEDID();
+
+		/**************************************************************
+		*@Function				outputfile
+		*@brief					将EDID解析后信息输出到文件中
 		*@author				王硕
 		*@param
 			*@null
 		*@return
 			*@null	
 		*@Other					
-								将解析后数据保存到文件中	
+								生成文件\\HardWare\\EDID\\edid%d.txt	
 		****************************************************************/
-		
-		void Exec();
+		void outputfile();
 
 		/**************************************************************
-		*@Function				GetEDIDNum
-		*@brief					获取显示器的数量
+		*@Function				UpdateData
+		*@brief					更新EDID值
 		*@author				王硕
 		*@param
 			*@null
 		*@return
-			*@DWORD				显示器数量
+			*@null				更新EDID 调用Exec前需调用本函数
 		****************************************************************/
-
-		const DWORD GetEDIDNum();
+		void UpdateData();
 	}
 }
 

@@ -24,13 +24,15 @@
 #include <QHeaderView>
 #include <QRegExp>
 #include <QMessageBox>
-#include "libheaders/CPU.h"
-using namespace SV_ASSIST::CPU;
+#include "getData.h"
+
 class Hard_CPU : public QWidget
 {
     Q_OBJECT
 public:
     Hard_CPU(QWidget *parent=0);
+	void updateData();
+	void reset();
 private slots:
     void cpuChoose(int index);
     void cpuidRead();
@@ -45,107 +47,183 @@ private slots:
     void msrtabledelete();
 protected:
     void paintEvent(QPaintEvent *event);
+	void initializeUI();
+	void setupLayout();
+	void initializeData();
+	void setConnection();
 
 private:
+	GetData data;
+	GetData::CPU_Information *cpuInfo;
+	unsigned int cpuid_default_eax = 0x80000002;
+	unsigned int cpuid_default_ecx = 0;
+	unsigned int msr_default_ecx = 0x250;
 
-    char processorID_info[1024] = {};
+	QTabWidget *tabwidget = NULL;
+	QWidget *pagecpu = NULL;
+	QWidget *pagemsr = NULL;
+	QWidget *pagecpuid = NULL;
+	QWidget *pagecache = NULL;
+	//page1 CPU
+	QLabel *title_cpuManufacture = NULL;
+	QLabel *value_cpuManufacture = NULL;
 
-    QString manufacturer_info;
-    QString socketdesignation_info;
-    short family_info = 0;
-    short model_info = 0;
-    short stepping_info = 0;
-    short extfamily_info = 0;
-    short extmodel_info = 0;
-    unsigned int revision_info = 0;
-    QString cpuname_info;
+	QLabel *title_codeName = NULL;
+	QLabel *value_codeName = NULL;
 
-    unsigned int currentclockspeed_info = 0;
-    unsigned int extclock_info = 0;
-    unsigned int multiplier = 0;
-    unsigned int maxclockspeed_info = 0;
+	QLabel *title_socketDesignation = NULL;
+	QLabel *value_socketDesignation = NULL;
 
-    unsigned int core_info = 0;
-    unsigned int thread_info = 0;
-    QStringList cpuNum_list;
+	QLabel *title_family = NULL;
+	QLabel *value_family = NULL;
 
-    CPUFeature cpufeature_info = {};
-    QString instructionset_info = "";
-    const Cache_info* cache_info = GetCache();
-    Cache_info cache1I;
-    Cache_info cache1D;
-    Cache_info cache2;
-    Cache_info cache3;
+	QLabel *title_model = NULL;
+	QLabel *value_model = NULL;
 
-    QLabel *label_cpu_name =  new QLabel(this);
-    QLabel *label_cpu_code_name = new QLabel(this);
-    QLabel *label_max_TDP = new QLabel(this);
-    //QLabel *label_package = new QLabel(this);
-    //QLabel *label_technology = new QLabel(this);
-    //QLabel *label_core_VID = new QLabel(this);
-    QLabel *label_specification = new QLabel(this);
-    QLabel *label_family = new QLabel(this);
-    QLabel *label_model = new QLabel(this);
-    QLabel *label_stepping = new QLabel(this);
-    QLabel *label_ext_family = new QLabel(this);
-    QLabel *label_ext_model = new QLabel(this);
-    QLabel *label_revision = new QLabel(this);
-    QTextEdit *label_instructions = new QTextEdit(this);
+	QLabel *title_stepping = NULL;
+	QLabel *value_stepping = NULL;
 
-    QLabel *label_core_speed = new QLabel(this);
-    QLabel *label_multiplier = new QLabel(this);
-    QLabel *label_bus_speed = new QLabel(this);
-    QLabel *label_rated_FSB = new QLabel(this);
+	QLabel *title_extFamily = NULL;
+	QLabel *value_extFamily = NULL;
 
-    QLabel *label_L1_data_size1 = new QLabel(this);
-    QLabel *label_L1_data_way = new QLabel(this);
-    QLabel *label_L1_inst_size1 = new QLabel(this);
-    QLabel *label_L1_inst_way = new QLabel(this);
-    QLabel *label_L2_size1 = new QLabel(this);
-    QLabel *label_L2_way = new QLabel(this);
-    QLabel *label_L3_size1 = new QLabel(this);
-    QLabel *label_L3_way = new QLabel(this);
+	QLabel *title_extModel = NULL;
+	QLabel *value_extModel = NULL;
 
-    QLabel *label_cores =  new QLabel(this);
-    QLabel *label_threads = new QLabel(this);
+	QLabel *title_revision = NULL;
+	QLabel *value_revision = NULL;
 
-    QLabel *label_L1_data_size2 = new QLabel(this);
-    QLabel *label_L1_data_way2 = new QLabel(this);
-    QLabel *label_L1_data_description = new QLabel(this);
-    QLabel *label_L1_inst_size2 = new QLabel(this);
-    QLabel *label_L1_inst_way2 = new QLabel(this);
-    QLabel *label_L1_inst_description = new QLabel(this);
-    QLabel *label_L2_size2 = new QLabel(this);
-    QLabel *label_L2_way2 = new QLabel(this);
-    QLabel *label_L2_description = new QLabel(this);
-    QLabel *label_L3_size2 = new QLabel(this);
-    QLabel *label_L3_way2 = new QLabel(this);
-    QLabel *label_L3_description = new QLabel(this);
+	QLabel *title_technology = NULL;
+	QLabel *value_technology = NULL;
 
-    //page 3 cpuid
-    QLineEdit *lineedit_cpuid_input_eax = new QLineEdit(this);
-    QLineEdit *lineedit_cpuid_input_ecx = new QLineEdit(this);
-    QLineEdit *lineedit_cpuid_output_eax = new QLineEdit(this);
-    QLineEdit *lineedit_cpuid_output_ebx = new QLineEdit(this);
-    QLineEdit *lineedit_cpuid_output_ecx = new QLineEdit(this);
-    QLineEdit *lineedit_cpuid_output_edx = new QLineEdit(this);
+	QLabel *title_cpuName = NULL;
+	QLabel *value_cpuName = NULL;
 
-    QCheckBox *checkbox_cpuid_cpu1 = new QCheckBox(this);
-    QCheckBox *checkbox_cpuid_cpu2 = new QCheckBox(this);
-    QCheckBox *checkbox_cpuid_cpu3 = new QCheckBox(this);
-    QCheckBox *checkbox_cpuid_cpu4 = new QCheckBox(this);
+	QLabel *title_instructionSets = NULL;
+	QLabel *value_instructionSets = NULL;
+
+	QLabel *title_southbridge = NULL;
+	QLabel *value_southbridge = NULL;
+
+	QLabel *title_maxTDP = NULL;
+	QLabel *value_maxTDP = NULL;
+
+	QLabel *title_packageTemperature = NULL;
+	QLabel *value_packageTemperature = NULL;
+
+	QLabel *title_temperature = NULL;
+	QLabel *value_temperature = NULL;
+
+	QLabel *title_coreSpeed = NULL;
+	QLabel *value_coreSpeed = NULL;
+
+	QLabel *title_multiplier = NULL;
+	QLabel *value_multiplier = NULL;
+
+	QLabel *title_extSpeed = NULL;
+	QLabel *value_extSpeed = NULL;
+
+	QLabel *title_maxSpeed = NULL;
+	QLabel *value_maxSpeed = NULL;
+
+	QLabel *title_L1D = NULL;
+	QLabel *value_L1Dsize = NULL;
+	QLabel *value_L1Dway = NULL;
+
+	QLabel *title_L1I = NULL;
+	QLabel *value_L1Isize = NULL;
+	QLabel *value_L1Iway = NULL;
+
+	QLabel *title_L2 = NULL;
+	QLabel *value_L2size = NULL;
+	QLabel *value_L2way = NULL;
+
+	QLabel *title_L3 = NULL;
+	QLabel *value_L3size = NULL;
+	QLabel *value_L3way = NULL;
+
+	QLabel *title_cpuSelected = NULL;
+	QComboBox *value_cpuSelected = NULL;
+	
+	QLabel *title_cores = NULL;
+	QLabel *value_cores = NULL;
+
+	QLabel *title_threads = NULL;
+	QLabel *value_threads = NULL;
+
+	//page2 Cache
+	QLabel *title_L1D_page2 = NULL;
+	QLabel *value_L1D_size_page2 = NULL;
+	QLabel *value_L1D_ways_page2 = NULL;
+	QLabel *title_L1D_descriptor = NULL;
+	QLabel *value_L1D_descriptor = NULL;
+
+	QLabel *title_L1I_page2 = NULL;
+	QLabel *value_L1I_size_page2 = NULL;
+	QLabel *value_L1I_ways_page2 = NULL;
+	QLabel *title_L1I_descriptor = NULL;
+	QLabel *value_L1I_descriptor = NULL;
+
+	QLabel *title_L2_page2 = NULL;
+	QLabel *value_L2_size_page2 = NULL;
+	QLabel *value_L2_ways_page2 = NULL;
+	QLabel *title_L2_descriptor = NULL;
+	QLabel *value_L2_descriptor = NULL;
+
+	QLabel *title_L3_page2 = NULL;
+	QLabel *value_L3_size_page2 = NULL;
+	QLabel *value_L3_ways_page2 = NULL;
+	QLabel *title_L3_descriptor = NULL;
+	QLabel *value_L3_descriptor = NULL;
+
+    //page 3 CPUID
+	QCheckBox *cpuid_checkCPU1 = NULL;
+	QCheckBox *cpuid_checkCPU2 = NULL;
+	QCheckBox *cpuid_checkCPU3 = NULL;
+	QCheckBox *cpuid_checkCPU4 = NULL;
+
+	QLabel *title_cpuid_inputEAX = NULL;
+	QLabel *title_cpuid_inputECX = NULL;
+	QLabel *title_cpuid_outputEAX = NULL;
+	QLabel *title_cpuid_outputEBX = NULL;
+	QLabel *title_cpuid_outputECX = NULL;
+	QLabel *title_cpuid_outputEDX = NULL;
+
+	QLineEdit *cpuid_input_eax = NULL;
+	QLineEdit *cpuid_input_ecx = NULL;
+	QLineEdit *cpuid_output_eax = NULL;
+	QLineEdit *cpuid_output_ebx = NULL;
+	QLineEdit *cpuid_output_ecx = NULL;
+	QLineEdit *cpuid_output_edx = NULL;
+
+	QPushButton *cpuid_readBtn = NULL;
+	QPushButton *cpuid_fixBtn = NULL;
+	QPushButton *cpuid_deleteBtn = NULL;
+
+	QTableView *cpuid_table = NULL;
+
     QStandardItemModel *cpuidmodel = new QStandardItemModel();
     int removecpuidRow = 0;
 
-    //page4 msr
-    QCheckBox *checkbox_msr_cpu1 = new QCheckBox(this);
-    QCheckBox *checkbox_msr_cpu2 = new QCheckBox(this);
-    QCheckBox *checkbox_msr_cpu3 = new QCheckBox(this);
-    QCheckBox *checkbox_msr_cpu4 = new QCheckBox(this);
+    //page4 MSR
+    QCheckBox *msr_checkCPU1 = NULL;
+	QCheckBox *msr_checkCPU2 = NULL;
+	QCheckBox *msr_checkCPU3 = NULL;
+	QCheckBox *msr_checkCPU4 = NULL;
 
-    QLineEdit *lineedit_msr_ecx = new QLineEdit(this);
-    QLineEdit *lineedit_msr_eax = new QLineEdit(this);
-    QLineEdit *lineedit_msr_edx = new QLineEdit(this);
+	QLabel *title_msrECX = NULL;
+	QLabel *title_msrEAX = NULL;
+	QLabel *title_msrEDX = NULL;
+
+    QLineEdit *msr_ecx = NULL;
+    QLineEdit *msr_eax = NULL;
+    QLineEdit *msr_edx = NULL;
+
+	QPushButton *msr_readBtn = NULL;
+	QPushButton *msr_writeBtn = NULL;
+	QPushButton *msr_fixBtn = NULL;
+	QPushButton *msr_deleteBtn = NULL;
+
+	QTableView *msr_table = NULL;
 
     QStandardItemModel *msrmodel = new QStandardItemModel();
     int removemsrRow = 0;

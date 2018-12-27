@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QLabel>
+#include <QTextEdit>
 #include <QTreeView>
 #include <QStandardItem>
 #include <QStandardItemModel>
@@ -15,7 +16,7 @@ class Widget_TreeBrowser : public QWidget
 {
     Q_OBJECT
 public:
-    Widget_TreeBrowser(QWidget *parent = 0,QStandardItemModel *model = 0,int width = 300,int height = 500);
+	Widget_TreeBrowser(QWidget *parent = 0, QStandardItemModel *model = new QStandardItemModel(), const QStringList &valueList = {"default"});
     void updateData(QStandardItemModel *model = 0);
 protected slots:
     void changeText(QModelIndex index);
@@ -25,9 +26,10 @@ private:
     unsigned int treewidth;
     unsigned int treeheight;
     QStringList stringlist;
-    QLabel *label;
+    QTextEdit *label;
     QString string;
     QStandardItemModel *modelData;
+
 };
 
 #endif // WIDGET_TREEBROWSER_H

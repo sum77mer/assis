@@ -1,5 +1,6 @@
 #include "smbiostreewidget.h"
-
+#include "libheaders/smbioslib.h"
+using namespace SV_ASSIST::DMI_SMBIOS;
 smbiostreewidget::smbiostreewidget(QWidget *parent) : QTreeWidget(parent), father(new QTreeWidgetItem(this, QStringList(tr("SMBIOS"))))
 {
     this->setHeaderHidden(true);
@@ -8,7 +9,7 @@ smbiostreewidget::smbiostreewidget(QWidget *parent) : QTreeWidget(parent), fathe
 void smbiostreewidget::UpdateData()
 {
     SV_ASSIST::DMI_SMBIOS::Updatesmbios();
-    QFile file("J:/00_qt_code/build-untitled-Qt_5_11_0_msvc2015_x86-Debug/debug/HardWare/DMI/smbios.txt");
+    QFile file("./HardWare/DMI/smbios.txt");
     if(!file.open(QFile::ReadOnly | QFile::Text))
     {
         qDebug() << "Can not open smbios.txt";

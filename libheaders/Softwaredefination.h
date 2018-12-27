@@ -1,4 +1,5 @@
-#pragma once
+﻿#pragma once
+#include <Taskschd.h>
 
 enum SV_SERVICE_STATUS
 {

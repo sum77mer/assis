@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="getdata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_board.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_cpu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_gfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_net.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_other.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_pci.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hard_zhxx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="myshadow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_hard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_soft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="page_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="soft_autoboot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="soft_config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="soft_service.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="soft_taskscheduler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="soft_transmission.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="soft_zhxx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_cpu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_maintab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_pushbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_sidetab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_sidetabgroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_title.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_treebrowser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_about.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_help.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_iobase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_ioindex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_memoryaddress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_memorytest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_sio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="usbtestbrowser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="usbtreewidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIDATA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libheaders\ACPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\ACPI_Defination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\CAudio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\CPU.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\CPUlibdefination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="driverheaders\Driverdll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\EDID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\EDIDdefination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\Igpu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\Iusb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\NetworkLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="driverheaders\Ring0Defination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\SV-SoftWare.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\SV_Hardware.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\Softwaredefination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\UsbDefination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\defination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="dialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="libheaders\diskdefination.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="getdata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libheaders\gpu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="hard_board.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="hard_cpu.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="hard_gfx.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="hard_memory.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="hard_net.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="hard_other.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="hard_pci.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="hard_storage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="hard_zhxx.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="myshadow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="page_hard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="page_soft.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="page_test.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="libheaders\smbioslib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="soft_autoboot.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="soft_config.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="soft_service.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="soft_taskscheduler.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="soft_transmission.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="soft_zhxx.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="test_cpu.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="test_memory.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="test_storage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_maintab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_pushbutton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_sidetab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_sidetabgroup.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_title.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_treebrowser.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="window_about.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="window_config.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="window_help.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="window_iobase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="window_ioindex.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="window_memoryaddress.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="window_memorytest.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="window_sio.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="UIdata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\bluebtn.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\close\close_hover.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\close\close_normal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\close\close_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\feedback\feedback_hover.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\feedback\feedback_normal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\feedback\feedback_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\greenbtn.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\hard.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\icon.PNG">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\intel.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\menu\menu_hover.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\menu\menu_normal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\menu\menu_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\min\min_hover.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\min\min_normal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\min\min_pressed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\panel.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="img\soft.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\test.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\treeview.png">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\appicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="usbtestbrowser.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="usbtreewidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+</Project>

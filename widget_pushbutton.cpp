@@ -47,7 +47,8 @@ void Widget_PushButton::paintEvent(QPaintEvent *)
             pixmap.load(iconName);
         }
     }
-    painter.drawPixmap(this->rect(),pixmap);
+	QRect source = pixmap.rect();
+    painter.drawPixmap(this->rect(),pixmap,source);
 }
 void Widget_PushButton::mousePressEvent(QMouseEvent *e)
 {

@@ -10,6 +10,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = SV-ASSIST
 TEMPLATE = app
 
+RC_FILE = icon.rc
+
+QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -64,8 +68,13 @@ SOURCES += \
     window_ioindex.cpp \
     window_sio.cpp \
     window_memoryaddress.cpp \
-    smbiostextbrowser.cpp \
-    smbiostreewidget.cpp
+    soft_service.cpp \
+    soft_autoboot.cpp \
+    soft_taskscheduler.cpp \
+    soft_transmission.cpp \
+    getdata.cpp \
+    window_memorytest.cpp \
+    myshadow.cpp
 
 HEADERS += \
         dialog.h \
@@ -74,6 +83,7 @@ HEADERS += \
     widget_sidetab.h \
     widget_sidetabgroup.h \
     widget_title.h \
+    widget_treebrowser.h \
     page_hard.h \
     page_soft.h \
     page_test.h \
@@ -88,32 +98,45 @@ HEADERS += \
     hard_other.h \
     soft_zhxx.h \
     soft_config.h \
+    soft_service.h \
+    soft_autoboot.h \
+    soft_taskscheduler.h \
+    soft_transmission.h \
     test_memory.h \
     test_storage.h \
+    test_cpu.h \
     window_about.h \
     window_config.h \
     window_help.h \
-    test_cpu.h \
-    widget_treebrowser.h \
     window_iobase.h \
     window_ioindex.h \
     window_sio.h \
     window_memoryaddress.h \
+    driverheaders/Driverdll.h \
+    driverheaders/Ring0Defination.h \
+    libheaders/ACPI_Defination.h\
+    libheaders/ACPI.h\
+    libheaders/CAudio.h \
     libheaders/CPU.h \
     libheaders/CPUlibdefination.h \
+    libheaders/defination.h \
     libheaders/diskdefination.h \
     libheaders/EDID.h \
     libheaders/EDIDdefination.h \
     libheaders/gpu.h \
+    libheaders/Igpu.h \
     libheaders/Iusb.h \
     libheaders/NetworkLib.h \
     libheaders/smbioslib.h \
     libheaders/Softwaredefination.h \
     libheaders/SV-SoftWare.h \
+    libheaders/SV_Hardware.h\
     libheaders/UsbDefination.h \
-    smbiostextbrowser.h \
-    smbiostreewidget.h
-QMAKE_LFLAGS += /MANIFESTUAC:"level='requireAdministrator'uiAccess='false'"
+    getdata.h \
+    window_memorytest.h \
+    myshadow.h
+
+
 RESOURCES += \
     resource.qrc
 
@@ -124,3 +147,11 @@ DEPENDPATH += $$PWD/.
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/lib/sv-assistant.lib
 #else:win32-g++: PRE_TARGETDEPS += $$PWD/lib/libsv-assistant.a
+
+win32: LIBS += -L$$PWD/lib/ -lSV-SoftWare
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/lib/SV-SoftWare.lib
+#else:win32-g++: PRE_TARGETDEPS += $$PWD/lib/libSV-SoftWare.a

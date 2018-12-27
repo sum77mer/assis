@@ -8,10 +8,10 @@ class Widget_mainTab : public QPushButton
 {
     Q_OBJECT
 public:
-    Widget_mainTab(QWidget *parent=0);
+    Widget_mainTab(QWidget *parent=0,QString title = "default",QString iconname = "default");
     ~Widget_mainTab();
     void setIcon(QString icon_name);
-    void setText(const QString text);
+   // void setText(const QString text);
     void setMousePress(bool mouse_press);
 protected:
     void paintEvent(QPaintEvent *event);
@@ -22,12 +22,20 @@ protected:
 private:
     QString iconName;
     QString btnTitle;
+	double scaleH;
+	double scaleV;
     unsigned int btnWidth;
     unsigned int btnHeight;
+	unsigned int titleWidth;
+	unsigned int titleHeight;
+	unsigned int iconWidth;
+	unsigned int iconHeight;
     enum Status{NORMAL, ENTER, PRESS, NOSTATUS};
     Status btnStatus;
     bool mousePress;
     bool choosed;
+
+	QFont *font = new QFont("Î¢ÈíÑÅºÚ", 10, QFont::Normal);
 };
 
 #endif // WIDGET_MAINTAB_H

@@ -26,6 +26,7 @@ private:
 
     unsigned int address;
     bool ACPI_flag = false;
+
 };
 
 #endif // WINDOW_IOBASE_H

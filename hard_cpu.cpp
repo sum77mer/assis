@@ -1,973 +1,963 @@
 #include "hard_cpu.h"
+#include "UIdata.h"
+#include <QTextCodec>
 Hard_CPU::Hard_CPU(QWidget *parent)
 {
-    setFixedSize(800,594);
-    setWindowFlags(Qt::FramelessWindowHint);
-//page1 cpu content
-
-
-    QString processorID = QString().fromStdString(GetProcessorID());
-    socketdesignation_info = QString().fromStdString(GetSocketDesignation());
-
-    unsigned int core = GetCore();
-    unsigned int thread = GetThread();
-    unsigned int upgrademethod = GetUpgradeMethod();
-
-    qDebug()<<"processorID:"<<processorID
-         <<" core:"<<core
-        <<" thread:"<<thread
-       <<" upgrademethod:"<<upgrademethod;
-
-    manufacturer_info = QString().fromStdString(GetManufacturer());
-    family_info = GetFamily();
-    model_info = GetModel();
-    stepping_info = GetStepping();
-    extfamily_info = GetExtFamily();
-    extmodel_info = GetExtModel();
-    cpuname_info = QString().fromStdString(GetCPUName());
-    cpufeature_info = GetFeature();
-
-    currentclockspeed_info = GetCurrentClockSpeed();
-    extclock_info = GetExtClock();
-    multiplier = currentclockspeed_info/extclock_info;
-    maxclockspeed_info = GetMaxClockSpeed();
-
-    core_info = GetCore();
-    thread_info = GetThread();
-
-    QLabel *label1 = new QLabel(this);
-    label1->setFrameStyle(QFrame::NoFrame);
-    label1->setText(QString("Manufacturer"));
-
-    label_cpu_name->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_cpu_name->setText(manufacturer_info);
-    label_cpu_name->setFixedSize(50,20);
-
-    QLabel *label2 = new QLabel(this);
-    label2->setFrameStyle(QFrame::NoFrame);
-    label2->setText(QString("Code Name"));
-
-    label_cpu_code_name->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_cpu_code_name->setText(QString("default"));
-    label_cpu_code_name->setFixedSize(50,20);
-
-    QLabel *label3 = new QLabel(this);
-    label3->setFrameStyle(QFrame::NoFrame);
-    label3->setText(QString("Socket Designation"));
-
-    label_max_TDP->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_max_TDP->setText(socketdesignation_info);
-    label_max_TDP->setFixedSize(50,20);
-
-    //QLabel *label4 = new QLabel(this);
-    //label4->setFrameStyle(QFrame::NoFrame);
-    //label4->setText(QString("Package"));
-
-    //label_package->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    //label_package->setText(QStringLiteral("xxxxx"));
-    //label_package->setFixedSize(50,20);
-
-    //QLabel *label5 = new QLabel(this);
-    //label5->setFrameStyle(QFrame::NoFrame);
-    //label5->setText(QString("Technology"));
-
-    //label_technology->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    //label_technology->setText(QStringLiteral("default"));
-    //label_technology->setFixedSize(50,20);
-
-    //QLabel *label6 = new QLabel(this);
-    //label6->setFrameStyle(QFrame::NoFrame);
-    //label6->setText(QString("Core VID"));
-
-    //label_core_VID->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    //label_core_VID->setText(QStringLiteral("default"));
-    //label_core_VID->setFixedSize(50,20);
-
-    QLabel *label7 = new QLabel(this);
-    label7->setFrameStyle(QFrame::NoFrame);
-    label7->setText(QString("Family"));
-
-    label_family->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_family->setText(QString("%0").arg(family_info));
-    label_family->setFixedSize(50,20);
-
-    QLabel *label8 = new QLabel(this);
-    label8->setFrameStyle(QFrame::NoFrame);
-    label8->setText(QString("Model"));
-
-    label_model->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_model->setText(QString("%0").arg(model_info));
-    label_model->setFixedSize(50,20);
-
-    QLabel *label9 = new QLabel(this);
-    label9->setFrameStyle(QFrame::NoFrame);
-    label9->setText(QString("Stepping"));
-
-    label_stepping->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_stepping->setText(QString("%0").arg(stepping_info));
-    label_stepping->setFixedSize(50,20);
-
-    QLabel *label10 = new QLabel(this);
-    label10->setFrameStyle(QFrame::NoFrame);
-    label10->setText(QString("Ext Family"));
-
-    label_ext_family->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_ext_family->setText(QString("%0").arg(extfamily_info));
-    label_ext_family->setFixedSize(50,20);
-
-    QLabel *label11 = new QLabel(this);
-    label11->setFrameStyle(QFrame::NoFrame);
-    label11->setText(QString("Ext Model"));
-
-    label_ext_model->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_ext_model->setText(QString("%0").arg(extmodel_info));
-    label_ext_model->setFixedSize(50,20);
-
-    QLabel *label12 = new QLabel(this);
-    label12->setFrameStyle(QFrame::NoFrame);
-    label12->setText(QString("Revision"));
-
-    label_revision->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_revision->setText(QString("default"));//QString("%0").arg(revision_info)
-    label_revision->setFixedSize(50,20);
-
-    QLabel *label13 = new QLabel(this);
-    label13->setFrameStyle(QFrame::NoFrame);
-    label13->setText(QString("Specification"));
-    QLineEdit *lineedit1 = new QLineEdit(this);
-    lineedit1->setReadOnly(true);
-    lineedit1->setFrame(false);
-    label_specification->setBuddy(lineedit1);
-    label_specification->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_specification->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
-    label_specification->setMaximumHeight(30);
-    label_specification->setMinimumWidth(300);
-    label_specification->setText(cpuname_info);
-/*
-    switch(manufacturer_info)
-    {
-    case:
-    {
-        break;
-    }
-    case:
-    {
-        break;
-    }
-    case:
-    {
-        break;
-    }
-    default:
-    {
-        break;
-    }
-    }
-*/
-    if(manufacturer_info.contains("GenuineIntel"))
-    {
-        if(cpufeature_info.IntelFeature.SSE3)
-            instructionset_info+="SSE3 ";
-        if(cpufeature_info.IntelFeature.PCLMULQDQ)
-            instructionset_info+="PCLMULQDQ ";
-        if(cpufeature_info.IntelFeature.DTES64)
-            instructionset_info+="DTES64 ";
-        if(cpufeature_info.IntelFeature.MONITOR)
-            instructionset_info+="MONITOE ";
-        if(cpufeature_info.IntelFeature.DS_CPL)
-            instructionset_info+="DS_CPL ";
-        if(cpufeature_info.IntelFeature.VMX)
-            instructionset_info+="VMX ";
-        if(cpufeature_info.IntelFeature.SMX)
-            instructionset_info+="SMX ";
-        if(cpufeature_info.IntelFeature.EIST)
-            instructionset_info+="EIST ";
-        if(cpufeature_info.IntelFeature.TM2)
-            instructionset_info+="TM2 ";
-        if(cpufeature_info.IntelFeature.SSSE3)
-            instructionset_info+="SSSE3 ";
-        if(cpufeature_info.IntelFeature.CNXT_ID)
-            instructionset_info+="CNXT_ID ";
-        if(cpufeature_info.IntelFeature.SDBG)
-            instructionset_info+="SDBG ";
-        if(cpufeature_info.IntelFeature.FMA)
-            instructionset_info+="FMA ";
-        if(cpufeature_info.IntelFeature.CMPXCHG16B)
-            instructionset_info+="CMPXCHG16B ";
-        if(cpufeature_info.IntelFeature.xTPR_Update_Control)
-            instructionset_info+="xTPR_Update_Control ";
-        if(cpufeature_info.IntelFeature.PDCM)
-            instructionset_info+="PDCM ";
-        if(cpufeature_info.IntelFeature.PCID)
-            instructionset_info+="PCID ";
-        if(cpufeature_info.IntelFeature.DCA)
-            instructionset_info+="DCA ";
-        if(cpufeature_info.IntelFeature.SSE4_1)
-            instructionset_info+="SSE4_1 ";
-        if(cpufeature_info.IntelFeature.SSE4_2)
-            instructionset_info+="SSE4_2 ";
-        if(cpufeature_info.IntelFeature.x2APIC)
-            instructionset_info+="x2APIC ";
-        if(cpufeature_info.IntelFeature.MOVBE)
-            instructionset_info+="MOVBE ";
-        if(cpufeature_info.IntelFeature.POPCNT)
-            instructionset_info+="POPCNT ";
-        if(cpufeature_info.IntelFeature.TSC_Deadline)
-            instructionset_info+="TSC_Deadline ";
-        if(cpufeature_info.IntelFeature.AESNI)
-            instructionset_info+="AESNI ";
-        if(cpufeature_info.IntelFeature.XSAVE)
-            instructionset_info+="XSAVE ";
-        if(cpufeature_info.IntelFeature.OSXSAVE)
-            instructionset_info+="OSXSAVE ";
-        if(cpufeature_info.IntelFeature.AVX)
-            instructionset_info+="AVX ";
-        if(cpufeature_info.IntelFeature.F16C)
-            instructionset_info+="F16C ";
-        if(cpufeature_info.IntelFeature.RDRAND)
-            instructionset_info+="RDRAND";
-    }
-    else if(manufacturer_info =="")
-    {}
-    else if(manufacturer_info =="")
-    {}
-
-
-    QLabel *label14 = new QLabel(this);
-    label14->setFrameStyle(QFrame::NoFrame);
-    label14->setText(QString("Instructions"));
-    label14->adjustSize();
-    label_instructions->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_instructions->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
-    label_instructions->setReadOnly(true);
-    label_instructions->setText(instructionset_info);
-
-
-    //content  clock
-    QLabel *label15 = new QLabel(this);
-    label15->setFrameStyle(QFrame::NoFrame);
-    label15->setText(QString("Core Speed"));
-    label_core_speed->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_core_speed->setText(QString("%0").arg(currentclockspeed_info));
-    label_core_speed->setFixedSize(50,20);
-
-    QLabel *label16 = new QLabel(this);
-    label16->setFrameStyle(QFrame::NoFrame);
-    label16->setText(QString("Multiplier"));
-    label_multiplier->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_multiplier->setText(QString("%0").arg(multiplier));//QString("%0").arg(currentclockspeed_info/extclock_info)
-    label_multiplier->setFixedSize(50,20);
-
-    QLabel *label17 = new QLabel(this);
-    label17->setFrameStyle(QFrame::NoFrame);
-    label17->setText(QString("Ext Speed"));
-    label_bus_speed->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_bus_speed->setText(QString("%0").arg(extclock_info));
-    label_bus_speed->setFixedSize(50,20);
-
-    QLabel *label18 = new QLabel(this);
-    label18->setFrameStyle(QFrame::NoFrame);
-    label18->setText(QString("Max speed"));
-    label_rated_FSB->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_rated_FSB->setText(QString("%0").arg(maxclockspeed_info));
-    label_rated_FSB->setFixedSize(50,20);
-
-    //content cache
-    for(unsigned int i=0;i<4;i++)
-    {
-        Cache_info cache_temp = *(cache_info+i);
-        if(cache_temp.Cache_level == 1)
-        {
-            if(cache_temp.Cache_type == 'D')
-            {
-                cache1D = cache_temp;
-            }
-            else if(cache_temp.Cache_type == 'T')
-            {
-                cache1I = cache_temp;
-            }
-        }
-        else if(cache_temp.Cache_level == 2)
-        {
-            cache2 = cache_temp;
-        }
-        else if(cache_temp.Cache_level == 3)
-        {
-            cache3 = cache_temp;
-        }
-    }
-    cache1I.Cache_Size = cache1I.Cache_Size/1024;
-    cache1D.Cache_Size = cache1D.Cache_Size/1024;
-    cache2.Cache_Size = cache2.Cache_Size/1024;
-    cache3.Cache_Size = cache3.Cache_Size/1024/1024;
-    QLabel *label19 = new QLabel(this);
-    label19->setFrameStyle(QFrame::NoFrame);
-    label19->setText(QString("L1 Data"));
-
-    label_L1_data_size1->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_data_size1->setText(QString("%0KB").arg(cache1D.Cache_Size));//QString("%0").arg(cache_info->Cache_Size)
-    label_L1_data_size1->setFixedSize(50,20);
-
-
-    label_L1_data_way->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_data_way->setText(QString("%0-way").arg(cache1D.Cache_Ways));//QString("%0").arg(cache_info->Cache_Ways)
-    label_L1_data_way->setFixedSize(50,20);
-
-    QLabel *label20 = new QLabel(this);
-    label20->setFrameStyle(QFrame::NoFrame);
-    label20->setText(QStringLiteral("L1 Instruction"));
-
-
-    label_L1_inst_size1->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_inst_size1->setText(QString("%0KB").arg(cache1I.Cache_Size));
-    label_L1_inst_size1->setFixedSize(50,20);
-
-
-    label_L1_inst_way->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_inst_way->setText(QString("%0-way").arg(cache1I.Cache_Ways));
-    label_L1_inst_way->setFixedSize(50,20);
-
-    QLabel *label21 = new QLabel(this);
-    label21->setFrameStyle(QFrame::NoFrame);
-    label21->setText(QStringLiteral("L2"));
-
-    label_L2_size1->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L2_size1->setText(QString("%0MB").arg(cache2.Cache_Size));
-    label_L2_size1->setFixedSize(50,20);
-
-
-    label_L2_way->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L2_way->setText(QString("%0-way").arg(cache2.Cache_Ways));
-    label_L2_way->setFixedSize(50,20);
-
-    QLabel *label22 = new QLabel(this);
-    label22->setFrameStyle(QFrame::NoFrame);
-    label22->setText(QStringLiteral("L3"));
-
-    label_L3_size1->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L3_size1->setText(QString("%0MB").arg(cache3.Cache_Size));
-    label_L3_size1->setFixedSize(50,20);
-
-    label_L3_way->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L3_way->setText(QString("%0-way").arg(cache3.Cache_Ways));
-    label_L3_way->setFixedSize(50,20);
-
-    //content choosed
-    QLabel *label23 = new QLabel(this);
-    label23->setFrameStyle(QFrame::NoFrame);
-    label23->setText(QStringLiteral("selected"));
-
-    /*
-    for(unsigned int i=1;i<=core_info;i++)
-    {
-        cpuNum_list<<QString("CPU%0").arg(i);
-    }
-    QComboBox *combobox = new QComboBox(this);
-    for(unsigned int i = 0;i<cpuNum_list.length();i++)
-        combobox->insertItem(i,cpuNum_list.at(i));
-*/
-    QComboBox *combobox = new QComboBox(this);
-    combobox->insertItem(0,QString("CPU1"));
-
-    QLabel *label24 = new QLabel(this);
-    label24->setFrameStyle(QFrame::NoFrame);
-    label24->setText(QStringLiteral("Cores"));
-    //const unsigned int cores = GetCore();
-    label_cores->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_cores->setText(QString("%0").arg(core_info));
-    label_cores->setFixedSize(50,20);
-
-    QLabel *label25 = new QLabel(this);
-    label25->setFrameStyle(QFrame::NoFrame);
-    label25->setText(QStringLiteral("Threads"));
-    //const unsigned int value_threads = GetThread();
-    label_threads->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_threads->setText(QString("%0").arg(thread_info));
-    label_threads->setFixedSize(50,20);
-
-    connect(combobox,SIGNAL(currentIndexChanged(int)),this,SLOT(cpuChoose(int)));
-
-    QGridLayout *cpugrouplayout = new QGridLayout;
-    cpugrouplayout->setContentsMargins(20,10,0,10);
-    cpugrouplayout->setSpacing(5);
-    cpugrouplayout->setColumnStretch(0,0);
-    cpugrouplayout->setColumnStretch(1,100);
-    cpugrouplayout->setColumnStretch(2,0);
-    cpugrouplayout->setColumnStretch(3,100);
-    cpugrouplayout->setColumnStretch(4,0);
-    cpugrouplayout->setColumnStretch(5,100);
-    cpugrouplayout->setRowStretch(0,10);
-    cpugrouplayout->setRowStretch(1,0);
-    cpugrouplayout->setRowStretch(2,0);
-    cpugrouplayout->setRowStretch(3,0);
-    cpugrouplayout->setRowStretch(4,0);
-    cpugrouplayout->setRowStretch(5,0);
-    cpugrouplayout->addWidget(label1,0,0,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_cpu_name,0,1,1,1,Qt::AlignLeft);
-    cpugrouplayout->addWidget(label2,0,2,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_cpu_code_name,0,3,1,1,Qt::AlignLeft);
-    cpugrouplayout->addWidget(label3,0,4,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_max_TDP,0,5,1,1,Qt::AlignLeft);
-
-    //cpugrouplayout->addWidget(label4,1,0,1,1,Qt::AlignCenter);
-    //cpugrouplayout->addWidget(label_package,1,1,1,1,Qt::AlignLeft);
-    //cpugrouplayout->addWidget(label5,1,2,1,1,Qt::AlignCenter);
-    //cpugrouplayout->addWidget(label_technology,1,3,1,1,Qt::AlignLeft);
-    //cpugrouplayout->addWidget(label6,1,4,1,1,Qt::AlignCenter);
-    //cpugrouplayout->addWidget(label_core_VID,1,5,1,1,Qt::AlignLeft);
-
-    cpugrouplayout->addWidget(label7,2,0,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_family,2,1,1,1,Qt::AlignLeft);
-    cpugrouplayout->addWidget(label8,2,2,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_model,2,3,1,1,Qt::AlignLeft);
-    cpugrouplayout->addWidget(label9,2,4,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_stepping,2,5,1,1,Qt::AlignLeft);
-
-    cpugrouplayout->addWidget(label10,3,0,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_ext_family,3,1,1,1,Qt::AlignLeft);
-    cpugrouplayout->addWidget(label11,3,2,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_ext_model,3,3,1,1,Qt::AlignLeft);
-    cpugrouplayout->addWidget(label12,3,4,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_revision,3,5,1,1,Qt::AlignLeft);
-
-    cpugrouplayout->addWidget(label13,4,0,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_specification,4,1,1,6,Qt::AlignLeft);
-
-    cpugrouplayout->addWidget(label14,5,0,1,1,Qt::AlignCenter);
-    cpugrouplayout->addWidget(label_instructions,5,1,1,6,Qt::AlignLeft);
-
-    QGridLayout *clockgrouplayout = new QGridLayout;
-    clockgrouplayout->setContentsMargins(20,10,20,10);
-    clockgrouplayout->setColumnStretch(0,5);
-    clockgrouplayout->setColumnStretch(1,10);
-    clockgrouplayout->addWidget(label15,0,0,1,1,Qt::AlignCenter);
-    clockgrouplayout->addWidget(label_core_speed,0,1,1,1,Qt::AlignLeft);
-    clockgrouplayout->addWidget(label16,1,0,1,1,Qt::AlignCenter);
-    clockgrouplayout->addWidget(label_multiplier,1,1,1,1,Qt::AlignLeft);
-    clockgrouplayout->addWidget(label17,2,0,1,1,Qt::AlignCenter);
-    clockgrouplayout->addWidget(label_bus_speed,2,1,1,1,Qt::AlignLeft);
-    clockgrouplayout->addWidget(label18,3,0,1,1,Qt::AlignCenter);
-    clockgrouplayout->addWidget(label_rated_FSB,3,1,1,1,Qt::AlignLeft);
-
-    QGridLayout *cachegrouplayout = new QGridLayout;
-    cachegrouplayout->setContentsMargins(50,10,20,10);
-    cachegrouplayout->setColumnStretch(0,0);
-    cachegrouplayout->setColumnStretch(1,0);
-    cachegrouplayout->setColumnStretch(2,100);
-    cachegrouplayout->addWidget(label19,0,0,1,1,Qt::AlignCenter);
-    cachegrouplayout->addWidget(label_L1_data_size1,0,1,1,1,Qt::AlignLeft);
-    cachegrouplayout->addWidget(label_L1_data_way,0,2,1,1,Qt::AlignLeft);
-
-    cachegrouplayout->addWidget(label20,1,0,1,1,Qt::AlignCenter);
-    cachegrouplayout->addWidget(label_L1_inst_size1,1,1,1,1,Qt::AlignLeft);
-    cachegrouplayout->addWidget(label_L1_inst_way,1,2,1,1,Qt::AlignLeft);
-
-    cachegrouplayout->addWidget(label21,2,0,1,1,Qt::AlignCenter);
-    cachegrouplayout->addWidget(label_L2_size1,2,1,1,1,Qt::AlignLeft);
-    cachegrouplayout->addWidget(label_L2_way,2,2,1,1,Qt::AlignLeft);
-
-    cachegrouplayout->addWidget(label22,3,0,1,1,Qt::AlignCenter);
-    cachegrouplayout->addWidget(label_L3_size1,3,1,1,1,Qt::AlignLeft);
-    cachegrouplayout->addWidget(label_L3_way,3,2,1,1,Qt::AlignLeft);
-
-    QGridLayout *choosedgrouplayout = new QGridLayout;
-    choosedgrouplayout->setContentsMargins(20,10,300,10);
-    choosedgrouplayout->setColumnStretch(0,0);
-    choosedgrouplayout->setColumnStretch(1,100);
-    choosedgrouplayout->setColumnStretch(2,0);
-    choosedgrouplayout->setColumnStretch(3,100);
-    choosedgrouplayout->setColumnStretch(4,0);
-    choosedgrouplayout->setColumnStretch(5,100);
-    choosedgrouplayout->addWidget(label23,0,0,Qt::AlignCenter);
-    choosedgrouplayout->addWidget(combobox,0,1,Qt::AlignLeft);
-    choosedgrouplayout->addWidget(label24,0,2,Qt::AlignCenter);
-    choosedgrouplayout->addWidget(label_cores,0,3,Qt::AlignLeft);
-    choosedgrouplayout->addWidget(label25,0,4,Qt::AlignCenter);
-    choosedgrouplayout->addWidget(label_threads,0,5,Qt::AlignLeft);
-
-    //groupbox
-    QGroupBox *cpugroup = new QGroupBox(tr("CPU"));
-    QGroupBox *clockgroup = new QGroupBox(tr("CLOCK"));
-    QGroupBox *cachegroup = new QGroupBox(tr("Cache"));
-    QGroupBox *choosegroup = new QGroupBox(tr("Choosed"));
-
-    cpugroup->setLayout(cpugrouplayout);
-    cpugroup->setMinimumWidth(760);
-    cpugroup->setMaximumHeight(300);
-    cpugroup->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Expanding);
-
-    clockgroup->setLayout(clockgrouplayout);
-    clockgroup->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Expanding);
-    clockgroup->setMinimumWidth(300);
-    clockgroup->setMaximumHeight(200);
-
-    cachegroup->setLayout(cachegrouplayout);
-    cachegroup->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Expanding);
-    cachegroup->setMinimumWidth(400);
-    cachegroup->setMaximumHeight(200);
-
-    choosegroup->setLayout(choosedgrouplayout);
-    choosegroup->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Expanding);
-    choosegroup->setMinimumWidth(760);
-    choosegroup->setMaximumHeight(100);
-//page2 cache content
-    QLabel *label26 = new QLabel(this);
-    label26->setFrameStyle(QFrame::NoFrame);
-    label26->setText(QStringLiteral("Size"));
-    label_L1_data_size2->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_data_size2->setText(QString("%0KB").arg(cache1D.Cache_Size));
-    label_L1_data_size2->setMaximumHeight(20);
-    label_L1_data_way2->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_data_way2->setText(QString("x%0").arg(core_info));
-    label_L1_data_way2->setMaximumHeight(20);
-
-    QLabel *label27 = new QLabel(this);
-    label27->setFrameStyle(QFrame::NoFrame);
-    label27->setText(QStringLiteral("Descriptor"));
-    label_L1_data_description->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_data_description->setText(QString("%0-ways set associative, %1-byte line size").arg(cache1D.Cache_Ways).arg(cache1D.Cache_line_size));
-    label_L1_data_description->setMaximumHeight(20);
-
-    QLabel *label28 = new QLabel(this);
-    label28->setFrameStyle(QFrame::NoFrame);
-    label28->setText(QStringLiteral("Size"));
-    label_L1_inst_size2->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_inst_size2->setText(QString("%0KB").arg(cache1I.Cache_Size));
-    label_L1_inst_size2->setMaximumHeight(20);
-    label_L1_inst_way2->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_inst_way2->setText(QString("x%0").arg(core_info));
-    label_L1_inst_way2->setMaximumHeight(20);
-    QLabel *label29 = new QLabel(this);
-    label29->setFrameStyle(QFrame::NoFrame);
-    label29->setText(QStringLiteral("Descriptor"));
-    label_L1_inst_description->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L1_inst_description->setText(QString("%0-ways set associative, %1-byte line size").arg(cache1I.Cache_Ways).arg(cache1I.Cache_line_size));
-    label_L1_inst_description->setMaximumHeight(20);
-
-    QLabel *label30 = new QLabel(this);
-    label30->setFrameStyle(QFrame::NoFrame);
-    label30->setText(QStringLiteral("Size"));
-    label_L2_size2->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L2_size2->setText(QString("%0KB").arg(cache2.Cache_Size));
-    label_L2_size2->setMaximumHeight(20);
-    label_L2_way2->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L2_way2->setText(QString("x%0").arg(core_info));
-    label_L2_way2->setMaximumHeight(20);
-
-    QLabel *label31 = new QLabel(this);
-    label31->setFrameStyle(QFrame::NoFrame);
-    label31->setText(QStringLiteral("Descriptor"));
-    label_L2_description->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L2_description->setText(QString("%0-ways set associative, %1-byte line size").arg(cache2.Cache_Ways).arg(cache2.Cache_line_size));
-    label_L2_description->setMaximumHeight(20);
-
-    QLabel *label32 = new QLabel(this);
-    label32->setFrameStyle(QFrame::NoFrame);
-    label32->setText(QStringLiteral("Size"));
-    label_L3_size2->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L3_size2->setText(QString("%0MB").arg(cache3.Cache_Size));
-    label_L3_size2->setMaximumHeight(20);
-    label_L3_way2->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L3_way2->setText(QString("x%0").arg(core_info));
-    label_L3_way2->setMaximumHeight(20);
-
-    QLabel *label33 = new QLabel(this);
-    label33->setFrameStyle(QFrame::NoFrame);
-    label33->setText(QStringLiteral("Descriptor"));
-    label_L3_description->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    label_L3_description->setText(QString("%0-ways set associative, %1-byte line size").arg(cache3.Cache_Ways).arg(cache3.Cache_line_size));
-    label_L3_description->setMaximumHeight(20);
-
-    QGridLayout *firdatagrouplayout = new QGridLayout;
-    firdatagrouplayout->setContentsMargins(100,20,20,20);
-    firdatagrouplayout->setVerticalSpacing(5);
-    firdatagrouplayout->setHorizontalSpacing(5);
-    firdatagrouplayout->setColumnStretch(0,0);
-    firdatagrouplayout->setColumnStretch(1,0);
-    firdatagrouplayout->setColumnStretch(2,100);
-    firdatagrouplayout->addWidget(label26,0,0,1,1,Qt::AlignCenter);
-    firdatagrouplayout->addWidget(label_L1_data_size2,0,1,1,1,Qt::AlignLeft);
-    firdatagrouplayout->addWidget(label_L1_data_way2,0,2,1,1,Qt::AlignLeft);
-    firdatagrouplayout->addWidget(label27,1,0,1,1,Qt::AlignCenter);
-    firdatagrouplayout->addWidget(label_L1_data_description,1,1,1,2,Qt::AlignLeft);
-    QGridLayout *firinstgrouplayout = new QGridLayout;
-    firinstgrouplayout->setContentsMargins(100,20,20,20);
-    firinstgrouplayout->setVerticalSpacing(5);
-    firinstgrouplayout->setColumnStretch(0,0);
-    firinstgrouplayout->setColumnStretch(1,0);
-    firinstgrouplayout->setColumnStretch(2,100);
-    firinstgrouplayout->addWidget(label28,0,0,1,1,Qt::AlignCenter);
-    firinstgrouplayout->addWidget(label_L1_inst_size2,0,1,1,1,Qt::AlignLeft);
-    firinstgrouplayout->addWidget(label_L1_inst_way2,0,2,1,1,Qt::AlignLeft);
-    firinstgrouplayout->addWidget(label29,1,0,1,1,Qt::AlignCenter);
-    firinstgrouplayout->addWidget(label_L1_inst_description,1,1,1,2,Qt::AlignLeft);
-    QGridLayout *secgrouplayout = new QGridLayout;
-    secgrouplayout->setContentsMargins(100,20,20,20);
-    secgrouplayout->setVerticalSpacing(5);
-    secgrouplayout->setColumnStretch(0,0);
-    secgrouplayout->setColumnStretch(1,0);
-    secgrouplayout->setColumnStretch(2,100);
-    secgrouplayout->addWidget(label30,0,0,1,1,Qt::AlignCenter);
-    secgrouplayout->addWidget(label_L2_size2,0,1,1,1,Qt::AlignLeft);
-    secgrouplayout->addWidget(label_L2_way2,0,2,1,1,Qt::AlignLeft);
-    secgrouplayout->addWidget(label31,1,0,1,1,Qt::AlignCenter);
-    secgrouplayout->addWidget(label_L2_description,1,1,1,2,Qt::AlignLeft);
-    QGridLayout *thirgrouplayout = new QGridLayout;
-    thirgrouplayout->setContentsMargins(100,20,20,20);
-    thirgrouplayout->setVerticalSpacing(5);
-    thirgrouplayout->setColumnStretch(0,0);
-    thirgrouplayout->setColumnStretch(1,0);
-    thirgrouplayout->setColumnStretch(2,100);
-    thirgrouplayout->addWidget(label32,0,0,1,1,Qt::AlignCenter);
-    thirgrouplayout->addWidget(label_L3_size2,0,1,1,1,Qt::AlignLeft);
-    thirgrouplayout->addWidget(label_L3_way2,0,2,1,1,Qt::AlignLeft);
-    thirgrouplayout->addWidget(label33,1,0,1,1,Qt::AlignCenter);
-    thirgrouplayout->addWidget(label_L3_description,1,1,1,2,Qt::AlignLeft);
-
-    QGroupBox *firdatacachegroup = new QGroupBox(tr("L1 D-Cache"));
-    QGroupBox *firinstcachegroup = new QGroupBox(tr("L1 I-Cache"));
-    QGroupBox *seccachegroup = new QGroupBox(tr("L2 Cache"));
-    QGroupBox *thircachegroup = new QGroupBox(tr("L3 Cache"));
-    firdatacachegroup->setMinimumWidth(760);
-    firinstcachegroup->setMinimumWidth(760);
-    seccachegroup->setMinimumWidth(760);
-    thircachegroup->setMinimumWidth(760);
-    firdatacachegroup->setLayout(firdatagrouplayout);
-    firinstcachegroup->setLayout(firinstgrouplayout);
-    seccachegroup->setLayout(secgrouplayout);
-    thircachegroup->setLayout(thirgrouplayout);
-
-//page3 content
-    checkbox_cpuid_cpu1->setText(QString("CPU1"));
-    checkbox_cpuid_cpu2->setText(QString("CPU2"));
-    checkbox_cpuid_cpu3->setText(QString("CPU3"));
-    checkbox_cpuid_cpu4->setText(QString("CPU4"));
-
-    QLabel *label34 = new QLabel(this);
-    label34->setFrameStyle(QFrame::NoFrame);
-    label34->setText(QStringLiteral("EAX: 0x"));
-    //QLineEdit *clabel34 = new QLineEdit(this);
-    lineedit_cpuid_input_eax->setText(QStringLiteral(""));
-    lineedit_cpuid_input_eax->setMaximumHeight(20);
-    lineedit_cpuid_input_eax->setMinimumWidth(50);
-
-    QLabel *label35 = new QLabel(this);
-    label35->setFrameStyle(QFrame::NoFrame);
-    label35->setText(QStringLiteral("ECX: 0x"));
-   // QLineEdit *clabel35 = new QLineEdit(this);
-    lineedit_cpuid_input_ecx->setText(QStringLiteral(""));
-    lineedit_cpuid_input_ecx->setMaximumHeight(20);
-    lineedit_cpuid_input_ecx->setMinimumWidth(50);
-
-    QLabel *label36 = new QLabel(this);
-    label36->setFrameStyle(QFrame::NoFrame);
-    label36->setText(QStringLiteral("EAX: 0x"));
-    //QLineEdit *clabel36 = new QLineEdit(this);
-    lineedit_cpuid_output_eax->setText(QStringLiteral(""));
-    lineedit_cpuid_output_eax->setMaximumHeight(20);
-    lineedit_cpuid_output_eax->setMinimumWidth(50);
-
-    QLabel *label37 = new QLabel(this);
-    label37->setFrameStyle(QFrame::NoFrame);
-    label37->setText(QStringLiteral("EBX: 0x"));
-    //QLineEdit *clabel37 = new QLineEdit(this);
-    lineedit_cpuid_output_ebx->setText(QStringLiteral(""));
-    lineedit_cpuid_output_ebx->setMaximumHeight(20);
-    lineedit_cpuid_output_ebx->setMinimumWidth(50);
-
-    QLabel *label38 = new QLabel(this);
-    label38->setFrameStyle(QFrame::NoFrame);
-    label38->setText(QStringLiteral("ECX: 0x"));
-    //QLineEdit *clabel38 = new QLineEdit(this);
-    lineedit_cpuid_output_ecx->setText(QStringLiteral(""));
-    lineedit_cpuid_output_ecx->setMaximumHeight(20);
-    lineedit_cpuid_output_ecx->setMinimumWidth(50);
-
-    QLabel *label39 = new QLabel(this);
-    label39->setFrameStyle(QFrame::NoFrame);
-    label39->setText(QStringLiteral("EDX: 0x"));
-    //QLineEdit *clabel39 = new QLineEdit(this);
-    lineedit_cpuid_output_edx->setText(QStringLiteral(""));
-    lineedit_cpuid_output_edx->setMaximumHeight(20);
-    lineedit_cpuid_output_edx->setMinimumWidth(50);
-
-    QPushButton *btnread = new QPushButton(this);
-    btnread->setText(QString("Read"));
-
-    connect(btnread,SIGNAL(clicked(bool)),this,SLOT(cpuidRead()));
-
-    QPushButton *btnfix1 = new QPushButton(this);
-    btnfix1->setText(QString("Fix"));
-
-    QPushButton *btndelete1 = new QPushButton(this);
-    btndelete1->setText(QString("Delete"));
-
-    QTableView *tableview = new QTableView(this);
-    tableview->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-    tableview->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    tableview->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-    cpuidmodel->setHorizontalHeaderItem(0,new QStandardItem("Address"));
-    cpuidmodel->setHorizontalHeaderItem(1,new QStandardItem("CPU1"));
-    cpuidmodel->setHorizontalHeaderItem(2,new QStandardItem("CPU2"));
-    cpuidmodel->setHorizontalHeaderItem(3,new QStandardItem("CPU3"));
-    cpuidmodel->setHorizontalHeaderItem(4,new QStandardItem("CPU4"));
-    cpuidmodel->setItem(0,0,new QStandardItem("address"));
-    cpuidmodel->setItem(0,1,new QStandardItem("data1"));
-    cpuidmodel->setItem(0,2,new QStandardItem("data1"));
-    cpuidmodel->setItem(0,3,new QStandardItem("data1"));
-    cpuidmodel->setItem(0,4,new QStandardItem("data1"));
-    cpuidmodel->setItem(1,0,new QStandardItem("address"));
-    cpuidmodel->setItem(1,1,new QStandardItem("data1"));
-    cpuidmodel->setItem(1,2,new QStandardItem("data1"));
-    cpuidmodel->setItem(1,3,new QStandardItem("data1"));
-    cpuidmodel->setItem(1,4,new QStandardItem("data1"));
-    tableview->setModel(cpuidmodel);
-    connect(btnfix1,SIGNAL(clicked(bool)),this,SLOT(cpuidtableFix()));
-    connect(btndelete1,SIGNAL(clicked(bool)),this,SLOT(cpuidtableDelete()));
-    connect(tableview->verticalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(cpuidtableHeaderChoosed(int)));
-//page4 content
-    QCheckBox *checkbox6 = new QCheckBox(this);
-    QCheckBox *checkbox7 = new QCheckBox(this);
-    QCheckBox *checkbox8 = new QCheckBox(this);
-    QCheckBox *checkbox9 = new QCheckBox(this);
-    QCheckBox *checkbox10 = new QCheckBox(this);
-    checkbox_msr_cpu1->setText(QString("CPU1"));
-    checkbox_msr_cpu2->setText(QString("CPU2"));
-    checkbox_msr_cpu3->setText(QString("CPU3"));
-    checkbox_msr_cpu4->setText(QString("CPU4"));
-
-    QLabel *label40 = new QLabel(this);
-    label40->setFrameStyle(QFrame::NoFrame);
-    label40->setText(QStringLiteral("ECX: 0x"));
-    //QLineEdit *clabel40 = new QLineEdit(this);
-    lineedit_msr_ecx->setText(QStringLiteral(""));
-    lineedit_msr_ecx->setMinimumWidth(50);
-    lineedit_msr_ecx->setMaximumHeight(20);
-
-    QLabel *label41 = new QLabel(this);
-    label41->setFrameStyle(QFrame::NoFrame);
-    label41->setText(QStringLiteral("EAX: 0x"));
-    //QLineEdit *clabel41 = new QLineEdit(this);
-    lineedit_msr_eax->setText(QStringLiteral(""));
-    lineedit_msr_eax->setMaximumHeight(20);
-    lineedit_msr_eax->setMinimumWidth(50);
-
-    QLabel *label42 = new QLabel(this);
-    label42->setFrameStyle(QFrame::NoFrame);
-    label42->setText(QStringLiteral("EDX: 0x"));
-    //QLineEdit *clabel42 = new QLineEdit(this);
-    lineedit_msr_edx->setText(QStringLiteral(""));
-    lineedit_msr_edx->setMaximumHeight(20);
-    lineedit_msr_edx->setMinimumWidth(50);
-
-
-    QPushButton *btnread2 = new QPushButton(this);
-    btnread2->setText(QString("Read"));
-
-    connect(btnread2,SIGNAL(clicked(bool)),this,SLOT(msrRead()));
-
-    QPushButton *btnwrite2 = new QPushButton(this);
-    btnwrite2->setText(QString("Write"));
-
-    connect(btnwrite2,SIGNAL(clicked(bool)),this,SLOT(msrWrite()));
-
-    QPushButton *btnfix = new QPushButton(this);
-    btnfix->setText(QString("Fix"));
-    QPushButton *btndele = new QPushButton(this);
-    btndele->setText(QString("Delete"));
-
-    QTableView *tableview2 = new QTableView(this);
-    tableview2->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-    tableview2->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    tableview2->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-    msrmodel->setHorizontalHeaderItem(0,new QStandardItem("Address"));
-    msrmodel->setHorizontalHeaderItem(1,new QStandardItem("CPU1"));
-    msrmodel->setHorizontalHeaderItem(2,new QStandardItem("CPU2"));
-    msrmodel->setHorizontalHeaderItem(3,new QStandardItem("CPU3"));
-    msrmodel->setHorizontalHeaderItem(4,new QStandardItem("CPU4"));
-    msrmodel->setItem(0,0,new QStandardItem("address"));
-    msrmodel->setItem(0,1,new QStandardItem("data1"));
-    msrmodel->setItem(0,2,new QStandardItem("data1"));
-    msrmodel->setItem(0,3,new QStandardItem("data1"));
-    msrmodel->setItem(0,4,new QStandardItem("data1"));
-    msrmodel->setItem(1,0,new QStandardItem("address"));
-    msrmodel->setItem(1,1,new QStandardItem("data1"));
-    msrmodel->setItem(1,2,new QStandardItem("data1"));
-    msrmodel->setItem(1,3,new QStandardItem("data1"));
-    msrmodel->setItem(1,4,new QStandardItem("data1"));
-    tableview2->setModel(msrmodel);
-
-    connect(btnfix,SIGNAL(clicked(bool)),this,SLOT(msrtablefix()));
-    connect(btndele,SIGNAL(clicked(bool)),this,SLOT(msrtabledelete()));
-    connect(tableview2->verticalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(msrtableHeaderChoosed(int)));
-
-    //4  page
-    QWidget *pagecpu = new QWidget();
-    QWidget *pagecache = new QWidget();
-    QWidget *pagecpuid = new QWidget();
-    QWidget *pagemsr = new QWidget();
-
-    QGridLayout *page1layout = new QGridLayout;
-    QGridLayout *page2layout = new QGridLayout;
-    QGridLayout *page3layout = new QGridLayout;
-    QGridLayout *page4layout = new QGridLayout;
-    page1layout->setContentsMargins(10,10,10,10);
-    page1layout->setColumnStretch(0,0);
-    page1layout->setColumnStretch(1,100);
-
-    //page1layout->setRowStretch(0,0);
-    //page1layout->setRowStretch(1,2);
-    //page1layout->setRowStretch(2,1);
-    page1layout->setSpacing(5);
-    page1layout->setColumnStretch(0,1);
-    page1layout->setColumnStretch(1,0);
-    page1layout->setColumnStretch(2,0);
-    page1layout->setColumnStretch(3,1);
-    page1layout->addWidget(cpugroup,0,1,
-                           1,2,Qt::AlignCenter);
-    page1layout->addWidget(clockgroup,1,1,
-                           1,1,Qt::AlignLeft);
-    page1layout->addWidget(cachegroup,1,2,
-                           1,1,Qt::AlignRight);
-    page1layout->addWidget(choosegroup,2,1,
-                           1,2,Qt::AlignCenter);
-
-    page2layout->setContentsMargins(10,10,10,10);
-    page2layout->addWidget(firdatacachegroup,0,0,1,1,Qt::AlignLeft);
-    page2layout->addWidget(firinstcachegroup,1,0,1,1,Qt::AlignLeft);
-    page2layout->addWidget(seccachegroup,2,0,1,1,Qt::AlignLeft);
-    page2layout->addWidget(thircachegroup,3,0,1,1,Qt::AlignLeft);
-
-    page3layout->setContentsMargins(100,20,100,0);
-    //page3layout->setVerticalSpacing(5);
-    //page3layout->setHorizontalSpacing(5);
-    page3layout->setColumnStretch(0,20);
-    page3layout->setColumnStretch(1,0);
-    page3layout->setColumnStretch(2,0);
-    page3layout->setColumnStretch(3,0);
-    page3layout->setColumnStretch(4,0);
-    page3layout->setColumnStretch(5,0);
-    page3layout->setColumnStretch(6,20);
-    //page3layout->setColumnMinimumWidth(1,5);
-    //page3layout->setColumnMinimumWidth(5,5);
-    page3layout->setRowStretch(0,2);
-    page3layout->setRowStretch(1,0);
-    page3layout->setRowStretch(2,0);
-    page3layout->setRowStretch(3,0);
-    page3layout->setRowStretch(4,2);
-    page3layout->setRowStretch(5,10);
-
-    page3layout->addWidget(checkbox_cpuid_cpu1,0,1,1,1,Qt::AlignHCenter|Qt::AlignTop);
-    page3layout->addWidget(checkbox_cpuid_cpu2,0,2,1,1,Qt::AlignHCenter|Qt::AlignTop);
-    page3layout->addWidget(checkbox_cpuid_cpu3,0,3,1,1,Qt::AlignHCenter|Qt::AlignTop);
-    page3layout->addWidget(checkbox_cpuid_cpu4,0,4,1,1,Qt::AlignHCenter|Qt::AlignTop);
-
-    page3layout->addWidget(label34,1,0,
-                           1,1,Qt::AlignRight);
-    page3layout->addWidget(lineedit_cpuid_input_eax,1,1,
-                           1,2,Qt::AlignLeft);
-    page3layout->addWidget(label35,1,4,
-                           1,1,Qt::AlignRight);
-    page3layout->addWidget(lineedit_cpuid_input_ecx,1,5,
-                           1,2,Qt::AlignLeft);
-    page3layout->addWidget(label36,2,0,
-                           1,1,Qt::AlignRight);
-    page3layout->addWidget(lineedit_cpuid_output_eax,2,1,
-                           1,2,Qt::AlignLeft);
-    page3layout->addWidget(label37,2,4,
-                           1,1,Qt::AlignRight);
-    page3layout->addWidget(lineedit_cpuid_output_ebx,2,5,
-                           1,2,Qt::AlignLeft);
-    page3layout->addWidget(label38,3,0,
-                           1,1,Qt::AlignRight);
-    page3layout->addWidget(lineedit_cpuid_output_ecx,3,1,
-                           1,2,Qt::AlignLeft);
-    page3layout->addWidget(label39,3,4,
-                           1,1,Qt::AlignRight);
-    page3layout->addWidget(lineedit_cpuid_output_edx,3,5,
-                           1,2,Qt::AlignLeft);
-    page3layout->addWidget(btnread,4,1,
-                           1,1,Qt::AlignCenter);
-    page3layout->addWidget(btnfix1,4,4,
-                           1,1,Qt::AlignCenter);
-    page3layout->addWidget(btndelete1,4,5,
-                           1,1,Qt::AlignCenter);
-    page3layout->addWidget(tableview,5,0,
-                           1,7,Qt::AlignCenter);
-
-    page4layout->setContentsMargins(0,20,0,0);
-    page4layout->setVerticalSpacing(5);
-    page4layout->setHorizontalSpacing(5);
-    page4layout->setRowStretch(0,1);
-    page4layout->setRowStretch(1,0);
-    page4layout->setRowStretch(2,0);
-    page4layout->setRowStretch(3,0);
-    page4layout->setRowStretch(4,1);
-    page4layout->setRowStretch(5,10);
-    page4layout->setColumnStretch(0,10);
-    page4layout->setColumnStretch(1,0);
-    page4layout->setColumnStretch(2,0);
-    page4layout->setColumnStretch(3,0);
-    page4layout->setColumnStretch(4,0);
-    page4layout->setColumnStretch(5,0);
-    page4layout->setColumnStretch(6,10);
-    page4layout->addWidget(checkbox_msr_cpu1,0,1,1,1,Qt::AlignHCenter|Qt::AlignTop);
-    page4layout->addWidget(checkbox_msr_cpu2,0,2,1,1,Qt::AlignHCenter|Qt::AlignTop);
-    page4layout->addWidget(checkbox_msr_cpu3,0,3,1,1,Qt::AlignHCenter|Qt::AlignTop);
-    page4layout->addWidget(checkbox_msr_cpu4,0,4,1,1,Qt::AlignHCenter|Qt::AlignTop);
-
-    page4layout->addWidget(label40,1,2,1,1,Qt::AlignRight|Qt::AlignTop);
-    page4layout->addWidget(lineedit_msr_ecx,1,3,1,2,Qt::AlignLeft|Qt::AlignTop);
-    page4layout->addWidget(label41,2,2,1,1,Qt::AlignRight|Qt::AlignTop);
-    page4layout->addWidget(lineedit_msr_eax,2,3,1,2,Qt::AlignLeft|Qt::AlignTop);
-    page4layout->addWidget(label42,3,2,1,1,Qt::AlignRight|Qt::AlignTop);
-    page4layout->addWidget(lineedit_msr_edx,3,3,1,2,Qt::AlignLeft|Qt::AlignTop);
-
-    page4layout->addWidget(btnread2,4,1,1,1,Qt::AlignHCenter|Qt::AlignBottom);
-    page4layout->addWidget(btnwrite2,4,2,1,1,Qt::AlignHCenter|Qt::AlignBottom);
-    page4layout->addWidget(btnfix,4,3,1,1,Qt::AlignHCenter|Qt::AlignBottom);
-    page4layout->addWidget(btndele,4,5,1,1,Qt::AlignHCenter|Qt::AlignBottom);
-
-    page4layout->addWidget(tableview2,5,0,1,7,Qt::AlignCenter);
-
-    //pagecpu->setMinimumHeight(560);
-    //pagecache->setMinimumHeight(560);
-    //pagecpuid->setMinimumHeight(560);
-    //pagemsr->setMinimumHeight(560);
-    pagecpu->setMaximumSize(800,594);
-    pagecache->setMaximumSize(800,594);
-    pagecpuid->setMaximumSize(800,594);
-    pagemsr->setMaximumSize(800,594);
-    pagecpu->setLayout(page1layout);
-    pagecache->setLayout(page2layout);
-    pagecpuid->setLayout(page3layout);
-    pagemsr->setLayout(page4layout);
-
-    pagecpu->setWindowFlags(Qt::FramelessWindowHint);
-    pagecache->setWindowFlags(Qt::FramelessWindowHint);
-    pagecpuid->setWindowFlags(Qt::FramelessWindowHint);
-    pagemsr->setWindowFlags(Qt::FramelessWindowHint);
-
-    //tabwidget
-    QTabWidget *tabwidget = new QTabWidget(this);
-    //tabwidget->setBackgroundRole(QPalette::Dark);
-    tabwidget->addTab(pagecpu,QString("CPU"));
-    tabwidget->addTab(pagecache,QString("Cache"));
-    tabwidget->addTab(pagecpuid,QString("CPUID"));
-    tabwidget->addTab(pagemsr,QString("MSR"));
-    //root layout
-    QGridLayout *layout = new QGridLayout;
-    layout->setContentsMargins(0,0,0,0);
-    layout->addWidget(tabwidget);//,0,0,Qt::AlignCenter
-
-    setLayout(layout);
+	initializeUI();
+	setupLayout();
+	initializeData();
+	setConnection();
+}
+
+void Hard_CPU::initializeUI()
+{
+	setWindowFlags(Qt::FramelessWindowHint);
+
+	title_cpuManufacture = new QLabel(this);
+	title_cpuManufacture->setFrameStyle(QFrame::NoFrame);
+	title_cpuManufacture->setText(QString("Manufacturer"));
+	value_cpuManufacture = new QLabel(this);
+	value_cpuManufacture->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_cpuManufacture->setMinimumHeight(value_cpuManufacture->sizeHint().height()+6);
+	value_cpuManufacture->setMinimumWidth(value_cpuManufacture->sizeHint().width() + 10);
+	value_cpuManufacture->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	value_cpuManufacture->setText(QString("default"));
+
+
+	title_codeName = new QLabel(this);
+	title_codeName->setFrameStyle(QFrame::NoFrame);
+	title_codeName->setText(QString("Code Name"));
+	value_codeName = new QLabel(this);
+	value_codeName->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_codeName->setMinimumHeight(value_codeName->sizeHint().height() + 6);
+	value_codeName->setMinimumWidth(value_codeName->sizeHint().width() + 10);
+	value_codeName->setText(QString("default"));
+
+	title_socketDesignation = new QLabel(this);
+	title_socketDesignation->setFrameStyle(QFrame::NoFrame);
+	title_socketDesignation->setText(QString("Socket Designation"));
+	value_socketDesignation = new QLabel(this);
+	value_socketDesignation->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_socketDesignation->setMinimumHeight(value_socketDesignation->sizeHint().height() + 6);
+	value_socketDesignation->setMinimumWidth(value_socketDesignation->sizeHint().width() + 10);
+	value_socketDesignation->setText(QString("default"));
+
+	title_family = new QLabel(this);
+	title_family->setFrameStyle(QFrame::NoFrame);
+	title_family->setText(QString("Family"));
+	value_family = new QLabel(this);
+	value_family->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_family->setMinimumHeight(value_family->sizeHint().height() + 6);
+	value_family->setMinimumWidth(value_family->sizeHint().width() + 10);
+	value_family->setText(QString("default"));
+
+	title_model = new QLabel(this);
+	title_model->setFrameStyle(QFrame::NoFrame);
+	title_model->setText(QString("Model"));
+	value_model = new QLabel(this);
+	value_model->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_model->setMinimumHeight(value_model->sizeHint().height() + 6);
+	value_model->setMinimumWidth(value_model->sizeHint().width() + 10);
+	value_model->setText(QString("default"));
+
+	title_stepping = new QLabel(this);
+	title_stepping->setFrameStyle(QFrame::NoFrame);
+	title_stepping->setText(QString("Stepping"));
+	value_stepping = new QLabel(this);
+	value_stepping->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_stepping->setMinimumHeight(value_stepping->sizeHint().height() + 6);
+	value_stepping->setMinimumWidth(value_stepping->sizeHint().width() + 10);
+	value_stepping->setText(QString("default"));
+
+	title_extFamily = new QLabel(this);
+	title_extFamily->setFrameStyle(QFrame::NoFrame);
+	title_extFamily->setText(QString("Ext Family"));
+	value_extFamily = new QLabel(this);
+	value_extFamily->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_extFamily->setMinimumHeight(value_extFamily->sizeHint().height() + 6);
+	value_extFamily->setMinimumWidth(value_extFamily->sizeHint().width() + 10);
+	value_extFamily->setText(QString("default"));
+
+	title_extModel = new QLabel(this);
+	title_extModel->setFrameStyle(QFrame::NoFrame);
+	title_extModel->setText(QString("Ext Model"));
+	value_extModel = new QLabel(this);
+	value_extModel->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_extModel->setMinimumHeight(value_extModel->sizeHint().height() + 6);
+	value_extModel->setMinimumWidth(value_extModel->sizeHint().width() + 10);
+	value_extModel->setText(QString("default"));
+
+	title_revision = new QLabel(this);
+	title_revision->setFrameStyle(QFrame::NoFrame);
+	title_revision->setText(QString("Revision"));
+	value_revision = new QLabel(this);
+	value_revision->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_revision->setMinimumHeight(value_revision->sizeHint().height() + 6);
+	value_revision->setMinimumWidth(value_revision->sizeHint().width() + 10);
+	value_revision->setText(QString("default"));
+
+	title_technology = new QLabel(this);
+	title_technology->setFrameStyle(QFrame::NoFrame);
+	title_technology->setText(QString("Technology"));
+	value_technology = new QLabel(this);
+	value_technology->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_technology->setMinimumHeight(value_technology->sizeHint().height() + 6);
+	value_technology->setMinimumWidth(value_technology->sizeHint().width() + 10);
+	value_technology->setText(QString("default"));
+
+	title_cpuName = new QLabel(this);
+	title_cpuName->setFrameStyle(QFrame::NoFrame);
+	title_cpuName->setText(QString("CPU Name"));
+
+	value_cpuName = new QLabel(this);
+	QLineEdit *lineedit = new QLineEdit(this);
+	lineedit->setReadOnly(true);
+	lineedit->setFrame(false);
+	value_cpuName->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_cpuName->setMinimumHeight(value_cpuName->sizeHint().height() + 6);
+	value_cpuName->setMinimumWidth(value_cpuName->sizeHint().width() + 10);
+	value_cpuName->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	value_cpuName->setBuddy(lineedit);
+	value_cpuName->setText(QString("default"));
+
+	title_instructionSets = new QLabel(this);
+	title_instructionSets->setFrameStyle(QFrame::NoFrame);
+	title_instructionSets->setText(QString("Instructions"));
+	value_instructionSets = new QLabel(this);
+	value_instructionSets->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_instructionSets->setMinimumHeight(value_instructionSets->sizeHint().height() + 6);
+	value_instructionSets->setMinimumWidth(value_instructionSets->sizeHint().width() + 10);
+	//value_instructionSets->setReadOnly(true);
+	value_instructionSets->setWordWrap(true);
+	value_instructionSets->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	value_instructionSets->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+	value_instructionSets->setText(QString("default"));
+
+	title_southbridge = new QLabel(this);
+	title_southbridge->setFrameStyle(QFrame::NoFrame);
+	title_southbridge->setText(QString("SouthBridge"));
+	value_southbridge = new QLabel(this);
+	value_southbridge->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_southbridge->setMinimumHeight(value_southbridge->sizeHint().height() + 6);
+	value_southbridge->setMinimumWidth(value_southbridge->sizeHint().width() + 10);
+	value_southbridge->setText(QString("default"));
+
+	title_maxTDP = new QLabel(this);
+	title_maxTDP->setFrameStyle(QFrame::NoFrame);
+	title_maxTDP->setText(QString("TDP"));
+	value_maxTDP = new QLabel(this);
+	value_maxTDP->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_maxTDP->setMinimumHeight(value_maxTDP->sizeHint().height() + 6);
+	value_maxTDP->setMinimumWidth(value_maxTDP->sizeHint().width() + 10);
+	value_maxTDP->setText(QString("default"));
+
+	title_temperature = new QLabel(this);
+	title_temperature->setFrameStyle(QFrame::NoFrame);
+	title_temperature->setText(QString("Temperature"));
+	value_temperature = new QLabel(this);
+	value_temperature->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_temperature->setMinimumHeight(value_temperature->sizeHint().height() + 6);
+	value_temperature->setMinimumWidth(value_temperature->sizeHint().width() + 10);
+	value_temperature->setText(QString("default"));
+
+	title_packageTemperature = new QLabel(this);
+	title_packageTemperature->setFrameStyle(QFrame::NoFrame);
+	title_packageTemperature->setText(QString("Package Temperature"));
+	value_packageTemperature = new QLabel(this);
+	value_packageTemperature->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_packageTemperature->setMinimumHeight(value_packageTemperature->sizeHint().height() + 6);
+	value_packageTemperature->setMinimumWidth(value_packageTemperature->sizeHint().width() + 10);
+	value_packageTemperature->setText(QString("default"));
+
+
+	title_coreSpeed = new QLabel(this);
+	title_coreSpeed->setFrameStyle(QFrame::NoFrame);
+	title_coreSpeed->setText(QString("Core Speed"));
+	value_coreSpeed = new QLabel(this);
+	value_coreSpeed->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_coreSpeed->setMinimumHeight(value_coreSpeed->sizeHint().height() + 6);
+	value_coreSpeed->setMinimumWidth(value_coreSpeed->sizeHint().width() + 10);
+	value_coreSpeed->setText(QString("default"));
+
+	title_multiplier = new QLabel(this);
+	title_multiplier->setFrameStyle(QFrame::NoFrame);
+	title_multiplier->setText(QString("Multiplier"));
+	value_multiplier = new QLabel(this);
+	value_multiplier->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_multiplier->setMinimumHeight(value_multiplier->sizeHint().height() + 6);
+	value_multiplier->setMinimumWidth(value_multiplier->sizeHint().width() + 10);
+	value_multiplier->setText(QString("default"));
+
+	title_extSpeed = new QLabel(this);
+	title_extSpeed->setFrameStyle(QFrame::NoFrame);
+	title_extSpeed->setText(QString("Bus Speed"));
+	value_extSpeed = new QLabel(this);
+	value_extSpeed->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_extSpeed->setMinimumHeight(value_extSpeed->sizeHint().height() + 6);
+	value_extSpeed->setMinimumWidth(value_extSpeed->sizeHint().width() + 10);
+	value_extSpeed->setText(QString("default"));
+
+	title_maxSpeed = new QLabel(this);
+	title_maxSpeed->setFrameStyle(QFrame::NoFrame);
+	title_maxSpeed->setText(QString("Max Speed"));
+	value_maxSpeed = new QLabel(this);
+	value_maxSpeed->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_maxSpeed->setMinimumHeight(value_maxSpeed->sizeHint().height() + 6);
+	value_maxSpeed->setMinimumWidth(value_maxSpeed->sizeHint().width() + 10);
+	value_maxSpeed->setText(QString("default"));
+
+	title_L1D = new QLabel(this);
+	title_L1D->setFrameStyle(QFrame::NoFrame);
+	title_L1D->setText(QString("L1 Data"));
+	value_L1Dsize = new QLabel(this);
+	value_L1Dsize->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1Dsize->setMinimumHeight(value_L1Dsize->sizeHint().height() + 6);
+	value_L1Dsize->setMinimumWidth(value_L1Dsize->sizeHint().width() + 10);
+	value_L1Dsize->setText(QString("default"));
+	value_L1Dway = new QLabel(this);
+	value_L1Dway->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1Dway->setMinimumHeight(value_L1Dway->sizeHint().height() + 6);
+	value_L1Dway->setMinimumWidth(value_L1Dway->sizeHint().width() + 10);
+	value_L1Dway->setText(QString("default"));
+
+	title_L1I = new QLabel(this);
+	title_L1I->setFrameStyle(QFrame::NoFrame);
+	title_L1I->setText(QString("L1 Instruction"));
+	value_L1Isize = new QLabel(this);
+	value_L1Isize->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1Isize->setMinimumHeight(value_L1Isize->sizeHint().height() + 6);
+	value_L1Isize->setMinimumWidth(value_L1Isize->sizeHint().width() + 10);
+	value_L1Isize->setText(QString("default"));
+	value_L1Iway = new QLabel(this);
+	value_L1Iway->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1Iway->setMinimumHeight(value_L1Iway->sizeHint().height() + 6);
+	value_L1Iway->setMinimumWidth(value_L1Iway->sizeHint().width() + 10);
+	value_L1Iway->setText(QString("default"));
+
+	title_L2 = new QLabel(this);
+	title_L2->setFrameStyle(QFrame::NoFrame);
+	title_L2->setText(QString("L2"));
+	value_L2size = new QLabel(this);
+	value_L2size->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L2size->setMinimumHeight(value_L2size->sizeHint().height() + 6);
+	value_L2size->setMinimumWidth(value_L2size->sizeHint().width() + 10);
+	value_L2size->setText(QString("default"));
+	value_L2way = new QLabel(this);
+	value_L2way->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L2way->setMinimumHeight(value_L2way->sizeHint().height() + 6);
+	value_L2way->setMinimumWidth(value_L2way->sizeHint().width() + 10);
+	value_L2way->setText(QString("default"));
+
+	title_L3 = new QLabel(this);
+	title_L3->setFrameStyle(QFrame::NoFrame);
+	title_L3->setText(QString("L3"));
+	value_L3size = new QLabel(this);
+	value_L3size->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L3size->setMinimumHeight(value_L3size->sizeHint().height() + 6);
+	value_L3size->setMinimumWidth(value_L3size->sizeHint().width() + 10);
+	value_L3size->setText(QString("default"));
+	value_L3way = new QLabel(this);
+	value_L3way->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L3way->setMinimumHeight(value_L3way->sizeHint().height() + 6);
+	value_L3way->setMinimumWidth(value_L3way->sizeHint().width() + 10);
+	value_L3way->setText(QString("default"));
+
+	title_cpuSelected = new QLabel(this);
+	title_cpuSelected->setFrameStyle(QFrame::NoFrame);
+	title_cpuSelected->setText(QString("Selected"));
+	value_cpuSelected = new QComboBox(this);
+	value_cpuSelected->insertItem(0, QString("default"));
+
+	title_cores = new QLabel(this);
+	title_cores->setFrameStyle(QFrame::NoFrame);
+	title_cores->setText(QString("Cores"));
+	value_cores = new QLabel(this);
+	value_cores->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_cores->setMinimumHeight(value_cores->sizeHint().height() + 6);
+	value_cores->setMinimumWidth(value_cores->sizeHint().width() + 10);
+	value_cores->setText(QString("default"));
+
+	title_threads = new QLabel(this);
+	title_threads->setFrameStyle(QFrame::NoFrame);
+	title_threads->setText(QString("Threads"));
+	value_threads = new QLabel(this);
+	value_threads->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_threads->setMinimumHeight(value_threads->sizeHint().height() + 6);
+	value_threads->setMinimumWidth(value_threads->sizeHint().width() + 10);
+	value_threads->setText(QString("default"));
+
+	//page2
+	title_L1D_page2 = new QLabel(this);
+	title_L1D_page2->setFrameStyle(QFrame::NoFrame);
+	title_L1D_page2->setText(QString("Size"));
+	value_L1D_size_page2 = new QLabel(this);
+	value_L1D_size_page2->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1D_size_page2->setMinimumHeight(value_L1D_size_page2->sizeHint().height() + 6);
+	value_L1D_size_page2->setMinimumWidth(value_L1D_size_page2->sizeHint().width() + 10);
+	value_L1D_size_page2->setText(QString("default"));
+	value_L1D_ways_page2 = new QLabel(this);
+	value_L1D_ways_page2->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1D_ways_page2->setMinimumHeight(value_L1D_ways_page2->sizeHint().height() + 6);
+	value_L1D_ways_page2->setMinimumWidth(value_L1D_ways_page2->sizeHint().width() + 10);
+	value_L1D_ways_page2->setText(QString("default"));
+	title_L1D_descriptor = new QLabel(this);
+	title_L1D_descriptor->setFrameStyle(QFrame::NoFrame);
+	title_L1D_descriptor->setText(QString("Descriptor"));
+	value_L1D_descriptor = new QLabel(this);
+	value_L1D_descriptor->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1D_descriptor->setMinimumHeight(value_L1D_descriptor->sizeHint().height() + 6);
+	value_L1D_descriptor->setMinimumWidth(value_L1D_descriptor->sizeHint().width() + 10);
+	value_L1D_descriptor->setText(QString("default"));
+
+	title_L1I_page2 = new QLabel(this);
+	title_L1I_page2->setFrameStyle(QFrame::NoFrame);
+	title_L1I_page2->setText(QString("Size"));
+	value_L1I_size_page2 = new QLabel(this);
+	value_L1I_size_page2->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1I_size_page2->setMinimumHeight(value_L1I_size_page2->sizeHint().height() + 6);
+	value_L1I_size_page2->setMinimumWidth(value_L1I_size_page2->sizeHint().width() + 10);
+	value_L1I_size_page2->setText(QString("default"));
+	value_L1I_ways_page2 = new QLabel(this);
+	value_L1I_ways_page2->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1I_ways_page2->setMinimumHeight(value_L1I_ways_page2->sizeHint().height() + 6);
+	value_L1I_ways_page2->setMinimumWidth(value_L1I_ways_page2->sizeHint().width() + 10);
+	value_L1I_ways_page2->setText(QString("default"));
+	title_L1I_descriptor = new QLabel(this);
+	title_L1I_descriptor->setFrameStyle(QFrame::NoFrame);
+	title_L1I_descriptor->setText(QString("Descriptor"));
+	value_L1I_descriptor = new QLabel(this);
+	value_L1I_descriptor->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L1I_descriptor->setMinimumHeight(value_L1I_descriptor->sizeHint().height() + 6);
+	value_L1I_descriptor->setMinimumWidth(value_L1I_descriptor->sizeHint().width() + 10);
+	value_L1I_descriptor->setText(QString("default"));
+
+	title_L2_page2 = new QLabel(this);
+	title_L2_page2->setFrameStyle(QFrame::NoFrame);
+	title_L2_page2->setText(QString("Size"));
+	value_L2_size_page2 = new QLabel(this);
+	value_L2_size_page2->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L2_size_page2->setMinimumHeight(value_L2_size_page2->sizeHint().height() + 6);
+	value_L2_size_page2->setMinimumWidth(value_L2_size_page2->sizeHint().width() + 10);
+	value_L2_size_page2->setText(QString("default"));
+	value_L2_ways_page2 = new QLabel(this);
+	value_L2_ways_page2->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L2_ways_page2->setMinimumHeight(value_L2_ways_page2->sizeHint().height() + 6);
+	value_L2_ways_page2->setMinimumWidth(value_L2_ways_page2->sizeHint().width() + 10);
+	value_L2_ways_page2->setText(QString("default"));
+	title_L2_descriptor = new QLabel(this);
+	title_L2_descriptor->setFrameStyle(QFrame::NoFrame);
+	title_L2_descriptor->setText(QString("Descriptor"));
+	value_L2_descriptor = new QLabel(this);
+	value_L2_descriptor->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L2_descriptor->setMinimumHeight(value_L2_descriptor->sizeHint().height() + 6);
+	value_L2_descriptor->setMinimumWidth(value_L2_descriptor->sizeHint().width() + 10);
+	value_L2_descriptor->setText(QString("default"));
+
+	title_L3_page2 = new QLabel(this);
+	title_L3_page2->setFrameStyle(QFrame::NoFrame);
+	title_L3_page2->setText(QString("Size"));
+	value_L3_size_page2 = new QLabel(this);
+	value_L3_size_page2->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L3_size_page2->setMinimumHeight(value_L3_size_page2->sizeHint().height() + 6);
+	value_L3_size_page2->setMinimumWidth(value_L3_size_page2->sizeHint().width() + 10);
+	value_L3_size_page2->setText(QString("default"));
+	value_L3_ways_page2 = new QLabel(this);
+	value_L3_ways_page2->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L3_ways_page2->setMinimumHeight(value_L3_ways_page2->sizeHint().height() + 6);
+	value_L3_ways_page2->setMinimumWidth(value_L3_ways_page2->sizeHint().width() + 10);
+	value_L3_ways_page2->setText(QString("default"));
+	title_L3_descriptor = new QLabel(this);
+	title_L3_descriptor->setFrameStyle(QFrame::NoFrame);
+	title_L3_descriptor->setText(QString("Descriptor"));
+	value_L3_descriptor = new QLabel(this);
+	value_L3_descriptor->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	value_L3_descriptor->setMinimumHeight(value_L3_descriptor->sizeHint().height() + 6);
+	value_L3_descriptor->setMinimumWidth(value_L3_descriptor->sizeHint().width() + 10);
+	value_L3_descriptor->setText(QString("default"));
+
+	//page3
+	cpuid_checkCPU1 = new QCheckBox(this);
+	cpuid_checkCPU1->setText(QString("CPU1"));
+	cpuid_checkCPU2 = new QCheckBox(this);
+	cpuid_checkCPU2->setText(QString("CPU2"));
+	cpuid_checkCPU3 = new QCheckBox(this);
+	cpuid_checkCPU3->setText(QString("CPU3"));
+	cpuid_checkCPU4 = new QCheckBox(this);
+	cpuid_checkCPU4->setText(QString("CPU4"));
+
+	title_cpuid_inputEAX = new QLabel(this);
+	title_cpuid_inputEAX->setFrameStyle(QFrame::NoFrame);
+	title_cpuid_inputEAX->setText(QString("EAX: 0x"));
+	title_cpuid_inputECX = new QLabel(this);
+	title_cpuid_inputECX->setFrameStyle(QFrame::NoFrame);
+	title_cpuid_inputECX->setText(QString("ECX: 0x"));
+	title_cpuid_outputEAX = new QLabel(this);
+	title_cpuid_outputEAX->setFrameStyle(QFrame::NoFrame);
+	title_cpuid_outputEAX->setText(QString("EAX: 0x"));
+	title_cpuid_outputEBX = new QLabel(this);
+	title_cpuid_outputEBX->setFrameStyle(QFrame::NoFrame);
+	title_cpuid_outputEBX->setText(QString("EBX: 0x"));
+	title_cpuid_outputECX = new QLabel(this);
+	title_cpuid_outputECX->setFrameStyle(QFrame::NoFrame);
+	title_cpuid_outputECX->setText(QString("ECX: 0x"));
+	title_cpuid_outputEDX = new QLabel(this);
+	title_cpuid_outputEDX->setFrameStyle(QFrame::NoFrame);
+	title_cpuid_outputEDX->setText(QString("EDX: 0x"));
+
+	cpuid_input_eax = new QLineEdit(this);
+	cpuid_input_eax->setMaximumHeight(20);
+	cpuid_input_eax->setMinimumWidth(50);
+	cpuid_input_ecx = new QLineEdit(this);
+	cpuid_input_ecx->setMaximumHeight(20);
+	cpuid_input_ecx->setMinimumWidth(50);
+	cpuid_output_eax = new QLineEdit(this);
+	cpuid_output_eax->setMaximumHeight(20);
+	cpuid_output_eax->setMinimumWidth(50);
+	cpuid_output_ebx = new QLineEdit(this);
+	cpuid_output_ebx->setMaximumHeight(20);
+	cpuid_output_ebx->setMinimumWidth(50);
+	cpuid_output_ecx = new QLineEdit(this);
+	cpuid_output_ecx->setMaximumHeight(20);
+	cpuid_output_ecx->setMinimumWidth(50);
+	cpuid_output_edx = new QLineEdit(this);
+	cpuid_output_edx->setMaximumHeight(20);
+	cpuid_output_edx->setMinimumWidth(50);
+
+	//page4
+	msr_checkCPU1 = new QCheckBox(this);
+	msr_checkCPU1->setText(QString("CPU1"));
+	msr_checkCPU2 = new QCheckBox(this);
+	msr_checkCPU2->setText(QString("CPU2"));
+	msr_checkCPU3 = new QCheckBox(this);
+	msr_checkCPU3->setText(QString("CPU3"));
+	msr_checkCPU4 = new QCheckBox(this);
+	msr_checkCPU4->setText(QString("CPU4"));
+
+	title_msrECX = new QLabel(this);
+	title_msrECX->setFrameStyle(QFrame::NoFrame);
+	title_msrECX->setText(QString("ECX: 0x"));
+	title_msrEAX = new QLabel(this);
+	title_msrEAX->setFrameStyle(QFrame::NoFrame);
+	title_msrEAX->setText(QString("EAX: 0x"));
+	title_msrEDX = new QLabel(this);
+	title_msrEDX->setFrameStyle(QFrame::NoFrame);
+	title_msrEDX->setText(QString("EDX: 0x"));
+
+	cpuid_readBtn = new QPushButton(this);
+	cpuid_readBtn->setText(QString("Read"));
+
+	cpuid_fixBtn = new QPushButton(this);
+	cpuid_fixBtn->setText(QString("Fix"));
+
+	cpuid_deleteBtn = new QPushButton(this);
+	cpuid_deleteBtn->setText(QString("Delete"));
+
+	cpuid_table = new QTableView(this);
+	cpuid_table->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
+	cpuid_table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+	cpuid_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+	msr_ecx = new QLineEdit(this);
+	msr_ecx->setMaximumHeight(20);
+	msr_ecx->setMinimumWidth(50);
+	msr_eax = new QLineEdit(this);
+	msr_eax->setMaximumHeight(20);
+	msr_eax->setMinimumWidth(50);
+	msr_edx = new QLineEdit(this);
+	msr_edx->setMaximumHeight(20);
+	msr_edx->setMinimumWidth(50);
+
+	msr_readBtn = new QPushButton(this);
+	msr_readBtn->setText(QString("Read"));
+	msr_writeBtn = new QPushButton(this);
+	msr_writeBtn->setText(QString("Write"));
+	msr_fixBtn = new QPushButton(this);
+	msr_fixBtn->setText(QString("Fix"));
+	msr_deleteBtn = new QPushButton(this);
+	msr_deleteBtn->setText(QString("Delete"));
+
+	msr_table = new QTableView(this);
+	msr_table->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
+	msr_table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+	msr_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+}
+void Hard_CPU::setupLayout()
+{
+//*********************       Page1 CPU      ******************************
+	QGridLayout *cpugrouplayout = new QGridLayout;
+	cpugrouplayout->setContentsMargins(30, 10, 30, 10);
+	cpugrouplayout->setHorizontalSpacing(5);
+	cpugrouplayout->setVerticalSpacing(5);
+	cpugrouplayout->setRowStretch(0, 0);
+	cpugrouplayout->setRowStretch(1, 0);
+	cpugrouplayout->setRowStretch(2, 0);
+	cpugrouplayout->setRowStretch(3, 0);
+	cpugrouplayout->setRowStretch(4, 1);
+	cpugrouplayout->addWidget(title_cpuName, 0, 0, 1, 1);
+	cpugrouplayout->addWidget(value_cpuName, 0, 1, 1, 3);
+	cpugrouplayout->addWidget(title_cpuManufacture, 0, 4, 1, 1);
+	cpugrouplayout->addWidget(value_cpuManufacture, 0, 5, 1, 1);
+	cpugrouplayout->addWidget(title_codeName, 0, 6, 1, 1);
+	cpugrouplayout->addWidget(value_codeName, 0, 7, 1, 1);
+
+	cpugrouplayout->addWidget(title_packageTemperature, 1, 0, 1, 1);
+	cpugrouplayout->addWidget(value_packageTemperature, 1, 1, 1, 1);
+	cpugrouplayout->addWidget(title_temperature, 1, 2, 1, 1);
+	cpugrouplayout->addWidget(value_temperature, 1, 3, 1, 1);
+	cpugrouplayout->addWidget(title_technology, 1, 6, 1, 1);
+	cpugrouplayout->addWidget(value_technology, 1, 7, 1, 1);
+	cpugrouplayout->addWidget(title_maxTDP, 1, 4, 1, 1);
+	cpugrouplayout->addWidget(value_maxTDP, 1, 5, 1, 1);
+	
+
+	cpugrouplayout->addWidget(title_southbridge, 2, 0, 1, 1);
+	cpugrouplayout->addWidget(value_southbridge, 2, 1, 1, 1);
+	cpugrouplayout->addWidget(title_family, 2, 2, 1, 1);
+	cpugrouplayout->addWidget(value_family, 2, 3, 1, 1);
+	cpugrouplayout->addWidget(title_model, 2, 4, 1, 1);
+	cpugrouplayout->addWidget(value_model, 2, 5, 1, 1);
+	cpugrouplayout->addWidget(title_stepping, 2, 6, 1, 1);
+	cpugrouplayout->addWidget(value_stepping, 2, 7, 1, 1);
+
+	cpugrouplayout->addWidget(title_socketDesignation, 3, 0, 1, 1);
+	cpugrouplayout->addWidget(value_socketDesignation, 3, 1, 1, 1);
+	cpugrouplayout->addWidget(title_extFamily, 3, 2, 1, 1);
+	cpugrouplayout->addWidget(value_extFamily, 3, 3, 1, 1);
+	cpugrouplayout->addWidget(title_extModel, 3, 4, 1, 1);
+	cpugrouplayout->addWidget(value_extModel, 3, 5, 1, 1);
+	cpugrouplayout->addWidget(title_revision, 3, 6, 1, 1);
+	cpugrouplayout->addWidget(value_revision, 3, 7, 1, 1);
+
+	cpugrouplayout->addWidget(title_instructionSets, 4, 0, 1, 1);
+	cpugrouplayout->addWidget(value_instructionSets, 4, 1, 1, 7);
+
+	QGridLayout *clockgrouplayout = new QGridLayout;
+	clockgrouplayout->setContentsMargins(30, 10, 30, 10);
+	clockgrouplayout->setColumnStretch(0, 5);
+	clockgrouplayout->setColumnStretch(1, 10);
+	clockgrouplayout->setRowStretch(0, 2);
+	clockgrouplayout->setRowStretch(1, 8);
+	clockgrouplayout->setRowStretch(2, 8);
+	clockgrouplayout->setRowStretch(3, 8);
+	clockgrouplayout->setRowStretch(4, 8);
+	clockgrouplayout->setRowStretch(5, 2);
+	clockgrouplayout->addWidget(title_coreSpeed, 1, 0, 1, 1);
+	clockgrouplayout->addWidget(value_coreSpeed, 1, 1, 1, 1);
+	clockgrouplayout->addWidget(title_multiplier, 2, 0, 1, 1);
+	clockgrouplayout->addWidget(value_multiplier, 2, 1, 1, 1);
+	clockgrouplayout->addWidget(title_extSpeed, 3, 0, 1, 1);
+	clockgrouplayout->addWidget(value_extSpeed, 3, 1, 1, 1);
+	clockgrouplayout->addWidget(title_maxSpeed, 4, 0, 1, 1);
+	clockgrouplayout->addWidget(value_maxSpeed, 4, 1, 1, 1);
+
+	QGridLayout *cachegrouplayout = new QGridLayout;
+	cachegrouplayout->setContentsMargins(30, 10, 30, 10);
+	cachegrouplayout->setColumnStretch(0, 0);
+	cachegrouplayout->setColumnStretch(1, 0);
+	cachegrouplayout->setColumnStretch(2, 100);
+	cachegrouplayout->setRowStretch(0, 2);
+	cachegrouplayout->setRowStretch(1, 8);
+	cachegrouplayout->setRowStretch(2, 8);
+	cachegrouplayout->setRowStretch(3, 8);
+	cachegrouplayout->setRowStretch(4, 8);
+	cachegrouplayout->setRowStretch(5, 2);
+	cachegrouplayout->addWidget(title_L1D, 1, 0, 1, 1);
+	cachegrouplayout->addWidget(value_L1Dsize, 1, 1, 1, 1);
+	cachegrouplayout->addWidget(value_L1Dway, 1, 2, 1, 1);
+
+	cachegrouplayout->addWidget(title_L1I, 2, 0, 1, 1);
+	cachegrouplayout->addWidget(value_L1Isize, 2, 1, 1, 1);
+	cachegrouplayout->addWidget(value_L1Iway, 2, 2, 1, 1);
+
+	cachegrouplayout->addWidget(title_L2, 3, 0, 1, 1);
+	cachegrouplayout->addWidget(value_L2size, 3, 1, 1, 1);
+	cachegrouplayout->addWidget(value_L2way, 3, 2, 1, 1);
+
+	cachegrouplayout->addWidget(title_L3, 4, 0, 1, 1);
+	cachegrouplayout->addWidget(value_L3size, 4, 1, 1, 1);
+	cachegrouplayout->addWidget(value_L3way, 4, 2, 1, 1);
+
+	QGridLayout *choosedgrouplayout = new QGridLayout;
+	choosedgrouplayout->setContentsMargins(30, 10, 30, 10);
+	choosedgrouplayout->setColumnStretch(0, 0);
+	choosedgrouplayout->setColumnStretch(1, 100);
+	choosedgrouplayout->setColumnStretch(2, 0);
+	choosedgrouplayout->setColumnStretch(3, 100);
+	choosedgrouplayout->setColumnStretch(4, 0);
+	choosedgrouplayout->setColumnStretch(5, 100);
+	choosedgrouplayout->addWidget(title_cpuSelected, 0, 0);
+	choosedgrouplayout->addWidget(value_cpuSelected, 0, 1);
+	choosedgrouplayout->addWidget(title_cores, 0, 2);
+	choosedgrouplayout->addWidget(value_cores, 0, 3);
+	choosedgrouplayout->addWidget(title_threads, 0, 4);
+	choosedgrouplayout->addWidget(value_threads, 0, 5);
+
+	//groupbox
+	QGroupBox *cpugroup = new QGroupBox(tr("CPU"));
+	QGroupBox *clockgroup = new QGroupBox(tr("CLOCK"));
+	QGroupBox *cachegroup = new QGroupBox(tr("Cache"));
+	QGroupBox *choosegroup = new QGroupBox(tr("Choosed"));
+
+	cpugroup->setLayout(cpugrouplayout);
+	cpugroup->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+	clockgroup->setLayout(clockgrouplayout);
+	clockgroup->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+	cachegroup->setLayout(cachegrouplayout);
+	cachegroup->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+	choosegroup->setLayout(choosedgrouplayout);
+	choosegroup->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+	QGridLayout *page1layout = new QGridLayout;
+	page1layout->setContentsMargins(10, 10, 10, 10);
+	page1layout->setRowStretch(0, 7);
+	page1layout->setRowStretch(1, 4);
+	page1layout->setRowStretch(2, 1);
+	page1layout->setVerticalSpacing(5);
+	page1layout->setHorizontalSpacing(10);
+
+	page1layout->addWidget(cpugroup, 0, 0,
+		1, 2);
+	page1layout->addWidget(clockgroup, 1, 0,
+		1, 1);
+	page1layout->addWidget(cachegroup, 1, 1,
+		1, 1);
+	page1layout->addWidget(choosegroup, 2, 0,
+		1, 2);
+	pagecpu = new QWidget();
+	pagecpu->setLayout(page1layout);
+	pagecpu->setWindowFlags(Qt::FramelessWindowHint);
+//**********************************          Page2 Cache       *************************************
+	QGridLayout *firdatagrouplayout = new QGridLayout;
+	firdatagrouplayout->setContentsMargins(20, 20, 20, 20);
+	firdatagrouplayout->setVerticalSpacing(5);
+	firdatagrouplayout->setHorizontalSpacing(5);
+	firdatagrouplayout->setRowStretch(0, 2);
+	firdatagrouplayout->setRowStretch(1, 8);
+	firdatagrouplayout->setRowStretch(2, 8);
+	firdatagrouplayout->setRowStretch(3, 2);
+	firdatagrouplayout->setColumnStretch(0, 0);
+	firdatagrouplayout->setColumnStretch(1, 0);
+	firdatagrouplayout->setColumnStretch(2, 100);
+	firdatagrouplayout->addWidget(title_L1D_page2, 1, 0, 1, 1);
+	firdatagrouplayout->addWidget(value_L1D_size_page2, 1, 1, 1, 1);
+	firdatagrouplayout->addWidget(value_L1D_ways_page2, 1, 2, 1, 1);
+	firdatagrouplayout->addWidget(title_L1D_descriptor, 2, 0, 1, 1);
+	firdatagrouplayout->addWidget(value_L1D_descriptor, 2, 1, 1, 2);
+	QGridLayout *firinstgrouplayout = new QGridLayout;
+	firinstgrouplayout->setContentsMargins(20, 20, 20, 20);
+	firinstgrouplayout->setVerticalSpacing(5);
+	firinstgrouplayout->setRowStretch(0, 2);
+	firinstgrouplayout->setRowStretch(1, 8);
+	firinstgrouplayout->setRowStretch(2, 8);
+	firinstgrouplayout->setRowStretch(3, 2);
+	firinstgrouplayout->setColumnStretch(0, 0);
+	firinstgrouplayout->setColumnStretch(1, 0);
+	firinstgrouplayout->setColumnStretch(2, 100);
+	firinstgrouplayout->addWidget(title_L1I_page2, 1, 0, 1, 1);
+	firinstgrouplayout->addWidget(value_L1I_size_page2, 1, 1, 1, 1);
+	firinstgrouplayout->addWidget(value_L1I_ways_page2, 1, 2, 1, 1);
+	firinstgrouplayout->addWidget(title_L1I_descriptor, 2, 0, 1, 1);
+	firinstgrouplayout->addWidget(value_L1I_descriptor, 2, 1, 1, 2);
+	QGridLayout *secgrouplayout = new QGridLayout;
+	secgrouplayout->setContentsMargins(20, 20, 20, 20);
+	secgrouplayout->setVerticalSpacing(5);
+	secgrouplayout->setRowStretch(0, 2);
+	secgrouplayout->setRowStretch(1, 8);
+	secgrouplayout->setRowStretch(2, 8);
+	secgrouplayout->setRowStretch(3, 2);
+	secgrouplayout->setColumnStretch(0, 0);
+	secgrouplayout->setColumnStretch(1, 0);
+	secgrouplayout->setColumnStretch(2, 100);
+	secgrouplayout->addWidget(title_L2_page2, 1, 0, 1, 1);
+	secgrouplayout->addWidget(value_L2_size_page2, 1, 1, 1, 1);
+	secgrouplayout->addWidget(value_L2_ways_page2, 1, 2, 1, 1);
+	secgrouplayout->addWidget(title_L2_descriptor, 2, 0, 1, 1);
+	secgrouplayout->addWidget(value_L2_descriptor, 2, 1, 1, 2);
+	QGridLayout *thirgrouplayout = new QGridLayout;
+	thirgrouplayout->setContentsMargins(20, 20, 20, 20);
+	thirgrouplayout->setVerticalSpacing(5);
+	thirgrouplayout->setRowStretch(0, 2);
+	thirgrouplayout->setRowStretch(1, 8);
+	thirgrouplayout->setRowStretch(2, 8);
+	thirgrouplayout->setRowStretch(3, 2);
+	thirgrouplayout->setColumnStretch(0, 0);
+	thirgrouplayout->setColumnStretch(1, 0);
+	thirgrouplayout->setColumnStretch(2, 100);
+	thirgrouplayout->addWidget(title_L3_page2, 1, 0, 1, 1);
+	thirgrouplayout->addWidget(value_L3_size_page2, 1, 1, 1, 1);
+	thirgrouplayout->addWidget(value_L3_ways_page2, 1, 2, 1, 1);
+	thirgrouplayout->addWidget(title_L3_descriptor, 2, 0, 1, 1);
+	thirgrouplayout->addWidget(value_L3_descriptor, 2, 1, 1, 2);
+
+	QGroupBox *firdatacachegroup = new QGroupBox(tr("L1 D-Cache"));
+	QGroupBox *firinstcachegroup = new QGroupBox(tr("L1 I-Cache"));
+	QGroupBox *seccachegroup = new QGroupBox(tr("L2 Cache"));
+	QGroupBox *thircachegroup = new QGroupBox(tr("L3 Cache"));
+	//firdatacachegroup->setMinimumWidth(760);
+	//firinstcachegroup->setMinimumWidth(760);
+	//seccachegroup->setMinimumWidth(760);
+	//thircachegroup->setMinimumWidth(760);
+	firdatacachegroup->setLayout(firdatagrouplayout);
+	firinstcachegroup->setLayout(firinstgrouplayout);
+	seccachegroup->setLayout(secgrouplayout);
+	thircachegroup->setLayout(thirgrouplayout);
+
+	QGridLayout *page2layout = new QGridLayout;
+	page2layout->setContentsMargins(10, 10, 10, 10);
+	page2layout->addWidget(firdatacachegroup, 0, 0, 1, 1);
+	page2layout->addWidget(firinstcachegroup, 1, 0, 1, 1);
+	page2layout->addWidget(seccachegroup, 2, 0, 1, 1);
+	page2layout->addWidget(thircachegroup, 3, 0, 1, 1);
+	pagecache = new QWidget();
+	pagecache->setLayout(page2layout);
+	pagecache->setWindowFlags(Qt::FramelessWindowHint);
+//*********************************       Page3 CPUID             ***************************************
+	QGridLayout *page3layout = new QGridLayout;
+	page3layout->setContentsMargins(100, 20, 100, 0);
+	page3layout->setColumnStretch(0, 20);
+	page3layout->setColumnStretch(1, 0);
+	page3layout->setColumnStretch(2, 0);
+	page3layout->setColumnStretch(3, 0);
+	page3layout->setColumnStretch(4, 0);
+	page3layout->setColumnStretch(5, 0);
+	page3layout->setColumnStretch(6, 20);
+	page3layout->setRowStretch(0, 2);
+	page3layout->setRowStretch(1, 0);
+	page3layout->setRowStretch(2, 0);
+	page3layout->setRowStretch(3, 0);
+	page3layout->setRowStretch(4, 2);
+	page3layout->setRowStretch(5, 10);
+
+	page3layout->addWidget(cpuid_checkCPU1, 0, 1, 1, 1, Qt::AlignHCenter | Qt::AlignTop);
+	page3layout->addWidget(cpuid_checkCPU2, 0, 2, 1, 1, Qt::AlignHCenter | Qt::AlignTop);
+	page3layout->addWidget(cpuid_checkCPU3, 0, 3, 1, 1, Qt::AlignHCenter | Qt::AlignTop);
+	page3layout->addWidget(cpuid_checkCPU4, 0, 4, 1, 1, Qt::AlignHCenter | Qt::AlignTop);
+
+	page3layout->addWidget(title_cpuid_inputEAX, 1, 0,
+		1, 1, Qt::AlignRight);
+	page3layout->addWidget(cpuid_input_eax, 1, 1,
+		1, 2, Qt::AlignLeft);
+	page3layout->addWidget(title_cpuid_inputECX, 1, 4,
+		1, 1, Qt::AlignRight);
+	page3layout->addWidget(cpuid_input_ecx, 1, 5,
+		1, 2, Qt::AlignLeft);
+	page3layout->addWidget(title_cpuid_outputEAX, 2, 0,
+		1, 1, Qt::AlignRight);
+	page3layout->addWidget(cpuid_output_eax, 2, 1,
+		1, 2, Qt::AlignLeft);
+	page3layout->addWidget(title_cpuid_outputEBX, 2, 4,
+		1, 1, Qt::AlignRight);
+	page3layout->addWidget(cpuid_output_ebx, 2, 5,
+		1, 2, Qt::AlignLeft);
+	page3layout->addWidget(title_cpuid_outputECX, 3, 0,
+		1, 1, Qt::AlignRight);
+	page3layout->addWidget(cpuid_output_ecx, 3, 1,
+		1, 2, Qt::AlignLeft);
+	page3layout->addWidget(title_cpuid_outputEDX, 3, 4,
+		1, 1, Qt::AlignRight);
+	page3layout->addWidget(cpuid_output_edx, 3, 5,
+		1, 2, Qt::AlignLeft);
+	page3layout->addWidget(cpuid_readBtn, 4, 1,
+		1, 1, Qt::AlignCenter);
+	page3layout->addWidget(cpuid_fixBtn, 4, 4,
+		1, 1, Qt::AlignCenter);
+	page3layout->addWidget(cpuid_deleteBtn, 4, 5,
+		1, 1, Qt::AlignCenter);
+	page3layout->addWidget(cpuid_table, 5, 0,
+		1, 7,Qt::AlignCenter);
+	pagecpuid = new QWidget();
+	pagecpuid->setLayout(page3layout);
+	pagecpuid->setWindowFlags(Qt::FramelessWindowHint);
+	
+//*****************************            Page4 MSR             **************************************
+	QGridLayout *page4layout = new QGridLayout;
+	
+	page4layout->setContentsMargins(0, 20, 0, 0);
+	page4layout->setVerticalSpacing(5);
+	page4layout->setHorizontalSpacing(5);
+	page4layout->setRowStretch(0, 1);
+	page4layout->setRowStretch(1, 0);
+	page4layout->setRowStretch(2, 0);
+	page4layout->setRowStretch(3, 0);
+	page4layout->setRowStretch(4, 1);
+	page4layout->setRowStretch(5, 10);
+	page4layout->setColumnStretch(0, 10);
+	page4layout->setColumnStretch(1, 0);
+	page4layout->setColumnStretch(2, 0);
+	page4layout->setColumnStretch(3, 0);
+	page4layout->setColumnStretch(4, 0);
+	page4layout->setColumnStretch(5, 0);
+	page4layout->setColumnStretch(6, 10);
+	page4layout->addWidget(msr_checkCPU1, 0, 1, 1, 1, Qt::AlignHCenter | Qt::AlignTop);
+	page4layout->addWidget(msr_checkCPU2, 0, 2, 1, 1, Qt::AlignHCenter | Qt::AlignTop);
+	page4layout->addWidget(msr_checkCPU3, 0, 3, 1, 1, Qt::AlignHCenter | Qt::AlignTop);
+	page4layout->addWidget(msr_checkCPU4, 0, 4, 1, 1, Qt::AlignHCenter | Qt::AlignTop);
+
+	page4layout->addWidget(title_msrEAX, 1, 2, 1, 1, Qt::AlignRight | Qt::AlignTop);
+	page4layout->addWidget(msr_eax, 1, 3, 1, 2, Qt::AlignLeft | Qt::AlignTop);
+	page4layout->addWidget(title_msrECX, 2, 2, 1, 1, Qt::AlignRight | Qt::AlignTop);
+	page4layout->addWidget(msr_ecx, 2, 3, 1, 2, Qt::AlignLeft | Qt::AlignTop);
+	page4layout->addWidget(title_msrEDX, 3, 2, 1, 1, Qt::AlignRight | Qt::AlignTop);
+	page4layout->addWidget(msr_edx, 3, 3, 1, 2, Qt::AlignLeft | Qt::AlignTop);
+
+	page4layout->addWidget(msr_readBtn, 4, 1, 1, 1, Qt::AlignHCenter | Qt::AlignBottom);
+	page4layout->addWidget(msr_writeBtn, 4, 2, 1, 1, Qt::AlignHCenter | Qt::AlignBottom);
+	page4layout->addWidget(msr_fixBtn, 4, 3, 1, 1, Qt::AlignHCenter | Qt::AlignBottom);
+	page4layout->addWidget(msr_deleteBtn, 4, 5, 1, 1, Qt::AlignHCenter | Qt::AlignBottom);
+
+	page4layout->addWidget(msr_table, 5, 0, 1, 7, Qt::AlignCenter);
+	pagemsr = new QWidget();
+	pagemsr->setLayout(page4layout);
+	pagemsr->setWindowFlags(Qt::FramelessWindowHint);
+//****************************           tabwidget           ***************************************
+	tabwidget = new QTabWidget(this);
+	tabwidget->setFont(*normalFont);
+	tabwidget->setStyleSheet(QString("QTabBar::tab{background:transparent;border:1px solid #333333;border-bottom:none;color:#BBBBBB;padding-left:5px;padding-right:30px;padding-top:5px;padding-bottom:5px}QTabBar::tab:hover{background-color:#777777;border:1px solid #444444;border-bottom:none;}QTabBar::tab:selected{background-color:#111111;border:1px solid #333333;border-top:2px solid rgb(150,150,150);border-right:2px solid rgb(150,150,150);border-bottom:none;color:white}QTabWidget::pane{border-color:rgb(200,200,200);border-style:solid;border-width:1px}"));
+	tabwidget->addTab(pagecpu, QString("CPU"));
+	tabwidget->addTab(pagecache, QString("Cache"));
+	tabwidget->addTab(pagecpuid, QString("CPUID"));
+	tabwidget->addTab(pagemsr, QString("MSR"));
+//****************************            root window layout   ****************************************
+	QGridLayout *layout = new QGridLayout;
+	layout->setContentsMargins(0, 0, 0, 0);
+	layout->addWidget(tabwidget);
+	setLayout(layout);
+}
+void Hard_CPU::initializeData()
+{
+	GetData::CPU_Information *cpu_temp = new GetData::CPU_Information;
+	data.getCPU(cpu_temp);
+	cpuInfo = cpu_temp;
+
+	value_cpuManufacture->setText(QString::fromStdString(cpuInfo->manufacture));
+	value_codeName->setText(QString::fromStdString(cpuInfo->codeName));
+	value_socketDesignation->setText(QString::fromStdString(cpuInfo->socketDescription));
+	value_family->setText(QString("%0").arg(cpuInfo->family));
+	value_model->setText(QString("%0").arg(cpuInfo->model));
+	value_stepping->setText(QString("%0").arg(cpuInfo->stepping));
+	value_extFamily->setText(QString("%0").arg(cpuInfo->extFamily));
+	value_extModel->setText(QString("%0").arg(cpuInfo->extModel));
+	value_revision->setText(QString("%0").arg(cpuInfo->revision));
+	value_technology->setText(QString("%0nm").arg(cpuInfo->technology));
+	value_cpuName->setText(QString::fromStdString(cpuInfo->cpuName));//
+	value_instructionSets->setText(QString::fromStdString(cpuInfo->instructionSets));//
+	value_southbridge->setText(QString::fromStdString(cpuInfo->southbridgeName));
+	value_maxTDP->setText(QString("%0 W").arg(cpuInfo->maxTDP));
+	QTextCodec *codec = QTextCodec::codecForName("GB18030");
+	QString str = QString("%0").arg(cpuInfo->packageTemperature);
+	str += codec->toUnicode("¡æ");
+	value_packageTemperature->setText(str);
+	str = QString("%0").arg(cpuInfo->temperature[0]);
+	str+= codec->toUnicode("¡æ");
+	value_temperature->setText(str);
+
+	value_coreSpeed->setText(QString("%0 GHz").arg(cpuInfo->coreSpeed));
+	value_multiplier->setText(QString("%0").arg(cpuInfo->multiplier));
+	value_extSpeed->setText(QString("%0 MHz").arg(cpuInfo->extSpeed));
+	value_maxSpeed->setText(QString("%0 GHz").arg(cpuInfo->maxSpeed));
+
+	value_L1Dsize->setText(QString("%0 KB").arg(cpuInfo->cache[0].size));
+	value_L1Dway->setText(QString("%0 - ways").arg(cpuInfo->cache[0].way));
+	value_L1Isize->setText(QString("%0 KB").arg(cpuInfo->cache[1].size));
+	value_L1Iway->setText(QString("%0 - ways").arg(cpuInfo->cache[1].way));
+	value_L2size->setText(QString("%0 KB").arg(cpuInfo->cache[2].size));
+	value_L2way->setText(QString("%0 - ways").arg(cpuInfo->cache[2].way));
+	value_L3size->setText(QString("%0 MB").arg(cpuInfo->cache[3].size));
+	value_L3way->setText(QString("%0 - ways").arg(cpuInfo->cache[3].way));
+
+	value_cores->setText(QString("%0").arg(cpuInfo->coreNum));
+	value_threads->setText(QString("%0").arg(cpuInfo->threadNum));
+
+	value_L1D_size_page2->setText(QString("%0KB").arg(cpuInfo->cache[0].size));
+	value_L1D_ways_page2->setText(QString("x%0").arg(cpuInfo->coreNum));
+	value_L1D_descriptor->setText(QString("%0-ways set associative, %1-byte line size").arg(cpuInfo->cache[0].way).arg(cpuInfo->cache[0].lineSize));
+
+	value_L1I_size_page2->setText(QString("%0KB").arg(cpuInfo->cache[1].size));
+	value_L1I_ways_page2->setText(QString("x%0").arg(cpuInfo->coreNum));
+	value_L1I_descriptor->setText(QString("%0-ways set associative, %1-byte line size").arg(cpuInfo->cache[1].way).arg(cpuInfo->cache[1].lineSize));
+
+	value_L2_size_page2->setText(QString("%0KB").arg(cpuInfo->cache[2].size));
+	value_L2_ways_page2->setText(QString("x%0").arg(cpuInfo->coreNum));//
+	value_L2_descriptor->setText(QString("%0-ways set associative, %1-byte line size").arg(cpuInfo->cache[2].way).arg(cpuInfo->cache[2].lineSize));
+
+	value_L3_size_page2->setText(QString("%0MB").arg(cpuInfo->cache[3].size));
+	value_L3_ways_page2->setText(QString("x%0").arg(cpuInfo->coreNum));
+	value_L3_descriptor->setText(QString("%0-ways set associative, %1-byte line size").arg(cpuInfo->cache[3].way).arg(cpuInfo->cache[3].lineSize));
+
+	//recode
+	cpuidmodel->setHorizontalHeaderItem(0, new QStandardItem("Address"));
+	cpuidmodel->setHorizontalHeaderItem(1, new QStandardItem("EAX"));
+	cpuidmodel->setHorizontalHeaderItem(2, new QStandardItem("EBX"));
+	cpuidmodel->setHorizontalHeaderItem(3, new QStandardItem("ECX"));
+	cpuidmodel->setHorizontalHeaderItem(4, new QStandardItem("EDX"));
+	
+	QString title = "EAX:0x" + QString("%0").arg(cpuid_default_eax,0,16) + "-ECX:0x" + QString("%0").arg(cpuid_default_ecx,0,16);
+	bool ok;
+	long long cpuideax = cpuid_default_eax, cpuidecx = cpuid_default_ecx;
+	long long cpuidebx = 0, cpuidedx = 0;
+	data.readCPUID(cpuideax, cpuidebx, cpuidecx, cpuidedx);
+	cpuidmodel->setItem(0, 0,new QStandardItem(title));
+	cpuidmodel->setItem(0, 1, new QStandardItem(QString("0x%0").arg(cpuideax, 0, 16)));
+	cpuidmodel->setItem(0, 2, new QStandardItem(QString("0x%0").arg(cpuidebx, 0, 16)));
+	cpuidmodel->setItem(0, 3, new QStandardItem(QString("0x%0").arg(cpuidecx, 0, 16)));
+	cpuidmodel->setItem(0, 4, new QStandardItem(QString("0x%0").arg(cpuidedx, 0, 16)));
+	cpuid_table->setModel(cpuidmodel);
+
+	//recode
+	msrmodel->setHorizontalHeaderItem(0, new QStandardItem("Address"));
+	msrmodel->setHorizontalHeaderItem(1, new QStandardItem("CPU1"));
+	msrmodel->setHorizontalHeaderItem(2, new QStandardItem("CPU2"));
+	msrmodel->setHorizontalHeaderItem(3, new QStandardItem("CPU3"));
+	msrmodel->setHorizontalHeaderItem(4, new QStandardItem("CPU4"));
+	/*
+	int ecx = msr_default_ecx, eax1, edx1, eax2, edx2, eax3, edx3, eax4, edx4;
+	ok = data.readMsrTx(ecx, 1, eax1, edx1);
+	ok &= data.readMsrTx(ecx, 2, eax2, edx2);
+	ok &= data.readMsrTx(ecx, 4, eax3, edx3);
+	ok &= data.readMsrTx(ecx, 8, eax4, edx4);
+	if (ok)
+	{
+		msrmodel->setItem(0,0,new QStandardItem(QString("0x%0").arg(ecx, 0, 16)));
+		msrmodel->setItem(0,1,new QStandardItem(QString("0x%0%1").arg(edx1, 0, 16).arg(eax1, 0, 16)));
+		msrmodel->setItem(0,2,new QStandardItem(QString("0x%0%1").arg(edx2, 0, 16).arg(eax2, 0, 16)));
+		msrmodel->setItem(0,3,new QStandardItem(QString("0x%0%1").arg(edx3, 0, 16).arg(eax3, 0, 16)));
+		msrmodel->setItem(0,4,new QStandardItem(QString("0x%0%1").arg(edx4, 0, 16).arg(eax4, 0, 16)));
+	}
+	else
+	{
+		QMessageBox *messagebox = new QMessageBox(this);
+		messagebox->setText("read fail:msr table default");
+		messagebox->exec();
+	}
+	*/
+	
+	msr_table->setModel(msrmodel);
+	update();
+}
+void Hard_CPU::updateData()
+{
+	data.updateHardware();
+	initializeData();
+}
+void Hard_CPU::setConnection()
+{
+	connect(value_cpuSelected, SIGNAL(currentIndexChanged(int)), this, SLOT(cpuChoose(int)));
+	connect(cpuid_readBtn, SIGNAL(clicked(bool)), this, SLOT(cpuidRead()));
+	connect(cpuid_fixBtn, SIGNAL(clicked(bool)), this, SLOT(cpuidtableFix()));
+	connect(cpuid_deleteBtn, SIGNAL(clicked(bool)), this, SLOT(cpuidtableDelete()));
+	connect(cpuid_table->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(cpuidtableHeaderChoosed(int)));
+
+	connect(msr_fixBtn, SIGNAL(clicked(bool)), this, SLOT(msrtablefix()));
+	connect(msr_readBtn, SIGNAL(clicked(bool)), this, SLOT(msrRead()));
+	connect(msr_writeBtn, SIGNAL(clicked(bool)), this, SLOT(msrWrite()));
+	connect(msr_deleteBtn, SIGNAL(clicked(bool)), this, SLOT(msrtabledelete()));
+	connect(msr_table->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(msrtableHeaderChoosed(int)));
 }
 void Hard_CPU::paintEvent(QPaintEvent *event)
 {
-    //QPainter painter(this);
-    //painter.drawText(this->rect(),Qt::AlignCenter,tr("cpu"));
 }
 
 void Hard_CPU::cpuChoose(int index)
@@ -976,32 +966,32 @@ void Hard_CPU::cpuChoose(int index)
     {
     case 0:
     {
-        label_cores->setText(QString("case 0"));
-        label_threads->setText(QString("case 0"));
+		value_cores->setText(QString("case 0"));
+		value_threads->setText(QString("case 0"));
         break;
     }
     case 1:
     {
-        label_cores->setText(QString("case 1"));
-        label_threads->setText(QString("case 1"));
+		value_cores->setText(QString("case 1"));
+		value_threads->setText(QString("case 1"));
         break;
     }
     case 2:
     {
-        label_cores->setText(QString("case 2"));
-        label_threads->setText(QString("case 2"));
+		value_cores->setText(QString("case 2"));
+		value_threads->setText(QString("case 2"));
         break;
     }
     case 3:
     {
-        label_cores->setText(QString("case 3"));
-        label_threads->setText(QString("case 3"));
+		value_cores->setText(QString("case 3"));
+		value_threads->setText(QString("case 3"));
         break;
     }
     default:
     {
-        label_cores->setText(QString("default"));
-        label_threads->setText(QString("default"));
+		value_cores->setText(QString("default"));
+		value_threads->setText(QString("default"));
         break;
     }
     }
@@ -1009,25 +999,29 @@ void Hard_CPU::cpuChoose(int index)
 }
 void Hard_CPU::cpuidRead()
 {
-    QString str_eax = lineedit_cpuid_input_eax->text();
-    QString str_ecx = lineedit_cpuid_input_ecx->text();
+    QString str_eax = cpuid_input_eax->text();
+    QString str_ecx = cpuid_input_ecx->text();
+	bool ok;
+	long long eax = str_eax.toLongLong(&ok, 16);
+	long long ecx = str_ecx.toLong(&ok, 16);
+	long long ebx = 0, edx = 0;
     QRegExp regexp("[0-9a-fA-F]+");
     if(regexp.exactMatch(str_eax)&&regexp.exactMatch(str_ecx))
     {
         unsigned int multicheck_flag = 0;
-        if(checkbox_cpuid_cpu1->isChecked())
+        if(cpuid_checkCPU1->isChecked())
         {
             multicheck_flag = multicheck_flag|0x1;
         }
-        if(checkbox_cpuid_cpu2->isChecked())
+        if(cpuid_checkCPU2->isChecked())
         {
             multicheck_flag = multicheck_flag|0x2;
         }
-        if(checkbox_cpuid_cpu3->isChecked())
+        if(cpuid_checkCPU3->isChecked())
         {
             multicheck_flag = multicheck_flag|0x4;
         }
-        if(checkbox_cpuid_cpu4->isChecked())
+        if(cpuid_checkCPU4->isChecked())
         {
             multicheck_flag = multicheck_flag|0x8;
         }
@@ -1035,36 +1029,43 @@ void Hard_CPU::cpuidRead()
         {
         case 0x1:
         {
+			data.readCPUID(eax,ebx,ecx,edx);
             break;
         }
         case 0x2:
         {
+			data.readCPUID(eax, ebx, ecx, edx);
             break;
         }
         case 0x4:
         {
+			data.readCPUID(eax, ebx, ecx, edx);
             break;
         }
         case 0x8:
         {
+			data.readCPUID(eax, ebx, ecx, edx);
             break;
         }
         default:
         {
             QMessageBox *messagebox = new QMessageBox(this);
-            messagebox->setText("Please choose one CPU");
+            messagebox->setText("CPUID:Please choose one CPU");
             messagebox->exec();
             break;
         }
         }
+		cpuid_output_eax->setText(QString("%0").arg(eax,0,16));
+		cpuid_output_ebx->setText(QString("%0").arg(ebx,0,16));
+		cpuid_output_ecx->setText(QString("%0").arg(ecx,0,16));
+		cpuid_output_edx->setText(QString("%0").arg(edx,0,16));
     }
     else
     {
         QMessageBox *messagebox = new QMessageBox(this);
-        messagebox->setText("invalid input");
+        messagebox->setText("CPUID:invalid input");
         messagebox->exec();
     }
-    //qDebug()<<"cpuid read clicked";
 }
 void Hard_CPU::cpuidtableHeaderChoosed(int index)
 {
@@ -1073,8 +1074,27 @@ void Hard_CPU::cpuidtableHeaderChoosed(int index)
 void Hard_CPU::cpuidtableFix()
 {
     QList <QStandardItem *> list;
-    list<<new QStandardItem("address")<<new QStandardItem("xxxx")<<new QStandardItem("xxxx")<<new QStandardItem("xxxx")<<new QStandardItem("xxxx");
-    cpuidmodel->appendRow(list);
+	QString str_eax = cpuid_input_eax->text();
+	QString str_ecx = cpuid_input_ecx->text();
+	QString title = "EAX:0x" + str_eax + "-ECX:0x" + str_ecx;
+	bool ok;
+	long long eax = str_eax.toLongLong(&ok, 16);
+	long long ecx = str_ecx.toLong(&ok, 16);
+	long long ebx = 0, edx = 0;
+	QRegExp regexp("[0-9a-fA-F]+");
+	if (regexp.exactMatch(str_eax) && regexp.exactMatch(str_ecx))
+	{
+		data.readCPUID(eax, ebx, ecx, edx);
+		list << new QStandardItem(title) << new QStandardItem(QString("0x%0").arg(eax,0,16)) << new QStandardItem(QString("0x%0").arg(ebx, 0, 16)) << new QStandardItem(QString("0x%0").arg(ecx, 0, 16)) << new QStandardItem(QString("0x%0").arg(edx, 0, 16));
+		cpuidmodel->appendRow(list);
+	}
+	else
+	{
+		QMessageBox *messagebox = new QMessageBox(this);
+		messagebox->setText("CPUID:invalid input");
+		messagebox->exec();
+	}
+    
 }
 void Hard_CPU::cpuidtableDelete()
 {
@@ -1085,25 +1105,24 @@ void Hard_CPU::msrCpuChoose()
 {}
 void Hard_CPU::msrRead()
 {
-    QString str_ecx = lineedit_msr_ecx->text();
-    QString str_eax = lineedit_msr_eax->text();
+	 QString str_ecx = msr_ecx->text();
     QRegExp regexp("[0-9a-fA-F]+");
-    if(regexp.exactMatch(str_eax)&&regexp.exactMatch(str_ecx))
+    if(regexp.exactMatch(str_ecx))
     {
         unsigned int multicheck_flag = 0;
-        if(checkbox_msr_cpu1->isChecked())
+        if(msr_checkCPU1->isChecked())
         {
             multicheck_flag = multicheck_flag|0x1;
         }
-        if(checkbox_msr_cpu2->isChecked())
+        if(msr_checkCPU2->isChecked())
         {
             multicheck_flag = multicheck_flag|0x2;
         }
-        if(checkbox_msr_cpu3->isChecked())
+        if(msr_checkCPU3->isChecked())
         {
             multicheck_flag = multicheck_flag|0x4;
         }
-        if(checkbox_msr_cpu4->isChecked())
+        if(msr_checkCPU4->isChecked())
         {
             multicheck_flag = multicheck_flag|0x8;
         }
@@ -1111,22 +1130,74 @@ void Hard_CPU::msrRead()
         {
         case 0x1:
         {
-            lineedit_msr_edx->setText(QString("cpu1 read"));
+			bool ok;
+			int ecx = str_ecx.toInt(&ok, 16);
+			int eax, edx;
+			if (data.readMsrTx(ecx, 1, eax, edx))
+			{
+				msr_edx->setText(QString("%0").arg(edx, 0, 16));
+				msr_eax->setText(QString("%0").arg(eax, 0, 16));
+			}
+			else
+			{
+				QMessageBox *messagebox = new QMessageBox(this);
+				messagebox->setText("read fail:msrread");
+				messagebox->exec();
+			}
             break;
         }
         case 0x2:
         {
-            lineedit_msr_edx->setText(QString("cpu2 read"));
+			bool ok;
+			int ecx = str_ecx.toInt(&ok, 16);
+			int eax, edx;
+			if (data.readMsrTx(ecx, 1, eax, edx))
+			{
+				msr_edx->setText(QString("%0").arg(edx, 0, 16));
+				msr_eax->setText(QString("%0").arg(eax, 0, 16));
+			}
+			else
+			{
+				QMessageBox *messagebox = new QMessageBox(this);
+				messagebox->setText("read fail:msrread");
+				messagebox->exec();
+			}
             break;
         }
         case 0x4:
-        {
-            lineedit_msr_edx->setText(QString("cpu3 read"));
+        {		
+			bool ok;
+			int ecx = str_ecx.toInt(&ok, 16);
+			int eax, edx;
+			if (data.readMsrTx(ecx, 1, eax, edx))
+			{
+				msr_edx->setText(QString("%0").arg(edx, 0, 16));
+				msr_eax->setText(QString("%0").arg(eax, 0, 16));
+			}
+			else
+			{
+				QMessageBox *messagebox = new QMessageBox(this);
+				messagebox->setText("read fail:msrread");
+				messagebox->exec();
+			}
             break;
         }
         case 0x8:
         {
-            lineedit_msr_edx->setText(QString("cpu4 read"));
+			bool ok;
+			int ecx = str_ecx.toInt(&ok, 16);
+			int eax, edx;
+			if (data.readMsrTx(ecx, 1, eax, edx))
+			{
+				msr_edx->setText(QString("%0").arg(edx, 0, 16));
+				msr_eax->setText(QString("%0").arg(eax, 0, 16));
+			}
+			else
+			{
+				QMessageBox *messagebox = new QMessageBox(this);
+				messagebox->setText("read fail:msrread");
+				messagebox->exec();
+			}
             break;
         }
         default:
@@ -1147,26 +1218,31 @@ void Hard_CPU::msrRead()
 }
 void Hard_CPU::msrWrite()
 {
-    QString str_ecx = lineedit_msr_ecx->text();
-    QString str_eax = lineedit_msr_eax->text();
-    QString str_edx = lineedit_msr_edx->text();
+	QString str_ecx = msr_ecx->text();
+    QString str_eax = msr_eax->text();
+    QString str_edx = msr_edx->text();
+
+	bool ok;
+	int ecx = str_ecx.toInt(&ok, 16);
+	int eax = str_eax.toInt(&ok, 16);
+	int edx = str_edx.toInt(&ok, 16);
     QRegExp regexp("[0-9a-fA-F]+");
     if(regexp.exactMatch(str_eax)&&regexp.exactMatch(str_ecx)&&regexp.exactMatch(str_edx))
     {
         unsigned int multicheck_flag = 0;
-        if(checkbox_msr_cpu1->isChecked())
+        if(msr_checkCPU1->isChecked())
         {
             multicheck_flag = multicheck_flag|0x1;
         }
-        if(checkbox_msr_cpu2->isChecked())
+        if(msr_checkCPU2->isChecked())
         {
             multicheck_flag = multicheck_flag|0x2;
         }
-        if(checkbox_msr_cpu3->isChecked())
+        if(msr_checkCPU3->isChecked())
         {
             multicheck_flag = multicheck_flag|0x4;
         }
-        if(checkbox_msr_cpu4->isChecked())
+        if(msr_checkCPU4->isChecked())
         {
             multicheck_flag = multicheck_flag|0x8;
         }
@@ -1174,22 +1250,42 @@ void Hard_CPU::msrWrite()
         {
         case 0x1:
         {
-            lineedit_msr_edx->setText(QString("cpu1 write"));
+			if(!data.writeMsrTx(ecx,1,eax,edx))
+			{
+				QMessageBox *messagebox = new QMessageBox(this);
+				messagebox->setText("write fail:msrwrite");
+				messagebox->exec();
+			}	
             break;
         }
         case 0x2:
         {
-            lineedit_msr_edx->setText(QString("cpu2 write"));
+			if (!data.writeMsrTx(ecx, 2, eax, edx))
+			{
+				QMessageBox *messagebox = new QMessageBox(this);
+				messagebox->setText("write fail:msrwrite");
+				messagebox->exec();
+			}
             break;
         }
         case 0x4:
         {
-            lineedit_msr_edx->setText(QString("cpu3 write"));
+			if (!data.writeMsrTx(ecx, 4, eax, edx))
+			{
+				QMessageBox *messagebox = new QMessageBox(this);
+				messagebox->setText("write fail:msrwrite");
+				messagebox->exec();
+			}
             break;
         }
         case 0x8:
         {
-            lineedit_msr_edx->setText(QString("cpu4 write"));
+			if (!data.writeMsrTx(ecx, 8, eax, edx))
+			{
+				QMessageBox *messagebox = new QMessageBox(this);
+				messagebox->setText("write fail:msrwrite");
+				messagebox->exec();
+			}
             break;
         }
         default:
@@ -1210,9 +1306,25 @@ void Hard_CPU::msrWrite()
 }
 void Hard_CPU::msrtablefix()
 {
-    QList <QStandardItem *> list;
-    list<<new QStandardItem("address")<<new QStandardItem("xxxx")<<new QStandardItem("xxxx")<<new QStandardItem("xxxx")<<new QStandardItem("xxxx");
-    msrmodel->appendRow(list);
+	QList <QStandardItem *> list;
+	QString str_index = msr_ecx->text();
+	bool ok;
+	int ecx = str_index.toInt(&ok, 16),eax1,edx1, eax2, edx2, eax3, edx3, eax4, edx4;
+	ok = data.readMsrTx(ecx, 1, eax1,edx1);
+	ok &= data.readMsrTx(ecx, 2, eax2, edx2);
+	ok &= data.readMsrTx(ecx, 4, eax3, edx3);
+	ok &= data.readMsrTx(ecx, 8, eax4, edx4);
+	if (ok)
+	{
+		list << new QStandardItem(QString("0x%0").arg(ecx, 0, 16)) << new QStandardItem(QString("0x%0%1").arg(edx1, 0, 16).arg(eax1,0,16)) << new QStandardItem(QString("0x%0%1").arg(edx2, 0, 16).arg(eax2, 0, 16)) << new QStandardItem(QString("0x%0%1").arg(edx3, 0, 16).arg(eax3, 0, 16)) << new QStandardItem(QString("0x%0%1").arg(edx4, 0, 16).arg(eax4, 0, 16));
+		msrmodel->appendRow(list);
+	}
+	else
+	{
+		QMessageBox *messagebox = new QMessageBox(this);
+		messagebox->setText("read fail:msrtablefix");
+		messagebox->exec();
+	}
 }
 void Hard_CPU::msrtableHeaderChoosed(int index)
 {
@@ -1227,4 +1339,8 @@ void Hard_CPU::msrtabledelete()
         removemsrRow = 999;
     }
     update();
+}
+void Hard_CPU::reset()
+{
+	tabwidget->setCurrentWidget(pagecpu);
 }

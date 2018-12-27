@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QLineEdit>
-#include <QLabel>
+#include <QLabel>msvcrtd.lib
 #include <QGridLayout>
 #include <QPushButton>
 #include <QRegExp>

@@ -7,6 +7,8 @@ class Window_help : public QWidget
     Q_OBJECT
 public:
     Window_help(QWidget *parent=0);
+private:
+
 };
 
 #endif // WINDOW_HELP_H

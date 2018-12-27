@@ -36,7 +36,8 @@ void Window_memoryAddress::done()
     QRegExp regexp("[0-9a-fA-F]+");
     if(regexp.exactMatch(str_addr))
     {
-        emit send_input(str_addr.toInt());
+		bool ok;
+        emit send_input(str_addr.toInt(&ok,16));
     }
     else
     {

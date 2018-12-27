@@ -1,41 +1,85 @@
 #include "hard_other.h"
+#include "UIdata.h"
 #include <QPainter>
 #include <QLabel>
 #include <QGridLayout>
+#include <qscrollarea.h>
+#include <qdebug.h>
 Hard_Other::Hard_Other(QWidget *parent)
 {
-    setFixedSize(800,594);
     setWindowFlags(Qt::FramelessWindowHint);
-
-    QLabel *label1 = new QLabel(this);
-    label1->setFrameStyle(QFrame::NoFrame);
-    label1->setText(QStringLiteral("声卡 High Definition Audio Controller(nVIDIA unknown)"));
-    QLabel *label2 = new QLabel(this);
-    label2->setFrameStyle(QFrame::NoFrame);
-    label2->setText(QStringLiteral("声卡 Intel Lynx Point PCH-High Definition Audio"));
-    QLabel *label3 = new QLabel(this);
-    label3->setFrameStyle(QFrame::NoFrame);
-    label3->setText(QStringLiteral("鼠标 HID-compliant mouse"));
-    QLabel *label4 = new QLabel(this);
-    label4->setFrameStyle(QFrame::NoFrame);
-    label4->setText(QStringLiteral("键盘 HIS Keyboard Device"));
-
-    QGridLayout *layout = new QGridLayout;
-    layout->setContentsMargins(10,20,10,10);
-    layout->setRowStretch(0,0);
-    layout->setRowStretch(1,0);
-    layout->setRowStretch(2,0);
-    layout->setRowStretch(3,0);
-    layout->setRowStretch(4,1);
-    layout->addWidget(label1,0,0,1,1,Qt::AlignLeft|Qt::AlignTop);
-    layout->addWidget(label2,1,0,1,1,Qt::AlignLeft|Qt::AlignTop);
-    layout->addWidget(label3,2,0,1,1,Qt::AlignLeft|Qt::AlignTop);
-    layout->addWidget(label4,3,0,1,1,Qt::AlignLeft|Qt::AlignTop);
-
-    setLayout(layout);
+	setFont(*normalFont);
+	initializeUI();
+	setupLayout();
+	setConnection();
+	initializeData();	
 }
 void Hard_Other::paintEvent(QPaintEvent *event)
 {
-    //QPainter painter(this);
-    //painter.drawText(this->rect(),Qt::AlignCenter,tr("other"));
+}
+void Hard_Other::initializeUI()
+{
+	QString str_audio;
+	value_audio = new QLabel(this);
+	value_audio->setFrameStyle(QFrame::NoFrame);
+	value_audio->setText(str_audio);
+}
+void Hard_Other::setupLayout()
+{
+	QGridLayout *sublayout = new QGridLayout;
+	sublayout->setContentsMargins(10, 20, 10, 10);
+	sublayout->setRowStretch(0, 0);
+	sublayout->setRowStretch(1, 0);
+	sublayout->setRowStretch(2, 0);
+	sublayout->setRowStretch(3, 0);
+	sublayout->setRowStretch(4, 1);
+	sublayout->addWidget(value_audio, 0, 0, 1, 1, Qt::AlignLeft | Qt::AlignTop);
+	QWidget *widget = new QWidget(this);
+	widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	widget->setWindowFlags(Qt::FramelessWindowHint);
+	widget->setLayout(sublayout);
+
+	scrollarea = new QScrollArea;
+	scrollarea->setBackgroundRole(QPalette::Window);
+	scrollarea->setFrameStyle(QFrame::NoFrame);
+	scrollarea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
+	scrollarea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	scrollarea->setAlignment(Qt::AlignCenter);
+	scrollarea->setAutoFillBackground(true);
+	scrollarea->setWidgetResizable(true);
+	//scrollarea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	scrollarea->setWidget(widget);
+	QGridLayout *layout = new QGridLayout;
+	layout->addWidget(scrollarea);
+
+	setLayout(layout);
+}
+void Hard_Other::setConnection()
+{
+
+}
+void Hard_Other::initializeData()
+{
+	vector<GetData::Audio_Information> x;
+	data.getAudio(x);
+	QString str;
+	for (auto &i : x)
+	{
+		str += "Name:" + QString::fromStdWString(i.name) + "\r\n";
+		str += "AudioIf:" + QString::fromStdWString(i.audioif) + "\r\n";
+		str += "State:" + QString::fromStdWString(i.state) + "\r\n";
+		str += "ID:" + QString::fromStdWString(i.id) + "\r\n";
+		str += "Description:" + QString::fromStdWString(i.desc) + "\r\n";
+		str + "\r\n";
+	}
+	value_audio->setText(str);
+}
+void Hard_Other::updateData()
+{
+	data.updateHardware();
+	initializeData();
+}
+void Hard_Other::reset()
+{
+	scrollarea->verticalScrollBar()->setValue(0);
 }

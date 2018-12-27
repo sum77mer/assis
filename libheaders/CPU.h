@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 /*************************************************
 Copyright: 2017 Zhaoxin BJ-SV
@@ -6,13 +6,21 @@ Author:王硕
 Date:2017-12-13
 Description: 获取CPU的信息
 **************************************************/
-
-#include "cpulibdefination.h"
+#include "defination.h"
 
 namespace SV_ASSIST
 {
 	namespace CPU
 	{
+		/**************************************************************
+		*@Function				Updatedata
+		*@brief					更新CPU信息
+		*@author				王硕
+		*@param
+		*@return
+			*@null			
+		****************************************************************/
+		void Updatedata();
 		/**************************************************************
 		*@Function				GetCPUName
 		*@brief					获取CPU的名字(Brand Name)
@@ -23,6 +31,16 @@ namespace SV_ASSIST
 			*@string			CPU名字	
 		****************************************************************/
 		const std::string& GetCPUName();
+		/**************************************************************
+		*@Function				GetCPUSpecification
+		*@brief					获取CPU的名字(Brand Name)
+		*@author				王硕
+		*@param
+			*@					
+		*@return
+			*@string			CPU名字	
+		****************************************************************/
+		const std::string& GetCPUSpecification();
 		/**************************************************************
 		*@Function				GetProcessorID
 		*@brief					获取处理器的ID 
@@ -44,17 +62,16 @@ namespace SV_ASSIST
 		****************************************************************/
 		const std::string& GetSocketDesignation();
 
-		//可能会废弃 改用MSR形式
 		/**************************************************************
 		*@Function				GetCurrentClockSpeed
-		*@brief					获取处理器最近的频率（WMI 可能不准确） 
+		*@brief					获取处理器最近的频率 
 		*@author				王硕
 		*@param
 			*@null
 		*@return
-			*@UINT				处理器频率				
+			*@vector<double>&	处理器频率数组				
 		****************************************************************/
-		const unsigned int GetCurrentClockSpeed();
+		const std::vector<double>& GetCurrentClockSpeed();
 
 		//可能会废弃，改用MSR形式
 		/**************************************************************
@@ -64,9 +81,9 @@ namespace SV_ASSIST
 		*@param
 			*@null
 		*@return
-			*@uint				处理器外频				
+			*@double			处理器外频				
 		****************************************************************/
-		const unsigned int GetExtClock();
+		const double GetExtClock();
 
 		/**************************************************************
 		*@Function				GetCore
@@ -101,30 +118,6 @@ namespace SV_ASSIST
 			*@uint				处理器的修订版本				
 		****************************************************************/
 		const unsigned int GetRevision(); //未做
-
-		//可能会废弃 采用msr形式
-		/**************************************************************
-		*@Function				GetMaxClockSpeed
-		*@brief					获取处理器的最大时钟 
-		*@author				王硕
-		*@param
-			*@null
-		*@return
-			*@uint				最大时钟				
-		****************************************************************/
-		const unsigned int GetMaxClockSpeed();
-
-
-		/**************************************************************
-		*@Function				GetUpgradeMethod
-		*@brief					获取处理器的封装形式 
-		*@author				王硕
-		*@param
-			*@null					
-		*@return
-			*@uint							
-		****************************************************************/
-		const unsigned int GetUpgradeMethod();
 
 		/**************************************************************
 		*@Function				GetManufacturer
@@ -204,10 +197,78 @@ namespace SV_ASSIST
 		*@brief					获取处理器的Cache
 		*@author				王硕
 		*@param
-			*@
+			*@null
 		*@return
 			*@Cache_info		一、二、三级Cache(若没3级需要自己判断)		
 		****************************************************************/
 		const Cache_info* GetCache();
+
+		/**************************************************************
+		*@Function				GetSouthbridgeName
+		*@brief					获取南桥的代号
+		*@author				王硕
+		*@param
+			*@null
+		*@return
+			*@string			Intel未知代号返回Unknown，其他未知代号返回空
+		****************************************************************/
+		const std::string& GetSouthbridgeName();
+
+		//以下仅支持Inte部分cpu
+		/**************************************************************
+		*@Function				GetCodeName
+		*@brief					获取处理器的代号
+		*@author				王硕
+		*@param
+			*@null
+		*@return
+			*@string				Intel未知代号返回Unknown，其他未知代号返回空
+		****************************************************************/
+		const std::string& GetCodeName();
+
+		/**************************************************************
+		*@Function				GetTechnology
+		*@brief					获取处理器的工艺
+		*@author				王硕
+		*@param
+			*@null
+		*@return
+			*@UINT				未知返回0
+		****************************************************************/
+		const unsigned int GetTechnology();
+
+		/**************************************************************
+		*@Function				GetMaxTDP
+		*@brief					获取处理器的最大功率
+		*@author				王硕
+		*@param
+		*@null
+		*@return
+			*@UINT				未知返回0
+		****************************************************************/
+		const unsigned int GetMaxTDP();
+
+		/**************************************************************
+		*@Function				GetPackageTemperature
+		*@brief					获取处理器的封装温度
+		*@author				王硕
+		*@param
+			*@null
+		*@return
+			*@double			未知返回INFINITY
+		****************************************************************/
+		const double GetPackageTemperature();
+
+		/**************************************************************
+		*@Function				GetTemperature
+		*@brief					获取处理器的每个核的温度
+		*@author				王硕
+		*@param
+			*@null
+		*@return
+			*@double			未知返回INFINITY
+		****************************************************************/
+		const std::vector<double>& GetTemperature();
+
 	}
 }

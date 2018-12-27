@@ -9,7 +9,7 @@ void smbiostextbrowser::ReciveSMBIOSReady(bool Ready)
 {
     if(Ready)
     {
-        QFile file("J:/00_qt_code/build-untitled-Qt_5_11_0_msvc2015_x86-Debug/debug/HardWare/DMI/smbios.txt");
+        QFile file("./HardWare/DMI/smbios.txt");
         if(!file.open(QFile::ReadOnly | QFile::Text))
         {
             qDebug() << "Can not open";
@@ -34,7 +34,7 @@ void smbiostextbrowser::ReciveSMBIOSloc(QTreeWidgetItem *item, int columns)
 	Q_UNUSED(columns)
     this->clear();
     bool set = false, exit = false;
-    QFile file("J:/00_qt_code/build-untitled-Qt_5_11_0_msvc2015_x86-Debug/debug/HardWare/DMI/smbios.txt");
+    QFile file("./HardWare/DMI/smbios.txt");
     if(!file.open(QFile::ReadOnly | QFile::Text))
     {
         qDebug() << "Can not open";

@@ -10,6 +10,7 @@ class Widget_sideTabGroup : public QWidget
     Q_OBJECT
 public:
     Widget_sideTabGroup(QWidget *parent=0,QStringList string_list={"undefined","undefined"});
+	void reset();
 signals:
     void turnPage(int index);
 private slots:
@@ -22,6 +23,8 @@ private:
     unsigned int childNum=0;
     QList<Widget_sideTab *> btnList;
     QStringList stringList;
+	double scaleH;
+	double scaleV;
 };
 
 #endif // WIDGET_SIDETABGROUP_H

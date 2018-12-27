@@ -6,16 +6,27 @@
 #include <QLabel>
 #include <QCheckBox>
 #include <QPushButton>
+#include <QScrollArea>
+#include <QScrollBar>
+#include "getdata.h"
 class Soft_Config : public QWidget
 {
     Q_OBJECT
 public:
+	void reset();
     Soft_Config(QWidget *parent=0);
+	void initializeUI();
+	void initializeData();
+	void setupLayout();
+	void setConnection();
+	void updateData();
 protected:
     void paintEvent(QPaintEvent *event);
 private slots:
     void config();
 private:
+	QScrollArea *scrollarea = NULL;
+	QLabel *title = NULL;
     QCheckBox *checkbox_administrator;
     QCheckBox *checkbox_defender;
     QCheckBox *checkbox_customer_experience_program;
@@ -25,6 +36,9 @@ private:
     QCheckBox *checkbox_power_options;
     QCheckBox *checkbox_update;
     QCheckBox *checkbox_system_protect;
+	QPushButton *configBtn = NULL;
+private:
+	GetData data;
 };
 
 #endif // SOFT_CONFIG_H
