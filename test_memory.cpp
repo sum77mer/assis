@@ -1,5 +1,5 @@
 #include "test_memory.h"
-#include "UIdata.h"
+#include"UIconst.h"
 Test_Memory::Test_Memory(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
@@ -57,32 +57,32 @@ void Test_Memory::initializeUI()
 
 	label_bwtest_title = new QLabel(this);
 	label_bwtest_title->setFrameStyle(QFrame::NoFrame);
-	label_bwtest_title->setFont(*title_font);
+	label_bwtest_title->setFont(enTitleFont);
 	label_bwtest_title->setAlignment(Qt::AlignLeft);
 	label_bwtest_title->setText(QString("BrandWidth Test"));
 
 	label_function_title = new QLabel(this);
 	label_function_title->setFrameStyle(QFrame::NoFrame);
-	label_function_title->setFont(*normalFont);
+	label_function_title->setFont(enNormalFont);
 	label_function_title->setText(QString("Test Function:"));
 
 	checkbox_fun_ReaderSSE2 = new QCheckBox(this);
-	checkbox_fun_ReaderSSE2->setFont(*normalFont);
+	checkbox_fun_ReaderSSE2->setFont(enNormalFont);
 
 	checkbox_fun_WriterSSE2 = new QCheckBox(this);
-	checkbox_fun_WriterSSE2->setFont(*normalFont);
+	checkbox_fun_WriterSSE2->setFont(enNormalFont);
 	checkbox_fun_CopySSE = new QCheckBox(this);
-	checkbox_fun_CopySSE->setFont(*normalFont);
+	checkbox_fun_CopySSE->setFont(enNormalFont);
 	checkbox_fun_WriterSSE2_bypass = new QCheckBox(this);
-	checkbox_fun_WriterSSE2_bypass->setFont(*normalFont);
+	checkbox_fun_WriterSSE2_bypass->setFont(enNormalFont);
 	checkbox_fun_CopySSE_bypass = new QCheckBox(this);
-	checkbox_fun_CopySSE_bypass->setFont(*normalFont);
+	checkbox_fun_CopySSE_bypass->setFont(enNormalFont);
 	checkbox_fun_ReaderAVX = new QCheckBox(this);
-	checkbox_fun_ReaderAVX->setFont(*normalFont);
+	checkbox_fun_ReaderAVX->setFont(enNormalFont);
 	checkbox_fun_WriterAVX = new QCheckBox(this);
-	checkbox_fun_WriterAVX->setFont(*normalFont);
+	checkbox_fun_WriterAVX->setFont(enNormalFont);
 	checkbox_fun_CopyAVX = new QCheckBox(this);
-	checkbox_fun_CopyAVX->setFont(*normalFont);
+	checkbox_fun_CopyAVX->setFont(enNormalFont);
 
 	checkbox_fun_ReaderSSE2->setText(QString("ReaderSSE2"));
 	checkbox_fun_WriterSSE2->setText(QString("WriterSSE2"));
@@ -95,295 +95,295 @@ void Test_Memory::initializeUI()
 
 	label_hyperthread_title = new QLabel(this);
 	label_hyperthread_title->setFrameStyle(QFrame::NoFrame);
-	label_hyperthread_title->setFont(*normalFont);
+	label_hyperthread_title->setFont(enNormalFont);
 	label_hyperthread_title->setText(QString("Hyperthread:"));
 
 	checkbox_hyperthread = new QCheckBox(this);
-	checkbox_hyperthread->setFont(*normalFont);
+	checkbox_hyperthread->setFont(enNormalFont);
 	checkbox_hyperthread->setText(QString("HyperThread"));
 
 	btn_bw_begin = new QPushButton(this);
-	btn_bw_begin->setFont(*normalFont);
+	btn_bw_begin->setFont(enNormalFont);
 	btn_bw_begin->setText(QString("Run"));
 
 	bwResult_512B_title = new QLabel(this);
 	bwResult_512B_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_512B_title->setAlignment(Qt::AlignLeft);
 	bwResult_512B_title->setStyleSheet(resultStyleSheet1);
-	bwResult_512B_title->setFont(*normalFont);
+	bwResult_512B_title->setFont(enNormalFont);
 	bwResult_512B_title->setText(QString("512B"));
 
 	bwResult_1KB_title = new QLabel(this);
 	bwResult_1KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_1KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_1KB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_1KB_title->setFont(*normalFont);
+	bwResult_1KB_title->setFont(enNormalFont);
 	bwResult_1KB_title->setText(QString("1KB"));
 
 	bwResult_2KB_title = new QLabel(this);
 	bwResult_2KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_2KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_2KB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_2KB_title->setFont(*normalFont);
+	bwResult_2KB_title->setFont(enNormalFont);
 	bwResult_2KB_title->setText(QString("2KB"));
 
 	bwResult_4KB_title = new QLabel(this);
 	bwResult_4KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_4KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_4KB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_4KB_title->setFont(*normalFont);
+	bwResult_4KB_title->setFont(enNormalFont);
 	bwResult_4KB_title->setText(QString("4KB"));
 
 	bwResult_8KB_title = new QLabel(this);
 	bwResult_8KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_8KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_8KB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_8KB_title->setFont(*normalFont);
+	bwResult_8KB_title->setFont(enNormalFont);
 	bwResult_8KB_title->setText(QString("8KB"));
 
 	bwResult_16KB_title = new QLabel(this);
 	bwResult_16KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_16KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_16KB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_16KB_title->setFont(*normalFont);
+	bwResult_16KB_title->setFont(enNormalFont);
 	bwResult_16KB_title->setText(QString("16KB"));
 
 	bwResult_32KB_title = new QLabel(this);
 	bwResult_32KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_32KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_32KB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_32KB_title->setFont(*normalFont);
+	bwResult_32KB_title->setFont(enNormalFont);
 	bwResult_32KB_title->setText(QString("32KB"));
 
 	bwResult_64KB_title = new QLabel(this);
 	bwResult_64KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_64KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_64KB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_64KB_title->setFont(*normalFont);
+	bwResult_64KB_title->setFont(enNormalFont);
 	bwResult_64KB_title->setText(QString("64KB"));
 
 	bwResult_128KB_title = new QLabel(this);
 	bwResult_128KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_128KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_128KB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_128KB_title->setFont(*normalFont);
+	bwResult_128KB_title->setFont(enNormalFont);
 	bwResult_128KB_title->setText(QString("128KB"));
 
 	bwResult_256KB_title = new QLabel(this);
 	bwResult_256KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_256KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_256KB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_256KB_title->setFont(*normalFont);
+	bwResult_256KB_title->setFont(enNormalFont);
 	bwResult_256KB_title->setText(QString("256KB"));
 
 	bwResult_512KB_title = new QLabel(this);
 	bwResult_512KB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_512KB_title->setAlignment(Qt::AlignLeft);
 	bwResult_512KB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_512KB_title->setFont(*normalFont);
+	bwResult_512KB_title->setFont(enNormalFont);
 	bwResult_512KB_title->setText(QString("512KB"));
 
 	bwResult_1MB_title = new QLabel(this);
 	bwResult_1MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_1MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_1MB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_1MB_title->setFont(*normalFont);
+	bwResult_1MB_title->setFont(enNormalFont);
 	bwResult_1MB_title->setText(QString("1MB"));
 
 	bwResult_2MB_title = new QLabel(this);
 	bwResult_2MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_2MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_2MB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_2MB_title->setFont(*normalFont);
+	bwResult_2MB_title->setFont(enNormalFont);
 	bwResult_2MB_title->setText(QString("2MB"));
 
 	bwResult_4MB_title = new QLabel(this);
 	bwResult_4MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_4MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_4MB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_4MB_title->setFont(*normalFont);
+	bwResult_4MB_title->setFont(enNormalFont);
 	bwResult_4MB_title->setText(QString("4MB"));
 
 	bwResult_8MB_title = new QLabel(this);
 	bwResult_8MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_8MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_8MB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_8MB_title->setFont(*normalFont);
+	bwResult_8MB_title->setFont(enNormalFont);
 	bwResult_8MB_title->setText(QString("8MB"));
 
 	bwResult_16MB_title = new QLabel(this);
 	bwResult_16MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_16MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_16MB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_16MB_title->setFont(*normalFont);
+	bwResult_16MB_title->setFont(enNormalFont);
 	bwResult_16MB_title->setText(QString("16MB"));
 
 	bwResult_32MB_title = new QLabel(this);
 	bwResult_32MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_32MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_32MB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_32MB_title->setFont(*normalFont);
+	bwResult_32MB_title->setFont(enNormalFont);
 	bwResult_32MB_title->setText(QString("32MB"));
 
 	bwResult_64MB_title = new QLabel(this);
 	bwResult_64MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_64MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_64MB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_64MB_title->setFont(*normalFont);
+	bwResult_64MB_title->setFont(enNormalFont);
 	bwResult_64MB_title->setText(QString("64MB"));
 
 	bwResult_128MB_title = new QLabel(this);
 	bwResult_128MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_128MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_128MB_title->setStyleSheet(resultStyleSheet1);
-	bwResult_128MB_title->setFont(*normalFont);
+	bwResult_128MB_title->setFont(enNormalFont);
 	bwResult_128MB_title->setText(QString("128MB"));
 
 	bwResult_256MB_title = new QLabel(this);
 	bwResult_256MB_title->setFrameStyle(QFrame::NoFrame);
 	bwResult_256MB_title->setAlignment(Qt::AlignLeft);
 	bwResult_256MB_title->setStyleSheet(resultStyleSheet2);
-	bwResult_256MB_title->setFont(*normalFont);
+	bwResult_256MB_title->setFont(enNormalFont);
 	bwResult_256MB_title->setText(QString("256MB"));
 
 	bwResult_512B_value = new QLabel(this);
 	bwResult_512B_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_512B_value->setAlignment(Qt::AlignRight);
 	bwResult_512B_value->setStyleSheet(resultStyleSheet1);
-	bwResult_512B_value->setFont(*normalFont);
+	bwResult_512B_value->setFont(enNormalFont);
 	bwResult_512B_value->setText(QString("default"));
 
 	bwResult_1KB_value = new QLabel(this);
 	bwResult_1KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_1KB_value->setAlignment(Qt::AlignRight);
 	bwResult_1KB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_1KB_value->setFont(*normalFont);
+	bwResult_1KB_value->setFont(enNormalFont);
 	bwResult_1KB_value->setText(QString("default"));
 
 	bwResult_2KB_value = new QLabel(this);
 	bwResult_2KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_2KB_value->setAlignment(Qt::AlignRight);
 	bwResult_2KB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_2KB_value->setFont(*normalFont);
+	bwResult_2KB_value->setFont(enNormalFont);
 	bwResult_2KB_value->setText(QString("default"));
 
 	bwResult_4KB_value = new QLabel(this);
 	bwResult_4KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_4KB_value->setAlignment(Qt::AlignRight);
 	bwResult_4KB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_4KB_value->setFont(*normalFont);
+	bwResult_4KB_value->setFont(enNormalFont);
 	bwResult_4KB_value->setText(QString("default"));
 
 	bwResult_8KB_value = new QLabel(this);
 	bwResult_8KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_8KB_value->setAlignment(Qt::AlignRight);
 	bwResult_8KB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_8KB_value->setFont(*normalFont);
+	bwResult_8KB_value->setFont(enNormalFont);
 	bwResult_8KB_value->setText(QString("default"));
 
 	bwResult_16KB_value = new QLabel(this);
 	bwResult_16KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_16KB_value->setAlignment(Qt::AlignRight);
 	bwResult_16KB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_16KB_value->setFont(*normalFont);
+	bwResult_16KB_value->setFont(enNormalFont);
 	bwResult_16KB_value->setText(QString("default"));
 
 	bwResult_32KB_value = new QLabel(this);
 	bwResult_32KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_32KB_value->setAlignment(Qt::AlignRight);
 	bwResult_32KB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_32KB_value->setFont(*normalFont);
+	bwResult_32KB_value->setFont(enNormalFont);
 	bwResult_32KB_value->setText(QString("default"));
 
 	bwResult_64KB_value = new QLabel(this);
 	bwResult_64KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_64KB_value->setAlignment(Qt::AlignRight);
 	bwResult_64KB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_64KB_value->setFont(*normalFont);
+	bwResult_64KB_value->setFont(enNormalFont);
 	bwResult_64KB_value->setText(QString("default"));
 
 	bwResult_128KB_value = new QLabel(this);
 	bwResult_128KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_128KB_value->setAlignment(Qt::AlignRight);
 	bwResult_128KB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_128KB_value->setFont(*normalFont);
+	bwResult_128KB_value->setFont(enNormalFont);
 	bwResult_128KB_value->setText(QString("default"));
 
 	bwResult_256KB_value = new QLabel(this);
 	bwResult_256KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_256KB_value->setAlignment(Qt::AlignRight);
 	bwResult_256KB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_256KB_value->setFont(*normalFont);
+	bwResult_256KB_value->setFont(enNormalFont);
 	bwResult_256KB_value->setText(QString("default"));
 
 	bwResult_512KB_value = new QLabel(this);
 	bwResult_512KB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_512KB_value->setAlignment(Qt::AlignRight);
 	bwResult_512KB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_512KB_value->setFont(*normalFont);
+	bwResult_512KB_value->setFont(enNormalFont);
 	bwResult_512KB_value->setText(QString("default"));
 
 	bwResult_1MB_value = new QLabel(this);
 	bwResult_1MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_1MB_value->setAlignment(Qt::AlignRight);
 	bwResult_1MB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_1MB_value->setFont(*normalFont);
+	bwResult_1MB_value->setFont(enNormalFont);
 	bwResult_1MB_value->setText(QString("default"));
 
 	bwResult_2MB_value = new QLabel(this);
 	bwResult_2MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_2MB_value->setAlignment(Qt::AlignRight);
 	bwResult_2MB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_2MB_value->setFont(*normalFont);
+	bwResult_2MB_value->setFont(enNormalFont);
 	bwResult_2MB_value->setText(QString("default"));
 
 	bwResult_4MB_value = new QLabel(this);
 	bwResult_4MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_4MB_value->setAlignment(Qt::AlignRight);
 	bwResult_4MB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_4MB_value->setFont(*normalFont);
+	bwResult_4MB_value->setFont(enNormalFont);
 	bwResult_4MB_value->setText(QString("default"));
 
 	bwResult_8MB_value = new QLabel(this);
 	bwResult_8MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_8MB_value->setAlignment(Qt::AlignRight);
 	bwResult_8MB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_8MB_value->setFont(*normalFont);
+	bwResult_8MB_value->setFont(enNormalFont);
 	bwResult_8MB_value->setText(QString("default"));
 
 	bwResult_16MB_value = new QLabel(this);
 	bwResult_16MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_16MB_value->setAlignment(Qt::AlignRight);
 	bwResult_16MB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_16MB_value->setFont(*normalFont);
+	bwResult_16MB_value->setFont(enNormalFont);
 	bwResult_16MB_value->setText(QString("default"));
 
 	bwResult_32MB_value = new QLabel(this);
 	bwResult_32MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_32MB_value->setAlignment(Qt::AlignRight);
 	bwResult_32MB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_32MB_value->setFont(*normalFont);
+	bwResult_32MB_value->setFont(enNormalFont);
 	bwResult_32MB_value->setText(QString("default"));
 
 	bwResult_64MB_value = new QLabel(this);
 	bwResult_64MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_64MB_value->setAlignment(Qt::AlignRight);
 	bwResult_64MB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_64MB_value->setFont(*normalFont);
+	bwResult_64MB_value->setFont(enNormalFont);
 	bwResult_64MB_value->setText(QString("default"));
 
 	bwResult_128MB_value = new QLabel(this);
 	bwResult_128MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_128MB_value->setAlignment(Qt::AlignRight);
 	bwResult_128MB_value->setStyleSheet(resultStyleSheet1);
-	bwResult_128MB_value->setFont(*normalFont);
+	bwResult_128MB_value->setFont(enNormalFont);
 	bwResult_128MB_value->setText(QString("default"));
 
 	bwResult_256MB_value = new QLabel(this);
 	bwResult_256MB_value->setFrameStyle(QFrame::NoFrame);
 	bwResult_256MB_value->setAlignment(Qt::AlignRight);
 	bwResult_256MB_value->setStyleSheet(resultStyleSheet2);
-	bwResult_256MB_value->setFont(*normalFont);
+	bwResult_256MB_value->setFont(enNormalFont);
 	bwResult_256MB_value->setText(QString("default"));
 	//****************************************************************
 
@@ -391,309 +391,309 @@ void Test_Memory::initializeUI()
 	latResult_512B_title->setFrameStyle(QFrame::NoFrame);
 	latResult_512B_title->setAlignment(Qt::AlignLeft);
 	latResult_512B_title->setStyleSheet(resultStyleSheet2);
-	latResult_512B_title->setFont(*normalFont);
+	latResult_512B_title->setFont(enNormalFont);
 	latResult_512B_title->setText(QString("512B"));
 
 	latResult_1KB_title = new QLabel(this);
 	latResult_1KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_1KB_title->setAlignment(Qt::AlignLeft);
 	latResult_1KB_title->setStyleSheet(resultStyleSheet1);
-	latResult_1KB_title->setFont(*normalFont);
+	latResult_1KB_title->setFont(enNormalFont);
 	latResult_1KB_title->setText(QString("1KB"));
 
 	latResult_2KB_title = new QLabel(this);
 	latResult_2KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_2KB_title->setAlignment(Qt::AlignLeft);
 	latResult_2KB_title->setStyleSheet(resultStyleSheet2);
-	latResult_2KB_title->setFont(*normalFont);
+	latResult_2KB_title->setFont(enNormalFont);
 	latResult_2KB_title->setText(QString("2KB"));
 
 	latResult_4KB_title = new QLabel(this);
 	latResult_4KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_4KB_title->setAlignment(Qt::AlignLeft);
 	latResult_4KB_title->setStyleSheet(resultStyleSheet1);
-	latResult_4KB_title->setFont(*normalFont);
+	latResult_4KB_title->setFont(enNormalFont);
 	latResult_4KB_title->setText(QString("4KB"));
 
 	latResult_8KB_title = new QLabel(this);
 	latResult_8KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_8KB_title->setAlignment(Qt::AlignLeft);
 	latResult_8KB_title->setStyleSheet(resultStyleSheet2);
-	latResult_8KB_title->setFont(*normalFont);
+	latResult_8KB_title->setFont(enNormalFont);
 	latResult_8KB_title->setText(QString("8KB"));
 
 	latResult_16KB_title = new QLabel(this);
 	latResult_16KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_16KB_title->setAlignment(Qt::AlignLeft);
 	latResult_16KB_title->setStyleSheet(resultStyleSheet1);
-	latResult_16KB_title->setFont(*normalFont);
+	latResult_16KB_title->setFont(enNormalFont);
 	latResult_16KB_title->setText(QString("16KB"));
 
 	latResult_32KB_title = new QLabel(this);
 	latResult_32KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_32KB_title->setAlignment(Qt::AlignLeft);
 	latResult_32KB_title->setStyleSheet(resultStyleSheet2);
-	latResult_32KB_title->setFont(*normalFont);
+	latResult_32KB_title->setFont(enNormalFont);
 	latResult_32KB_title->setText(QString("32KB"));
 
 	latResult_64KB_title = new QLabel(this);
 	latResult_64KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_64KB_title->setAlignment(Qt::AlignLeft);
 	latResult_64KB_title->setStyleSheet(resultStyleSheet1);
-	latResult_64KB_title->setFont(*normalFont);
+	latResult_64KB_title->setFont(enNormalFont);
 	latResult_64KB_title->setText(QString("64KB"));
 
 	latResult_128KB_title = new QLabel(this);
 	latResult_128KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_128KB_title->setAlignment(Qt::AlignLeft);
 	latResult_128KB_title->setStyleSheet(resultStyleSheet2);
-	latResult_128KB_title->setFont(*normalFont);
+	latResult_128KB_title->setFont(enNormalFont);
 	latResult_128KB_title->setText(QString("128KB"));
 
 	latResult_256KB_title = new QLabel(this);
 	latResult_256KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_256KB_title->setAlignment(Qt::AlignLeft);
 	latResult_256KB_title->setStyleSheet(resultStyleSheet1);
-	latResult_256KB_title->setFont(*normalFont);
+	latResult_256KB_title->setFont(enNormalFont);
 	latResult_256KB_title->setText(QString("256KB"));
 
 	latResult_512KB_title = new QLabel(this);
 	latResult_512KB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_512KB_title->setAlignment(Qt::AlignLeft);
 	latResult_512KB_title->setStyleSheet(resultStyleSheet2);
-	latResult_512KB_title->setFont(*normalFont);
+	latResult_512KB_title->setFont(enNormalFont);
 	latResult_512KB_title->setText(QString("512KB"));
 
 	latResult_1MB_title = new QLabel(this);
 	latResult_1MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_1MB_title->setAlignment(Qt::AlignLeft);
 	latResult_1MB_title->setStyleSheet(resultStyleSheet1);
-	latResult_1MB_title->setFont(*normalFont);
+	latResult_1MB_title->setFont(enNormalFont);
 	latResult_1MB_title->setText(QString("1MB"));
 
 	latResult_2MB_title = new QLabel(this);
 	latResult_2MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_2MB_title->setAlignment(Qt::AlignLeft);
 	latResult_2MB_title->setStyleSheet(resultStyleSheet2);
-	latResult_2MB_title->setFont(*normalFont);
+	latResult_2MB_title->setFont(enNormalFont);
 	latResult_2MB_title->setText(QString("2MB"));
 
 	latResult_4MB_title = new QLabel(this);
 	latResult_4MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_4MB_title->setAlignment(Qt::AlignLeft);
 	latResult_4MB_title->setStyleSheet(resultStyleSheet1);
-	latResult_4MB_title->setFont(*normalFont);
+	latResult_4MB_title->setFont(enNormalFont);
 	latResult_4MB_title->setText(QString("4MB"));
 
 	latResult_8MB_title = new QLabel(this);
 	latResult_8MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_8MB_title->setAlignment(Qt::AlignLeft);
 	latResult_8MB_title->setStyleSheet(resultStyleSheet2);
-	latResult_8MB_title->setFont(*normalFont);
+	latResult_8MB_title->setFont(enNormalFont);
 	latResult_8MB_title->setText(QString("8MB"));
 
 	latResult_16MB_title = new QLabel(this);
 	latResult_16MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_16MB_title->setAlignment(Qt::AlignLeft);
 	latResult_16MB_title->setStyleSheet(resultStyleSheet1);
-	latResult_16MB_title->setFont(*normalFont);
+	latResult_16MB_title->setFont(enNormalFont);
 	latResult_16MB_title->setText(QString("16MB"));
 
 	latResult_32MB_title = new QLabel(this);
 	latResult_32MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_32MB_title->setAlignment(Qt::AlignLeft);
 	latResult_32MB_title->setStyleSheet(resultStyleSheet2);
-	latResult_32MB_title->setFont(*normalFont);
+	latResult_32MB_title->setFont(enNormalFont);
 	latResult_32MB_title->setText(QString("32MB"));
 
 	latResult_64MB_title = new QLabel(this);
 	latResult_64MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_64MB_title->setAlignment(Qt::AlignLeft);
 	latResult_64MB_title->setStyleSheet(resultStyleSheet1);
-	latResult_64MB_title->setFont(*normalFont);
+	latResult_64MB_title->setFont(enNormalFont);
 	latResult_64MB_title->setText(QString("64MB"));
 
 	latResult_128MB_title = new QLabel(this);
 	latResult_128MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_128MB_title->setAlignment(Qt::AlignLeft);
 	latResult_128MB_title->setStyleSheet(resultStyleSheet2);
-	latResult_128MB_title->setFont(*normalFont);
+	latResult_128MB_title->setFont(enNormalFont);
 	latResult_128MB_title->setText(QString("128MB"));
 
 	latResult_256MB_title = new QLabel(this);
 	latResult_256MB_title->setFrameStyle(QFrame::NoFrame);
 	latResult_256MB_title->setAlignment(Qt::AlignLeft);
 	latResult_256MB_title->setStyleSheet(resultStyleSheet1);
-	latResult_256MB_title->setFont(*normalFont);
+	latResult_256MB_title->setFont(enNormalFont);
 	latResult_256MB_title->setText(QString("256MB"));
 
 	latResult_512B_value = new QLabel(this);
 	latResult_512B_value->setFrameStyle(QFrame::NoFrame);
 	latResult_512B_value->setAlignment(Qt::AlignRight);
 	latResult_512B_value->setStyleSheet(resultStyleSheet2);
-	latResult_512B_value->setFont(*normalFont);
+	latResult_512B_value->setFont(enNormalFont);
 	latResult_512B_value->setText(QString("default"));
 
 	latResult_1KB_value = new QLabel(this);
 	latResult_1KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_1KB_value->setAlignment(Qt::AlignRight);
 	latResult_1KB_value->setStyleSheet(resultStyleSheet1);
-	latResult_1KB_value->setFont(*normalFont);
+	latResult_1KB_value->setFont(enNormalFont);
 	latResult_1KB_value->setText(QString("default"));
 
 	latResult_2KB_value = new QLabel(this);
 	latResult_2KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_2KB_value->setAlignment(Qt::AlignRight);
 	latResult_2KB_value->setStyleSheet(resultStyleSheet2);
-	latResult_2KB_value->setFont(*normalFont);
+	latResult_2KB_value->setFont(enNormalFont);
 	latResult_2KB_value->setText(QString("default"));
 
 	latResult_4KB_value = new QLabel(this);
 	latResult_4KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_4KB_value->setAlignment(Qt::AlignRight);
 	latResult_4KB_value->setStyleSheet(resultStyleSheet1);
-	latResult_4KB_value->setFont(*normalFont);
+	latResult_4KB_value->setFont(enNormalFont);
 	latResult_4KB_value->setText(QString("default"));
 
 	latResult_8KB_value = new QLabel(this);
 	latResult_8KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_8KB_value->setAlignment(Qt::AlignRight);
 	latResult_8KB_value->setStyleSheet(resultStyleSheet2);
-	latResult_8KB_value->setFont(*normalFont);
+	latResult_8KB_value->setFont(enNormalFont);
 	latResult_8KB_value->setText(QString("default"));
 
 	latResult_16KB_value = new QLabel(this);
 	latResult_16KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_16KB_value->setAlignment(Qt::AlignRight);
 	latResult_16KB_value->setStyleSheet(resultStyleSheet1);
-	latResult_16KB_value->setFont(*normalFont);
+	latResult_16KB_value->setFont(enNormalFont);
 	latResult_16KB_value->setText(QString("default"));
 
 	latResult_32KB_value = new QLabel(this);
 	latResult_32KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_32KB_value->setAlignment(Qt::AlignRight);
 	latResult_32KB_value->setStyleSheet(resultStyleSheet2);
-	latResult_32KB_value->setFont(*normalFont);
+	latResult_32KB_value->setFont(enNormalFont);
 	latResult_32KB_value->setText(QString("default"));
 
 	latResult_64KB_value = new QLabel(this);
 	latResult_64KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_64KB_value->setAlignment(Qt::AlignRight);
 	latResult_64KB_value->setStyleSheet(resultStyleSheet1);
-	latResult_64KB_value->setFont(*normalFont);
+	latResult_64KB_value->setFont(enNormalFont);
 	latResult_64KB_value->setText(QString("default"));
 
 	latResult_128KB_value = new QLabel(this);
 	latResult_128KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_128KB_value->setAlignment(Qt::AlignRight);
 	latResult_128KB_value->setStyleSheet(resultStyleSheet2);
-	latResult_128KB_value->setFont(*normalFont);
+	latResult_128KB_value->setFont(enNormalFont);
 	latResult_128KB_value->setText(QString("default"));
 
 	latResult_256KB_value = new QLabel(this);
 	latResult_256KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_256KB_value->setAlignment(Qt::AlignRight);
 	latResult_256KB_value->setStyleSheet(resultStyleSheet1);
-	latResult_256KB_value->setFont(*normalFont);
+	latResult_256KB_value->setFont(enNormalFont);
 	latResult_256KB_value->setText(QString("default"));
 
 	latResult_512KB_value = new QLabel(this);
 	latResult_512KB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_512KB_value->setAlignment(Qt::AlignRight);
 	latResult_512KB_value->setStyleSheet(resultStyleSheet2);
-	latResult_512KB_value->setFont(*normalFont);
+	latResult_512KB_value->setFont(enNormalFont);
 	latResult_512KB_value->setText(QString("default"));
 
 	latResult_1MB_value = new QLabel(this);
 	latResult_1MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_1MB_value->setAlignment(Qt::AlignRight);
 	latResult_1MB_value->setStyleSheet(resultStyleSheet1);
-	latResult_1MB_value->setFont(*normalFont);
+	latResult_1MB_value->setFont(enNormalFont);
 	latResult_1MB_value->setText(QString("default"));
 
 	latResult_2MB_value = new QLabel(this);
 	latResult_2MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_2MB_value->setAlignment(Qt::AlignRight);
 	latResult_2MB_value->setStyleSheet(resultStyleSheet2);
-	latResult_2MB_value->setFont(*normalFont);
+	latResult_2MB_value->setFont(enNormalFont);
 	latResult_2MB_value->setText(QString("default"));
 
 	latResult_4MB_value = new QLabel(this);
 	latResult_4MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_4MB_value->setAlignment(Qt::AlignRight);
 	latResult_4MB_value->setStyleSheet(resultStyleSheet1);
-	latResult_4MB_value->setFont(*normalFont);
+	latResult_4MB_value->setFont(enNormalFont);
 	latResult_4MB_value->setText(QString("default"));
 
 	latResult_8MB_value = new QLabel(this);
 	latResult_8MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_8MB_value->setAlignment(Qt::AlignRight);
 	latResult_8MB_value->setStyleSheet(resultStyleSheet2);
-	latResult_8MB_value->setFont(*normalFont);
+	latResult_8MB_value->setFont(enNormalFont);
 	latResult_8MB_value->setText(QString("default"));
 
 	latResult_16MB_value = new QLabel(this);
 	latResult_16MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_16MB_value->setAlignment(Qt::AlignRight);
 	latResult_16MB_value->setStyleSheet(resultStyleSheet1);
-	latResult_16MB_value->setFont(*normalFont);
+	latResult_16MB_value->setFont(enNormalFont);
 	latResult_16MB_value->setText(QString("default"));
 
 	latResult_32MB_value = new QLabel(this);
 	latResult_32MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_32MB_value->setAlignment(Qt::AlignRight);
 	latResult_32MB_value->setStyleSheet(resultStyleSheet2);
-	latResult_32MB_value->setFont(*normalFont);
+	latResult_32MB_value->setFont(enNormalFont);
 	latResult_32MB_value->setText(QString("default"));
 
 	latResult_64MB_value = new QLabel(this);
 	latResult_64MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_64MB_value->setAlignment(Qt::AlignRight);
 	latResult_64MB_value->setStyleSheet(resultStyleSheet1);
-	latResult_64MB_value->setFont(*normalFont);
+	latResult_64MB_value->setFont(enNormalFont);
 	latResult_64MB_value->setText(QString("default"));
 
 	latResult_128MB_value = new QLabel(this);
 	latResult_128MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_128MB_value->setAlignment(Qt::AlignRight);
 	latResult_128MB_value->setStyleSheet(resultStyleSheet2);
-	latResult_128MB_value->setFont(*normalFont);
+	latResult_128MB_value->setFont(enNormalFont);
 	latResult_128MB_value->setText(QString("default"));
 
 	latResult_256MB_value = new QLabel(this);
 	latResult_256MB_value->setFrameStyle(QFrame::NoFrame);
 	latResult_256MB_value->setAlignment(Qt::AlignRight);
 	latResult_256MB_value->setStyleSheet(resultStyleSheet1);
-	latResult_256MB_value->setFont(*normalFont);
+	latResult_256MB_value->setFont(enNormalFont);
 	latResult_256MB_value->setText(QString("default"));
 
 	label_lattest_title = new QLabel(this);
 	label_lattest_title->setFrameStyle(QFrame::NoFrame);
-	label_lattest_title->setFont(*title_font);
+	label_lattest_title->setFont(enTitleFont);
 	label_lattest_title->setAlignment(Qt::AlignLeft);
 	label_lattest_title->setText(QStringLiteral("Latency Test"));
 
 	label_stride_title = new QLabel(this);
 	label_stride_title->setFrameStyle(QFrame::NoFrame);
-	label_stride_title->setFont(*normalFont);
+	label_stride_title->setFont(enNormalFont);
 	label_stride_title->setText(QStringLiteral("stride"));
 
 	lineedit_stride = new QLineEdit(this);
-	lineedit_stride->setFont(*normalFont);
+	lineedit_stride->setFont(enNormalFont);
 	lineedit_stride->setText(QStringLiteral(""));
 	lineedit_stride->setMinimumWidth(50);
 	lineedit_stride->setMaximumHeight(20);
 
 	btn_lat_begin = new QPushButton(this);
-	btn_lat_begin->setFont(*normalFont);
+	btn_lat_begin->setFont(enNormalFont);
 	btn_lat_begin->setText(QString("Run"));
 
 	btn_openBWChartWindow = new QPushButton(this);
-	btn_openBWChartWindow->setFont(*normalFont);
+	btn_openBWChartWindow->setFont(enNormalFont);
 	btn_openBWChartWindow->setText(QString("Chart View"));
 
 	btn_openLATChartWindow = new QPushButton(this);
-	btn_openLATChartWindow->setFont(*normalFont);
+	btn_openLATChartWindow->setFont(enNormalFont);
 	btn_openLATChartWindow->setText(QString("Chart View"));
 
 	bwResult.append(bwResult_512B_value);

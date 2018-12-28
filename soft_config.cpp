@@ -1,8 +1,8 @@
 #include "soft_config.h"
-#include "UIdata.h"
+#include "UIconst.h"
 Soft_Config::Soft_Config(QWidget *parent)
 {
-	setFont(*normalFont);
+	setFont(enNormalFont);
     setWindowFlags(Qt::FramelessWindowHint);
 	initializeUI();
 	setupLayout();
@@ -14,7 +14,7 @@ void Soft_Config::paintEvent(QPaintEvent *event)
 void Soft_Config::initializeUI()
 {
 	title = new QLabel(this);
-	title->setFont(*titleFont);
+	title->setFont(enTitleFont);
 	title->setText(QStringLiteral("²âÊÔ»·¾³Ò»¼üÅäÖÃ"));
 	title->setStyleSheet(QString("QLabel{border-width:0px 0px 1px 0px;border-style:solid;border-color:rgb(200,200,200);padding-bottom:3px}"));
 

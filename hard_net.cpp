@@ -4,9 +4,10 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <qdebug.h>
+#include"UIconst.h"
 Hard_Net::Hard_Net(QWidget *parent)
 {
-	setFont(*normalFont);
+	setFont(enNormalFont);
     setWindowFlags(Qt::FramelessWindowHint);
 	initializeUI();
 	setupLayout();

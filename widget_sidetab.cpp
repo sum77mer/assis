@@ -1,8 +1,8 @@
 #include "widget_sidetab.h"
-
+#include"UIconst.h"
 Widget_sideTab::Widget_sideTab(QWidget *parent,QString title)
 {
-	setFont(*font);
+	setFont(enNormalFont);
     btnStatus=NORMAL;
     mousePress=false;
     choosedflag=false;
@@ -119,7 +119,7 @@ void Widget_sideTab::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);
-    painter.setFont(*font);
+    painter.setFont(enNormalFont);
 	QRect circleRect = this->rect();
 	circleRect.setX(this->rect().x() + leftMargin);
 	int y = this->rect().y();

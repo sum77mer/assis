@@ -9,9 +9,10 @@
 #include <qfile.h>
 #include <QTExtStream>
 #include <qdebug.h>
+#include"UIconst.h"
 Hard_GFX::Hard_GFX(QWidget *parent)
 {
-	setFont(*normalFont);
+	setFont(enNormalFont);
 
 	initializeUI();
 	setupLayout();

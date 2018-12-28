@@ -1,5 +1,4 @@
 #include "test_cpu.h"
-#include "UIdata.h"
 #include <QPushButton>
 #include <QLabel>
 #include <QGridLayout>
@@ -10,6 +9,7 @@
 #include <QJsonDocument>
 #include <QFont>
 #include <qbrush.h>
+#include"UIconst.h"
 Test_CPU::Test_CPU(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
@@ -25,7 +25,7 @@ void Test_CPU::initializeUI()
 	//QFont btnFont("Arial", 15, QFont::Normal);
 
 	btn_begin = new QPushButton(this);
-	btn_begin->setFont(*normalFont);
+	btn_begin->setFont(enNormalFont);
 	btn_begin->setText(QString("Run"));
 
 	connect(btn_begin, SIGNAL(clicked(bool)), this, SLOT(begin()));
@@ -33,26 +33,26 @@ void Test_CPU::initializeUI()
 	title_branch = new QLabel(this);
 	title_branch->setFrameStyle(QFrame::NoFrame);
 	title_branch->setAlignment(Qt::AlignLeft);
-	title_branch->setFont(*title_font);
+	title_branch->setFont(enTitleFont);
 	title_branch->setText(QStringLiteral("Branch Prediction Test"));
 
 	title_float = new QLabel(this);
 	title_float->setFrameStyle(QFrame::NoFrame);
 	title_float->setAlignment(Qt::AlignLeft);
-	title_float->setFont(*title_font);
+	title_float->setFont(enTitleFont);
 	title_float->setText(QStringLiteral("Floating Point Test"));
 
 	title_dataStream = new QLabel(this);
 	title_dataStream->setFrameStyle(QFrame::NoFrame);
 	title_dataStream->setAlignment(Qt::AlignLeft);
-	title_dataStream->setFont(*title_font);
+	title_dataStream->setFont(enTitleFont);
 	title_dataStream->setText(QStringLiteral("Data Stream Test"));
 
 	title_cpuqueen = new QLabel(this);
 	title_cpuqueen->setFrameStyle(QFrame::NoFrame);
 	title_cpuqueen->setAlignment(Qt::AlignLeft);
 	title_cpuqueen->setStyleSheet(resultStyleSheet1);
-	title_cpuqueen->setFont(*normalFont);
+	title_cpuqueen->setFont(enNormalFont);
 	title_cpuqueen->setText(QStringLiteral("CPU Queen"));
 
 	
@@ -60,21 +60,21 @@ void Test_CPU::initializeUI()
 	title_julia->setFrameStyle(QFrame::NoFrame);
 	title_julia->setAlignment(Qt::AlignLeft);
 	title_julia->setStyleSheet(resultStyleSheet1);
-	title_julia->setFont(*normalFont);
+	title_julia->setFont(enNormalFont);
 	title_julia->setText(QStringLiteral("Julia"));
 
 	title_mandel = new QLabel(this);
 	title_mandel->setFrameStyle(QFrame::NoFrame);
 	title_mandel->setAlignment(Qt::AlignLeft);//129, 199, 212, 60
 	title_mandel->setStyleSheet(resultStyleSheet2);
-	title_mandel->setFont(*normalFont);
+	title_mandel->setFont(enNormalFont);
 	title_mandel->setText(QStringLiteral("Mandel"));
 
 	title_zlibCompress = new QLabel(this);
 	title_zlibCompress->setFrameStyle(QFrame::NoFrame);
 	title_zlibCompress->setAlignment(Qt::AlignLeft);
 	title_zlibCompress->setStyleSheet(resultStyleSheet1);
-	title_zlibCompress->setFont(*normalFont);
+	title_zlibCompress->setFont(enNormalFont);
 	title_zlibCompress->setText(QStringLiteral("zlib compress"));
 	
 
@@ -82,28 +82,28 @@ void Test_CPU::initializeUI()
 	title_zlibUncompress->setFrameStyle(QFrame::NoFrame);
 	title_zlibUncompress->setAlignment(Qt::AlignLeft);
 	title_zlibUncompress->setStyleSheet(resultStyleSheet2);
-	title_zlibUncompress->setFont(*normalFont);
+	title_zlibUncompress->setFont(enNormalFont);
 	title_zlibUncompress->setText(QStringLiteral("zlib uncompress"));
 
 	title_aesDecrypto = new QLabel(this);
 	title_aesDecrypto->setFrameStyle(QFrame::NoFrame);
 	title_aesDecrypto->setAlignment(Qt::AlignLeft);
 	title_aesDecrypto->setStyleSheet(resultStyleSheet1);
-	title_aesDecrypto->setFont(*normalFont);
+	title_aesDecrypto->setFont(enNormalFont);
 	title_aesDecrypto->setText(QStringLiteral("aes decrypto"));
 
 	title_aesEncrypto = new QLabel(this);
 	title_aesEncrypto->setFrameStyle(QFrame::NoFrame);
 	title_aesEncrypto->setAlignment(Qt::AlignLeft);
 	title_aesEncrypto->setStyleSheet(resultStyleSheet2);
-	title_aesEncrypto->setFont(*normalFont);
+	title_aesEncrypto->setFont(enNormalFont);
 	title_aesEncrypto->setText(QStringLiteral("aes encrypto"));
 
 	title_sna = new QLabel(this);
 	title_sna->setFrameStyle(QFrame::NoFrame);
 	title_sna->setAlignment(Qt::AlignLeft);
 	title_sna->setStyleSheet(resultStyleSheet1);
-	title_sna->setFont(*normalFont);
+	title_sna->setFont(enNormalFont);
 	title_sna->setText(QStringLiteral("sna-256"));
 
 	
@@ -112,56 +112,56 @@ void Test_CPU::initializeUI()
 	value_cpuqueen->setAlignment(Qt::AlignRight);
 	value_cpuqueen->setText(QStringLiteral("default"));
 	value_cpuqueen->setStyleSheet(resultStyleSheet1);
-	value_cpuqueen->setFont(*normalFont);
+	value_cpuqueen->setFont(enNormalFont);
 
 	value_julia = new QLabel(this);
 	value_julia->setFrameStyle(QFrame::NoFrame);
 	value_julia->setAlignment(Qt::AlignRight);
 	value_julia->setStyleSheet(resultStyleSheet1);
 	value_julia->setText(QStringLiteral("default"));
-	value_julia->setFont(*normalFont);
+	value_julia->setFont(enNormalFont);
 
 	value_mandel = new QLabel(this);
 	value_mandel->setFrameStyle(QFrame::NoFrame);
 	value_mandel->setAlignment(Qt::AlignRight);
 	value_mandel->setStyleSheet(resultStyleSheet2);
 	value_mandel->setText(QStringLiteral("default"));
-	value_mandel->setFont(*normalFont);
+	value_mandel->setFont(enNormalFont);
 
 	value_zlibCompress = new QLabel(this);
 	value_zlibCompress->setFrameStyle(QFrame::NoFrame);
 	value_zlibCompress->setAlignment(Qt::AlignRight);
 	value_zlibCompress->setStyleSheet(resultStyleSheet1);
 	value_zlibCompress->setText(QStringLiteral("default"));
-	value_zlibCompress->setFont(*normalFont);
+	value_zlibCompress->setFont(enNormalFont);
 
 	value_zlibUncompress = new QLabel(this);
 	value_zlibUncompress->setFrameStyle(QFrame::NoFrame);
 	value_zlibUncompress->setAlignment(Qt::AlignRight);
 	value_zlibUncompress->setStyleSheet(resultStyleSheet2);
 	value_zlibUncompress->setText(QStringLiteral("default"));
-	value_zlibUncompress->setFont(*normalFont);
+	value_zlibUncompress->setFont(enNormalFont);
 
 	value_aesDecrypto = new QLabel(this);
 	value_aesDecrypto->setFrameStyle(QFrame::NoFrame);
 	value_aesDecrypto->setAlignment(Qt::AlignRight);
 	value_aesDecrypto->setStyleSheet(resultStyleSheet1);
 	value_aesDecrypto->setText(QStringLiteral("default"));
-	value_aesDecrypto->setFont(*normalFont);
+	value_aesDecrypto->setFont(enNormalFont);
 
 	value_aesEncrypto = new QLabel(this);
 	value_aesEncrypto->setFrameStyle(QFrame::NoFrame);
 	value_aesEncrypto->setAlignment(Qt::AlignRight);
 	value_aesEncrypto->setStyleSheet(resultStyleSheet2);
 	value_aesEncrypto->setText(QStringLiteral("default"));
-	value_aesEncrypto->setFont(*normalFont);
+	value_aesEncrypto->setFont(enNormalFont);
 
 	value_sna = new QLabel(this);
 	value_sna->setFrameStyle(QFrame::NoFrame);
 	value_sna->setAlignment(Qt::AlignRight);
 	value_sna->setStyleSheet(resultStyleSheet1);
 	value_sna->setText(QStringLiteral("default"));
-	value_sna->setFont(*normalFont);
+	value_sna->setFont(enNormalFont);
 }
 void Test_CPU::setupLayout()
 {

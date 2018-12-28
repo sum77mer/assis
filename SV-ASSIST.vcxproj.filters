@@ -342,6 +342,9 @@
     <ClInclude Include="UIdata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UIconst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">

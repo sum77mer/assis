@@ -1,6 +1,6 @@
 #include "hard_board.h"
 #include "widget_treebrowser.h"
-#include "UIdata.h"
+#include"UIconst.h"
 Hard_Board::Hard_Board(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
@@ -9,7 +9,7 @@ Hard_Board::Hard_Board(QWidget *parent)
 	setupLayout();
 	setConnection();
 	initializeData();
-	setFont(*normalFont);
+	setFont(enNormalFont);
 }
 void Hard_Board::paintEvent(QPaintEvent *event)
 {
@@ -38,7 +38,7 @@ void Hard_Board::initializeUI()
 	//io base
 	title_IOBase = new QLabel(this);
 	title_IOBase->setText(QString("IO RW by Base Address"));
-	title_IOBase->setFont(*normalFont);
+	title_IOBase->setFont(enNormalFont);
 	title_IOBase->setStyleSheet(QString("QLabel{border-width:0px 0px 1px 0px;border-color:rgb(200,200,200);border-style:solid;padding-bottom:3px}"));
 
 	btnIOBase = new QPushButton(this);
@@ -68,7 +68,7 @@ void Hard_Board::initializeUI()
 	title_IOIndex = new QLabel(this);
 	//title_IOIndex->setFrameStyle(QFrame::NoFrame);
 	title_IOIndex->setText(QString("IO RW by Index"));
-	title_IOIndex->setFont(*normalFont);
+	title_IOIndex->setFont(enNormalFont);
 	title_IOIndex->setStyleSheet(QString("QLabel{border-width:0px 0px 1px 0px;border-style:solid;border-color:rgb(200,200,200);padding-bottom:3px}"));
 	btnIndex = new QPushButton(this);
 	btnIndex->setText(QString("0x77/0x80"));
@@ -96,7 +96,7 @@ void Hard_Board::initializeUI()
 	title_SIO = new QLabel(this);
 	//title_SIO->setFrameStyle(QFrame::NoFrame);
 	title_SIO->setText(QString("IO RW by SuperIO"));
-	title_SIO->setFont(*normalFont);
+	title_SIO->setFont(enNormalFont);
 	title_SIO->setStyleSheet(QString("QLabel{border-width:0px 0px 1px 0px;border-style:solid;border-color:rgb(200,200,200);padding-bottom:3px}"));
 	btnSIO = new QPushButton(this);
 	btnSIO->setText(QString("IO Ports"));

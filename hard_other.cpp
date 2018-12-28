@@ -5,10 +5,11 @@
 #include <QGridLayout>
 #include <qscrollarea.h>
 #include <qdebug.h>
+#include"UIconst.h"
 Hard_Other::Hard_Other(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
-	setFont(*normalFont);
+	setFont(enNormalFont);
 	initializeUI();
 	setupLayout();
 	setConnection();

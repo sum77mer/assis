@@ -1,6 +1,6 @@
 #include "hard_cpu.h"
-#include "UIdata.h"
 #include <QTextCodec>
+#include"UIconst.h"
 Hard_CPU::Hard_CPU(QWidget *parent)
 {
 	initializeUI();
@@ -814,7 +814,7 @@ void Hard_CPU::setupLayout()
 	pagemsr->setWindowFlags(Qt::FramelessWindowHint);
 //****************************           tabwidget           ***************************************
 	tabwidget = new QTabWidget(this);
-	tabwidget->setFont(*normalFont);
+	tabwidget->setFont(enNormalFont);
 	tabwidget->setStyleSheet(QString("QTabBar::tab{background:transparent;border:1px solid #333333;border-bottom:none;color:#BBBBBB;padding-left:5px;padding-right:30px;padding-top:5px;padding-bottom:5px}QTabBar::tab:hover{background-color:#777777;border:1px solid #444444;border-bottom:none;}QTabBar::tab:selected{background-color:#111111;border:1px solid #333333;border-top:2px solid rgb(150,150,150);border-right:2px solid rgb(150,150,150);border-bottom:none;color:white}QTabWidget::pane{border-color:rgb(200,200,200);border-style:solid;border-width:1px}"));
 	tabwidget->addTab(pagecpu, QString("CPU"));
 	tabwidget->addTab(pagecache, QString("Cache"));

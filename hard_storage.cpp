@@ -2,11 +2,11 @@
 #include "usbtreewidget.h"
 #include "usbtestbrowser.h"
 #include "widget_treebrowser.h"
-#include "UIdata.h"
-
+//#include "UIdata.h"
+#include"UIconst.h"
 Hard_Storage::Hard_Storage(QWidget *parent)
 {
-	setFont(*normalFont);
+	setFont(enNormalFont);
     setWindowFlags(Qt::FramelessWindowHint);
 	initializeUI();
 	setupLayout();

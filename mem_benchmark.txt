@@ -1,6 +1,8 @@
 {
-	"latency" : 9.3056262925935635e-08,
-	"test_iterm" : "lat",
-	"test_lenth" : 524288,
-	"test_stride" : 64
+	"bandwidth" : 378.88273291035989,
+	"need_buf2" : false,
+	"test_func" : 21,
+	"test_iterm" : "bw",
+	"test_lenth" : 16,
+	"use_hyperthread" : false
 }

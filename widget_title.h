@@ -46,8 +46,6 @@ private:
 	unsigned int watermarkMarginT=8;
 
 	double ratio;
-
-	QFont *watermarkFont = new QFont("Arial", 10, QFont::Normal);
 };
 
 #endif // WIDGET_TITLE_H

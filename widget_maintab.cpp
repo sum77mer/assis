@@ -1,9 +1,9 @@
 #include "widget_maintab.h"
-
+#include"UIconst.h"
 Widget_mainTab::Widget_mainTab(QWidget *parent,QString title,QString iconname)
     :QPushButton(parent)
 {
-	setFont(*font);
+	setFont(chNormalFont);
 	setText(btnTitle);
 	switch (this->logicalDpiX())
 	{
@@ -193,7 +193,7 @@ void Widget_mainTab::paintEvent(QPaintEvent *event)
 
 	QRect source = pixmap.rect();
     painter.drawPixmap(target,pixmap,source);
-    painter.setFont(*font);
+    painter.setFont(chNormalFont);
     painter.setPen(QColor(255,255,255));
 
 	QRect titleRect = this->rect();

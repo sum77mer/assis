@@ -13,8 +13,8 @@ Dialog::Dialog(QWidget *parent)
     //root window setting
     setWindowFlags(Qt::FramelessWindowHint|Qt::Window);
 	
-	dpiX = this->logicalDpiX();
-	dpiY = this->logicalDpiY();
+	int dpiX = this->logicalDpiX();
+	int dpiY = this->logicalDpiY();
 
 	switch (dpiX)
 	{

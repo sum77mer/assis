@@ -34,8 +34,6 @@ private:
     Status btnStatus;
     bool mousePress;
     bool choosed;
-
-	QFont *font = new QFont("Î¢ÈíÑÅºÚ", 10, QFont::Normal);
 };
 
 #endif // WIDGET_MAINTAB_H

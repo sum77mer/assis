@@ -41,12 +41,10 @@ private:
 	int width = 910;
 	int height = 610;
 	
-	int dpiX;
-	int dpiY;
 	double scaleX;
 	double scaleY;
 
-	QFont *normalFont = new QFont("Î¢ÈíÑÅºÚ", 10, QFont::Normal);
+	//QFont *normalFont = new QFont("Î¢ÈíÑÅºÚ", 10, QFont::Normal);
 };
 
 #endif // DIALOG_H

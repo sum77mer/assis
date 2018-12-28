@@ -1,5 +1,5 @@
 ﻿#include "page_soft.h"
-#include "UIdata.h"
+#include "UIconst.h"
 #include <QPushButton>
 #include <QPalette>
 #include <QCheckBox>
@@ -41,13 +41,13 @@ void Page_soft::initializeUI()
 	QTextCodec *codec = QTextCodec::codecForName("GB18030");
 	appVersion = new QLabel(this);
 	appVersion->setFrameStyle(QFrame::NoFrame);
-	appVersion->setFont(*normalFont);
+	appVersion->setFont(enNormalFont);
 	appVersion->setStyleSheet("QLabel{border:0px;color:rgb(100,100,100)}");
 	appVersion->setText(codec->toUnicode("主程序版本：0.0.0.0"));
 
 	deviceLibrary_version = new QLabel(this);
 	deviceLibrary_version->setFrameStyle(QFrame::NoFrame);
-	deviceLibrary_version->setFont(*normalFont);
+	deviceLibrary_version->setFont(enNormalFont);
 	deviceLibrary_version->setStyleSheet("QLabel{border:0px;color:rgb(100,100,100)}");
 	deviceLibrary_version->setText(codec->toUnicode("主设备库版本：0.0.0.0"));
 
@@ -68,12 +68,12 @@ void Page_soft::initializeUI()
 
 	pbtnautofresh = new QPushButton(codec->toUnicode("停止刷新"), frame);
 	pbtnautofresh->setStyleSheet(QString("QPushButton{background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white, stop : 0.2 #cccccc, stop : 1 #aaaaaa);border-radius:2px;color:white;border:1px solid #888888;padding:3px 10px 3px 10px}QPushButton:pressed{background-origin:margin;margin:0px 0px 0px 0px;padding:3px 10px 3px 10px;background-origin:margin;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white, stop : 0.2 #aaaaaa, stop : 1 #888888);border-radius:2px;color:white;border:1px solid #666666}"));
-	pbtnautofresh->setFont(*normalFont);
+	pbtnautofresh->setFont(enNormalFont);
 	pbtnfresh = new QPushButton(codec->toUnicode("手动刷新"), frame);
-	pbtnfresh->setFont(*normalFont);
+	pbtnfresh->setFont(enNormalFont);
 	pbtnfresh->setStyleSheet(QString("QPushButton{padding:3px 10px 3px 10px;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white, stop : 0.2 #cccccc, stop : 1 #aaaaaa);border-radius:2px;color:white;border:1px solid #888888}QPushButton:pressed{background-origin:margin;margin:0px 0px 0px 0px;padding:3px 10px 3px 10px;background-origin:margin;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white, stop : 0.2 #aaaaaa, stop : 1 #888888);border-radius:2px;color:white;border:1px solid #666666}QPushButton:disabled{background-origin:margin;margin:0px 0px 0px 0px;padding:3px 10px 3px 10px;background-origin:margin;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white, stop : 0.2 #dddddd, stop : 1 #bbbbbb);border-radius:2px;color:white;border:1px solid #aaaaaa}"));
 	pbtnoutput = new QPushButton(codec->toUnicode("输出报告"), frame);
-	pbtnoutput->setFont(*normalFont);
+	pbtnoutput->setFont(enNormalFont);
 	pbtnoutput->setStyleSheet(QString("QPushButton{padding:3px 10px 3px 10px;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white, stop : 0.2 #cccccc, stop : 1 #aaaaaa);border-radius:2px;color:white;border:1px solid #888888}QPushButton:pressed{background-origin:margin;margin:0px 0px 0px 0px;padding:3px 10px 3px 10px;background-origin:margin;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white, stop : 0.2 #aaaaaa, stop : 1 #888888);border-radius:2px;color:white;border:1px solid #666666}"));
 	if (autorefreshflag)
 		pbtnfresh->setDisabled(true);

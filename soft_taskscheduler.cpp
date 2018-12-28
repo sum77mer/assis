@@ -1,10 +1,10 @@
 #include "soft_taskscheduler.h"
-#include "UIdata.h"
+#include"UIconst.h"
 #include <QLabel>
 
 soft_taskscheduler::soft_taskscheduler(QWidget *parent)
 {
-	setFont(*normalFont);
+	setFont(enNormalFont);
     setWindowFlags(Qt::FramelessWindowHint);
 	initializeUI();
 	setupLayout();
@@ -16,7 +16,7 @@ void soft_taskscheduler::paintEvent(QPaintEvent *event)
 void soft_taskscheduler::initializeUI()
 {
 	title = new QLabel(this);
-	title->setFont(*titleFont);
+	title->setFont(enTitleFont);
 	title->setText(QStringLiteral("任务计划"));
 	title->setStyleSheet(QString("QLabel{border-width:0px 0px 1px 0px;border-style:solid;border-color:rgb(200,200,200);padding-bottom:3px}"));
 

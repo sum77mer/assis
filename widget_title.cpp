@@ -5,8 +5,11 @@
 #include <QSignalMapper>
 #include <QMenu>
 #include <QAction>
+#include"UIconst.h"
 Widget_Title::Widget_Title(double scaleX,double scaleY, QWidget *parent)
 {
+	this->scaleX = scaleX;
+	this->scaleY = scaleY;
     setWindowFlags(Qt::FramelessWindowHint);
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
@@ -105,7 +108,7 @@ void Widget_Title::paintEvent(QPaintEvent *event)
 
 	QPainter titlepainter(this);
 	titlepainter.setPen(QColor(Qt::GlobalColor::white));
-	titlepainter.setFont(*watermarkFont);
+	titlepainter.setFont(enNormalFont);
 	QRect watermarkRect = this->rect();
 	watermarkRect.setX(watermarkMarginL);
 	watermarkRect.setY(watermarkMarginT);

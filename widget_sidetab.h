@@ -31,7 +31,6 @@ private:
     bool mousePress;
     bool choosedflag;
 
-	QFont *font = new QFont("Î¢ÈíÑÅºÚ", 10, QFont::Normal);
 	QColor backgroundColor_normal = QColor(245,245,245);//white
 	QColor backgroundColor_enter = QColor(200,200,200);//darkgray
 	QColor backgroundColor_choosed = QColor(0, 0, 0);//black

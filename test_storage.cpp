@@ -1,5 +1,5 @@
 #include "test_storage.h"
-#include "UIdata.h"
+//#include "UIdata.h"
 #include <QLabel>
 #include <QGridLayout>
 #include <QComboBox>
@@ -7,6 +7,7 @@
 #include <QCheckBox>
 #include <QMessageBox>
 #include "getdata.h"
+#include"UIconst.h"
 Test_Storage::Test_Storage(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
@@ -58,7 +59,7 @@ void Test_Storage::paintEvent(QPaintEvent *event)
 }
 void Test_Storage::initializeUI()
 {
-	combobox_volumn_choose->setFont(*normalFont);
+	combobox_volumn_choose->setFont(enNormalFont);
 	GetData data;
 	QStringList slist;
 	data.getLogicalDrives(slist);
@@ -67,7 +68,7 @@ void Test_Storage::initializeUI()
 		combobox_volumn_choose->insertItem(0, i);
 	}
 
-	btn->setFont(*normalFont);
+	btn->setFont(enNormalFont);
 	btn->setMinimumHeight(btn->sizeHint().height() * 2);
 	btn->setStyleSheet(QString("QPushButton{padding:3px 4px 3px 4px;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white,stop:0.4 #9FEEEA, stop : 0.7 #9FEEEA,stop : 1 #9FEEEA);border-radius:4px;color:black;border:2px solid #6DDEE5}"));
 	btn->setText(QString("Run"));
@@ -75,65 +76,65 @@ void Test_Storage::initializeUI()
 	
 	title_item = new QLabel(this);
 	title_item->setFrameStyle(QFrame::NoFrame);
-	title_item->setFont(*title_font);
+	title_item->setFont(enTitleFont);
 	title_item->setAlignment(Qt::AlignCenter);
 	title_item->setText(QStringLiteral("Item"));
 
 	title_read = new QLabel(this);
 	title_read->setFrameStyle(QFrame::NoFrame);
-	title_read->setFont(*title_font);
+	title_read->setFont(enTitleFont);
 	title_read->setAlignment(Qt::AlignCenter);
 	title_read->setText(QStringLiteral("Read"));
 
 	title_write = new QLabel(this);
 	title_write->setFrameStyle(QFrame::NoFrame);
 	title_write->setAlignment(Qt::AlignCenter);
-	title_write->setFont(*title_font);
+	title_write->setFont(enTitleFont);
 	title_write->setText(QStringLiteral("Write"));
 
 	checkbox_randomRW->setText(QStringLiteral("4K"));
-	checkbox_randomRW->setFont(*normalFont);
+	checkbox_randomRW->setFont(enNormalFont);
 	checkbox_randomRW->setMinimumHeight(checkbox_randomRW->sizeHint().height() * 2);
 	checkbox_randomRW->setStyleSheet(QString("QPushButton{padding:3px 4px 3px 4px;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white,stop:0.4 #9FEEEA, stop : 0.7 #9FEEEA,stop : 1 #9FEEEA);border-radius:4px;color:black;border:2px solid #6DDEE5}"));
 	
 	label_random_read->setFrameStyle(QFrame::NoFrame);
-	label_random_read->setFont(*normalFont);
+	label_random_read->setFont(enNormalFont);
 	label_random_read->setAlignment(Qt::AlignCenter);
 	label_random_read->setText(QStringLiteral("speed"));
 
 	label_random_write->setFrameStyle(QFrame::NoFrame);
-	label_random_write->setFont(*normalFont);
+	label_random_write->setFont(enNormalFont);
 	label_random_write->setAlignment(Qt::AlignCenter);
 	label_random_write->setText(QStringLiteral("speed"));
 
-	checkbox_4K->setFont(*normalFont);
+	checkbox_4K->setFont(enNormalFont);
 	checkbox_4K->setMinimumHeight(checkbox_4K->sizeHint().height() * 2);
 	checkbox_4K->setStyleSheet(QString("QPushButton{padding:3px 4px 3px 4px;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white,stop:0.4 #9FEEEA, stop : 0.7 #9FEEEA,stop : 1 #9FEEEA);border-radius:4px;color:black;border:2px solid #6DDEE5}"));
 	checkbox_4K->setText(QStringLiteral("4K-64Thrd"));
 	
 	label_4K_read->setFrameStyle(QFrame::NoFrame);
-	label_4K_read->setFont(*normalFont);
+	label_4K_read->setFont(enNormalFont);
 	label_4K_read->setAlignment(Qt::AlignCenter);
 	label_4K_read->setText(QStringLiteral("speed"));
 
 	label_4K_write->setFrameStyle(QFrame::NoFrame);
-	label_4K_write->setFont(*normalFont);
+	label_4K_write->setFont(enNormalFont);
 	label_4K_write->setAlignment(Qt::AlignCenter);
 	label_4K_write->setText(QStringLiteral("speed"));
 
-	checkbox_continuous->setFont(*normalFont);
+	checkbox_continuous->setFont(enNormalFont);
 	checkbox_continuous->setText(QStringLiteral("Seq"));
 	checkbox_continuous->setMinimumHeight(checkbox_continuous->sizeHint().height() * 2);
 	checkbox_continuous->setStyleSheet(QString("QPushButton{padding:3px 4px 3px 4px;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white,stop:0.4 #9FEEEA, stop : 0.7 #9FEEEA,stop : 1 #9FEEEA);border-radius:4px;color:black;border:2px solid #6DDEE5}"));
 	
 	label_continuous_read->setFrameStyle(QFrame::NoFrame);
-	label_continuous_read->setFont(*normalFont);
+	label_continuous_read->setFont(enNormalFont);
 	label_continuous_read->setAlignment(Qt::AlignCenter);
 	label_continuous_read->setText(QStringLiteral("speed"));
 
 
 	label_continuous_write->setFrameStyle(QFrame::NoFrame);
-	label_continuous_write->setFont(*normalFont);
+	label_continuous_write->setFont(enNormalFont);
 	label_continuous_write->setAlignment(Qt::AlignCenter);
 	label_continuous_write->setText(QStringLiteral("speed"));
 

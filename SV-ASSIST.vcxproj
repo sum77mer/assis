@@ -418,6 +418,7 @@
     <ClInclude Include="libheaders\Softwaredefination.h" />
     <ClInclude Include="libheaders\UsbDefination.h" />
     <ClInclude Include="libheaders\defination.h" />
+    <ClInclude Include="UIconst.h" />
     <ClInclude Include="UIdata.h" />
     <QtMoc Include="usbtreewidget.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\.;.\GeneratedFiles;.;$(QTDIR)\include;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtCore;.\debug;\include;$(QTDIR)\mkspecs\win32-msvc</IncludePath>

@@ -88,6 +88,7 @@ private:
 
 	double scaleX;
 	double scaleY;
+
 	QFrame *bottomframe = NULL;
 	int bottomFrame_height = 28;
 	QColor bottomlineColor = QColor(255, 0, 0);

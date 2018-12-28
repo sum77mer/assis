@@ -1,10 +1,10 @@
 #include "soft_transmission.h"
-#include "UIdata.h"
+#include"UIconst.h"
 #include <QLabel>
 soft_transmission::soft_transmission(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
-	setFont(*normalFont);
+	setFont(enNormalFont);
 	initializeUI();
 	setupLayout();
 	setConnection();
@@ -15,7 +15,7 @@ void soft_transmission::paintEvent(QPaintEvent *event)
 void soft_transmission::initializeUI()
 {
 	title = new QLabel(this);
-	title->setFont(*titleFont);
+	title->setFont(enTitleFont);
 	title->setText(QStringLiteral("ÍøÂç´«Êä"));
 	title->setStyleSheet(QString("QLabel{border-width:0px 0px 1px 0px;border-style:solid;border-color:rgb(200,200,200);padding-bottom:3px}"));
 

@@ -4,11 +4,6 @@ unsigned int minorVersion = 0;
 unsigned int revisionVersion = 0;
 
 
-QFont *normalFont = new QFont("Î¢ÈíÑÅºÚ", 10, QFont::Normal);
-QFont *titleFont = new QFont("Î¢ÈíÑÅºÚ", 17, QFont::Normal);
-QFont *title_font = new QFont("Arial", 15, QFont::Bold);
-
-
 void getScale(double scaleH,double scaleV,Dialog& theWidget)
 {
 	int dpiX = theWidget.logicalDpiX();

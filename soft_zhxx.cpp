@@ -1,13 +1,13 @@
 #include "soft_zhxx.h"
-#include "UIdata.h"
 #include <QScrollArea>
 #include <QGridLayout>
 #include <QLabel>
 #include <QWidget>
+#include"UIconst.h"
 Soft_ZHXX::Soft_ZHXX(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
-	setFont(*normalFont);
+	setFont(enNormalFont);
 	initializeUI();
 	setupLayout();
 	setConnection();
@@ -18,7 +18,7 @@ void Soft_ZHXX::paintEvent(QPaintEvent *event)
 void Soft_ZHXX::initializeUI()
 {
 	title_general = new QLabel(this);
-	title_general->setFont(*titleFont);
+	title_general->setFont(enTitleFont);
 	title_general->setText(QStringLiteral("ÏµÍ³¸ÅÀÀ"));
 	title_general->setStyleSheet(QString("QLabel{border-width:0px 0px 1px 0px;border-style:solid;border-color:rgb(200,200,200);padding-bottom:3px}"));
 

@@ -7,6 +7,7 @@
 #include <QFormLayout>
 #include <QScrollArea>
 #include <QScrollBar>
+#include<QString>
 #include "getdata.h"
 class Hard_ZHXX : public QWidget
 {
@@ -14,6 +15,11 @@ class Hard_ZHXX : public QWidget
 public:
     Hard_ZHXX(QWidget *parent=0);
 	void initializeUI();
+	void setCPU(QString s);
+	void setGPU(QString s);
+	void setMemory(QString s);
+	void setBoard(QString s);
+	void setDisk(QString s);
 	void initializeData();
 	void setupLayout();
 	void setConnection();
@@ -40,7 +46,19 @@ private:
 
     QLabel *picLabel;
 private:
-	GetData data;
+	//GetData data;
+	const QString titleString = QStringLiteral("Ó²¼þ¸ÅÀÀ");
+	const QString titleCPUString = QStringLiteral("CPU");
+	const QString titleGPUString = QStringLiteral("GPU");
+	const QString titleMemoryString = QStringLiteral("Memory");
+	const QString titleBoardString = QStringLiteral("Board");
+	const QString titleDiskString = QStringLiteral("Disk");
+	QString valueCPUString;
+	QString valueGPUString;
+	QString valueMemoryString;
+	QString valueBoardString;
+	QString valueDiskString;
+
 };
 
 #endif // HARD_ZHXX_H

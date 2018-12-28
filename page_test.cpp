@@ -1,5 +1,4 @@
 ﻿#include "page_test.h"
-#include "UIdata.h"
 #include <QPushButton>
 #include <QPalette>
 #include <QCheckBox>
@@ -14,8 +13,11 @@
 #include <QProcess>
 #include <QDateTime>
 #include "getdata.h"
+#include"UIconst.h"
 Page_test::Page_test(double scaleX, double scaleY, QWidget *parent)
 {
+	this->scaleX = scaleX;
+	this->scaleY = scaleY;
 	setWindowFlags(Qt::FramelessWindowHint);
 	initializeUI();
 	setupLayout();
@@ -37,113 +39,17 @@ void Page_test::paintEvent(QPaintEvent *event)
 }
 void Page_test::initializeUI()
 {
-	switch (this->logicalDpiX())
-	{
-	case 96:
-	{
-		scaleX = 1;
-		break;
-	}
-	case 120:
-	{
-		scaleX = 1.25;
-		break;
-	}
-	case 144:
-	{
-		scaleX = 1.5;
-		break;
-	}
-	case 168:
-	{
-		scaleX = 1.75;
-		break;
-	}
-	case 192:
-	{
-		scaleX = 2;
-		break;
-	}
-	case 216:
-	{
-		scaleX = 2.25;
-		break;
-	}
-	case 240:
-	{
-		scaleX = 2.5;
-		break;
-	}
-	case 288:
-	{
-		scaleX = 3;
-		break;
-	}
-	default:
-	{
-		scaleX = 1;
-		break;
-	}
-	}
-	switch (this->logicalDpiY())
-	{
-	case 96:
-	{
-		scaleY = 1;
-		break;
-	}
-	case 120:
-	{
-		scaleY = 1.25;
-		break;
-	}
-	case 144:
-	{
-		scaleY = 1.5;
-		break;
-	}
-	case 168:
-	{
-		scaleY = 1.75;
-		break;
-	}
-	case 192:
-	{
-		scaleY = 2;
-		break;
-	}
-	case 216:
-	{
-		scaleY = 2.25;
-		break;
-	}
-	case 240:
-	{
-		scaleY = 2.5;
-		break;
-	}
-	case 288:
-	{
-		scaleY = 3;
-		break;
-	}
-	default:
-	{
-		scaleY = 1;
-		break;
-	}
-	}
 	bottomFrame_height *= scaleX;
 	appVersion = new QLabel(this);
 	appVersion->setFrameStyle(QFrame::NoFrame);
-	appVersion->setFont(*normalFont);
+	appVersion->setFont(enNormalFont);
 	appVersion->setStyleSheet("QLabel{border:0px;color:rgb(100,100,100)}");
 	QTextCodec *codec = QTextCodec::codecForName("GB18030");
 	appVersion->setText(codec->toUnicode("主程序版本：0.0.0.0"));
 
 	deviceLibrary_version = new QLabel(this);
 	deviceLibrary_version->setFrameStyle(QFrame::NoFrame);
-	deviceLibrary_version->setFont(*normalFont);
+	deviceLibrary_version->setFont(enNormalFont);
 	deviceLibrary_version->setStyleSheet("QLabel{border:0px;color:rgb(100,100,100)}");
 	deviceLibrary_version->setText(codec->toUnicode("主设备库版本：0.0.0.0"));
 
@@ -162,7 +68,7 @@ void Page_test::initializeUI()
 	stringlist << "CPU" << "Memory" << "Disk";
 	sideTabGroup = new Widget_sideTabGroup(frame, stringlist);
 	pbtnoutput = new QPushButton(codec->toUnicode("输出报告"), frame);
-	pbtnoutput->setFont(*normalFont);
+	pbtnoutput->setFont(enNormalFont);
 	pbtnoutput->setStyleSheet(QString("QPushButton{background-origin:margin;margin:0px 0px 0px 0px;padding:3px 10px 3px 10px;background-origin:margin;background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 white, stop : 0.2 #cccccc, stop : 1 #aaaaaa);border-radius:2px;color:white;border:1px solid #888888}"));
 
 	testCPU = new Test_CPU(this);

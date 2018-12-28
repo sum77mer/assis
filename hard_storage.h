@@ -53,7 +53,6 @@ private:
 	QPushButton *btn_RWok = NULL;
     QTableView *tableviewRW = NULL;
 	QStandardItemModel *model2 = new QStandardItemModel();
-
 	QLabel *titleUSB = NULL;
 	QLabel *valueVersion = NULL;
 	QLabel *valueDate = NULL;

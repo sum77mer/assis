@@ -2,9 +2,10 @@
 #include "UIdata.h"
 #include <qmessagebox.h>
 #include <qdebug.h>
+#include"UIconst.h"
 Hard_PCI::Hard_PCI(QWidget *parent)
 {
-	setFont(*normalFont);
+	setFont(enNormalFont);
     setWindowFlags(Qt::FramelessWindowHint);
 	initializeUI();
 	setupLayout();

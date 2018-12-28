@@ -1,9 +1,10 @@
 #include "hard_memory.h"
 #include "UIdata.h"
+#include"UIconst.h"
 Hard_Memory::Hard_Memory(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
-	setFont(*normalFont);
+	setFont(enNormalFont);
 	initializeUI();
 	setupLayout();
 	setConnection();
