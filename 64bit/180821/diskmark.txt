@@ -1,0 +1,32 @@
+{
+	"result" : 
+	{
+		"readiops_4k" : "00000000.0",
+		"readiops_4k64" : "00000000.0",
+		"readiops_serial" : "00000000.0",
+		"readspeed_4k" : "0000000.00",
+		"readspeed_4k64" : "0000000.00",
+		"readspeed_serial" : "0000000.00",
+		"writeiops_4k" : "00000000.0",
+		"writeiops_4k64" : "00000000.0",
+		"writeiops_serial" : "00000000.0",
+		"writespeed_4k" : "0000000.00",
+		"writespeed_4k64" : "0000000.00",
+		"writespeed_serial" : "0000000.00"
+	},
+	"status" : 
+	{
+		"readiops_4k" : "00000000.0",
+		"readiops_4k64" : "00000000.0",
+		"readiops_serial" : "00000000.0",
+		"readspeed_4k" : "0000000.00",
+		"readspeed_4k64" : "0000000.00",
+		"readspeed_serial" : "0000000.00",
+		"writeiops_4k" : "00000000.0",
+		"writeiops_4k64" : "00075393.0",
+		"writeiops_serial" : "00000000.0",
+		"writespeed_4k" : "0000000.00",
+		"writespeed_4k64" : "0000310.48",
+		"writespeed_serial" : "0000000.00"
+	}
+}

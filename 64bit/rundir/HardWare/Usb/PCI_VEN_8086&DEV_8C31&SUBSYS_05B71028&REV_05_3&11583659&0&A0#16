@@ -1,0 +1,63 @@
+Is Port User Connectable:         no
+Is Port Debug Capable:            no
+Is Port TypeC:                    no
+Companion Port Number:            0
+Companion Hub Symbolic Link Name: 
+Protocols Supported:              
+ USB 1.1:                         no
+ USB 2.0:                         no
+ USB 3.0:                         no
+
+        ---===>Device Information<===---
+          ===>Device Descriptor<===
+bLength:                           18
+bDescriptorType:                   1
+bcdUSB:                            768
+bDeviceClass:                      0
+bDeviceSubClass:                   0
+bDeviceProtocol:                   0
+bMaxPacketSize0:                   9
+idVendor:                          1921
+idProduct:                         21888
+bcdDevice:                         16
+iManufacturer:                     1
+           SanDisk
+iProduct:                          2
+           Extreme
+iSerialNumber:                     3
+           AA011224140604432152
+bNumConfigurations:                1
+           ---===>Full Configuration Descriptor<===---
+          ===>Configuration Descriptor<===
+bLength:                           9
+bDescriptorType:                   2
+wTotalLength:                      44
+bNumInterfaces:                    1
+bConfigurationValue:               1
+iConfiguration:                    0
+bmAttributes:                      128
+MaxPower:                          50
+          ===>Interface Descriptor<===
+bLength:                           9
+bDescriptorType:                   4
+bInterfaceNumber:                  0
+bAlternateSetting:                 0
+bNumEndpoints:                     2
+bInterfaceClass:                   8
+bInterfaceSubClass:                6
+bInterfaceProtocol:                80
+iInterface:                        0
+          ===>Endpoint Descriptor<===
+bLength:                           7
+bDescriptorType:                   5
+bEndpointAddress:                  129
+bmAttributes:                      2
+wMaxPacketSize:                    1024
+bInterval:                         0
+          ===>Endpoint Descriptor<===
+bLength:                           7
+bDescriptorType:                   5
+bEndpointAddress:                  2
+bmAttributes:                      2
+wMaxPacketSize:                    1024
+bInterval:                         0

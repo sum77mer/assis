@@ -1,0 +1,6 @@
+{
+	"latency" : 9.3712325256764935e-08,
+	"test_iterm" : "lat",
+	"test_lenth" : 524288,
+	"test_stride" : 64
+}

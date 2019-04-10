@@ -1,0 +1,665 @@
+--------------------------------------------------------------------------------------------------------
+SV_ASSISTANT Report                                                            周一 四月 1 18:02:00 2019
+--------------------------------------------------------------------------------------------------------
+Hardware Report Clean                                                                               
+--------------------------------------------------------------------------------------------------------
+CPU                                                                            周一 四月 1 18:02:00 2019
+--------------------------------------------------------------------------------------------------------
+CPU Name:           Intel Core i5 4460            
+CPU Core:           4                             
+CPU Threads:        4                             
+Level 1 Instruction Cache size:32KB 8way 64linesize 64 set 1 partition                              
+Level 1 Data Cache size:32KB 8way 64linesize 64 set 1 partition                                     
+Level 2 size:256KB 8way 64linesize 512 set 1 partition                                              
+Level 3 size:6144MB 12way 64linesize 8192 set 1 partition                                           
+Package Temperature:inf ??C                       
+Core1 Temperature:inf ??C                                                                           
+Core2 Temperature:inf ??C                                                                           
+Core3 Temperature:inf ??C                                                                           
+Core4 Temperature:inf ??C                                                                           
+CPU SocketDesignation:Unknown                       
+Southbridge Name:   ID0                           
+CPU Manufacture:    GenuineIntel                  
+Code Name:          Haswell                       
+CPU Specification:  Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz
+Family:             6                             
+Model:              12                            
+Stepping:           3                             
+ExtFamily:          6                             
+ExtModel:           60                            
+Revision:           15363                         
+Technology:         22                            
+InstructionSet:     SSE3 PCLMULQDQ DTES64 MONITOE DS_CPL VMX EIST TM2 SSSE3 SDBG FMA CMPXCHG16B xTPR_Update_Control PDCM PCID SSE4_1 SSE4_2 x2APIC MOVBE POPCNT TSC_Deadline AESNI XSAVE OSXSAVE AVX F16C RDRAND
+Core 0 Speed:       inf                           
+Core 0 Speed:       inf                           
+Core 0 Speed:       inf                           
+Core 0 Speed:       inf                           
+Ext Speed:          100                           
+Multiplier:         inf                           
+Multiplier:         inf                           
+Multiplier:         inf                           
+Multiplier:         inf                           
+Processor ID:       BFEBFBFF000306C3              
+Max TDP:            0                             
+Memory                                                                         周一 四月 1 18:02:00 2019
+--------------------------------------------------------------------------------------------------------
+Dimm Num:           0                             
+
+SMBIOS                                                                         周一 四月 1 18:02:00 2019
+--------------------------------------------------------------------------------------------------------
+GFX                                                                            周一 四月 1 18:02:00 2019
+--------------------------------------------------------------------------------------------------------
+GPU Name:                     Nvidia GeForce GT 720         
+GPU BIOS Version:             80.28.56.00.01                
+GPU Driver Version:           33266                         
+GPU Branch Version:           r331_00                       
+Temperature:                  39                            
+GPU Clock:                    0                             
+GPU Memory:                   0                             
+Usage:                        1                             
+Fans:                         0                             
+Dedicated Video Memory:       1048576                       
+System Video Memory:          0                             
+Shared System Memory:         3146044                       
+
+Monitor                                                                        周一 四月 1 18:02:00 2019
+--------------------------------------------------------------------------------------------------------
+Name:               Philips Consumer Electronics Company PHL 258B6QJEB  
+				Desktop Management Interface Information
+[BIOS Information]
+	BIOS Characteristics:		001300007F8BD8A0
+	BIOS Ext Characteristics:		0D23
+	BIOS ROM Size:		8192KB
+	BIOS Release Date:		04/16/2014
+	BIOS Start ADDR:		F000
+	BIOS Vendor:		Dell Inc.
+	BIOS Version:		A08
+	EC Release:		255.255
+	System BIOS Release:		4.6
+[System Information]
+	System Family:		To be filled by O.E.M.
+	System Manufacturer:		Dell Inc.
+	System Product Name:		XPS 8700
+	System SKU Number:		XPS 8700
+	System Serial Number:		2F98232
+	System UUID:		44454C4C460010398038B2C04F323332
+	System Version:		 
+	System Wake-Up Type:		Power Switch
+[Base Board Information]
+	BaseBroad Asset Tag:		                      
+	BaseBroad Chassis Handle:		0004
+	BaseBroad Feature Flags:		09
+	BaseBroad Location in Chassis:		To be filled by O.E.M.
+	BaseBroad Manufacturer:		Dell Inc.
+	BaseBroad Number of Contained Object Handles:		00
+	BaseBroad Product:		0KWVT8
+	BaseBroad Serial Number:		..CN7220049901NM.
+	BaseBroad Type:		Motherboard (includes processor, memory, and I/O)
+	BaseBroad Version:		A03
+[System Enclosure or Chassis Information]
+	System Enclosure or  Chassis Asset Tag:		Not Specified
+	System Enclosure or  Chassis Boot-up State:		Safe
+	System Enclosure or  Chassis Contained Element Count(n):		00
+	System Enclosure or  Chassis Contained Element Record Length(m):		00
+	System Enclosure or  Chassis Height:		00
+	System Enclosure or  Chassis Manufacturer:		Dell Inc.
+	System Enclosure or  Chassis Number of Power Cords:		01
+	System Enclosure or  Chassis OEM-defined:		00000000
+	System Enclosure or  Chassis Power Supply State:		Safe
+	System Enclosure or  Chassis Security State:		None
+	System Enclosure or  Chassis Serial Number:		2F98232
+	System Enclosure or  Chassis Thermal State:		Safe
+	System Enclosure or  Chassis Type:		03
+	System Enclosure or  Chassis Type Name:		Desktop
+	System Enclosure or  Chassis Version:		 
+	System Enclosure or Chassis Contained Elements:		05
+[Processor Information]
+	Processor Information Asset Tag:		Fill By OEM
+	Processor Information Core Count:		04
+	Processor Information Core Enable:		04
+	Processor Information Current Speed:		0C80
+	Processor Information External Clock:		0064
+	Processor Information Family:		Intel486? processor
+	Processor Information Family2:		Intel486? processor
+	Processor Information L1 Cache Handle:		0027
+	Processor Information L2 Cache Handle:		0029
+	Processor Information L3 Cache Handle:		002A
+	Processor Information Max Speed:		0C80
+	Processor Information Part Number:		Fill By OEM
+	Processor Information Processor Characteristics:		04
+	Processor Information Processor ID:		BFEBFBFF000306C3
+	Processor Information Processor Manufacturer:		Intel
+	Processor Information Processor Version:		Intel(R) Core(TM) i5-4460 CPU @ 3.20GHz
+	Processor Information Serial Number:		Not Specified
+	Processor Information Socket Designation:		CPU 1
+	Processor Information Status:		41
+	Processor Information Thread Count:		04
+	Processor Information Type:		Central Processor
+	Processor Information Voltage:		8F
+[Cache Information #1]
+	Cache Information Associativity:		8-way Set-Associative
+	Cache Information Cache Configuration:		0080
+	Cache Information Cache Speed:		00
+	Cache Information Current SRAM Type:		Other
+	Cache Information Error Correction Type:		None
+	Cache Information Installed Size:		0100
+	Cache Information Maximum Cache Size:		0100
+	Cache Information SRAM Type:		Other
+	Cache Information Socket Designation:		L1-Cache
+	Cache Information System Cache Type:		Single-bit ECC
+[Cache Information #2]
+	Cache Information Associativity:		8-way Set-Associative
+	Cache Information Cache Configuration:		0081
+	Cache Information Cache Speed:		00
+	Cache Information Current SRAM Type:		Other
+	Cache Information Error Correction Type:		None
+	Cache Information Installed Size:		0400
+	Cache Information Maximum Cache Size:		0400
+	Cache Information SRAM Type:		Other
+	Cache Information Socket Designation:		L2-Cache
+	Cache Information System Cache Type:		Single-bit ECC
+[Cache Information #3]
+	Cache Information Associativity:		12-way Set-Associative
+	Cache Information Cache Configuration:		0102
+	Cache Information Cache Speed:		00
+	Cache Information Current SRAM Type:		Other
+	Cache Information Error Correction Type:		None
+	Cache Information Installed Size:		1800
+	Cache Information Maximum Cache Size:		1800
+	Cache Information SRAM Type:		Other
+	Cache Information Socket Designation:		L3-Cache
+	Cache Information System Cache Type:		Single-bit ECC
+[Port Connector Information #1]
+	Port Connector Information Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Reference Designator:		SATA-0
+	Port Connector Information Internal Reference Designator:		SATA-0
+	Port Connector Information Port Type:		SATA
+[Port Connector Information #2]
+	Port Connector Information Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Reference Designator:		SATA-1
+	Port Connector Information Internal Reference Designator:		SATA-1
+	Port Connector Information Port Type:		SATA
+[Port Connector Information #3]
+	Port Connector Information Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Reference Designator:		SATA-2
+	Port Connector Information Internal Reference Designator:		SATA-2
+	Port Connector Information Port Type:		SATA
+[Port Connector Information #4]
+	Port Connector Information Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Reference Designator:		SATA-3
+	Port Connector Information Internal Reference Designator:		SATA-3
+	Port Connector Information Port Type:		SATA
+[Port Connector Information #5]
+	Port Connector Information Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Reference Designator:		SATA-4
+	Port Connector Information Internal Reference Designator:		SATA-4
+	Port Connector Information Port Type:		SATA
+[Port Connector Information #6]
+	Port Connector Information Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Connector Types:		SAS/SATA Plug Receptacle
+	Port Connector Information External Reference Designator:		MSATA-1
+	Port Connector Information Internal Reference Designator:		MSATA-1
+	Port Connector Information Port Type:		SATA
+[Port Connector Information #7]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB0
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #8]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB1
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #9]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB2
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #10]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB3
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #11]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB4
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #12]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB5
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #13]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB6
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #14]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB7
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #15]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB8
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #16]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB9
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #17]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB10
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #18]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		Other
+	Port Connector Information External Reference Designator:		USB11
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		USB
+[Port Connector Information #19]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		None
+	Port Connector Information External Reference Designator:		AUDIO
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		Audio Port
+[Port Connector Information #20]
+	Port Connector Information Connector Types:		None
+	Port Connector Information External Connector Types:		RJ-45
+	Port Connector Information External Reference Designator:		ETHERNET
+	Port Connector Information Internal Reference Designator:		NULL
+	Port Connector Information Port Type:		Network Port
+[System Slots Information #1]
+	System Slots Current Usage:		In use
+	System Slots Segment Group Number:		0000
+	System Slots Slot BUS Number:		00
+	System Slots Slot Characteristics 1:		0C
+	System Slots Slot Characteristics 2:		01
+	System Slots Slot Data Bus Width:		16x or x16
+	System Slots Slot Designation:		PCIE1
+	System Slots Slot Device Number:		00
+	System Slots Slot Function Number:		08
+	System Slots Slot Length:		Long Length
+	System Slots Slot Type:		PCI Express (see below)
+	System Slots SlotID:		0000
+[System Slots Information #2]
+	System Slots Current Usage:		Available
+	System Slots Segment Group Number:		0000
+	System Slots Slot BUS Number:		00
+	System Slots Slot Characteristics 1:		0C
+	System Slots Slot Characteristics 2:		01
+	System Slots Slot Data Bus Width:		1x or x1
+	System Slots Slot Designation:		PCIE2
+	System Slots Slot Device Number:		03
+	System Slots Slot Function Number:		E0
+	System Slots Slot Length:		Short Length
+	System Slots Slot Type:		PCI Express (see below)
+	System Slots SlotID:		0001
+[System Slots Information #3]
+	System Slots Current Usage:		Available
+	System Slots Segment Group Number:		0000
+	System Slots Slot BUS Number:		00
+	System Slots Slot Characteristics 1:		0C
+	System Slots Slot Characteristics 2:		01
+	System Slots Slot Data Bus Width:		1x or x1
+	System Slots Slot Designation:		PCIE3
+	System Slots Slot Device Number:		04
+	System Slots Slot Function Number:		E0
+	System Slots Slot Length:		Short Length
+	System Slots Slot Type:		PCI Express (see below)
+	System Slots SlotID:		0002
+[System Slots Information #4]
+	System Slots Current Usage:		Available
+	System Slots Segment Group Number:		0000
+	System Slots Slot BUS Number:		00
+	System Slots Slot Characteristics 1:		0C
+	System Slots Slot Characteristics 2:		01
+	System Slots Slot Data Bus Width:		1x or x1
+	System Slots Slot Designation:		PCIE4
+	System Slots Slot Device Number:		05
+	System Slots Slot Function Number:		E0
+	System Slots Slot Length:		Short Length
+	System Slots Slot Type:		PCI Express (see below)
+	System Slots SlotID:		0003
+[OEM Strings Information]
+	OEM Strings 1:		Dell System
+	OEM Strings 10:		1[05B7]
+	OEM Strings 11:		10[A08]
+	OEM Strings 12:		12[]
+	OEM Strings 13:		13[$(REGULATORY_ID)]
+	OEM Strings 14:		14[0]
+	OEM Strings 15:		15[11]
+	OEM Strings 2:		5[0003]
+	OEM Strings 3:		3[3.4]
+	OEM Strings 4:		4[0001]
+	OEM Strings 5:		13[D03M]
+	OEM Strings 6:		6[D0, D4, D8, DA, DE]
+	OEM Strings 7:		7[]
+	OEM Strings 8:		8[]
+	OEM Strings 9:		9[]
+	OEM Strings Count:		0F
+[BIOS Language Information]
+	BIOS Language Current Language:		en|US|iso8859-1
+	BIOS Language Flags:		Long format
+	BIOS Language Installable Language 1:		en|US|iso8859-1
+	BIOS Language Installable Language 2:		fr|FR|iso8859-1
+	BIOS Language Installable Language 3:		es|ES|iso8859-1
+	BIOS Language Installable Language 4:		de|DE|iso8859-1
+	BIOS Language Installable Language 5:		it|IT|iso8859-1
+	BIOS Language Installable Language 6:		ja|JP|unicode
+	BIOS Language Installable Languages:		06
+[Physical Memory Array Information #1]
+	Physical Memory Array Error Correction:		System memory
+	Physical Memory Array Error Information Handle:		FFFE
+	Physical Memory Array Extended Maximum Capacity:		0000000000000004
+	Physical Memory Array Location:		System board or motherboard
+	Physical Memory Array Maximum Capacity:		02000000
+	Physical Memory Array Number of Memory Devices:		0004
+	Physical Memory Array Use:		System memory
+[Memory Device Information #1]
+	Memory Bank Locator:		Not Specified
+	Memory Device Asset Tag:		9876543210
+	Memory Device Attributes:		02
+	Memory Device Configured Memory Clock Speed:		0535
+	Memory Device Data Width:		0040
+	Memory Device Error Information Handle:		FFFE
+	Memory Device Extended Size:		00000000
+	Memory Device Form Factor:		DIMM
+	Memory Device Locator:		DIMM3
+	Memory Device Manufacturer:		1315
+	Memory Device Part Number:		BLT8G3D1608ET3LX0.
+	Memory Device Physical Memory Array Handle:		002B
+	Memory Device Serial Number:		A10E4FD4
+	Memory Device Set:		00
+	Memory Device Size:		2000
+	Memory Device Speed:		0535
+	Memory Device Total Width:		0040
+	Memory Device Type:		FBD2
+	Memory Device Type Detail:		0080
+[Memory Device Information #2]
+	Memory Bank Locator:		Not Specified
+	Memory Device Asset Tag:		9876543210
+	Memory Device Attributes:		02
+	Memory Device Configured Memory Clock Speed:		0535
+	Memory Device Data Width:		0040
+	Memory Device Error Information Handle:		FFFE
+	Memory Device Extended Size:		00000000
+	Memory Device Form Factor:		DIMM
+	Memory Device Locator:		DIMM1
+	Memory Device Manufacturer:		1315
+	Memory Device Part Number:		BLT8G3D1608ET3LX0.
+	Memory Device Physical Memory Array Handle:		002B
+	Memory Device Serial Number:		AD02B576
+	Memory Device Set:		00
+	Memory Device Size:		2000
+	Memory Device Speed:		0535
+	Memory Device Total Width:		0040
+	Memory Device Type:		FBD2
+	Memory Device Type Detail:		0080
+[Memory Device Information #3]
+	Memory Bank Locator:		Not Specified
+	Memory Device Asset Tag:		9876543210
+	Memory Device Attributes:		02
+	Memory Device Configured Memory Clock Speed:		0535
+	Memory Device Data Width:		0040
+	Memory Device Error Information Handle:		FFFE
+	Memory Device Extended Size:		00000000
+	Memory Device Form Factor:		DIMM
+	Memory Device Locator:		DIMM4
+	Memory Device Manufacturer:		1315
+	Memory Device Part Number:		BLT8G3D1608ET3LX0.
+	Memory Device Physical Memory Array Handle:		002B
+	Memory Device Serial Number:		AD02B542
+	Memory Device Set:		00
+	Memory Device Size:		2000
+	Memory Device Speed:		0535
+	Memory Device Total Width:		0040
+	Memory Device Type:		FBD2
+	Memory Device Type Detail:		0080
+[Memory Device Information #4]
+	Memory Bank Locator:		Not Specified
+	Memory Device Asset Tag:		9876543210
+	Memory Device Attributes:		02
+	Memory Device Configured Memory Clock Speed:		0535
+	Memory Device Data Width:		0040
+	Memory Device Error Information Handle:		FFFE
+	Memory Device Extended Size:		00000000
+	Memory Device Form Factor:		DIMM
+	Memory Device Locator:		DIMM2
+	Memory Device Manufacturer:		1315
+	Memory Device Part Number:		BLT8G3D1608ET3LX0.
+	Memory Device Physical Memory Array Handle:		002B
+	Memory Device Serial Number:		AD02B574
+	Memory Device Set:		00
+	Memory Device Size:		2000
+	Memory Device Speed:		0535
+	Memory Device Total Width:		0040
+	Memory Device Type:		FBD2
+	Memory Device Type Detail:		0080
+[Memory Array Mapped Address Information #1]
+	Memory Array Mapped Address Ending Address:		01FFFFFF
+	Memory Array Mapped Address Extended Ending Address:		0000000000000000
+	Memory Array Mapped Address Extended Starting Address:		0000000000000000
+	Memory Array Mapped Address Memory Array Handle:		002B
+	Memory Array Mapped Address Partition Width:		04
+	Memory Array Mapped Address Starting Address:		00000000
+[Memory Device Mapped Address Information #1]
+	Memory Device Mapped Address Ending Address:		007FFFFF
+	Memory Device Mapped Address Extended Ending Address:		0000000000000000
+	Memory Device Mapped Address Extended Starting Address:		0000000000000000
+	Memory Device Mapped Address Interleave Position:		01
+	Memory Device Mapped Address Interleaved Data Depth:		02
+	Memory Device Mapped Address Memory Array Mapped Handle:		0035
+	Memory Device Mapped Address Memory Device Handle:		002C
+	Memory Device Mapped Address Partition Row Width:		01
+	Memory Device Mapped Address Starting Address:		00000000
+[Memory Device Mapped Address Information #2]
+	Memory Device Mapped Address Ending Address:		017FFFFF
+	Memory Device Mapped Address Extended Ending Address:		0000000000000000
+	Memory Device Mapped Address Extended Starting Address:		0000000000000000
+	Memory Device Mapped Address Interleave Position:		01
+	Memory Device Mapped Address Interleaved Data Depth:		02
+	Memory Device Mapped Address Memory Array Mapped Handle:		0035
+	Memory Device Mapped Address Memory Device Handle:		002F
+	Memory Device Mapped Address Partition Row Width:		01
+	Memory Device Mapped Address Starting Address:		01000000
+[Memory Device Mapped Address Information #3]
+	Memory Device Mapped Address Ending Address:		00FFFFFF
+	Memory Device Mapped Address Extended Ending Address:		0000000000000000
+	Memory Device Mapped Address Extended Starting Address:		0000000000000000
+	Memory Device Mapped Address Interleave Position:		02
+	Memory Device Mapped Address Interleaved Data Depth:		02
+	Memory Device Mapped Address Memory Array Mapped Handle:		0035
+	Memory Device Mapped Address Memory Device Handle:		0031
+	Memory Device Mapped Address Partition Row Width:		01
+	Memory Device Mapped Address Starting Address:		00800000
+[Memory Device Mapped Address Information #4]
+	Memory Device Mapped Address Ending Address:		01FFFFFF
+	Memory Device Mapped Address Extended Ending Address:		0000000000000000
+	Memory Device Mapped Address Extended Starting Address:		0000000000000000
+	Memory Device Mapped Address Interleave Position:		02
+	Memory Device Mapped Address Interleaved Data Depth:		02
+	Memory Device Mapped Address Memory Array Mapped Handle:		0035
+	Memory Device Mapped Address Memory Device Handle:		0033
+	Memory Device Mapped Address Partition Row Width:		01
+	Memory Device Mapped Address Starting Address:		01800000
+[Voltage Probe Information #1]
+	Voltage Probe Accuracy:		8000
+	Voltage Probe Description:		LM78A
+	Voltage Probe Location:		Power Unit
+	Voltage Probe Maximum Value:		8000
+	Voltage Probe Minimum Value:		8000
+	Voltage Probe Nominal Value:		8000
+	Voltage Probe OEM-defined:		00000000
+	Voltage Probe Resolution:		8000
+	Voltage Probe Status:		OK
+	Voltage Probe Tolerance:		8000
+[Cooling Device Information #1]
+	Cooling Device Cooling Unit Group:		01
+	Cooling Device Description:		Cooling Dev 1
+	Cooling Device Device Type:		Power Supply Fan
+	Cooling Device Nominal Speed:		8000
+	Cooling Device OEM-defined:		00000000
+	Cooling Device Status:		OK
+	Cooling Device Temperature Probe Handle:		0020
+[Temperature Probe Information #1]
+	Temperature Probe Accuracy:		8000
+	Temperature Probe Description:		LM78A
+	Temperature Probe Location:		Power Unit
+	Temperature Probe Maximum Value:		8000
+	Temperature Probe Minimum Value:		8000
+	Temperature Probe Nominal Value:		8000
+	Temperature Probe OEM-defined:		00000000
+	Temperature Probe Resolution:		8000
+	Temperature Probe Status:		OK
+	Temperature Probe Tolerance:		8000
+[Electrical Current Probe Information #1]
+	Electrical Current Probe Accuracy:		8000
+	Electrical Current Probe Description:		ABC
+	Electrical Current Probe Location:		Power Unit
+	Electrical Current Probe Maximum Value:		8000
+	Electrical Current Probe Minimum Value:		8000
+	Electrical Current Probe Nominal Value:		8000
+	Electrical Current Probe OEM-defined:		00000000
+	Electrical Current Probe Resolution:		8000
+	Electrical Current Probe Status:		OK
+	Electrical Current Probe Tolerance:		8000
+[System Boot Information #1]
+	System Boot Status:		00000000000000000000
+[System Power Supply Information #1]
+	System Power Supply Asset Tag Number:		To Be Filled By O.E.M.
+	System Power Supply Cooling Device Handle:		0021
+	System Power Supply Device Name:		To Be Filled By O.E.M.
+	System Power Supply Input Current Probe Handle:		0022
+	System Power Supply Input Voltage Probe Handle:		001F
+	System Power Supply Location:		To Be Filled By O.E.M.
+	System Power Supply Manufacturer:		To Be Filled By O.E.M.
+	System Power Supply Max Power Capacity:		8000
+	System Power Supply Model Part Number:		To Be Filled By O.E.M.
+	System Power Supply Power Supply Characteristics:		11A2
+	System Power Supply Power Unit Group:		01
+	System Power Supply Revision Level:		To Be Filled By O.E.M.
+	System Power Supply Serial Number:		To Be Filled By O.E.M.
+[On board Devices Extended Information #1]
+	Onboard Devices Extended Information Bus Number:		00
+	Onboard Devices Extended Information Device Number:		10
+	Onboard Devices Extended Information Device Type Instance:		01
+	Onboard Devices Extended Information Function Number:		00
+	Onboard Devices Extended Information Reference Designation:		 Onboard IGD
+	Onboard Devices Extended Information Segment Group Number:		0000
+[On board Devices Extended Information #2]
+	Onboard Devices Extended Information Bus Number:		00
+	Onboard Devices Extended Information Device Number:		C8
+	Onboard Devices Extended Information Device Type Instance:		01
+	Onboard Devices Extended Information Function Number:		00
+	Onboard Devices Extended Information Reference Designation:		 Onboard LAN
+	Onboard Devices Extended Information Segment Group Number:		0000
+[On board Devices Extended Information #3]
+	Onboard Devices Extended Information Bus Number:		03
+	Onboard Devices Extended Information Device Number:		E0
+	Onboard Devices Extended Information Device Type Instance:		01
+	Onboard Devices Extended Information Function Number:		02
+	Onboard Devices Extended Information Reference Designation:		 Onboard 1394
+	Onboard Devices Extended Information Segment Group Number:		0000
+[End-of-Table #1]
+	End-of-Table Handle:		
+	End-of-Table Length:		04
+	End-of-Table Type:		7F
+
+
+Disk                                                                           周一 四月 1 18:02:00 2019
+--------------------------------------------------------------------------------------------------------
+Nominal Media Rotation Rate:  (SSD)                         
+Buffer Size:                                                
+Nv Cache Size:                                              
+Logical Drive:                K:                            
+Power On Count:               33563 Counts                  
+Temperature:                                                
+Host Writes:                  781 GB                        
+Host Reads:                   245 GB                        
+GBytesErased:                                               
+Nand Writes:                                                
+Power On Hours:               89 Hours                      
+Total Disk Size:              16.0 GB                       
+Serial Number:                04593e867                     
+Firmware Rev:                 KM.10.00                      
+Model:                        SanDisk SSD U100 16GB         
+Max Transfer Mode:            SATA/600                      
+Current Transfer Mode:        SATA/300                      
+Major Version:                ACS-2                         
+Minor Version:                ACS-2 Revision 3              
+Interface:                    USB (Serial ATA)              
+Enclosure:                    SanDisk Extreme USB Device    
+Device Nominal Form Factor:   1.8 inch                      
+Feature:                      S.M.A.R.T., APM, NCQ, TRIM    
+Disk State:                                                 
+
+Nominal Media Rotation Rate:  7200 RPM                      
+Buffer Size:                                                
+Nv Cache Size:                                              
+Logical Drive:                E: J:                         
+Power On Count:               1399 Counts                   
+Temperature:                  33 °C                         
+Host Writes:                                                
+Host Reads:                                                 
+GBytesErased:                                               
+Nand Writes:                                                
+Power On Hours:               4243 Hours                    
+Total Disk Size:              1000.2 GB                     
+Serial Number:                Z4Y19VCY                      
+Firmware Rev:                 CC45                          
+Model:                        ST1000DM003-1ER162            
+Max Transfer Mode:            SATA/600                      
+Current Transfer Mode:        SATA/600                      
+Major Version:                ACS-2                         
+Minor Version:                ACS-3 Revision 3b             
+Interface:                    Serial ATA                    
+Enclosure:                                                  
+Device Nominal Form Factor:   3.5 inch                      
+Feature:                      S.M.A.R.T., APM, NCQ          
+Disk State:                                                 
+
+Nominal Media Rotation Rate:  (SSD)                         
+Buffer Size:                                                
+Nv Cache Size:                                              
+Logical Drive:                C:                            
+Power On Count:               10009 Counts                  
+Temperature:                  38 °C                         
+Host Writes:                  39.967 TB                     
+Host Reads:                                                 
+GBytesErased:                                               
+Nand Writes:                                                
+Power On Hours:               11350 Hours                   
+Total Disk Size:              120.0 GB                      
+Serial Number:                S21VNXBG894109J               
+Firmware Rev:                 EMT01B6Q                      
+Model:                        Samsung SSD 850 EVO 120GB     
+Max Transfer Mode:            SATA/600                      
+Current Transfer Mode:        SATA/600                      
+Major Version:                ACS-2                         
+Minor Version:                ATA8-ACS version 4c           
+Interface:                    Serial ATA                    
+Enclosure:                                                  
+Device Nominal Form Factor:                                 
+Feature:                      S.M.A.R.T., NCQ, TRIM, DevSleep
+Disk State:                                                 

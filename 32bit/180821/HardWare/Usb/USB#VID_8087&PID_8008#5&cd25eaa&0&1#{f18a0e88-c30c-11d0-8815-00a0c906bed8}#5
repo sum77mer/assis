@@ -1,0 +1,11 @@
+Is Port User Connectable:         no
+Is Port Debug Capable:            no
+Is Port TypeC:                    no
+Companion Port Number:            0
+Companion Hub Symbolic Link Name: 
+Protocols Supported:              
+ USB 1.1:                         no
+ USB 2.0:                         yes
+ USB 3.0:                         yes
+
+ConnectionStatus:                 NoDeviceConnected

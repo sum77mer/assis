@@ -1,0 +1,72 @@
+Is Port User Connectable:         no
+Is Port Debug Capable:            no
+Is Port TypeC:                    no
+Companion Port Number:            0
+Companion Hub Symbolic Link Name: 
+Protocols Supported:              
+ USB 1.1:                         no
+ USB 2.0:                         no
+ USB 3.0:                         no
+
+        ---===>Device Information<===---
+          ===>Device Descriptor<===
+bLength:                           18
+bDescriptorType:                   1
+bcdUSB:                            272
+bDeviceClass:                      0
+bDeviceSubClass:                   0
+bDeviceProtocol:                   0
+bMaxPacketSize0:                   8
+idVendor:                          6127
+idProduct:                         24600
+bcdDevice:                         275
+iManufacturer:                     1
+           Lite-On Technology Corp.
+iProduct:                          2
+           Lenovo USB Keyboard
+iSerialNumber:                     0
+bNumConfigurations:                1
+           ---===>Full Configuration Descriptor<===---
+          ===>Configuration Descriptor<===
+bLength:                           9
+bDescriptorType:                   2
+wTotalLength:                      59
+bNumInterfaces:                    2
+bConfigurationValue:               1
+iConfiguration:                    0
+bmAttributes:                      160
+MaxPower:                          50
+          ===>Interface Descriptor<===
+bLength:                           9
+bDescriptorType:                   4
+bInterfaceNumber:                  0
+bAlternateSetting:                 0
+bNumEndpoints:                     1
+bInterfaceClass:                   3
+bInterfaceSubClass:                1
+bInterfaceProtocol:                1
+iInterface:                        0
+          ===>Interface Descriptor<===
+bLength:                           9
+bDescriptorType:                   4
+bInterfaceNumber:                  1
+bAlternateSetting:                 0
+bNumEndpoints:                     1
+bInterfaceClass:                   3
+bInterfaceSubClass:                0
+bInterfaceProtocol:                0
+iInterface:                        0
+          ===>Endpoint Descriptor<===
+bLength:                           7
+bDescriptorType:                   5
+bEndpointAddress:                  129
+bmAttributes:                      3
+wMaxPacketSize:                    8
+bInterval:                         10
+          ===>Endpoint Descriptor<===
+bLength:                           7
+bDescriptorType:                   5
+bEndpointAddress:                  130
+bmAttributes:                      3
+wMaxPacketSize:                    3
+bInterval:                         10

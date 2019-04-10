@@ -1,0 +1,11 @@
+Standard Enhanced PCI to USB Host Controller
+
+DriverKey: {36fc9e60-c465-11cf-8056-444553540000}\0000
+VendorID: 8086
+DeviceID: 8C26
+SubSysID: 5B71028
+Revision: 5
+Bus.Device.Function (in hex): 0.1D.0
+Host Controller Power State Mappings
+System State       Host Controller     Root Hub        USB wakeup      Powered
+

@@ -1,0 +1,66 @@
+Is Port User Connectable:         no
+Is Port Debug Capable:            no
+Is Port TypeC:                    no
+Companion Port Number:            0
+Companion Hub Symbolic Link Name: 
+Protocols Supported:              
+ USB 1.1:                         no
+ USB 2.0:                         no
+ USB 3.0:                         no
+
+Hub Power:                        
+Bus Powered
+Hub Type:                        
+ERROR: Unknown hub type
+Number of Ports:                  0
+High speed capable:               yes
+High speed:                       yes
+Multiple transaction translations capable:    no
+Performs multiple transaction translations simultaneously:    no
+Hub wakes when device is connected:   no
+Hub is bus powered:               no
+Hub is root:                      no
+
+        ---===>Device Information<===---
+          ===>Device Descriptor<===
+bLength:                           18
+bDescriptorType:                   1
+bcdUSB:                            512
+bDeviceClass:                      9
+bDeviceSubClass:                   0
+bDeviceProtocol:                   1
+bMaxPacketSize0:                   64
+idVendor:                          32903
+idProduct:                         32768
+bcdDevice:                         5
+iManufacturer:                     0
+iProduct:                          0
+iSerialNumber:                     0
+bNumConfigurations:                1
+           ---===>Full Configuration Descriptor<===---
+          ===>Configuration Descriptor<===
+bLength:                           9
+bDescriptorType:                   2
+wTotalLength:                      25
+bNumInterfaces:                    1
+bConfigurationValue:               1
+iConfiguration:                    0
+bmAttributes:                      224
+MaxPower:                          0
+          ===>Interface Descriptor<===
+bLength:                           9
+bDescriptorType:                   4
+bInterfaceNumber:                  0
+bAlternateSetting:                 0
+bNumEndpoints:                     1
+bInterfaceClass:                   9
+bInterfaceSubClass:                0
+bInterfaceProtocol:                0
+iInterface:                        0
+          ===>Endpoint Descriptor<===
+bLength:                           7
+bDescriptorType:                   5
+bEndpointAddress:                  129
+bmAttributes:                      3
+wMaxPacketSize:                    2
+bInterval:                         12

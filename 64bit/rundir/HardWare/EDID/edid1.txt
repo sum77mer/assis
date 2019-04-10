@@ -1,0 +1,77 @@
+EDID ( Extended Display Identification Data) Report #1
+	Vendor / Product Identification
+            Manufacture:                            PHL
+            Monitor Serial Number :                 15402
+            Product Code:                           000008E9
+            Week/Year:                              19/2016
+            Version:                                1.3
+    Video input parameters bitmap
+            Digital input
+            Bit depth:                              Undefined
+            Video interface:                        Undefined
+            Max Horizontal Image Size:              55cn
+            Max Vertical Image Size:                31cn
+            Gamma:                                  2.2
+    FeatureSupport:
+            Standby:                                No
+            Suspend:                                No
+            Active off:                             Yes
+            standby:                                No
+            Preferred timing mode specified:        Yes
+            Continuous timings with GTF or CVT:     No
+    Color Characteristic:
+            Red:                              X = 0.689453	Y = 3
+            Red:                              X = 0.21875	Y = 3
+            Red:                              X = 0.149414	Y = 3
+            Red:                              X = 0.313477	Y = 3
+    Established Timings:
+            720x400 @ 70 Hz 
+            640x480 @ 60 Hz 
+            640x480 @ 67 Hz 
+            640x480 @ 72 Hz 
+            640x480 @ 75 Hz 
+            800x600 @ 60 Hz 
+            800x600 @ 75 Hz 
+            1024x768 @ 60 Hz 
+            1024x768 @ 75 Hz 
+            1280x1024 @ 75 Hz 
+    Standard Timing #0
+            1920 x 1200 @ 60Hz
+    Standard Timing #1
+            1280 x 800 @ 60Hz
+    Standard Timing #2
+            1280 x 800 @ 60Hz
+    Standard Timing #3
+            1440 x 900 @ 75Hz
+    Standard Timing #4
+            1440 x 900 @ 60Hz
+    Standard Timing #5
+            1680 x 1050 @ 60Hz
+    Standard Timing #6
+            1280 x 800 @ 60Hz
+    Standard Timing #7
+          Unused
+    Detailed Timing Descriptor:
+        Pixel Clock:            241.5Mhz
+        Horizontal active:          2560pixels
+        Horizontal blanking:        160pixels
+        Vertical  active:           1440pixels
+        Vertical  blanking:         41pixels
+        Horizontal sync. offset:    48pixels
+        Horizontal sync. width:     32pixels
+        Vertical sync. offset:      5pixels
+        Vertical sync. width:       3pixels
+        Horizontal Image Size:      553 mm
+        Vertical Image Size:        311mm
+        Horizontal Border:          0pixels
+        Vertical Border:            0lines
+    Display serial number Descriptor:
+        Display serial number:                          UHB1619015402
+    Display name Descriptor:
+        Display name number:                          PHL 258B6QJEB
+    Display Range Limits Descriptor:
+        Min. Horizontal rate:                       15khz
+        Max. Horizontal rate:                       99khz
+        Min. Vertical rate:                         23khz
+        Max. Vertical rate:                         76khz
+        Max. Pixel Clock:                           300Mhz
