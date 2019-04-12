@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------------------------------
-SV_ASSISTANT Report                                                            ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+SV_ASSISTANT Report                                                           ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
 Hardware Report Clean                                                                               
 --------------------------------------------------------------------------------------------------------
-CPU                                                                            ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+CPU                                                                           ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
 CPU Name:           Intel Core i5 4460            
 CPU Core:           4                             
@@ -41,28 +41,28 @@ Multiplier:         inf
 Multiplier:         inf                           
 Processor ID:       BFEBFBFF000306C3              
 Max TDP:            0                             
-Memory                                                                         ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+Memory                                                                        ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
 Dimm Num:           0                             
 
-SMBIOS                                                                         ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+SMBIOS                                                                        ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
-GFX                                                                            ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+GFX                                                                           ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
 GPU Name:                     Nvidia GeForce GT 720         
 GPU BIOS Version:             80.28.56.00.01                
 GPU Driver Version:           33266                         
 GPU Branch Version:           r331_00                       
-Temperature:                  38                            
+Temperature:                  41                            
 GPU Clock:                    0                             
 GPU Memory:                   0                             
-Usage:                        19                            
+Usage:                        1                             
 Fans:                         0                             
 Dedicated Video Memory:       1048576                       
 System Video Memory:          0                             
 Shared System Memory:         3146044                       
 
-Monitor                                                                        ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+Monitor                                                                       ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Philips Consumer Electronics Company PHL 258B6QJEB  
 				Desktop Management Interface Information
@@ -587,16 +587,16 @@ Name:               Philips Consumer Electronics Company PHL 258B6QJEB
 	End-of-Table Type:		7F
 
 
-Disk                                                                           ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+Disk                                                                          ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
 Nominal Media Rotation Rate:  (SSD)                         
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                K:                            
-Power On Count:               33568 Counts                  
+Power On Count:               33583 Counts                  
 Temperature:                                                
 Host Writes:                  781 GB                        
-Host Reads:                   245 GB                        
+Host Reads:                   246 GB                        
 GBytesErased:                                               
 Nand Writes:                                                
 Power On Hours:               89 Hours                      
@@ -618,13 +618,13 @@ Nominal Media Rotation Rate:  7200 RPM
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                E: J:                         
-Power On Count:               1408 Counts                   
-Temperature:                  33 ¡ãC                         
+Power On Count:               1414 Counts                   
+Temperature:                  35 ¡ãC                         
 Host Writes:                                                
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               4294 Hours                    
+Power On Hours:               4317 Hours                    
 Total Disk Size:              1000.2 GB                     
 Serial Number:                Z4Y19VCY                      
 Firmware Rev:                 CC45                          
@@ -643,13 +643,13 @@ Nominal Media Rotation Rate:  (SSD)
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                C:                            
-Power On Count:               10018 Counts                  
-Temperature:                  37 ¡ãC                         
-Host Writes:                  39.999 TB                     
+Power On Count:               10024 Counts                  
+Temperature:                  38 ¡ãC                         
+Host Writes:                  40.028 TB                     
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               11401 Hours                   
+Power On Hours:               11425 Hours                   
 Total Disk Size:              120.0 GB                      
 Serial Number:                S21VNXBG894109J               
 Firmware Rev:                 EMT01B6Q                      
@@ -665,7 +665,7 @@ Feature:                      S.M.A.R.T., NCQ, TRIM, DevSleep
 Disk State:                                                 
 
 
-USB                                                                            ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+USB                                                                           ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
   [Standard Enhanced PCI to USB Host Controller]
           DriverKey: {36fc9e60-c465-11cf-8056-444553540000}\0000
@@ -1515,9 +1515,9 @@ USB                                                                            Ö
                 USB 3.0:                         no
                
                             ConnectionStatus:                 NoDeviceConnected
-PCI                                                                            ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+PCI                                                                           ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
-Net                                                                            ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+Net                                                                           ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Bluetooth ÍøÂçÁ¬½Ó                
 Device Name:        Bluetooth Éè±¸(¸öÈËÇøÓòÍø)           
@@ -1534,7 +1534,7 @@ Device Name:        Dell Wireless 1703 802.11b/g/n (2.4GHz)
 Media Type:         LAN                           
 State:              MEDIA_DISCONNECTED            
 
-Audio                                                                          ÖÜ¶þ ËÄÔÂ 9 18:02:23 2019
+Audio                                                                         ÖÜÎå ËÄÔÂ 12 17:19:24 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Speakers (Bluetooth Audio Device)
 ID:                 {0.0.0.00000000}.{601be8b4-7dcf-43a8-a275-250f5202a7ed}
@@ -1544,7 +1544,7 @@ Audioif:            Bluetooth Audio Device
 
 Name:               ÑïÉùÆ÷/ÌýÍ² (Realtek Audio)        
 ID:                 {0.0.0.00000000}.{ac858e1e-5305-4e17-a35d-33e44b8334b0}
-State:              ACTIVE                        
+State:              UNPLUGGED                     
 Description:        ÑïÉùÆ÷/ÌýÍ²                        
 Audioif:            Realtek Audio                 
 
@@ -1633,4 +1633,4 @@ Description:        ÏßÂ·ÊäÈë
 Audioif:            Realtek Audio                 
 
 --------------------------------------------------------------------------------------------------------
-End of Report                                                                  ÖÜ¶þ ËÄÔÂ 9 18:02:24 2019
+End of Report                                                                 ÖÜÎå ËÄÔÂ 12 17:19:24 2019

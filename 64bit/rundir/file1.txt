@@ -27,6 +27,7 @@ Family:             6
 Model:              12                            
 Stepping:           3                             
 ExtFamily:          6                             
+				
 ExtModel:           60                            
 Revision:           15363                         
 Technology:         22                            
