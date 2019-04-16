@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------------------------------
-SV_ASSISTANT Report                                                           周五 四月 12 17:19:24 2019
+SV_ASSISTANT Report                                                           周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
 Hardware Report Clean                                                                               
 --------------------------------------------------------------------------------------------------------
-CPU                                                                           周五 四月 12 17:19:24 2019
+CPU                                                                           周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
 CPU Name:           Intel Core i5 4460            
 CPU Core:           4                             
@@ -41,28 +41,28 @@ Multiplier:         inf
 Multiplier:         inf                           
 Processor ID:       BFEBFBFF000306C3              
 Max TDP:            0                             
-Memory                                                                        周五 四月 12 17:19:24 2019
+Memory                                                                        周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
 Dimm Num:           0                             
 
-SMBIOS                                                                        周五 四月 12 17:19:24 2019
+SMBIOS                                                                        周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
-GFX                                                                           周五 四月 12 17:19:24 2019
+GFX                                                                           周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
 GPU Name:                     Nvidia GeForce GT 720         
 GPU BIOS Version:             80.28.56.00.01                
 GPU Driver Version:           33266                         
 GPU Branch Version:           r331_00                       
-Temperature:                  41                            
+Temperature:                  44                            
 GPU Clock:                    0                             
 GPU Memory:                   0                             
-Usage:                        1                             
+Usage:                        2                             
 Fans:                         0                             
 Dedicated Video Memory:       1048576                       
 System Video Memory:          0                             
 Shared System Memory:         3146044                       
 
-Monitor                                                                       周五 四月 12 17:19:24 2019
+Monitor                                                                       周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Philips Consumer Electronics Company PHL 258B6QJEB  
 				Desktop Management Interface Information
@@ -587,44 +587,19 @@ Name:               Philips Consumer Electronics Company PHL 258B6QJEB
 	End-of-Table Type:		7F
 
 
-Disk                                                                          周五 四月 12 17:19:24 2019
+Disk                                                                          周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
-Nominal Media Rotation Rate:  (SSD)                         
-Buffer Size:                                                
-Nv Cache Size:                                              
-Logical Drive:                K:                            
-Power On Count:               33583 Counts                  
-Temperature:                                                
-Host Writes:                  781 GB                        
-Host Reads:                   246 GB                        
-GBytesErased:                                               
-Nand Writes:                                                
-Power On Hours:               89 Hours                      
-Total Disk Size:              16.0 GB                       
-Serial Number:                04593e867                     
-Firmware Rev:                 KM.10.00                      
-Model:                        SanDisk SSD U100 16GB         
-Max Transfer Mode:            SATA/600                      
-Current Transfer Mode:        SATA/300                      
-Major Version:                ACS-2                         
-Minor Version:                ACS-2 Revision 3              
-Interface:                    USB (Serial ATA)              
-Enclosure:                    SanDisk Extreme USB Device    
-Device Nominal Form Factor:   1.8 inch                      
-Feature:                      S.M.A.R.T., APM, NCQ, TRIM    
-Disk State:                                                 
-
 Nominal Media Rotation Rate:  7200 RPM                      
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                E: J:                         
-Power On Count:               1414 Counts                   
+Power On Count:               1418 Counts                   
 Temperature:                  35 °C                         
 Host Writes:                                                
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               4317 Hours                    
+Power On Hours:               4326 Hours                    
 Total Disk Size:              1000.2 GB                     
 Serial Number:                Z4Y19VCY                      
 Firmware Rev:                 CC45                          
@@ -643,13 +618,13 @@ Nominal Media Rotation Rate:  (SSD)
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                C:                            
-Power On Count:               10024 Counts                  
-Temperature:                  38 °C                         
-Host Writes:                  40.028 TB                     
+Power On Count:               10028 Counts                  
+Temperature:                  36 °C                         
+Host Writes:                  40.041 TB                     
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               11425 Hours                   
+Power On Hours:               11433 Hours                   
 Total Disk Size:              120.0 GB                      
 Serial Number:                S21VNXBG894109J               
 Firmware Rev:                 EMT01B6Q                      
@@ -665,7 +640,7 @@ Feature:                      S.M.A.R.T., NCQ, TRIM, DevSleep
 Disk State:                                                 
 
 
-USB                                                                           周五 四月 12 17:19:24 2019
+USB                                                                           周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
   [Standard Enhanced PCI to USB Host Controller]
           DriverKey: {36fc9e60-c465-11cf-8056-444553540000}\0000
@@ -1311,11 +1286,11 @@ USB                                                                           周
                idProduct:                         57348
                bcdDevice:                         1
                iManufacturer:                     1
-                          Atheros Communications
+                          String Descriptor not available
                iProduct:                          2
-                          Bluetooth USB Host Controller
+                          String Descriptor not available
                iSerialNumber:                     3
-                          Alaska Day 2006
+                          String Descriptor not available
                bNumConfigurations:                1
                           ---===>Full Configuration Descriptor<===---
                          ===>Configuration Descriptor<===
@@ -1427,14 +1402,14 @@ USB                                                                           周
                bDeviceProtocol:                   0
                bMaxPacketSize0:                   9
                idVendor:                          1921
-               idProduct:                         21888
-               bcdDevice:                         16
+               idProduct:                         21889
+               bcdDevice:                         256
                iManufacturer:                     1
                           SanDisk
                iProduct:                          2
-                          Extreme
+                          Ultra
                iSerialNumber:                     3
-                          AA011224140604432152
+                          4C531001401102114524
                bNumConfigurations:                1
                           ---===>Full Configuration Descriptor<===---
                          ===>Configuration Descriptor<===
@@ -1446,7 +1421,7 @@ USB                                                                           周
                bConfigurationValue:               1
                iConfiguration:                    0
                bmAttributes:                      128
-               MaxPower:                          50
+               MaxPower:                          112
                          ===>Interface Descriptor<===
                bLength:                           9
                bDescriptorType:                   4
@@ -1515,9 +1490,9 @@ USB                                                                           周
                 USB 3.0:                         no
                
                             ConnectionStatus:                 NoDeviceConnected
-PCI                                                                           周五 四月 12 17:19:24 2019
+PCI                                                                           周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
-Net                                                                           周五 四月 12 17:19:24 2019
+Net                                                                           周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Bluetooth 网络连接                
 Device Name:        Bluetooth 设备(个人区域网)           
@@ -1534,7 +1509,7 @@ Device Name:        Dell Wireless 1703 802.11b/g/n (2.4GHz)
 Media Type:         LAN                           
 State:              MEDIA_DISCONNECTED            
 
-Audio                                                                         周五 四月 12 17:19:24 2019
+Audio                                                                         周二 四月 16 11:34:46 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Speakers (Bluetooth Audio Device)
 ID:                 {0.0.0.00000000}.{601be8b4-7dcf-43a8-a275-250f5202a7ed}
@@ -1544,7 +1519,7 @@ Audioif:            Bluetooth Audio Device
 
 Name:               扬声器/听筒 (Realtek Audio)        
 ID:                 {0.0.0.00000000}.{ac858e1e-5305-4e17-a35d-33e44b8334b0}
-State:              UNPLUGGED                     
+State:              ACTIVE                        
 Description:        扬声器/听筒                        
 Audioif:            Realtek Audio                 
 
@@ -1633,4 +1608,4 @@ Description:        线路输入
 Audioif:            Realtek Audio                 
 
 --------------------------------------------------------------------------------------------------------
-End of Report                                                                 周五 四月 12 17:19:24 2019
+End of Report                                                                 周二 四月 16 11:34:46 2019
