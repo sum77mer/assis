@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------------------------------
-SV_ASSISTANT Report                                                           周二 四月 16 11:34:46 2019
+SV_ASSISTANT Report                                                           周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
 Hardware Report Clean                                                                               
 --------------------------------------------------------------------------------------------------------
-CPU                                                                           周二 四月 16 11:34:46 2019
+CPU                                                                           周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
 CPU Name:           Intel Core i5 4460            
 CPU Core:           4                             
@@ -41,28 +41,28 @@ Multiplier:         inf
 Multiplier:         inf                           
 Processor ID:       BFEBFBFF000306C3              
 Max TDP:            0                             
-Memory                                                                        周二 四月 16 11:34:46 2019
+Memory                                                                        周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
 Dimm Num:           0                             
 
-SMBIOS                                                                        周二 四月 16 11:34:46 2019
+SMBIOS                                                                        周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
-GFX                                                                           周二 四月 16 11:34:46 2019
+GFX                                                                           周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
 GPU Name:                     Nvidia GeForce GT 720         
 GPU BIOS Version:             80.28.56.00.01                
 GPU Driver Version:           33266                         
 GPU Branch Version:           r331_00                       
-Temperature:                  44                            
+Temperature:                  42                            
 GPU Clock:                    0                             
 GPU Memory:                   0                             
-Usage:                        2                             
+Usage:                        1                             
 Fans:                         0                             
 Dedicated Video Memory:       1048576                       
 System Video Memory:          0                             
 Shared System Memory:         3146044                       
 
-Monitor                                                                       周二 四月 16 11:34:46 2019
+Monitor                                                                       周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Philips Consumer Electronics Company PHL 258B6QJEB  
 				Desktop Management Interface Information
@@ -587,19 +587,19 @@ Name:               Philips Consumer Electronics Company PHL 258B6QJEB
 	End-of-Table Type:		7F
 
 
-Disk                                                                          周二 四月 16 11:34:46 2019
+Disk                                                                          周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
 Nominal Media Rotation Rate:  7200 RPM                      
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                E: J:                         
-Power On Count:               1418 Counts                   
-Temperature:                  35 °C                         
+Power On Count:               1421 Counts                   
+Temperature:                  34 °C                         
 Host Writes:                                                
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               4326 Hours                    
+Power On Hours:               4337 Hours                    
 Total Disk Size:              1000.2 GB                     
 Serial Number:                Z4Y19VCY                      
 Firmware Rev:                 CC45                          
@@ -618,13 +618,13 @@ Nominal Media Rotation Rate:  (SSD)
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                C:                            
-Power On Count:               10028 Counts                  
+Power On Count:               10031 Counts                  
 Temperature:                  36 °C                         
-Host Writes:                  40.041 TB                     
+Host Writes:                  40.048 TB                     
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               11433 Hours                   
+Power On Hours:               11444 Hours                   
 Total Disk Size:              120.0 GB                      
 Serial Number:                S21VNXBG894109J               
 Firmware Rev:                 EMT01B6Q                      
@@ -640,7 +640,7 @@ Feature:                      S.M.A.R.T., NCQ, TRIM, DevSleep
 Disk State:                                                 
 
 
-USB                                                                           周二 四月 16 11:34:46 2019
+USB                                                                           周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
   [Standard Enhanced PCI to USB Host Controller]
           DriverKey: {36fc9e60-c465-11cf-8056-444553540000}\0000
@@ -1382,70 +1382,6 @@ USB                                                                           周
                 USB 3.0:                         no
                
                             ConnectionStatus:                 NoDeviceConnected
-     Port 0 USB 大容量存储设备               Is Port User Connectable:         no
-               Is Port Debug Capable:            no
-               Is Port TypeC:                    no
-               Companion Port Number:            0
-               Companion Hub Symbolic Link Name: 
-               Protocols Supported:              
-                USB 1.1:                         no
-                USB 2.0:                         no
-                USB 3.0:                         no
-               
-                                    ---===>Device Information<===---
-                         ===>Device Descriptor<===
-               bLength:                           18
-               bDescriptorType:                   1
-               bcdUSB:                            768
-               bDeviceClass:                      0
-               bDeviceSubClass:                   0
-               bDeviceProtocol:                   0
-               bMaxPacketSize0:                   9
-               idVendor:                          1921
-               idProduct:                         21889
-               bcdDevice:                         256
-               iManufacturer:                     1
-                          SanDisk
-               iProduct:                          2
-                          Ultra
-               iSerialNumber:                     3
-                          4C531001401102114524
-               bNumConfigurations:                1
-                          ---===>Full Configuration Descriptor<===---
-                         ===>Configuration Descriptor<===
-                         ===>Configuration Descriptor<===
-               bLength:                           9
-               bDescriptorType:                   2
-               wTotalLength:                      44
-               bNumInterfaces:                    1
-               bConfigurationValue:               1
-               iConfiguration:                    0
-               bmAttributes:                      128
-               MaxPower:                          112
-                         ===>Interface Descriptor<===
-               bLength:                           9
-               bDescriptorType:                   4
-               bInterfaceNumber:                  0
-               bAlternateSetting:                 0
-               bNumEndpoints:                     2
-               bInterfaceClass:                   8
-               bInterfaceSubClass:                6
-               bInterfaceProtocol:                80
-               iInterface:                        0
-                         ===>Endpoint Descriptor<===
-               bLength:                           7
-               bDescriptorType:                   5
-               bEndpointAddress:                  129
-               bmAttributes:                      2
-               wMaxPacketSize:                    1024
-               bInterval:                         0
-                         ===>Endpoint Descriptor<===
-               bLength:                           7
-               bDescriptorType:                   5
-               bEndpointAddress:                  2
-               bmAttributes:                      2
-               wMaxPacketSize:                    1024
-               bInterval:                         0
      Port 0               Is Port User Connectable:         no
                Is Port Debug Capable:            no
                Is Port TypeC:                    no
@@ -1490,9 +1426,20 @@ USB                                                                           周
                 USB 3.0:                         no
                
                             ConnectionStatus:                 NoDeviceConnected
-PCI                                                                           周二 四月 16 11:34:46 2019
+     Port 0               Is Port User Connectable:         no
+               Is Port Debug Capable:            no
+               Is Port TypeC:                    no
+               Companion Port Number:            0
+               Companion Hub Symbolic Link Name: 
+               Protocols Supported:              
+                USB 1.1:                         no
+                USB 2.0:                         no
+                USB 3.0:                         no
+               
+                            ConnectionStatus:                 NoDeviceConnected
+PCI                                                                           周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
-Net                                                                           周二 四月 16 11:34:46 2019
+Net                                                                           周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Bluetooth 网络连接                
 Device Name:        Bluetooth 设备(个人区域网)           
@@ -1509,7 +1456,7 @@ Device Name:        Dell Wireless 1703 802.11b/g/n (2.4GHz)
 Media Type:         LAN                           
 State:              MEDIA_DISCONNECTED            
 
-Audio                                                                         周二 四月 16 11:34:46 2019
+Audio                                                                         周三 四月 17 16:04:55 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Speakers (Bluetooth Audio Device)
 ID:                 {0.0.0.00000000}.{601be8b4-7dcf-43a8-a275-250f5202a7ed}
@@ -1608,4 +1555,4 @@ Description:        线路输入
 Audioif:            Realtek Audio                 
 
 --------------------------------------------------------------------------------------------------------
-End of Report                                                                 周二 四月 16 11:34:46 2019
+End of Report                                                                 周三 四月 17 16:04:55 2019
