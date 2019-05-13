@@ -1,241 +1,108 @@
-[Hardware Report Clean]
---CPU--
-CPU Name:Intel Core i5 4460
-CPU Core:4
-CPU Threads:4
-D1 size:32KB 8way 64linesize
-T1 size:32KB 8way 64linesize
-U2 size:256MB 8way 64linesize
-U3 size:6144MB 12way 64linesize
-Package Temperature:inf
-Core1 Temperature:inf
-Core2 Temperature:inf
-Core3 Temperature:inf
-Core4 Temperature:inf
-CPU SocketDesignation:Unknown
-Southbridge Name:ID0
-CPU Manufacture:GenuineIntel
-Code Name:Haswell
-CPU Specification:Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz
-Family:6
-Model:12
-Stepping:3
-ExtFamily:6
-ExtModel:60
-Revision:15363
-Technology:22
-InstructionSet:SSE3 PCLMULQDQ DTES64 MONITOE DS_CPL VMX EIST TM2 SSSE3 SDBG FMA CMPXCHG16B xTPR_Update_Control PDCM PCID SSE4_1 SSE4_2 x2APIC MOVBE POPCNT TSC_Deadline AESNI XSAVE OSXSAVE AVX F16C RDRAND
-Core Speed:inf
-Ext Speed:100
-Multiplier:inf
-Processor ID:BFEBFBFF000306C3
-Max TDP:0
---Memory--
-Dimm Num:189
---GFX--
-GPU Name:Nvidia GeForce GT 720
-GPU BIOS Version:80.28.56.00.01
-GPU Branch Version:r331_00
-Temperature:41
+----------[ SV_ASSISTANT ]--------------------------------------------------------------------------
 
-GPU Clock:0
-GPU Memory Clock:0
-Usage:0
-Fans:0
-Dedicated Video Memory:1048576
-System Video Memory:0
-Shared System Memory:3146044
+  »Ìº˛:             SV-ASSISTANT V3.0.3.14393b64.a0.0513                                  
+   ±º‰:             2019/05/13 17:26:45                                                   
+  Õ¯’æ:             http://www.zhaoxin.com/                                               
 
---Monitor--
-Name:Philips Consumer Electronics Company PHL 258B6QJEB
+----------[ ∏≈¿¿ ]----------------------------------------------------------------------------------
 
---Disk--
-Nominal Media Rotation Rate:(SSD)
-Buffer Size:
-Nv Cache Size:
-Logical Drive:K: 
-Power On Count:33574 Counts
-Temperature:
-Host Writes:
-Host Reads:245 GB
-GBytesErased:
-Nand Writes:
-Power On Hours:89 Hours
-Total Disk Size:16.0 GB
-Serial Number:04593e867
-Firmware Rev:KM.10.00
-Model:SanDisk SSD U100 16GB
-Max Transfer Mode:SATA/600
-Current Transfer Mode:SATA/300
-Major Version:ACS-2
-Minor Version:ACS-2 Revision 3
-Interface:USB (Serial ATA)
-Enclosure:SanDisk Extreme USB Device
-Device Nominal Form Factor:1.8 inch
-Feature:S.M.A.R.T., APM, NCQ, TRIM
-Disk State:
+  µÁƒ‘–Õ∫≈          Dell Inc. 0KWVT8 VersionA03 Feature09Intel Core i5 4460               
+  ≤Ÿ◊˜œµÕ≥          Windows 7 SP 1 (6.1) 6.1.7601 x86_64                                  
 
-Nominal Media Rotation Rate:7200 RPM
-Buffer Size:
-Nv Cache Size:
-Logical Drive:E: J: 
-Power On Count:1410 Counts
-Temperature:34 ¬∞C
-Host Writes:
-Host Reads:
-GBytesErased:
-Nand Writes:
-Power On Hours:4297 Hours
-Total Disk Size:1000.2 GB
-Serial Number:Z4Y19VCY
-Firmware Rev:CC45
-Model:ST1000DM003-1ER162
-Max Transfer Mode:SATA/600
-Current Transfer Mode:SATA/600
-Major Version:ACS-2
-Minor Version:ACS-3 Revision 3b
-Interface:Serial ATA
-Enclosure:
-Device Nominal Form Factor:3.5 inch
-Feature:S.M.A.R.T., APM, NCQ
-Disk State:
+  ¥¶¿Ì∆˜            Intel Core i5 4460                                                    
+  ÷˜∞Â              Dell Inc. 0KWVT8 VersionA03 Feature09                                 
+  œ‘ø®              Nvidia GeForce GT 720                                                 
+  ƒ⁄¥Ê                ”≤≈Ã              ST1000DM003-1ER162 1000.2 GB(E: J: )                                  
+                    Samsung SSD 850 EVO 120GB 120.0 GB(C: )                               
+  œ‘ æ∆˜            Philips Consumer Electronics Company PHL 258B6QJEB                    
+  BIOS              Dell Inc. VersionA08 04/16/2014                                       
 
-Nominal Media Rotation Rate:(SSD)
-Buffer Size:
-Nv Cache Size:
-Logical Drive:C: 
-Power On Count:10020 Counts
-Temperature:36 ¬∞C
-Host Writes:
-Host Reads:
-GBytesErased:
-Nand Writes:
-Power On Hours:11405 Hours
-Total Disk Size:120.0 GB
-Serial Number:S21VNXBG894109J
-Firmware Rev:EMT01B6Q
-Model:Samsung SSD 850 EVO 120GB
-Max Transfer Mode:SATA/600
-Current Transfer Mode:SATA/600
-Major Version:ACS-2
-Minor Version:ATA8-ACS version 4c
-Interface:Serial ATA
-Enclosure:
-Device Nominal Form Factor:
-Feature:S.M.A.R.T., NCQ, TRIM, DevSleep
-Disk State:
+----------[ ÷˜∞Â ]----------------------------------------------------------------------------------
 
---PCI--
---Net--
-Name:Bluetooth ÁΩëÁªúËøûÊé•
-Device Name:Bluetooth ËÆæÂ§á(‰∏™‰∫∫Âå∫ÂüüÁΩë)
-Media Type:LAN
-State:MEDIA_DISCONNECTED
+  ÷˜∞Â–Õ∫≈          Dell Inc. 0KWVT8 VersionA03 Feature09Intel Core i5 4460               
+  –æ∆¨◊È            ID0                                                                   
+  –Ú¡–∫≈            ..CN7220049901NM.                                                     
+  ÷˜∞Â∞Ê±æ          A03                                                                   
+  BIOS              Dell Inc. A08 / Ñ1§7Ñ1§7Ñ1§7Å1ê3Ñ1§704/16/2014                                       
+  BIOS¥Û–°          8192KB                                                                
 
-Name:Êú¨Âú∞ËøûÊé•
-Device Name:Realtek PCIe GBE Family Controller
-Media Type:LAN
-State:CONNECTED
+----------[ ¥¶¿Ì∆˜ ]---------------------------------------------------------------------------------
 
-Name:Êó†Á∫øÁΩëÁªúËøûÊé•
-Device Name:Dell Wireless 1703 802.11b/g/n (2.4GHz)
-Media Type:LAN
-State:MEDIA_DISCONNECTED
+  ¥¶¿Ì∆˜            Intel Core i5 4460                                                    
+  ≤ΩΩ¯              3                                                                     
+  ÀŸ∂»              infHz                                                                 
+  ¥¶¿Ì∆˜ ˝¡ø        4                                                                     
+  ∫À–ƒ¥˙∫≈          Haswell                                                               
+  …˙≤˙π§“’          22nm                                                                  
+  “ªº∂ ˝æ›ª∫¥Ê      32 KB, 8-Way, 64 byte lines                                           
+  “ªº∂¥˙¬Îª∫¥Ê      32 KB, 8-Way, 64 byte lines                                           
+  ∂˛º∂ª∫¥Ê          256 KB, 8-Way, 64 byte lines                                          
+  »˝º∂ª∫¥Ê          6 MB, 12-Way, 64 byte lines                                           
+  Ãÿ’˜              SSE3 PCLMULQDQ DTES64 MONITOE DS_CPL VMX EIST TM2 SSSE3 SDBG FMA CMPXCHG16B xTPR_Update_Control PDCM PCID SSE4_1 SSE4_2 x2APIC MOVBE POPCNT TSC_Deadline AESNI XSAVE OSXSAVE AVX F16C RDRAND
 
---Audio--
-Name:Speakers (Bluetooth Audio Device)
-ID:{0.0.0.00000000}.{601be8b4-7dcf-43a8-a275-250f5202a7ed}
-State:NOTPRESENT
-Description:Speakers
-Audioif:Bluetooth Audio Device
+----------[ ”≤≈Ã ]----------------------------------------------------------------------------------
 
-Name:Êâ¨Â£∞Âô®/Âê¨Á≠í (Realtek Audio)
-ID:{0.0.0.00000000}.{ac858e1e-5305-4e17-a35d-33e44b8334b0}
-State:ACTIVE
-Description:Êâ¨Â£∞Âô®/Âê¨Á≠í
-Audioif:Realtek Audio
+  ≤˙∆∑              ST1000DM003-1ER162                                                    
+  ¥Û–°              1000.2 GB                                                             
+  πÃº˛              CC45                                                                  
+  Ω”ø⁄              Serial ATA                                                            
+  Ãÿ’˜              S.M.A.R.T., APM, NCQ                                                  
 
-Name:PHL 258B6QJEB (NVIDIA High Definition Audio)
-ID:{0.0.0.00000000}.{d8518c33-8b3d-4bd5-85a7-ffcdccd41e90}
-State:ACTIVE
-Description:PHL 258B6QJEB
-Audioif:NVIDIA High Definition Audio
+  ≤˙∆∑              Samsung SSD 850 EVO 120GB                                             
+  ¥Û–°              120.0 GB                                                              
+  πÃº˛              EMT01B6Q                                                              
+  Ω”ø⁄              Serial ATA                                                            
+  Ãÿ’˜              S.M.A.R.T., NCQ, TRIM, DevSleep                                       
 
-Name:NVIDIA Output (NVIDIA High Definition Audio)
-ID:{0.0.0.00000000}.{e28f297b-a8f9-4cd3-adbd-40db5092e7a6}
-State:UNPLUGGED
-Description:NVIDIA Output
-Audioif:NVIDIA High Definition Audio
+----------[ ƒ⁄¥Ê ]----------------------------------------------------------------------------------
 
-Name:Êâ¨Â£∞Âô®/Âê¨Á≠í (Realtek Audio)
-ID:{0.0.1.00000000}.{0cfdded1-49a9-48d8-956a-30734ef8c83e}
-State:NOTPRESENT
-Description:Êâ¨Â£∞Âô®/Âê¨Á≠í
-Audioif:Realtek Audio
 
-Name:Êâ¨Â£∞Âô®/Âê¨Á≠í (Realtek Audio)
-ID:{0.0.1.00000000}.{124ce88a-3f25-4328-9c4e-af47379e7d7b}
-State:NOTPRESENT
-Description:Êâ¨Â£∞Âô®/Âê¨Á≠í
-Audioif:Realtek Audio
+----------[ œ‘ø® ]----------------------------------------------------------------------------------
 
-Name:È∫¶ÂÖãÈ£é (Realtek Audio)
-ID:{0.0.1.00000000}.{18a743fd-a10b-40ff-83d0-f248336201bf}
-State:UNPLUGGED
-Description:È∫¶ÂÖãÈ£é
-Audioif:Realtek Audio
+  ÷˜œ‘ø®            Nvidia GeForce GT 720                                                 
+  BIOS∞Ê±æ          80.28.56.00.01                                                        
+  «˝∂Ø∞Ê±æ          33266                                                                 
 
-Name:Êâ¨Â£∞Âô®/Âê¨Á≠í (Realtek Audio)
-ID:{0.0.1.00000000}.{23c632a0-6256-4f05-b8ab-8355338057da}
-State:NOTPRESENT
-Description:Êâ¨Â£∞Âô®/Âê¨Á≠í
-Audioif:Realtek Audio
+----------[ œ‘ æ∆˜ ]---------------------------------------------------------------------------------
 
-Name:Êâ¨Â£∞Âô®/Âê¨Á≠í (Realtek Audio)
-ID:{0.0.1.00000000}.{48fe38c4-13f6-486d-a7bd-89c87972cf19}
-State:NOTPRESENT
-Description:Êâ¨Â£∞Âô®/Âê¨Á≠í
-Audioif:Realtek Audio
+  ≤˙∆∑              Philips Consumer Electronics Company PHL 258B6QJEB                    
+  πÃº˛»’∆⁄          Year26/Week19                                                         
+  ∆¡ƒª≥ﬂ¥Á          55cm x 31cm                                                           
+  œ‘ æ±»¿˝          16 : 9                                                                
+  ∑÷±Ê¬             2560 x 1440                                                           
+  Gama              2.2                                                                   
 
-Name:Êâ¨Â£∞Âô®/Âê¨Á≠í (Realtek Audio)
-ID:{0.0.1.00000000}.{56e5e0f9-cd1a-47f5-b186-11b377ead2ba}
-State:NOTPRESENT
-Description:Êâ¨Â£∞Âô®/Âê¨Á≠í
-Audioif:Realtek Audio
+----------[ ∆‰À¸…Ë±∏ ]--------------------------------------------------------------------------------
 
-Name:Bluetooth Microphone (Bluetooth Audio Device)
-ID:{0.0.1.00000000}.{782219e7-dffd-4ab4-82f5-778bb89875c5}
-State:NOTPRESENT
-Description:Bluetooth Microphone
-Audioif:Bluetooth Audio Device
+  Õ¯ø®              Realtek PCIe GBE Family Controller                                    
+  …˘ø®              NVIDIA High Definition Audio                                          
 
-Name:Êâ¨Â£∞Âô®/Âê¨Á≠í (Realtek Audio)
-ID:{0.0.1.00000000}.{84233a76-0156-4184-a00e-44666c3657d5}
-State:NOTPRESENT
-Description:Êâ¨Â£∞Âô®/Âê¨Á≠í
-Audioif:Realtek Audio
+----------[ PCI…Ë±∏ ]-------------------------------------------------------------------------------
 
-Name:Á´ã‰ΩìÂ£∞Ê∑∑Èü≥ (Realtek Audio)
-ID:{0.0.1.00000000}.{a000e13a-6b2f-4381-b57a-070bcb4038b9}
-State:DISABLED
-Description:Á´ã‰ΩìÂ£∞Ê∑∑Èü≥
-Audioif:Realtek Audio
 
-Name:ÂÜÖÈÉ® AUX ÊèíÂ∫ß (NVIDIA High Definition Audio)
-ID:{0.0.1.00000000}.{a81e43f1-2dc9-4399-99fa-617b7e476c41}
-State:NOTPRESENT
-Description:ÂÜÖÈÉ® AUX ÊèíÂ∫ß
-Audioif:NVIDIA High Definition Audio
+----------[ USB…Ë±∏ ]-------------------------------------------------------------------------------
 
-Name:Êâ¨Â£∞Âô®/Âê¨Á≠í (Realtek Audio)
-ID:{0.0.1.00000000}.{c492ce38-a6bc-4407-8c34-8ec295cbf69c}
-State:NOTPRESENT
-Description:Êâ¨Â£∞Âô®/Âê¨Á≠í
-Audioif:Realtek Audio
+  ÷∆‘Ï…ÃID          17ef                                                                  
+  ≤˙∆∑ID            6019                                                                  
+  ¿‡±              0 / 0 / 0                                                             
+  …Ë±∏              PixArtLenovo USB Optical Mouse                                        
+  Serial            0                                                                     
 
-Name:Á∫øË∑ØËæìÂÖ• (Realtek Audio)
-ID:{0.0.1.00000000}.{fbaa0fb3-7d56-4108-8224-dd06e23597ad}
-State:UNPLUGGED
-Description:Á∫øË∑ØËæìÂÖ•
-Audioif:Realtek Audio
+  ÷∆‘Ï…ÃID          17ef                                                                  
+  ≤˙∆∑ID            6018                                                                  
+  ¿‡±              0 / 0 / 0                                                             
+  …Ë±∏              Lite-On Technology Corp.Lenovo USB Keyboard                           
+  Serial            0                                                                     
+
+  ÷∆‘Ï…ÃID          bda                                                                   
+  ≤˙∆∑ID            182                                                                   
+  ¿‡±              0 / 0 / 0                                                             
+  …Ë±∏              GenericUSB2.0-CRW20100818841300000                                    
+  Serial            3                                                                     
+
+  ÷∆‘Ï…ÃID          cf3                                                                   
+  ≤˙∆∑ID            e004                                                                  
+  ¿‡±              224 / 1 / 1                                                           
+  …Ë±∏              String Descriptor not availableString Descriptor not availableString Descriptor not available
+  Serial            3                                                                     
 

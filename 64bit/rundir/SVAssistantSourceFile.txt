@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------------------------------
-SV_ASSISTANT Report                                                            ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+SV_ASSISTANT Report                                                           ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
 Hardware Report Clean                                                                               
 --------------------------------------------------------------------------------------------------------
-CPU                                                                            ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+CPU                                                                           ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
 CPU Name:           Intel Core i5 4460            
 CPU Core:           4                             
@@ -41,28 +41,28 @@ Multiplier:         inf
 Multiplier:         inf                           
 Processor ID:       BFEBFBFF000306C3              
 Max TDP:            0                             
-Memory                                                                         ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+Memory                                                                        ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
 Dimm Num:           0                             
 
-SMBIOS                                                                         ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+SMBIOS                                                                        ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
-GFX                                                                            ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+GFX                                                                           ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
 GPU Name:                     Nvidia GeForce GT 720         
 GPU BIOS Version:             80.28.56.00.01                
 GPU Driver Version:           33266                         
 GPU Branch Version:           r331_00                       
-Temperature:                  38                            
+Temperature:                  39                            
 GPU Clock:                    0                             
 GPU Memory:                   0                             
-Usage:                        37                            
+Usage:                        0                             
 Fans:                         0                             
 Dedicated Video Memory:       1048576                       
 System Video Memory:          0                             
 Shared System Memory:         3146044                       
 
-Monitor                                                                        ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+Monitor                                                                       ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Philips Consumer Electronics Company PHL 258B6QJEB  
 				Desktop Management Interface Information
@@ -587,44 +587,19 @@ Name:               Philips Consumer Electronics Company PHL 258B6QJEB
 	End-of-Table Type:		7F
 
 
-Disk                                                                           ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+Disk                                                                          ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
-Nominal Media Rotation Rate:  (SSD)                         
-Buffer Size:                                                
-Nv Cache Size:                                              
-Logical Drive:                K:                            
-Power On Count:               33568 Counts                  
-Temperature:                                                
-Host Writes:                  781 GB                        
-Host Reads:                   245 GB                        
-GBytesErased:                                               
-Nand Writes:                                                
-Power On Hours:               89 Hours                      
-Total Disk Size:              16.0 GB                       
-Serial Number:                04593e867                     
-Firmware Rev:                 KM.10.00                      
-Model:                        SanDisk SSD U100 16GB         
-Max Transfer Mode:            SATA/600                      
-Current Transfer Mode:        SATA/300                      
-Major Version:                ACS-2                         
-Minor Version:                ACS-2 Revision 3              
-Interface:                    USB (Serial ATA)              
-Enclosure:                    SanDisk Extreme USB Device    
-Device Nominal Form Factor:   1.8 inch                      
-Feature:                      S.M.A.R.T., APM, NCQ, TRIM    
-Disk State:                                                 
-
 Nominal Media Rotation Rate:  7200 RPM                      
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                E: J:                         
-Power On Count:               1408 Counts                   
+Power On Count:               1482 Counts                   
 Temperature:                  33 ¡ãC                         
 Host Writes:                                                
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               4294 Hours                    
+Power On Hours:               4401 Hours                    
 Total Disk Size:              1000.2 GB                     
 Serial Number:                Z4Y19VCY                      
 Firmware Rev:                 CC45                          
@@ -643,13 +618,13 @@ Nominal Media Rotation Rate:  (SSD)
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                C:                            
-Power On Count:               10018 Counts                  
+Power On Count:               10092 Counts                  
 Temperature:                  37 ¡ãC                         
-Host Writes:                  39.999 TB                     
+Host Writes:                  40.164 TB                     
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               11401 Hours                   
+Power On Hours:               11511 Hours                   
 Total Disk Size:              120.0 GB                      
 Serial Number:                S21VNXBG894109J               
 Firmware Rev:                 EMT01B6Q                      
@@ -665,7 +640,7 @@ Feature:                      S.M.A.R.T., NCQ, TRIM, DevSleep
 Disk State:                                                 
 
 
-USB                                                                            ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+USB                                                                           ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
   [Standard Enhanced PCI to USB Host Controller]
           DriverKey: {36fc9e60-c465-11cf-8056-444553540000}\0000
@@ -1311,11 +1286,11 @@ USB                                                                            Ö
                idProduct:                         57348
                bcdDevice:                         1
                iManufacturer:                     1
-                          Atheros Communications
+                          String Descriptor not available
                iProduct:                          2
-                          Bluetooth USB Host Controller
+                          String Descriptor not available
                iSerialNumber:                     3
-                          Alaska Day 2006
+                          String Descriptor not available
                bNumConfigurations:                1
                           ---===>Full Configuration Descriptor<===---
                          ===>Configuration Descriptor<===
@@ -1407,70 +1382,6 @@ USB                                                                            Ö
                 USB 3.0:                         no
                
                             ConnectionStatus:                 NoDeviceConnected
-     Port 0 USB ´óÈÝÁ¿´æ´¢Éè±¸               Is Port User Connectable:         no
-               Is Port Debug Capable:            no
-               Is Port TypeC:                    no
-               Companion Port Number:            0
-               Companion Hub Symbolic Link Name: 
-               Protocols Supported:              
-                USB 1.1:                         no
-                USB 2.0:                         no
-                USB 3.0:                         no
-               
-                                    ---===>Device Information<===---
-                         ===>Device Descriptor<===
-               bLength:                           18
-               bDescriptorType:                   1
-               bcdUSB:                            768
-               bDeviceClass:                      0
-               bDeviceSubClass:                   0
-               bDeviceProtocol:                   0
-               bMaxPacketSize0:                   9
-               idVendor:                          1921
-               idProduct:                         21888
-               bcdDevice:                         16
-               iManufacturer:                     1
-                          SanDisk
-               iProduct:                          2
-                          Extreme
-               iSerialNumber:                     3
-                          AA011224140604432152
-               bNumConfigurations:                1
-                          ---===>Full Configuration Descriptor<===---
-                         ===>Configuration Descriptor<===
-                         ===>Configuration Descriptor<===
-               bLength:                           9
-               bDescriptorType:                   2
-               wTotalLength:                      44
-               bNumInterfaces:                    1
-               bConfigurationValue:               1
-               iConfiguration:                    0
-               bmAttributes:                      128
-               MaxPower:                          50
-                         ===>Interface Descriptor<===
-               bLength:                           9
-               bDescriptorType:                   4
-               bInterfaceNumber:                  0
-               bAlternateSetting:                 0
-               bNumEndpoints:                     2
-               bInterfaceClass:                   8
-               bInterfaceSubClass:                6
-               bInterfaceProtocol:                80
-               iInterface:                        0
-                         ===>Endpoint Descriptor<===
-               bLength:                           7
-               bDescriptorType:                   5
-               bEndpointAddress:                  129
-               bmAttributes:                      2
-               wMaxPacketSize:                    1024
-               bInterval:                         0
-                         ===>Endpoint Descriptor<===
-               bLength:                           7
-               bDescriptorType:                   5
-               bEndpointAddress:                  2
-               bmAttributes:                      2
-               wMaxPacketSize:                    1024
-               bInterval:                         0
      Port 0               Is Port User Connectable:         no
                Is Port Debug Capable:            no
                Is Port TypeC:                    no
@@ -1515,9 +1426,20 @@ USB                                                                            Ö
                 USB 3.0:                         no
                
                             ConnectionStatus:                 NoDeviceConnected
-PCI                                                                            ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+     Port 0               Is Port User Connectable:         no
+               Is Port Debug Capable:            no
+               Is Port TypeC:                    no
+               Companion Port Number:            0
+               Companion Hub Symbolic Link Name: 
+               Protocols Supported:              
+                USB 1.1:                         no
+                USB 2.0:                         no
+                USB 3.0:                         no
+               
+                            ConnectionStatus:                 NoDeviceConnected
+PCI                                                                           ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
-Net                                                                            ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+Net                                                                           ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Bluetooth ÍøÂçÁ¬½Ó                
 Device Name:        Bluetooth Éè±¸(¸öÈËÇøÓòÍø)           
@@ -1534,7 +1456,7 @@ Device Name:        Dell Wireless 1703 802.11b/g/n (2.4GHz)
 Media Type:         LAN                           
 State:              MEDIA_DISCONNECTED            
 
-Audio                                                                          ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+Audio                                                                         ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Speakers (Bluetooth Audio Device)
 ID:                 {0.0.0.00000000}.{601be8b4-7dcf-43a8-a275-250f5202a7ed}
@@ -1544,7 +1466,7 @@ Audioif:            Bluetooth Audio Device
 
 Name:               ÑïÉùÆ÷/ÌýÍ² (Realtek Audio)        
 ID:                 {0.0.0.00000000}.{ac858e1e-5305-4e17-a35d-33e44b8334b0}
-State:              ACTIVE                        
+State:              UNPLUGGED                     
 Description:        ÑïÉùÆ÷/ÌýÍ²                        
 Audioif:            Realtek Audio                 
 
@@ -1633,4 +1555,4 @@ Description:        ÏßÂ·ÊäÈë
 Audioif:            Realtek Audio                 
 
 --------------------------------------------------------------------------------------------------------
-End of Report                                                                  ÖÜ¶þ ËÄÔÂ 9 18:01:58 2019
+End of Report                                                                 ÖÜÈÕ ËÄÔÂ 28 18:17:30 2019

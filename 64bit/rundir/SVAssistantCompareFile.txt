@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------------------------------
-SV_ASSISTANT Report                                                           周三 四月 17 16:04:55 2019
+SV_ASSISTANT Report                                                           周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
 Hardware Report Clean                                                                               
 --------------------------------------------------------------------------------------------------------
-CPU                                                                           周三 四月 17 16:04:55 2019
+CPU                                                                           周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
 CPU Name:           Intel Core i5 4460            
 CPU Core:           4                             
@@ -41,19 +41,19 @@ Multiplier:         inf
 Multiplier:         inf                           
 Processor ID:       BFEBFBFF000306C3              
 Max TDP:            0                             
-Memory                                                                        周三 四月 17 16:04:55 2019
+Memory                                                                        周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
 Dimm Num:           0                             
 
-SMBIOS                                                                        周三 四月 17 16:04:55 2019
+SMBIOS                                                                        周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
-GFX                                                                           周三 四月 17 16:04:55 2019
+GFX                                                                           周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
 GPU Name:                     Nvidia GeForce GT 720         
 GPU BIOS Version:             80.28.56.00.01                
 GPU Driver Version:           33266                         
 GPU Branch Version:           r331_00                       
-Temperature:                  42                            
+Temperature:                  36                            
 GPU Clock:                    0                             
 GPU Memory:                   0                             
 Usage:                        1                             
@@ -62,7 +62,7 @@ Dedicated Video Memory:       1048576
 System Video Memory:          0                             
 Shared System Memory:         3146044                       
 
-Monitor                                                                       周三 四月 17 16:04:55 2019
+Monitor                                                                       周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Philips Consumer Electronics Company PHL 258B6QJEB  
 				Desktop Management Interface Information
@@ -587,19 +587,19 @@ Name:               Philips Consumer Electronics Company PHL 258B6QJEB
 	End-of-Table Type:		7F
 
 
-Disk                                                                          周三 四月 17 16:04:55 2019
+Disk                                                                          周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
 Nominal Media Rotation Rate:  7200 RPM                      
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                E: J:                         
-Power On Count:               1421 Counts                   
-Temperature:                  34 °C                         
+Power On Count:               1482 Counts                   
+Temperature:                  32 °C                         
 Host Writes:                                                
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               4337 Hours                    
+Power On Hours:               4401 Hours                    
 Total Disk Size:              1000.2 GB                     
 Serial Number:                Z4Y19VCY                      
 Firmware Rev:                 CC45                          
@@ -618,13 +618,13 @@ Nominal Media Rotation Rate:  (SSD)
 Buffer Size:                                                
 Nv Cache Size:                                              
 Logical Drive:                C:                            
-Power On Count:               10031 Counts                  
-Temperature:                  36 °C                         
-Host Writes:                  40.048 TB                     
+Power On Count:               10092 Counts                  
+Temperature:                  34 °C                         
+Host Writes:                  40.164 TB                     
 Host Reads:                                                 
 GBytesErased:                                               
 Nand Writes:                                                
-Power On Hours:               11444 Hours                   
+Power On Hours:               11511 Hours                   
 Total Disk Size:              120.0 GB                      
 Serial Number:                S21VNXBG894109J               
 Firmware Rev:                 EMT01B6Q                      
@@ -640,7 +640,7 @@ Feature:                      S.M.A.R.T., NCQ, TRIM, DevSleep
 Disk State:                                                 
 
 
-USB                                                                           周三 四月 17 16:04:55 2019
+USB                                                                           周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
   [Standard Enhanced PCI to USB Host Controller]
           DriverKey: {36fc9e60-c465-11cf-8056-444553540000}\0000
@@ -1437,9 +1437,9 @@ USB                                                                           周
                 USB 3.0:                         no
                
                             ConnectionStatus:                 NoDeviceConnected
-PCI                                                                           周三 四月 17 16:04:55 2019
+PCI                                                                           周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
-Net                                                                           周三 四月 17 16:04:55 2019
+Net                                                                           周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Bluetooth 网络连接                
 Device Name:        Bluetooth 设备(个人区域网)           
@@ -1456,7 +1456,7 @@ Device Name:        Dell Wireless 1703 802.11b/g/n (2.4GHz)
 Media Type:         LAN                           
 State:              MEDIA_DISCONNECTED            
 
-Audio                                                                         周三 四月 17 16:04:55 2019
+Audio                                                                         周日 四月 28 18:26:32 2019
 --------------------------------------------------------------------------------------------------------
 Name:               Speakers (Bluetooth Audio Device)
 ID:                 {0.0.0.00000000}.{601be8b4-7dcf-43a8-a275-250f5202a7ed}
@@ -1466,7 +1466,7 @@ Audioif:            Bluetooth Audio Device
 
 Name:               扬声器/听筒 (Realtek Audio)        
 ID:                 {0.0.0.00000000}.{ac858e1e-5305-4e17-a35d-33e44b8334b0}
-State:              ACTIVE                        
+State:              UNPLUGGED                     
 Description:        扬声器/听筒                        
 Audioif:            Realtek Audio                 
 
@@ -1555,4 +1555,4 @@ Description:        线路输入
 Audioif:            Realtek Audio                 
 
 --------------------------------------------------------------------------------------------------------
-End of Report                                                                 周三 四月 17 16:04:55 2019
+End of Report                                                                 周日 四月 28 18:26:32 2019
